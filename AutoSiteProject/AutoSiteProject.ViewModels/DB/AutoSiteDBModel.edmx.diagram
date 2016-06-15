@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1bb7576571de4b85a07aa839b739ab6b" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarBodyType" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarModel" Width="1.5" PointX="6.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.Country" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.Manufacturer" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="AutoSiteProjectDBModel.fk_ModelManuf" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSiteProjectDBModel.fk_ManufCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoSiteProjectDBModel.ModelBodyTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

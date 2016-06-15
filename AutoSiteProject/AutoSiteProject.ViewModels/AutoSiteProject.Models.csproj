@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C433C73-AB8F-4A65-8173-BF89FE742A20}</ProjectGuid>
+    <ProjectGuid>{8E94F803-9F64-48DF-96B5-AF12F43D7226}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoSiteProject.Dal</RootNamespace>
-    <AssemblyName>AutoSiteProject.Dal</AssemblyName>
+    <RootNamespace>AutoSiteProject.Models</RootNamespace>
+    <AssemblyName>AutoSiteProject.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,23 +50,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\GenericRepository.cs" />
+    <Compile Include="Dal\Interfaces\IGenericRepository.cs" />
+    <Compile Include="DB\AutoSiteDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoSiteDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\AutoSiteDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\AutoSiteDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoSiteDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\CarBodyType.cs">
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\CarModel.cs">
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Country.cs">
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Manufacturer.cs">
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EntityDeploy Include="DB\AutoSiteDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoSiteDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DB\AutoSiteDBModel.edmx.diagram">
+      <DependentUpon>AutoSiteDBModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="SqlScripts\AutoSiteProjectDB.Data.Fill.sql" />
-    <Content Include="SqlScripts\AutoSiteProjectDB.Create.sql" />
+    <Content Include="DB\AutoSiteDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoSiteDBModel.edmx</DependentUpon>
+      <LastGenOutput>AutoSiteDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB\AutoSiteDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoSiteDBModel.edmx</DependentUpon>
+      <LastGenOutput>AutoSiteDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.Models.csproj">
-      <Project>{8e94f803-9f64-48df-96b5-af12f43d7226}</Project>
-      <Name>AutoSiteProject.Models</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

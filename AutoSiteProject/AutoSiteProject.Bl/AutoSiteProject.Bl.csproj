@@ -46,13 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutoSiteProject.Dal\AutoSiteProject.Dal.csproj">
-      <Project>{6c433c73-ab8f-4a65-8173-bf89fe742a20}</Project>
-      <Name>AutoSiteProject.Dal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.ViewModels.csproj">
+    <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.Models.csproj">
       <Project>{8e94f803-9f64-48df-96b5-af12f43d7226}</Project>
-      <Name>AutoSiteProject.ViewModels</Name>
+      <Name>AutoSiteProject.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

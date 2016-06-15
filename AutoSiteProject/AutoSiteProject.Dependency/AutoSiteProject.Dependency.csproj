@@ -34,7 +34,16 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +68,9 @@
       <Project>{6c433c73-ab8f-4a65-8173-bf89fe742a20}</Project>
       <Name>AutoSiteProject.Dal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.ViewModels.csproj">
+    <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.Models.csproj">
       <Project>{8e94f803-9f64-48df-96b5-af12f43d7226}</Project>
-      <Name>AutoSiteProject.ViewModels</Name>
+      <Name>AutoSiteProject.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,6 +50,6 @@ CREATE TABLE ModelBodyTypes
 	CONSTRAINT fk_ModelIdBodyTypes FOREIGN KEY (ModelId) REFERENCES CarModel(Id) ON DELETE CASCADE,
 	BodyTypeId int NOT NULL,
 	CONSTRAINT fk_BodyTypeIdBodyTypes FOREIGN KEY (BodyTypeId) REFERENCES CarBodyType(Id) ON DELETE CASCADE,
-	CONSTRAINT uc_ModelBodyType UNIQUE (ModelId,BodyTypeId)
+	CONSTRAINT pk_ModelBodyType PRIMARY KEY (ModelId,BodyTypeId)
 );
 GO
