@@ -39,9 +39,10 @@ namespace AutoSiteProject.Dal.Entities
             _entities.Set<T>().Add(entity);
         }
 
-        public virtual void Delete(T entity)
+        public virtual void Delete(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
-            _entities.Set<T>().Remove(entity);
+            var entities = _entities.Set<T>().Where(predicate);
+            _entities.Set<T>().RemoveRange(entities);
         }
 
         public virtual void Edit(T entity)

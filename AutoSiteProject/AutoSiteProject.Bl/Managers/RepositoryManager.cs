@@ -30,10 +30,9 @@ namespace AutoSiteProject.Bl.Managers
             _tRepository.Save();
         }
 
-        public void Delete(TV entity)
+        public virtual void Delete(TV entity)
         {
-            _tRepository.Delete(AutoMapper.Mapper.Map<TV, T>(entity));
-            _tRepository.Save();
+            throw new System.NotImplementedException();
         }
 
         public void Edit(TV entity)

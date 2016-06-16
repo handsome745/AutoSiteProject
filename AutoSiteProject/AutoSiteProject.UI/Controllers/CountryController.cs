@@ -61,7 +61,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Delete(int id)
         {
             var entityForDelete = _countryManager.GetById(id);
-            if (entityForDelete != null) _countryManager.Delete(entityForDelete);
+            _countryManager.Delete(entityForDelete);
             return RedirectToAction("List");
         }
 

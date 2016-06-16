@@ -15,5 +15,11 @@ namespace AutoSiteProject.Bl.Managers
         {
             return Mapper.Map<CarBodyType, CarBodyTypeViewModel>(Repository.FindBy(c => c.Id == id).FirstOrDefault());
         }
+
+        public override void Delete(CarBodyTypeViewModel entity)
+        {
+            Repository.Delete(e => e.Id == entity.Id);
+            Repository.Save();
+        }
     }
 }
