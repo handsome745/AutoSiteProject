@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bl\Interfaces\IRepositoryManager.cs" />
+    <Compile Include="Bl\Interfaces\IWithId.cs" />
     <Compile Include="Dal\Interfaces\IGenericRepository.cs" />
     <Compile Include="DB\AutoSiteDBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -79,6 +81,10 @@
       <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CarBodyTypeViewModel.cs" />
+    <Compile Include="ViewModels\CarModelViewModel.cs" />
+    <Compile Include="ViewModels\CountryViewModel.cs" />
+    <Compile Include="ViewModels\ManufacturerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DB\AutoSiteDBModel.edmx">
