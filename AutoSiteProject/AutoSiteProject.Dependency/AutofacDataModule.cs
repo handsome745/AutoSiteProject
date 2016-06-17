@@ -27,10 +27,10 @@ namespace AutoSiteProject.Dependency
 
         private void RegisterBlTypes(ContainerBuilder builder)
         {
-            builder.RegisterType<CountryManager>().As<IRepositoryManager<CountryViewModel>>().WithProperty("Repository", new CountryRepository());
-            builder.RegisterType<CarModelManager>().As<IRepositoryManager<CarModelViewModel>>().WithProperty("Repository", new CarModelRepository());
-            builder.RegisterType<ManufacturerManager>().As<IRepositoryManager<ManufacturerViewModel>>().WithProperty("Repository", new ManufacturerRepository());
-            builder.RegisterType<CarBodyTypeManager>().As<IRepositoryManager<CarBodyTypeViewModel>>().WithProperty("Repository", new CarBodyTypeRepository());
+            builder.RegisterType<CountryManager>().As<ICountryManager>().WithProperty("Repository", new CountryRepository());
+            builder.RegisterType<CarModelManager>().As<ICarModelManager>().WithProperty("Repository", new CarModelRepository());
+            builder.RegisterType<ManufacturerManager>().As<IManufacturerManager>().WithProperty("Repository", new ManufacturerRepository());
+            builder.RegisterType<CarBodyTypeManager>().As<ICarBodyTypeManager>().WithProperty("Repository", new CarBodyTypeRepository());
         }
     }
 }

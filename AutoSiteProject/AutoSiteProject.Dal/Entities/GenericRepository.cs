@@ -1,15 +1,13 @@
 ﻿using AutoSiteProject.Models.Dal.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Dal.Entities
 {
     public abstract class GenericRepository<C, T> : IGenericRepository<T>
-        where T : class 
+        where T : WithId 
         where C : DbContext, new()
     {
 
@@ -47,7 +45,8 @@ namespace AutoSiteProject.Dal.Entities
 
         public virtual void Edit(T entity)
         {
-            _entities.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            var dbEntity = _entities.Set<T>().FirstOrDefault(e => e.Id == entity.Id);
+            _entities.Entry(dbEntity).CurrentValues.SetValues(entity);
         }
 
         public virtual void Save()

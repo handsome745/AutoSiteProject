@@ -12,7 +12,7 @@ namespace AutoSiteProject.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class Country: WithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Country()
@@ -20,7 +20,7 @@ namespace AutoSiteProject.Models.DB
             this.Manufacturer = new HashSet<Manufacturer>();
         }
     
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

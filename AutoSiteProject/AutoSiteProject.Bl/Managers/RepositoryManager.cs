@@ -2,11 +2,12 @@
 using System.Linq;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.Dal.Interfaces;
+using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
     public abstract class RepositoryManager<T, TV> : IRepositoryManager<TV>
-        where T : class
+        where T : WithId
         where TV: class
     {
         private IGenericRepository<T> _tRepository ;
@@ -30,9 +31,10 @@ namespace AutoSiteProject.Bl.Managers
             _tRepository.Save();
         }
 
-        public virtual void Delete(TV entity)
+        public virtual void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            _tRepository.Delete(e => e.Id == id);
+            _tRepository.Save();
         }
 
         public void Edit(TV entity)
@@ -43,7 +45,7 @@ namespace AutoSiteProject.Bl.Managers
 
         public virtual TV GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return AutoMapper.Mapper.Map<T, TV>(_tRepository.FindBy(e => e.Id == id).FirstOrDefault());
         }
     }
 }

@@ -8,36 +8,35 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class ManufacturerController : Controller
+    public class CarBodyTypeController : Controller
     {
-        private IManufacturerManager _manufacturerManager;
-        private ICountryManager _countryManager;
+        private ICarBodyTypeManager _carBodyTypeManager;
 
-        public ManufacturerController(IManufacturerManager manufacturerManager, ICountryManager countryManager)
+        public CarBodyTypeController(ICarBodyTypeManager carBodyTypeManager)
         {
-            _manufacturerManager = manufacturerManager;
-            _countryManager = countryManager;
+            _carBodyTypeManager = carBodyTypeManager;
         }
 
-        // GET: Country
+
+        // GET: CarModel
         public ActionResult List()
         {
-            return View(_manufacturerManager.GetAll());
+            return View(_carBodyTypeManager.GetAll());
         }
+
 
         //GET 
         public ActionResult Create()
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll(), "Id", "Name");
             return View();
         }
         //Post
         [HttpPost]
-        public ActionResult Create(ManufacturerViewModel entity)
+        public ActionResult Create(CarBodyTypeViewModel entity)
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Add(entity);
+                _carBodyTypeManager.Add(entity);
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -46,16 +45,15 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll(), "Id", "Name");
-            return View(_manufacturerManager.GetById(id));
+            return View(_carBodyTypeManager.GetById(id));
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(ManufacturerViewModel entity)
+        public ActionResult Edit(CarBodyTypeViewModel entity)
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Edit(entity);
+                _carBodyTypeManager.Edit(entity);
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -64,7 +62,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _manufacturerManager.Delete(id);
+            _carBodyTypeManager.Delete(id);
             return RedirectToAction("List");
         }
     }

@@ -10,9 +10,9 @@ namespace AutoSiteProject.UI.Controllers
 {
     public class CountryController : Controller
     {
-        private IRepositoryManager<CountryViewModel> _countryManager;
+        private ICountryManager _countryManager;
 
-        public CountryController(IRepositoryManager<CountryViewModel> countryManager)
+        public CountryController(ICountryManager countryManager)
         {
             _countryManager = countryManager;
         }
@@ -60,8 +60,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            var entityForDelete = _countryManager.GetById(id);
-            _countryManager.Delete(entityForDelete);
+            _countryManager.Delete(id);
             return RedirectToAction("List");
         }
 

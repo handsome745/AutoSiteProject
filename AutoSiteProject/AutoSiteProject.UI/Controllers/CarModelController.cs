@@ -10,11 +10,11 @@ namespace AutoSiteProject.UI.Controllers
 {
     public class CarModelController : Controller
     {
-        private IRepositoryManager<CarModelViewModel> _carModelManager;
-        private IRepositoryManager<ManufacturerViewModel> _manufacturerManager;
+        private ICarModelManager _carModelManager;
+        private IManufacturerManager _manufacturerManager;
 
-        public CarModelController(IRepositoryManager<CarModelViewModel> carModelManager,
-            IRepositoryManager<ManufacturerViewModel> manufacturerManager)
+        public CarModelController(ICarModelManager carModelManager,
+            IManufacturerManager manufacturerManager)
         {
             _manufacturerManager = manufacturerManager;
             _carModelManager = carModelManager;
@@ -67,8 +67,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            var entityForDelete = _carModelManager.GetById(id);
-            if (entityForDelete != null) _carModelManager.Delete(entityForDelete);
+            _carModelManager.Delete(id);
             return RedirectToAction("List");
         }
     }

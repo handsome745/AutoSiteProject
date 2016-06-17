@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarBodyTypeController.cs" />
     <Compile Include="Controllers\CarModelController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -185,6 +186,9 @@
     <Content Include="Views\CarModel\List.cshtml" />
     <Content Include="Views\CarModel\Create.cshtml" />
     <Content Include="Views\CarModel\Edit.cshtml" />
+    <Content Include="Views\CarBodyType\List.cshtml" />
+    <Content Include="Views\CarBodyType\Create.cshtml" />
+    <Content Include="Views\CarBodyType\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
