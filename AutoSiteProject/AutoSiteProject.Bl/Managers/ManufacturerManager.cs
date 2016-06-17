@@ -6,7 +6,7 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class ManufacturerManager : RepositoryManager<Manufacturer, ManufacturerViewModel>, IManufacturerManager
+    public class ManufacturerManager : RepositoryManager<Manufacturer>, IManufacturerManager
     {
        
     }

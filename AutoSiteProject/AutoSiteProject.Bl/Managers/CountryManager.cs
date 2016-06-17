@@ -6,7 +6,7 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CountryManager : RepositoryManager<Country , CountryViewModel>, ICountryManager
+    public class CountryManager : RepositoryManager<Country>, ICountryManager
     {
        
     }

@@ -6,9 +6,8 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public abstract class RepositoryManager<T, TV> : IRepositoryManager<TV>
+    public abstract class RepositoryManager<T> : IRepositoryManager<T>
         where T : WithId
-        where TV: class
     {
         private IGenericRepository<T> _tRepository ;
 
@@ -18,34 +17,34 @@ namespace AutoSiteProject.Bl.Managers
             set { _tRepository = value; }
         }
 
-        public IEnumerable<TV> GetAll()
+        public IEnumerable<T> GetAll()
         {
             var list = _tRepository.GetAll().ToList();
-            return AutoMapper.Mapper.Map<List<T>, List<TV>>(list);
+            return list;
         }
 
 
-        public void Add(TV entity)
+        public void Add(T entity)
         {
-            _tRepository.Add(AutoMapper.Mapper.Map<TV, T>(entity));
+            _tRepository.Add(entity);
             _tRepository.Save();
         }
 
         public virtual void Delete(int id)
         {
-            _tRepository.Delete(e => e.Id == id);
+            _tRepository.Delete(e=>e.Id == id);
             _tRepository.Save();
         }
 
-        public void Edit(TV entity)
+        public void Edit(T entity)
         {
-            _tRepository.Edit(AutoMapper.Mapper.Map<TV, T>(entity));
+            _tRepository.Edit(entity);
             _tRepository.Save();
         }
 
-        public virtual TV GetById(int id)
+        public virtual T GetById(int id)
         {
-            return AutoMapper.Mapper.Map<T, TV>(_tRepository.FindBy(e => e.Id == id).FirstOrDefault());
+            return _tRepository.FindBy(e => e.Id == id).FirstOrDefault();
         }
     }
 }

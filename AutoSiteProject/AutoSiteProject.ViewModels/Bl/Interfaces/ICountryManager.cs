@@ -1,8 +1,8 @@
-﻿using AutoSiteProject.Models.ViewModels;
+﻿using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Models.Bl.Interfaces
 {
-    public interface ICountryManager : IRepositoryManager<CountryViewModel>
+    public interface ICountryManager : IRepositoryManager<Country>
     {
 
     }

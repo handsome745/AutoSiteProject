@@ -10,7 +10,6 @@ namespace AutoSiteProject.Models.ViewModels
         [Required]
         [DisplayName("Name")]
         public string Name { get; set; }
-
-        public virtual ICollection<ManufacturerViewModel> Manufacturer { get; set; }
+               
     }
 }

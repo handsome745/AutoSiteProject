@@ -6,7 +6,7 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CarBodyTypeManager : RepositoryManager<CarBodyType, CarBodyTypeViewModel>, ICarBodyTypeManager
+    public class CarBodyTypeManager : RepositoryManager<CarBodyType>, ICarBodyTypeManager
     {
        
     }

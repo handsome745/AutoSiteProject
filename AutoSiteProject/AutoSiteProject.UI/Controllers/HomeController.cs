@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
+using AutoMapper;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -26,16 +27,22 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Home
         public ActionResult Index(int countryId = -1)
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll(), "Id", "Name");
+            ViewBag.Countries = new SelectList(Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll()), "Id", "Name");
             ViewBag.Manufacturers = new SelectList(new List<ManufacturerViewModel>(), "Id", "Name");
-            ViewBag.CarModels = new SelectList(_carModelManager.GetAll(), "Id", "Name");
+            ViewBag.CarModels = new SelectList(new List<CarModelViewModel>(), "Id", "Name");
             return View();
         }
 
         public JsonResult GetManufacturersOfCountry(int id)
         {
-            var result = _manufacturerManager.GetAll().Where(m => m.CountryId == id);
-            return Json(result);
+            var result = _manufacturerManager.GetAll().Where(m => m.CountryId == id);//.Select(x => new { x.Id, x.Name }).ToList();
+            return Json(Mapper.Map<List<ManufacturerViewModel>>(result), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCarModelsOfManufacturer(int id)
+        {
+            var result = _carModelManager.GetAll().Where(m => m.ManufacturerId == id);//.Select(x => new { x.Id, x.Name }).ToList();
+            return Json(Mapper.Map<List<CarModelViewModel>>(result), JsonRequestBehavior.AllowGet);
         }
     }
 }

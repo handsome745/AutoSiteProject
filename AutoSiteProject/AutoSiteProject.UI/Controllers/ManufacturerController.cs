@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
+using AutoMapper;
+using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -22,7 +21,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            return View(_manufacturerManager.GetAll());
+            return View(Mapper.Map<List<ManufacturerViewModel>>(_manufacturerManager.GetAll()));
         }
 
         //GET 
@@ -37,7 +36,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Add(entity);
+                _manufacturerManager.Add(Mapper.Map<Manufacturer>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -55,7 +54,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Edit(entity);
+                _manufacturerManager.Edit(Mapper.Map<Manufacturer>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);

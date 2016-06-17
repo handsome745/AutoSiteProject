@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
+using AutoMapper;
+using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -21,7 +23,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: CarModel
         public ActionResult List()
         {
-            return View(_carBodyTypeManager.GetAll());
+            return View(Mapper.Map<List<CarBodyTypeViewModel>>(_carBodyTypeManager.GetAll()));
         }
 
 
@@ -36,7 +38,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Add(entity);
+                _carBodyTypeManager.Add(Mapper.Map<CarBodyType>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -45,7 +47,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(_carBodyTypeManager.GetById(id));
+            return View(Mapper.Map<CarBodyTypeViewModel>(_carBodyTypeManager.GetById(id)));
         }
         //Post
         [HttpPost]
@@ -53,7 +55,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Edit(entity);
+                _carBodyTypeManager.Edit(Mapper.Map<CarBodyType>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);

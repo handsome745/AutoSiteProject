@@ -1,8 +1,8 @@
-﻿using AutoSiteProject.Models.ViewModels;
+﻿using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Models.Bl.Interfaces
 {
-    public interface ICarModelManager : IRepositoryManager<CarModelViewModel>
+    public interface ICarModelManager : IRepositoryManager<CarModel>
     {
     }
 }

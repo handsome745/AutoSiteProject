@@ -13,8 +13,7 @@ namespace AutoSiteProject.Models.ViewModels
         public string Name { get; set; }
         [DisplayName("Country")]
         public Nullable<int> CountryId { get; set; }
-
-        public virtual ICollection<CarModelViewModel> CarModel { get; set; }
+        
         public virtual CountryViewModel Country { get; set; }
     }
 }

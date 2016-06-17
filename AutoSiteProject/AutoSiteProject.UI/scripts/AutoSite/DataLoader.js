@@ -1,32 +1,65 @@
 ﻿$(document).ready(function () {
-    $("#country").change(function () {
-        var id = $("#country option:selected").val();
-        DataLoader.loadManufacturers(id);
+    var filterSection = $("div.filter-section");
+    var manufUrl = filterSection.data("countries-url");
+    var carModelsfUrl = filterSection.data("carmodels-url");
+    $(".country-picker", filterSection).change(function () {
+        var id = $(this).val();
+        $(".manufacturer-picker", filterSection).show();
+        DataLoader.loadManufacturers(manufUrl + "/" + id);
+    });
+    $(".manufacturer-picker", filterSection).change(function () {
+        var id = $(this).val();
+        $(".carmodel-picker", filterSection).show();
+        DataLoader.loadCarModels(carModelsfUrl + "/" + id);
     });
 });
 
 DataLoader = {
-    loadManufacturers: function(id) {
+    loadManufacturers: function(url) {
         $.ajax({
             type: "GET",
             asynch: true,
-            url: "home/getmanufacturersofcountry/" + id,
+            url: url,
             success: function (output) {
                 DataLoader.renderManufacturersList(output);
             },
-            error: function (err) {
+            error: function (err, a, c) {
                 alert("Error");
             }
         });
     },
-    renderManufacturersList: function(data) {
+    renderManufacturersList: function (output) {
         var result = "";
-        for (var i = 0; i < data.length; i++) {
-            result += "<option value='" + data[i].Id + "'>";
-            result += data[i].Name;
+        for (var i = 0; i < output.length; i++) {
+            result += "<option value='" + output[i].Id + "'>";
+            result += output[i].Name;
             result += "</option>";
         }
-        document.getElementById("SelectedManufacturer").innerHTML = result;
+        var filterSection = $("div.filter-section");
+        $(".manufacturer-picker", filterSection).html(result);
+    },
+    loadCarModels: function (url) {
+        $.ajax({
+            type: "GET",
+            asynch: true,
+            url: url,
+            success: function (output) {
+                DataLoader.renderCarModelsList(output);
+            },
+            error: function (err, a, c) {
+                alert("Error");
+            }
+        });
+    },
+    renderCarModelsList: function (output) {
+        var result = "";
+        for (var i = 0; i < output.length; i++) {
+            result += "<option value='" + output[i].Id + "'>";
+            result += output[i].Name;
+            result += "</option>";
+        }
+        var filterSection = $("div.filter-section");
+        $(".carmodel-picker", filterSection).html(result);
     }
 
 }
