@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1bb7576571de4b85a07aa839b739ab6b" Name="Diagram1" ZoomLevel="70">
+      <Diagram DiagramId="741c4aac46d1448ab4232ffd97cabc91" Name="Diagram1">
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarBodyType" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarModel" Width="1.5" PointX="6.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarModel" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.Country" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.Manufacturer" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_ModelManuf" ManuallyRouted="false" />

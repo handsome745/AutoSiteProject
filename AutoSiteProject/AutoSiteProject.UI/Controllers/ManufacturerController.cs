@@ -22,7 +22,6 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            ViewBag.Countries =_countryManager.GetAll();
             return View(_manufacturerManager.GetAll());
         }
 

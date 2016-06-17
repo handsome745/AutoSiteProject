@@ -10,7 +10,7 @@ namespace AutoSiteProject.Models.Dal.Interfaces
         IQueryable<T> GetAll();
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         void Add(T entity);
-        void Delete(T entity);
+        void Delete(Expression<Func<T, bool>> predicate);
         void Edit(T entity);
         void Save();
     }

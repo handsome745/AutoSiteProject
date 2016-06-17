@@ -11,5 +11,10 @@ namespace AutoSiteProject.Bl.Managers
         {
             return  Mapper.Map<Country, CountryViewModel>(Repository.FindBy(c => c.Id == id).FirstOrDefault());
         }
+        public override void Delete(CountryViewModel entity)
+        {
+            Repository.Delete(e => e.Id == entity.Id);
+            Repository.Save();
+        }
     }
 }

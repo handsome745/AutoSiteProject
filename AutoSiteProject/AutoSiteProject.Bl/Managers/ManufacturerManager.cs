@@ -11,5 +11,10 @@ namespace AutoSiteProject.Bl.Managers
         {
             return Mapper.Map<Manufacturer, ManufacturerViewModel>(Repository.FindBy(c => c.Id == id).FirstOrDefault());
         }
+        public override void Delete(ManufacturerViewModel entity)
+        {
+            Repository.Delete(e => e.Id == entity.Id);
+            Repository.Save();
+        }
     }
 }

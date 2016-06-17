@@ -11,7 +11,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return RedirectToAction("List", "Manufacturer");
+            return RedirectToAction("List", "Country");
         }
     }
 }
