@@ -145,6 +145,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\AutoSite\DataLoader.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -189,6 +190,7 @@
     <Content Include="Views\CarBodyType\List.cshtml" />
     <Content Include="Views\CarBodyType\Create.cshtml" />
     <Content Include="Views\CarBodyType\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -198,7 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoSiteProject.Bl\AutoSiteProject.Bl.csproj">
