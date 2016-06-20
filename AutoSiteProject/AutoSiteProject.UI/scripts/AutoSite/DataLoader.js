@@ -4,14 +4,30 @@
     var carModelsfUrl = filterSection.data("carmodels-url");
     $(".country-picker", filterSection).change(function () {
         var id = $(this).val();
-        $(".manufacturer-picker", filterSection).show();
-        DataLoader.loadManufacturers(manufUrl + "/" + id);
+        if (id == -1) {
+            $(".manufacturer-picker", filterSection).hide();
+            $(".manufacturer-picker", filterSection).val(-1);
+            $(".manufacturer-picker", filterSection).change();
+        }
+        else {
+            $(".manufacturer-picker", filterSection).show();
+            DataLoader.loadManufacturers(manufUrl + "/" + id);
+        }
+       
+
     });
     $(".manufacturer-picker", filterSection).change(function () {
         var id = $(this).val();
-        $(".carmodel-picker", filterSection).show();
-        DataLoader.loadCarModels(carModelsfUrl + "/" + id);
+        if (id == -1) {
+            $(".carmodel-picker", filterSection).hide();
+            $(".carmodel-picker", filterSection).val(-1);
+        }
+        else {
+            $(".carmodel-picker", filterSection).show();
+            DataLoader.loadCarModels(carModelsfUrl + "/" + id);
+        }
     });
+    $(".country-picker", filterSection).change();
 });
 
 DataLoader = {
