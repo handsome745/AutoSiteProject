@@ -163,8 +163,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarBodyTypeController.cs" />
+    <Compile Include="Controllers\CarItemController.cs" />
     <Compile Include="Controllers\CarModelController.cs" />
+    <Compile Include="Controllers\CarOptionController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\DataLoaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +196,12 @@
     <Content Include="Views\CarBodyType\Create.cshtml" />
     <Content Include="Views\CarBodyType\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CarOption\List.cshtml" />
+    <Content Include="Views\CarOption\Create.cshtml" />
+    <Content Include="Views\CarOption\Edit.cshtml" />
+    <Content Include="Views\CarItem\List.cshtml" />
+    <Content Include="Views\CarItem\Create.cshtml" />
+    <Content Include="Views\CarItem\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DataLoader\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoSiteProject.Bl\AutoSiteProject.Bl.csproj">

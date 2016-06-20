@@ -51,11 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bl\Interfaces\ICarBodyTypeManager.cs" />
+    <Compile Include="Bl\Interfaces\ICarItemManager.cs" />
     <Compile Include="Bl\Interfaces\ICarModelManager.cs" />
+    <Compile Include="Bl\Interfaces\ICarOptionManager.cs" />
     <Compile Include="Bl\Interfaces\ICountryManager.cs" />
     <Compile Include="Bl\Interfaces\IManufacturerManager.cs" />
     <Compile Include="Bl\Interfaces\IRepositoryManager.cs" />
-    <Compile Include="Bl\Interfaces\IWithId.cs" />
     <Compile Include="Dal\Interfaces\IGenericRepository.cs" />
     <Compile Include="DB\AutoSiteDBModel.Context.cs">
       <AutoGen>True</AutoGen>

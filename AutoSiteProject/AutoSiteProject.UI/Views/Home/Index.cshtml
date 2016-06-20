@@ -1,4 +1,4 @@
-﻿
+﻿@using AutoSiteProject.Models.ViewModels;
 @{
     ViewBag.Title = "Index";
 }
@@ -7,11 +7,15 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
-<div class="col-md-10 filter-section" data-countries-url="@Url.Action("GetManufacturersOfCountry")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer")">
-    <h2>Index</h2>
-    @Html.DropDownList("Select Country", (SelectList)ViewBag.Countries, htmlAttributes: new { @class = "form-control country-picker"})
-    @Html.DropDownList("Select Manufacturer", (SelectList)ViewBag.Manufacturers, htmlAttributes: new { @class = "form-control manufacturer-picker", @style = "display:none" })
-    @Html.DropDownList("Select Car Model", (SelectList)ViewBag.CarModels, htmlAttributes: new { @class = "form-control carmodel-picker", @style = "display:none" })
+
+
+<div class="col-md-10 filter-section" data-countries-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypesOfCarModel","DataLoader")">
+    @Html.DropDownList("Select Country", (SelectList)ViewBag.Countries, "Select country", htmlAttributes: new { @class = "form-control country-picker" })
+    @Html.DropDownList("Select Manufacturer", (SelectList)ViewBag.Manufacturers, "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker", @style = "display:none" })
+    @Html.DropDownList("Select Car Model", (SelectList)ViewBag.CarModels, "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker", @style = "display:none" })
+    @Html.DropDownList("Select Car Model", (SelectList)ViewBag.CarBodyTypes, "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @style = "display:none" })
+    <div class="caroptions-picker">
+    </div>
 </div>
 
 

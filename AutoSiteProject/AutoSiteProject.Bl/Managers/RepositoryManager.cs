@@ -17,9 +17,9 @@ namespace AutoSiteProject.Bl.Managers
             set { _tRepository = value; }
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            var list = _tRepository.GetAll().ToList();
+            var list = _tRepository.GetAll();
             return list;
         }
 
