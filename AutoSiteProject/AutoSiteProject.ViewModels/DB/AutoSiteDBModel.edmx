@@ -59,28 +59,6 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="CountryId" Type="int" />
         </EntityType>
-        <EntityType Name="ModelBodyTypes">
-          <Key>
-            <PropertyRef Name="ModelId" />
-            <PropertyRef Name="BodyTypeId" />
-          </Key>
-          <Property Name="ModelId" Type="int" Nullable="false" />
-          <Property Name="BodyTypeId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="fk_BodyTypeIdBodyTypes">
-          <End Role="CarBodyType" Type="Self.CarBodyType" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ModelBodyTypes" Type="Self.ModelBodyTypes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CarBodyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ModelBodyTypes">
-              <PropertyRef Name="BodyTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_CarItemBodyType">
           <End Role="CarBodyType" Type="Self.CarBodyType" Multiplicity="0..1" />
           <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
@@ -145,20 +123,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ModelIdBodyTypes">
-          <End Role="CarModel" Type="Self.CarModel" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ModelBodyTypes" Type="Self.ModelBodyTypes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CarModel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ModelBodyTypes">
-              <PropertyRef Name="ModelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_ModelManuf">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
           <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
@@ -179,11 +143,6 @@
           <EntitySet Name="CarOption" EntityType="Self.CarOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ModelBodyTypes" EntityType="Self.ModelBodyTypes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_BodyTypeIdBodyTypes" Association="Self.fk_BodyTypeIdBodyTypes">
-            <End Role="CarBodyType" EntitySet="CarBodyType" />
-            <End Role="ModelBodyTypes" EntitySet="ModelBodyTypes" />
-          </AssociationSet>
           <AssociationSet Name="fk_CarItemBodyType" Association="Self.fk_CarItemBodyType">
             <End Role="CarBodyType" EntitySet="CarBodyType" />
             <End Role="CarItem" EntitySet="CarItem" />
@@ -204,10 +163,6 @@
             <End Role="Country" EntitySet="Country" />
             <End Role="Manufacturer" EntitySet="Manufacturer" />
           </AssociationSet>
-          <AssociationSet Name="fk_ModelIdBodyTypes" Association="Self.fk_ModelIdBodyTypes">
-            <End Role="CarModel" EntitySet="CarModel" />
-            <End Role="ModelBodyTypes" EntitySet="ModelBodyTypes" />
-          </AssociationSet>
           <AssociationSet Name="fk_ModelManuf" Association="Self.fk_ModelManuf">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="CarModel" EntitySet="CarModel" />
@@ -223,7 +178,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CarModel" Relationship="Self.ModelBodyTypes" FromRole="CarBodyType" ToRole="CarModel" />
           <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemBodyType" FromRole="CarBodyType" ToRole="CarItem" />
         </EntityType>
         <EntityType Name="CarModel">
@@ -234,7 +188,6 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ManufacturerId" Type="Int32" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.fk_ModelManuf" FromRole="CarModel" ToRole="Manufacturer" />
-          <NavigationProperty Name="CarBodyType" Relationship="Self.ModelBodyTypes" FromRole="CarModel" ToRole="CarBodyType" />
           <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemModel" FromRole="CarModel" ToRole="CarItem" />
         </EntityType>
         <EntityType Name="Country">
@@ -279,10 +232,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ModelBodyTypes">
-          <End Role="CarBodyType" Type="Self.CarBodyType" Multiplicity="*" />
-          <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="AutoSiteProjectDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CarBodyType" EntityType="Self.CarBodyType" />
           <EntitySet Name="CarModel" EntityType="Self.CarModel" />
@@ -295,10 +244,6 @@
           <AssociationSet Name="fk_ManufCountry" Association="Self.fk_ManufCountry">
             <End Role="Country" EntitySet="Country" />
             <End Role="Manufacturer" EntitySet="Manufacturer" />
-          </AssociationSet>
-          <AssociationSet Name="ModelBodyTypes" Association="Self.ModelBodyTypes">
-            <End Role="CarBodyType" EntitySet="CarBodyType" />
-            <End Role="CarModel" EntitySet="CarModel" />
           </AssociationSet>
           <EntitySet Name="CarItem" EntityType="AutoSiteProjectDBModel.CarItem" />
           <EntitySet Name="CarOption" EntityType="AutoSiteProjectDBModel.CarOption" />
@@ -403,14 +348,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ModelBodyTypes" TypeName="AutoSiteProjectDBModel.ModelBodyTypes" StoreEntitySet="ModelBodyTypes">
-            <EndProperty Name="CarBodyType">
-              <ScalarProperty Name="Id" ColumnName="BodyTypeId" />
-            </EndProperty>
-            <EndProperty Name="CarModel">
-              <ScalarProperty Name="Id" ColumnName="ModelId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="CarItem">
             <EntityTypeMapping TypeName="AutoSiteProjectDBModel.CarItem">
               <MappingFragment StoreEntitySet="CarItem">

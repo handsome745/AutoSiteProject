@@ -17,7 +17,8 @@ namespace AutoSiteProject.UI.Controllers
         private ICarBodyTypeManager _carBodyTypeManager;
         private ICarOptionManager _carOptionManager;
 
-        public DataLoaderController(ICarModelManager carModelManager,
+        public DataLoaderController(
+            ICarModelManager carModelManager,
             IManufacturerManager manufacturerManager,
             ICountryManager countryManager,
             ICarBodyTypeManager carBodyTypeManager,
@@ -48,10 +49,10 @@ namespace AutoSiteProject.UI.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetBodyTypesOfCarModel(int id)
+        public JsonResult GetBodyTypes()
         {
-            var result = _carBodyTypeManager.GetAll().Where(cbt => cbt.CarModel.Any(cm => cm.Id == id)).ToList();
-            return Json(Mapper.Map<List<CarBodyTypeViewModel>>(result.ToList()), JsonRequestBehavior.AllowGet);
+            var result = _carBodyTypeManager.GetAll().ToList();
+            return Json(Mapper.Map<List<CarBodyTypeViewModel>>(result), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetOptionsOfCarItem(int id)

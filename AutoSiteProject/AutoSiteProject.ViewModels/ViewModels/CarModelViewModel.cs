@@ -15,6 +15,5 @@ namespace AutoSiteProject.Models.ViewModels
         public Nullable<int> ManufacturerId { get; set; }
 
         public virtual ManufacturerViewModel Manufacturer { get; set; }
-        public virtual ICollection<CarBodyTypeViewModel> CarBodyType { get; set; }
     }
 }

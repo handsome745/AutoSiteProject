@@ -2,10 +2,8 @@
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AutoSiteProject.UI.Controllers
@@ -22,7 +20,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            return View(Mapper.Map<CountryViewModel>(_countryManager.GetAll().ToList()));
+            return View(Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList()));
         }
 
         //GET 
@@ -32,31 +30,31 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CountryViewModel entity)
+        public ActionResult Create(CountryViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Add(Mapper.Map < Country>(entity));
+                _countryManager.Add(Mapper.Map < Country>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<Country>(_countryManager.GetById(id)));
+            return View(Mapper.Map<CountryViewModel>(_countryManager.GetById(id)));
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CountryViewModel entity)
+        public ActionResult Edit(CountryViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Edit(Mapper.Map<Country>(entity));
+                _countryManager.Edit(Mapper.Map<Country>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 

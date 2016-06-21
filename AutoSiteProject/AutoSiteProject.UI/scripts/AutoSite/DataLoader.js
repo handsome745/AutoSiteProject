@@ -4,107 +4,110 @@
     var countryUrl = filterSection.data("countries-url");
     var manufUrl = filterSection.data("manufacturers-url");
     var carModelsfUrl = filterSection.data("carmodels-url");
-    var modelTypesfUrl = filterSection.data("carbodytype-url");
+    var carBodyTypesfUrl = filterSection.data("carbodytype-url");
     var carOptionsUrl = filterSection.data("caroptions-url");
+    //Pickers
+    var countryPicker = $(".country-picker", filterSection);
+    var manufacturerPicker = $(".manufacturer-picker", filterSection);
+    var carmodelPicker = $(".carmodel-picker", filterSection);
+    var carbodytypePicker = $(".carbodytype-picker", filterSection);
+    var carOptionsPicker = $(".caroptions-picker", filterSection);
+    //initial ids
+    
+    var countryId = modelData.CountryId;
+    var manufacturerId = modelData.ManufacturerId;
+    var carmodelId = modelData.ModelId;
+    var carbodytypeId = modelData.CarBodyTypeId;
 
-    DataLoader.loadCountries(countryUrl);
-    DataLoader.loadCarOptions(carOptionsUrl);
+    DataLoader.loadCountries(countryUrl, countryPicker, countryId);
+    DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
+    DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker);
 
-    $(".country-picker", filterSection).change(function () {
-        var id = $(".country-picker", filterSection).val();
+
+    countryPicker.change(function () {
+        var id = countryPicker.val();
         if (id == "" || id == null) {
-            DataRender.clearSelectorsandHide([$(".manufacturer-picker", filterSection), $(".carmodel-picker", filterSection), $(".carbodytype-picker", filterSection)]);
+            DataRender.clearSelectorsAndDisable([manufacturerPicker, carmodelPicker]);
         }
         else {
-            $(".manufacturer-picker", filterSection).show();
-            DataLoader.loadManufacturers(manufUrl + "/" + id);
-            DataRender.clearSelectorsandHide([ $(".carmodel-picker", filterSection), $(".carbodytype-picker", filterSection)]);
+            manufacturerPicker.prop('disabled', false);
+            DataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker,manufacturerId);
+            DataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
     });
-    $(".manufacturer-picker", filterSection).change(function () {
-        var id = $(".manufacturer-picker", filterSection).val();
+    manufacturerPicker.change(function () {
+        var id = manufacturerPicker.val();
         if (id == "" || id == null) {
-            DataRender.clearSelectorsandHide([$(".carmodel-picker", filterSection), $(".carbodytype-picker", filterSection)]);
+            DataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
         else {
-            $(".carmodel-picker", filterSection).show();
-            DataLoader.loadCarModels(carModelsfUrl + "/" + id);
-            DataRender.clearSelectorsandHide([$(".carbodytype-picker", filterSection)]);
+            carmodelPicker.prop('disabled', false);
+            DataLoader.loadCarModels(carModelsfUrl + "/" + id,carmodelPicker,carmodelId);
         }
     });
-    $(".carmodel-picker", filterSection).change(function () {
-        var id = $(".carmodel-picker", filterSection).val();
-        if (id == "" || id == null) {
-            DataRender.clearSelectorsandHide([$(".carbodytype-picker", filterSection)]);
-        }
-        else {
-            $(".carbodytype-picker", filterSection).show();
-            DataLoader.loadModelBodyTypes(modelTypesfUrl + "/" + id);
-        }
-    });
-    $(".country-picker", filterSection).change();
+    countryPicker.change();
 });
 
 DataLoader = {
-    loadCountries: function (url) {
+    loadCountries: function (url,picker,id) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCountriesList(output);
+                DataRender.renderCountriesList(output,picker,id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
             }
         });
     },
-    loadManufacturers: function(url) {
+    loadManufacturers: function (url, picker, id) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderManufacturersList(output);
+                DataRender.renderManufacturersList(output,picker,id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
             }
         });
     },
-    loadCarModels: function (url) {
+    loadCarModels: function (url,picker,id) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCarModelsList(output);
+                DataRender.renderCarModelsList(output,picker,id);
             },
             error: function (err, a, c) {
                 alert("Error loading car models");
             }
         });
     },
-    loadModelBodyTypes: function (url) {
+    loadCarBodyTypes: function (url,picker,id) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderModelBodyTypesList(output);
+                DataRender.renderCarBodyTypesList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading car model types");
             }
         });
     },
-    loadCarOptions: function (url) {
+    loadCarOptions: function (url, picker) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCarOptionsList(output);
+                DataRender.renderCarOptionsList(output,picker);
             },
             error: function (err, a, c) {
                 alert("Error loading car model types");
@@ -114,62 +117,57 @@ DataLoader = {
 
 }
 DataRender = {
-    clearSelectorsandHide(selectorsArray) {
+    clearSelectorsAndDisable(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
-            selectorsArray[i].hide();
+            selectorsArray[i].prop('disabled', 'disabled');
         }
     },
-    renderCountriesList: function (output) {
+    renderCountriesList: function (output,picker,id) {
         var result = "<option value>Select country</option>";
         for (var i = 0; i < output.length; i++) {
             result += "<option value='" + output[i].Id + "'>";
             result += output[i].Name;
             result += "</option>";
         }
-        var filterSection = $("div.filter-section");
-        $(".country-picker", filterSection).html(result);
-        $(".country-picker", filterSection).val("");
+       picker.html(result);
+       picker.val(id);
     },
-    renderManufacturersList: function (output) {
+    renderManufacturersList: function (output, picker, id) {
         var result = "<option value>Select manufacturer</option>";
         for (var i = 0; i < output.length; i++) {
             result += "<option value='" + output[i].Id + "'>";
             result += output[i].Name;
             result += "</option>";
         }
-        var filterSection = $("div.filter-section");
-        $(".manufacturer-picker", filterSection).html(result);
-        $(".manufacturer-picker", filterSection).val("");
+        picker.html(result);
+        picker.val(id);
     },
-    renderCarModelsList: function (output) {
+    renderCarModelsList: function (output,picker,id) {
         var result = "<option value>Select car model</option>";
         for (var i = 0; i < output.length; i++) {
             result += "<option value='" + output[i].Id + "'>";
             result += output[i].Name;
             result += "</option>";
         }
-        var filterSection = $("div.filter-section");
-        $(".carmodel-picker", filterSection).html(result);
-        $(".carmodel-picker", filterSection).val("");
+        picker.html(result);
+        picker.val(id);
     },
-    renderModelBodyTypesList: function (output) {
+    renderCarBodyTypesList: function (output,picker,id) {
         var result = "<option value>Select car model type</option>";
         for (var i = 0; i < output.length; i++) {
             result += "<option value='" + output[i].Id + "'>";
             result += output[i].Name;
             result += "</option>";
         }
-        var filterSection = $("div.filter-section");
-        $(".carbodytype-picker", filterSection).html(result);
-        $(".carbodytype-picker", filterSection).val("");
+        picker.html(result);
+        picker.val(id);
     },
-    renderCarOptionsList: function (output) {
+    renderCarOptionsList: function (output, picker) {
         var result = "";
         for (var i = 0; i < output.length; i++) {
             result += "<input type='checkbox' name='carOption' class='carOption' value=" + output[i].Id + ">" + output[i].Name + "<br>";
         }
-        var filterSection = $("div.filter-section");
-        $(".caroptions-picker", filterSection).html(result);
+        picker.html(result);
     }
 }

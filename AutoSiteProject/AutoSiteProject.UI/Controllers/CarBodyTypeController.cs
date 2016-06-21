@@ -33,14 +33,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CarBodyTypeViewModel entity)
+        public ActionResult Create(CarBodyTypeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Add(Mapper.Map<CarBodyType>(entity));
+                _carBodyTypeManager.Add(Mapper.Map<CarBodyType>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
@@ -50,14 +50,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CarBodyTypeViewModel entity)
+        public ActionResult Edit(CarBodyTypeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Edit(Mapper.Map<CarBodyType>(entity));
+                _carBodyTypeManager.Edit(Mapper.Map<CarBodyType>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 

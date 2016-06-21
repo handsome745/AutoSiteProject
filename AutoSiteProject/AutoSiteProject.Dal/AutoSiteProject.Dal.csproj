@@ -65,6 +65,7 @@
   <ItemGroup>
     <Content Include="SqlScripts\AutoSiteProjectDB.Data.Fill.sql" />
     <Content Include="SqlScripts\AutoSiteProjectDB.Create.sql" />
+    <Content Include="SqlScripts\AutoSiteProjectDB.Update.21.06.2016 17.04.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoSiteProject.ViewModels\AutoSiteProject.Models.csproj">

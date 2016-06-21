@@ -33,32 +33,32 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(ManufacturerViewModel entity)
+        public ActionResult Create(ManufacturerViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Add(Mapper.Map<Manufacturer>(entity));
+                _manufacturerManager.Add(Mapper.Map<Manufacturer>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
         public ActionResult Edit(int id)
         {
             ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
-            return View(_manufacturerManager.GetById(id));
+            return View(Mapper.Map<ManufacturerViewModel>(_manufacturerManager.GetById(id)));
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(ManufacturerViewModel entity)
+        public ActionResult Edit(ManufacturerViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Edit(Mapper.Map<Manufacturer>(entity));
+                _manufacturerManager.Edit(Mapper.Map<Manufacturer>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 

@@ -32,14 +32,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CarOptionViewModel entity)
+        public ActionResult Create(CarOptionViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carOptionManager.Add(Mapper.Map<CarOption>(entity));
+                _carOptionManager.Add(Mapper.Map<CarOption>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
@@ -49,14 +49,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CarOptionViewModel entity)
+        public ActionResult Edit(CarOptionViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carOptionManager.Edit(Mapper.Map<CarOption>(entity));
+                _carOptionManager.Edit(Mapper.Map<CarOption>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 

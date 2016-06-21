@@ -1,5 +1,9 @@
-﻿@{
+﻿@using AutoSiteProject.Models.ViewModels
+@model CarItemViewModel
+
+@{
     ViewBag.Title = "Index";
 }
-
-@Html.Partial("_CarFilter");
+<div class="form-horizontal">
+    @Html.Partial("_CarFilter", Model);
+</div>

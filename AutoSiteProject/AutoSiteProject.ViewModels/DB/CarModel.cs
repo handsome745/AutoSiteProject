@@ -17,7 +17,6 @@ namespace AutoSiteProject.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CarModel()
         {
-            this.CarBodyType = new HashSet<CarBodyType>();
             this.CarItem = new HashSet<CarItem>();
         }
     
@@ -26,8 +25,6 @@ namespace AutoSiteProject.Models.DB
         public Nullable<int> ManufacturerId { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarBodyType> CarBodyType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarItem> CarItem { get; set; }
     }

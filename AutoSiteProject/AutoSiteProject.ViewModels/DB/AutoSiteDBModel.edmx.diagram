@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.Manufacturer" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_ModelManuf" ManuallyRouted="false" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_ManufCountry" ManuallyRouted="false" />
-        <AssociationConnector Association="AutoSiteProjectDBModel.ModelBodyTypes" ManuallyRouted="false" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarItem" Width="1.5" PointX="7.5" PointY="2.25" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarOption" Width="1.5" PointX="9.75" PointY="2.625" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_CarItemBodyType" />

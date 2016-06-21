@@ -26,7 +26,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: CarModel
         public ActionResult List()
         {
-            return View(Mapper.Map<CarModelViewModel>(_carModelManager.GetAll().ToList()));
+            return View(Mapper.Map<List<CarModelViewModel>>(_carModelManager.GetAll().ToList()));
         }
 
 
@@ -38,14 +38,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CarModelViewModel entity)
+        public ActionResult Create(CarModelViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carModelManager.Add(Mapper.Map<CarModel> (entity));
+                _carModelManager.Add(Mapper.Map<CarModel> (model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
@@ -56,14 +56,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CarModelViewModel entity)
+        public ActionResult Edit(CarModelViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carModelManager.Edit(Mapper.Map<CarModel>(entity));
+                _carModelManager.Edit(Mapper.Map<CarModel>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 

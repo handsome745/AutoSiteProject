@@ -29,10 +29,10 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CarModel)
+            @Html.DisplayFor(modelItem => item.CarModel.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CarBodyType)
+            @Html.DisplayFor(modelItem => item.CarBodyType.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

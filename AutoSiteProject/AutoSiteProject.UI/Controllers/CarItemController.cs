@@ -19,6 +19,22 @@ namespace AutoSiteProject.UI.Controllers
         private ICarOptionManager _carOptionManager;
         private ICarBodyTypeManager _carBodyTypeManager;
 
+        public CarItemController(
+            ICountryManager countryManager,
+            IManufacturerManager manufacturerManager,
+            ICarModelManager carModelManager,
+            ICarItemManager carItemManager,
+            ICarOptionManager carOptionManager,
+            ICarBodyTypeManager carBodyTypeManager
+            )
+        {
+            _countryManager = countryManager;
+            _manufacturerManager = manufacturerManager;
+            _carModelManager = carModelManager;
+            _carItemManager = carItemManager;
+            _carOptionManager = carOptionManager;
+            _carBodyTypeManager = carBodyTypeManager;
+        }
         // GET
         public ActionResult List()
         {
@@ -38,14 +54,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CarItemViewModel entity)
+        public ActionResult Create(CarItemViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carItemManager.Add(Mapper.Map<CarItem>(entity));
+                _carItemManager.Add(Mapper.Map<CarItem>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
@@ -55,14 +71,14 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CarItemViewModel entity)
+        public ActionResult Edit(CarItemViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _carItemManager.Edit(Mapper.Map<CarItem>(entity));
+                _carItemManager.Edit(Mapper.Map<CarItem>(model));
                 return RedirectToAction("List");
             }
-            return View(entity);
+            return View(model);
         }
 
         //GET 
