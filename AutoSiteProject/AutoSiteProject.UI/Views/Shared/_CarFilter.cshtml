@@ -1,0 +1,15 @@
+﻿@using AutoSiteProject.Models.ViewModels
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/scripts/AutoSite/DataLoader.js"></script>
+
+
+<div class="col-md-10 filter-section"  data-countries-url="@Url.Action("GetCountries","DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypesOfCarModel","DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions","DataLoader")">
+    @Html.DropDownList("CountryId", new SelectList(new List<CountryViewModel>()), "Select country", htmlAttributes: new { @class = "form-control country-picker" })
+    @Html.DropDownList("ManufacturerId", new SelectList(new List<ManufacturerViewModel>()), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker", @style = "display:none" })
+    @Html.DropDownList("CarModelId", new SelectList(new List<CarModelViewModel>()), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker", @style = "display:none" })
+    @Html.DropDownList("CarBodyTypeId", new SelectList(new List<CarBodyTypeViewModel>()), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @style = "display:none" })
+    <div class="caroptions-picker">
+    </div>
+</div>

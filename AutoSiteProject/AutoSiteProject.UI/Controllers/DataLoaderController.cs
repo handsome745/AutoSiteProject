@@ -30,6 +30,12 @@ namespace AutoSiteProject.UI.Controllers
             _carOptionManager = carOptionManager;
         }
 
+        public JsonResult GetCountries()
+        {
+            var result = Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList());
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetManufacturersOfCountry(int id)
         {
             var result = Mapper.Map<List<ManufacturerViewModel>>(_manufacturerManager.GetAll().Where(m => m.CountryId == id).ToList());
@@ -52,6 +58,11 @@ namespace AutoSiteProject.UI.Controllers
         {
             var result = _carOptionManager.GetAll().Where(co => co.CarItem.Any(ci => ci.Id == id)).ToList();
             return Json(Mapper.Map<List<CarOptionViewModel>>(result.ToList()), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetCarOptions()
+        {
+            var result = _carOptionManager.GetAll().ToList();
+            return Json(Mapper.Map<List<CarOptionViewModel>>(result), JsonRequestBehavior.AllowGet);
         }
 
     }

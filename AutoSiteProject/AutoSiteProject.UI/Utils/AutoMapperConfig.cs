@@ -27,6 +27,13 @@ namespace AutoSiteProject.UI.Utils
 
             cfg.CreateMap<Manufacturer, ManufacturerViewModel>();
             cfg.CreateMap<ManufacturerViewModel, Manufacturer>();
+
+            cfg.CreateMap<CarOption, CarOptionViewModel>();
+            cfg.CreateMap<CarOptionViewModel, CarOption>();
+
+            cfg.CreateMap<CarItem, CarItemViewModel>();
+            cfg.CreateMap<CarItemViewModel, CarItem>();
+
         }
         
     }

@@ -21,11 +21,11 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Home
         public ActionResult Index(int countryId = -1)
         {
-            var countries = Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList());
-            ViewBag.Countries = new SelectList(countries, "Id", "Name", countryId);
-            ViewBag.Manufacturers = new SelectList(new List<ManufacturerViewModel>(), "Id", "Name");
-            ViewBag.CarModels = new SelectList(new List<CarModelViewModel>(), "Id", "Name");
-            ViewBag.CarBodyTypes = new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name");
+            //var countries = Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList());
+            //ViewBag.Countries = new SelectList(countries, "Id", "Name", countryId);
+            //ViewBag.Manufacturers = new SelectList(new List<ManufacturerViewModel>(), "Id", "Name");
+            //ViewBag.CarModels = new SelectList(new List<CarModelViewModel>(), "Id", "Name");
+            //ViewBag.CarBodyTypes = new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name");
             return View();
         }
 
