@@ -15,17 +15,31 @@ namespace AutoSiteProject.Models.ViewModels
             CarOptions = new List<int>();
         }
         public int Id { get; set; }
-        [DisplayName("Select car manufacturer country:")]
+        [DisplayName("Сar manufacturer country")]
         public int? CountryId { get; set; }
-        [DisplayName("Select car manufacturer:")]
+
+        public virtual CountryViewModel Country { get; set; }
+
+        [DisplayName("Сar manufacturer")]
         public int? ManufacturerId { get; set; }
-        [DisplayName("Select car model:")]
+
+        public virtual ManufacturerViewModel Manufacturer { get; set; }
+
+        [Required]
+        [DisplayName("Сar model")]
         public int? ModelId { get; set; }
-        [DisplayName("Select car body type:")]
-        public int? CarBodyTypeId { get; set; }
-        [DisplayName("Select car options:")]
+
+        public virtual CarModelViewModel CarModel { get; set; }
+
+        [Required]
+        [DisplayName("Сar body type")]
+        public int? BodyTypeId { get; set; }
+
+        public virtual CarBodyTypeViewModel CarBodyType { get; set; }
+
+        [DisplayName("Сar options")]
         public List<int> CarOptions { get; set; }
-        [DisplayName("Description:")]
+        [DisplayName("Description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }

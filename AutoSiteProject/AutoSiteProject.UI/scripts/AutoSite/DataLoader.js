@@ -13,15 +13,16 @@
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
     //initial ids
-    
     var countryId = modelData.CountryId;
     var manufacturerId = modelData.ManufacturerId;
     var carmodelId = modelData.ModelId;
-    var carbodytypeId = modelData.CarBodyTypeId;
+    var carbodytypeId = modelData.BodyTypeId;
+
+    var carOptions = modelData.CarOptions;//List of checked car options
 
     DataLoader.loadCountries(countryUrl, countryPicker, countryId);
     DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
-    DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker);
+    DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker, carOptions);
 
 
     countryPicker.change(function () {
@@ -45,7 +46,7 @@
             DataLoader.loadCarModels(carModelsfUrl + "/" + id,carmodelPicker,carmodelId);
         }
     });
-    countryPicker.change();
+    
 });
 
 DataLoader = {
@@ -101,13 +102,13 @@ DataLoader = {
             }
         });
     },
-    loadCarOptions: function (url, picker) {
+    loadCarOptions: function (url, picker, checkedOptions) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCarOptionsList(output,picker);
+                DataRender.renderCarOptionsList(output, picker, checkedOptions);
             },
             error: function (err, a, c) {
                 alert("Error loading car model types");
@@ -132,6 +133,7 @@ DataRender = {
         }
        picker.html(result);
        picker.val(id);
+       if (id > 0) picker.change();
     },
     renderManufacturersList: function (output, picker, id) {
         var result = "<option value>Select manufacturer</option>";
@@ -142,6 +144,7 @@ DataRender = {
         }
         picker.html(result);
         picker.val(id);
+        if (id > 0) picker.change();
     },
     renderCarModelsList: function (output,picker,id) {
         var result = "<option value>Select car model</option>";
@@ -152,6 +155,7 @@ DataRender = {
         }
         picker.html(result);
         picker.val(id);
+        if (id > 0) picker.change();
     },
     renderCarBodyTypesList: function (output,picker,id) {
         var result = "<option value>Select car model type</option>";
@@ -163,10 +167,13 @@ DataRender = {
         picker.html(result);
         picker.val(id);
     },
-    renderCarOptionsList: function (output, picker) {
+    renderCarOptionsList: function (output, picker, checkedOptions) {
         var result = "";
         for (var i = 0; i < output.length; i++) {
-            result += "<input type='checkbox' name='carOption' class='carOption' value=" + output[i].Id + ">" + output[i].Name + "<br>";
+            result += "<input type='checkbox' name='CarOptions' class='carOption' value=";
+            result += output[i].Id;
+            if ($.inArray(output[i].id, checkedOptions) != -1) result += "checked";
+            result += ">" + output[i].Name + "<br>";
         }
         picker.html(result);
     }

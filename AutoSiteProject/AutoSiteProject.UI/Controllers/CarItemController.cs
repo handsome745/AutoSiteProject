@@ -45,12 +45,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Create()
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
-            ViewBag.Manufacturers = new SelectList(new List<ManufacturerViewModel>(), "Id", "Name");
-            ViewBag.CarModels = new SelectList(new List<CarModelViewModel>(), "Id", "Name");
-            ViewBag.CarOptions = _carOptionManager.GetAll().ToList();
-            ViewBag.CarBodyTypes = _carBodyTypeManager.GetAll().ToList();
-            return View();
+            CarItemViewModel model = new CarItemViewModel();
+            return View(model);
         }
         //Post
         [HttpPost]
@@ -67,7 +63,12 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<CarItemViewModel>(_carItemManager.GetById(id)));
+            var result = Mapper.Map<CarItemViewModel>(_carItemManager.GetById(id)) ;
+            result.ManufacturerId = result.CarModel.ManufacturerId;
+            result.Manufacturer = result.CarModel.Manufacturer;
+            result.CountryId = result.Manufacturer.CountryId;
+            result.Country = result.Manufacturer.Country;
+            return View(result);
         }
         //Post
         [HttpPost]
