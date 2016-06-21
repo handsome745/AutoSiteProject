@@ -26,14 +26,14 @@ namespace AutoSiteProject.UI.Controllers
         // GET: CarModel
         public ActionResult List()
         {
-            return View(Mapper.Map<CarModelViewModel>(_carModelManager.GetAll()));
+            return View(Mapper.Map<CarModelViewModel>(_carModelManager.GetAll().ToList()));
         }
 
 
         //GET 
         public ActionResult Create()
         {
-            ViewBag.Manufacturers = new SelectList(_manufacturerManager.GetAll(),"Id", "Name");
+            ViewBag.Manufacturers = new SelectList(_manufacturerManager.GetAll().ToList(), "Id", "Name");
             return View();
         }
         //Post
@@ -51,7 +51,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            ViewBag.Manufacturers = new SelectList(_manufacturerManager.GetAll(), "Id", "Name");
+            ViewBag.Manufacturers = new SelectList(_manufacturerManager.GetAll().ToList(), "Id", "Name");
             return View(Mapper.Map<CarModelViewModel>(_carModelManager.GetById(id)));
         }
         //Post

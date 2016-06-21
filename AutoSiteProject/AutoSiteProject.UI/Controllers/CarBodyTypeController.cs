@@ -19,11 +19,10 @@ namespace AutoSiteProject.UI.Controllers
             _carBodyTypeManager = carBodyTypeManager;
         }
 
-
         // GET: CarModel
         public ActionResult List()
         {
-            return View(Mapper.Map<List<CarBodyTypeViewModel>>(_carBodyTypeManager.GetAll()));
+            return View(Mapper.Map<List<CarBodyTypeViewModel>>(_carBodyTypeManager.GetAll().ToList()));
         }
 
 

@@ -53,3 +53,31 @@ CREATE TABLE ModelBodyTypes
 	CONSTRAINT pk_ModelBodyType PRIMARY KEY (ModelId,BodyTypeId)
 );
 GO
+
+CREATE TABLE CarOption
+(
+	Id int IDENTITY(1,1) PRIMARY KEY ,
+	Name varchar(max) NOT NULL
+);
+GO
+
+CREATE TABLE CarItem
+(
+	Id int IDENTITY(1,1) PRIMARY KEY ,
+	Description varchar(max),
+	ModelId int,
+	BodyTypeId int,
+	CONSTRAINT fk_CarItemModel FOREIGN KEY (ModelId) REFERENCES CarModel(Id) ON DELETE SET NULL,
+	CONSTRAINT fk_CarItemBodyType FOREIGN KEY (BodyTypeId) REFERENCES CarBodyType(Id) ON DELETE SET NULL
+);
+GO
+
+CREATE TABLE CarItemOptions
+(
+	CarItemId int NOT NULL,
+	CONSTRAINT fk_CarItemIdCarItemOptions FOREIGN KEY (CarItemId) REFERENCES CarItem(Id) ON DELETE CASCADE,
+	OptionId int NOT NULL,
+	CONSTRAINT fk_CarItemOptionIdCarItemOptions FOREIGN KEY (OptionId) REFERENCES CarOption(Id) ON DELETE CASCADE,
+	CONSTRAINT pk_CarItemOptions PRIMARY KEY (CarItemId,OptionId)
+);
+GO

@@ -12,7 +12,7 @@ namespace AutoSiteProject.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Country: WithId
+    public partial class Country : WithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Country()

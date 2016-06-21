@@ -10,20 +10,20 @@ using System.Web.Mvc;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class CountryController : Controller
+    public class CarOptionController : Controller
     {
-        private ICountryManager _countryManager;
-
-        public CountryController(ICountryManager countryManager)
+        private ICarOptionManager _carOptionManager;
+        public CarOptionController(ICarOptionManager carOptionManager)
         {
-            _countryManager = countryManager;
+            _carOptionManager = carOptionManager;
         }
 
-        // GET: Country
+        // GET
         public ActionResult List()
         {
-            return View(Mapper.Map<CountryViewModel>(_countryManager.GetAll().ToList()));
+            return View(Mapper.Map<CarOptionViewModel>(_carOptionManager.GetAll().ToList()));
         }
+
 
         //GET 
         public ActionResult Create()
@@ -32,11 +32,11 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CountryViewModel entity)
+        public ActionResult Create(CarOptionViewModel entity)
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Add(Mapper.Map < Country>(entity));
+                _carOptionManager.Add(Mapper.Map<CarOption>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -45,15 +45,15 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<Country>(_countryManager.GetById(id)));
+            return View(Mapper.Map<CarOptionViewModel>(_carOptionManager.GetById(id)));
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CountryViewModel entity)
+        public ActionResult Edit(CarOptionViewModel entity)
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Edit(Mapper.Map<Country>(entity));
+                _carOptionManager.Edit(Mapper.Map<CarOption>(entity));
                 return RedirectToAction("List");
             }
             return View(entity);
@@ -62,9 +62,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _countryManager.Delete(id);
+            _carOptionManager.Delete(id);
             return RedirectToAction("List");
         }
-
     }
 }

@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\CarBodyTypeManager.cs" />
+    <Compile Include="Managers\CarItemManager.cs" />
     <Compile Include="Managers\CarModelManager.cs" />
+    <Compile Include="Managers\CarOptionManager.cs" />
     <Compile Include="Managers\CountryManager.cs" />
     <Compile Include="Managers\ManufacturerManager.cs" />
     <Compile Include="Managers\RepositoryManager.cs" />

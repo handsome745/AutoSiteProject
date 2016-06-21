@@ -11,38 +11,24 @@ namespace AutoSiteProject.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private ICarModelManager _carModelManager;
-        private IManufacturerManager _manufacturerManager;
         private ICountryManager _countryManager;
 
-        public HomeController(ICarModelManager carModelManager,
-            IManufacturerManager manufacturerManager,
-            ICountryManager countryManager)
+        public HomeController(ICountryManager countryManager)
         {
-            _carModelManager = carModelManager;
-            _manufacturerManager = manufacturerManager;
             _countryManager = countryManager;
         }
 
         // GET: Home
         public ActionResult Index(int countryId = -1)
         {
-            ViewBag.Countries = new SelectList(Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll()), "Id", "Name");
+            var countries = Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList());
+            ViewBag.Countries = new SelectList(countries, "Id", "Name", countryId);
             ViewBag.Manufacturers = new SelectList(new List<ManufacturerViewModel>(), "Id", "Name");
             ViewBag.CarModels = new SelectList(new List<CarModelViewModel>(), "Id", "Name");
+            ViewBag.CarBodyTypes = new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name");
             return View();
         }
 
-        public JsonResult GetManufacturersOfCountry(int id)
-        {
-            var result = _manufacturerManager.GetAll().Where(m => m.CountryId == id);//.Select(x => new { x.Id, x.Name }).ToList();
-            return Json(Mapper.Map<List<ManufacturerViewModel>>(result), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetCarModelsOfManufacturer(int id)
-        {
-            var result = _carModelManager.GetAll().Where(m => m.ManufacturerId == id);//.Select(x => new { x.Id, x.Name }).ToList();
-            return Json(Mapper.Map<List<CarModelViewModel>>(result), JsonRequestBehavior.AllowGet);
-        }
+       
     }
 }

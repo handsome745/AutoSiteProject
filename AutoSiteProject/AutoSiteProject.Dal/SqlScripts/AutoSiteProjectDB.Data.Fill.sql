@@ -1,5 +1,31 @@
 ﻿USE AutoSiteProjectDB
 GO
+
+----CarOption----
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Air conditioning'
+DECLARE @carOptionAirConditioning  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Metallic paint'
+DECLARE @carOptionMetallicPaint  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Built-in sat nav'
+DECLARE @carOptionBuiltinSatNav  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Leather seats'
+DECLARE @carOptionLeatherSeats  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Automatic gearbox'
+DECLARE @carOptionAutomaticGearbox  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarOption(Name)
+SELECT 'Parking sensors'
+DECLARE @carOptionParkingSensors  int = SCOPE_IDENTITY();
+
 ----COUNTRIES----
 INSERT INTO dbo.Country(Name)
 SELECT 'China'
@@ -741,3 +767,31 @@ SELECT @nissanGTRId, @CoupeId
 
 INSERT INTO dbo.ModelBodyTypes(ModelId,BodyTypeId)
 SELECT @subaruForesterId, @SUVId
+
+----CarItem----
+INSERT INTO dbo.CarItem(ModelId,BodyTypeId,Description)
+SELECT @nissan350ZId,@CoupeId,'Testing program with Nissan =)'
+DECLARE @carItemNissan350z  int = SCOPE_IDENTITY();
+
+INSERT INTO dbo.CarItem(ModelId,BodyTypeId,Description)
+SELECT @ferrariF430Id,@CoupeId,'Testing program with Ferrari o_O'
+DECLARE @carItemFerrariF430  int = SCOPE_IDENTITY();
+
+----CarOptions----
+INSERT INTO dbo.CarItemOptions(CarItemId,OptionId)
+SELECT @carItemNissan350z,@carOptionLeatherSeats
+UNION 
+SELECT @carItemNissan350z,@carOptionMetallicPaint
+UNION
+SELECT @carItemNissan350z,@carOptionAirConditioning
+
+INSERT INTO dbo.CarItemOptions(CarItemId,OptionId)
+SELECT @carItemFerrariF430,@carOptionLeatherSeats
+UNION 
+SELECT @carItemFerrariF430,@carOptionMetallicPaint
+UNION
+SELECT @carItemFerrariF430,@carOptionAirConditioning
+UNION
+SELECT @carItemFerrariF430,@carOptionParkingSensors
+UNION
+SELECT @carItemFerrariF430,@carOptionBuiltinSatNav

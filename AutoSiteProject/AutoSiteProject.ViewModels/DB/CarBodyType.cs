@@ -12,12 +12,13 @@ namespace AutoSiteProject.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CarBodyType : WithId
+    public partial class CarBodyType: WithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CarBodyType()
         {
             this.CarModel = new HashSet<CarModel>();
+            this.CarItem = new HashSet<CarItem>();
         }
     
         //public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace AutoSiteProject.Models.DB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarModel> CarModel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CarItem> CarItem { get; set; }
     }
 }

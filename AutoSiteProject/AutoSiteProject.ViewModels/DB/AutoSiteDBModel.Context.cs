@@ -29,5 +29,7 @@ namespace AutoSiteProject.Models.DB
         public virtual DbSet<CarModel> CarModel { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
+        public virtual DbSet<CarItem> CarItem { get; set; }
+        public virtual DbSet<CarOption> CarOption { get; set; }
     }
 }

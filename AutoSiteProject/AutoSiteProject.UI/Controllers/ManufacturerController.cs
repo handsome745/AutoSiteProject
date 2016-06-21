@@ -4,6 +4,7 @@ using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
 using AutoMapper;
 using AutoSiteProject.Models.DB;
+using System.Linq;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -21,13 +22,13 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            return View(Mapper.Map<List<ManufacturerViewModel>>(_manufacturerManager.GetAll()));
+            return View(Mapper.Map<List<ManufacturerViewModel>>( _manufacturerManager.GetAll().ToList() ));
         }
 
         //GET 
         public ActionResult Create()
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll(), "Id", "Name");
+            ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
             return View();
         }
         //Post
@@ -45,7 +46,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            ViewBag.Countries = new SelectList(_countryManager.GetAll(), "Id", "Name");
+            ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
             return View(_manufacturerManager.GetById(id));
         }
         //Post
