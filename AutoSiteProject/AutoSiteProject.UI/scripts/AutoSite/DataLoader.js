@@ -13,10 +13,10 @@
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
     //initial ids
-    var countryId = modelData.CountryId;
-    var manufacturerId = modelData.ManufacturerId;
-    var carmodelId = modelData.ModelId;
-    var carbodytypeId = modelData.BodyTypeId;
+    var countryId = countryPicker.data("initid");
+    var manufacturerId = manufacturerPicker.data("initid");
+    var carmodelId = carmodelPicker.data("initid");
+    var carbodytypeId = carbodytypePicker.data("initid");
 
     //var carOptions = modelData.CarOptions;//List of checked car options
 
@@ -46,7 +46,7 @@
             DataLoader.loadCarModels(carModelsfUrl + "/" + id,carmodelPicker,carmodelId);
         }
     });
-    
+    countryPicker.change();
 });
 
 DataLoader = {

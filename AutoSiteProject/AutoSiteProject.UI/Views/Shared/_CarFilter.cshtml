@@ -6,39 +6,35 @@
 <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
 
-<script type="text/javascript">
-
-    var modelData = @Html.Raw(JsonConvert.SerializeObject(this.Model));
-
-</script>
 <hr />
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <div class="filter-section" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
     @Html.HiddenFor(model => model.Id)
 
     <div class="form-group">
         @Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker" })
+            @Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker", @data_initId = @Model.CountryId })
+            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker" })
+            @Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker", @data_initId = @Model.ManufacturerId })
+            @Html.ValidationMessageFor(model => model.ManufacturerId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ModelId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker" })
+            @Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker", @data_initId = @Model.ModelId })
             @Html.ValidationMessageFor(model => model.ModelId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker" })
+            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId })
             @Html.ValidationMessageFor(model => model.BodyTypeId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -52,7 +48,7 @@
                 @Html.HiddenFor(m=> m.CarOption[i].Id)
                 @Html.HiddenFor(m => m.CarOption[i].Name)
                 @Html.CheckBoxFor(m => m.CarOption[i].Checked)
-                @Html.LabelFor(m => m.CarOption[i].Name, Model.CarOption[i].Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(m => m.CarOption[i].Name, Model.CarOption[i].Name)
             }
         </div>
     </div>

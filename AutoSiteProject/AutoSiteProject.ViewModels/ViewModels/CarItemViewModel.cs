@@ -15,11 +15,12 @@ namespace AutoSiteProject.Models.ViewModels
             CarOption = new List<CarOptionViewModel>();
         }
         public int Id { get; set; }
+        [Required]
         [DisplayName("Сar manufacturer country")]
         public int? CountryId { get; set; }
 
         public virtual CountryViewModel Country { get; set; }
-
+        [Required]
         [DisplayName("Сar manufacturer")]
         public int? ManufacturerId { get; set; }
 

@@ -43,20 +43,16 @@ namespace AutoSiteProject.UI.Controllers
         }
 
         //GET 
-        public ActionResult Create()
+        public ActionResult Create(CarItemViewModel model)
         {
-            CarItemViewModel model = new CarItemViewModel();
-            var carOptions = Mapper.Map<List<CarOptionViewModel>>(_carOptionManager.GetAll().ToList());
-            model.CarOption = carOptions;
             return View(model);
         }
         //Post
         [HttpPost]
-        public ActionResult Create(CarItemViewModel model)
+        public ActionResult CreateCar(CarItemViewModel model)
         {
             if (ModelState.IsValid)
             {
-                model.CarOption = model.CarOption.Where(o => o.Checked).ToList();
                 _carItemManager.Add(Mapper.Map<CarItem>(model));
                 return RedirectToAction("List");
             }
@@ -71,12 +67,6 @@ namespace AutoSiteProject.UI.Controllers
             result.Manufacturer = result.CarModel.Manufacturer;
             result.CountryId = result.Manufacturer.CountryId;
             result.Country = result.Manufacturer.Country;
-            var carOptions = Mapper.Map<List<CarOptionViewModel>>(_carOptionManager.GetAll().ToList());
-            for (int i = 0; i < carOptions.Count; i++)
-            {
-                carOptions[i].Checked = result.CarOption.Contains(carOptions[i]);
-            }
-            result.CarOption = carOptions;
             return View(result);
         }
         //Post
