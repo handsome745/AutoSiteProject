@@ -43,10 +43,17 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.CarOptions, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(m => m.CarOption, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <div class="caroptions-picker">
             </div>
+            @for (int i = 0; i < Model.CarOption.Count; i++)
+            {
+                @Html.HiddenFor(m=> m.CarOption[i].Id)
+                @Html.HiddenFor(m => m.CarOption[i].Name)
+                @Html.CheckBoxFor(m => m.CarOption[i].Checked)
+                @Html.LabelFor(m => m.CarOption[i].Name, Model.CarOption[i].Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            }
         </div>
     </div>
     <div class="form-group">

@@ -18,11 +18,11 @@
     var carmodelId = modelData.ModelId;
     var carbodytypeId = modelData.BodyTypeId;
 
-    var carOptions = modelData.CarOptions;//List of checked car options
+    //var carOptions = modelData.CarOptions;//List of checked car options
 
     DataLoader.loadCountries(countryUrl, countryPicker, countryId);
     DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
-    DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker, carOptions);
+    //DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker, carOptions);
 
 
     countryPicker.change(function () {
@@ -118,7 +118,7 @@ DataLoader = {
 
 }
 DataRender = {
-    clearSelectorsAndDisable(selectorsArray) {
+    clearSelectorsAndDisable: function(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
             selectorsArray[i].prop('disabled', 'disabled');
