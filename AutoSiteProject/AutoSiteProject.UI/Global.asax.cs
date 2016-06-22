@@ -9,7 +9,6 @@ namespace AutoSiteProject.UI
         protected void Application_Start()
         {
             AutofacConfig.ConfigureContainer();
-            AutoMapperConfig.RegisterMappings();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

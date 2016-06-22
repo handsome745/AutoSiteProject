@@ -12,7 +12,7 @@ namespace AutoSiteProject.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class CarItem : WithId
+    public partial class CarItem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CarItem()
@@ -20,7 +20,7 @@ namespace AutoSiteProject.Models.DB
             this.CarOption = new HashSet<CarOption>();
         }
     
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public Nullable<int> ModelId { get; set; }
         public Nullable<int> BodyTypeId { get; set; }

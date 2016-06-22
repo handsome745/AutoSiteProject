@@ -1,26 +1,34 @@
-﻿using AutoMapper;
-using AutoSiteProject.Models.Bl.Interfaces;
+﻿using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     public class CountryController : Controller
     {
         private ICountryManager _countryManager;
+        private ICountryFieldCopier _countryFieldCopier;
 
-        public CountryController(ICountryManager countryManager)
+        public CountryController(ICountryManager countryManager, ICountryFieldCopier countryFieldCopier)
         {
             _countryManager = countryManager;
+            _countryFieldCopier = countryFieldCopier;
         }
 
         // GET: Country
         public ActionResult List()
         {
-            return View(Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList()));
+            var dbItems = _countryManager.GetAll().ToList();
+            var result = new List<CountryViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_countryFieldCopier.CopyFields(item, new CountryViewModel()));
+            }
+            return View(result);
         }
 
         //GET 
@@ -34,7 +42,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Add(Mapper.Map < Country>(model));
+                _countryManager.Add(_countryFieldCopier.CopyFields(model, new Country()));
                 return RedirectToAction("List");
             }
             return View(model);
@@ -43,7 +51,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<CountryViewModel>(_countryManager.GetById(id)));
+            var dbItem = _countryManager.GetById(id);
+            return View(_countryFieldCopier.CopyFields(dbItem, new CountryViewModel()));
         }
         //Post
         [HttpPost]
@@ -51,7 +60,9 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _countryManager.Edit(Mapper.Map<Country>(model));
+                var dbItem = _countryManager.GetById(model.Id);
+                dbItem = _countryFieldCopier.CopyFields(model, dbItem);
+                _countryManager.Edit(dbItem);
                 return RedirectToAction("List");
             }
             return View(model);
@@ -60,7 +71,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _countryManager.Delete(id);
+            var dbItem = _countryManager.GetById(id);
+            _countryManager.Delete(dbItem);
             return RedirectToAction("List");
         }
 

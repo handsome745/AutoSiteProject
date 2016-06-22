@@ -2,27 +2,38 @@
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
-using AutoMapper;
 using AutoSiteProject.Models.DB;
 using System.Linq;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     public class ManufacturerController : Controller
     {
         private IManufacturerManager _manufacturerManager;
+        private IManufacturerFieldCopier _manufacturerFieldCopier;
         private ICountryManager _countryManager;
 
-        public ManufacturerController(IManufacturerManager manufacturerManager, ICountryManager countryManager)
+        public ManufacturerController(
+            IManufacturerManager manufacturerManager, 
+            ICountryManager countryManager,
+            IManufacturerFieldCopier manufacturerFieldCopier)
         {
             _manufacturerManager = manufacturerManager;
             _countryManager = countryManager;
+            _manufacturerFieldCopier = manufacturerFieldCopier;
         }
 
         // GET: Country
         public ActionResult List()
         {
-            return View(Mapper.Map<List<ManufacturerViewModel>>( _manufacturerManager.GetAll().ToList() ));
+            var dbItems = _manufacturerManager.GetAll().ToList();
+            var result = new List<ManufacturerViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel()));
+            }
+            return View(result);
         }
 
         //GET 
@@ -37,7 +48,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Add(Mapper.Map<Manufacturer>(model));
+                _manufacturerManager.Add(_manufacturerFieldCopier.CopyFields(model, new Manufacturer()));
                 return RedirectToAction("List");
             }
             return View(model);
@@ -47,7 +58,8 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
-            return View(Mapper.Map<ManufacturerViewModel>(_manufacturerManager.GetById(id)));
+            var dbItem = _manufacturerManager.GetById(id);
+            return View(_manufacturerFieldCopier.CopyFields(dbItem, new ManufacturerViewModel()));
         }
         //Post
         [HttpPost]
@@ -55,7 +67,9 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _manufacturerManager.Edit(Mapper.Map<Manufacturer>(model));
+                var dbItem = _manufacturerManager.GetById(model.Id);
+                dbItem = _manufacturerFieldCopier.CopyFields(model, dbItem);
+                _manufacturerManager.Edit(dbItem);
                 return RedirectToAction("List");
             }
             return View(model);
@@ -64,7 +78,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _manufacturerManager.Delete(id);
+            var dbItem = _manufacturerManager.GetById(id);
+            _manufacturerManager.Delete(dbItem);
             return RedirectToAction("List");
         }
     }

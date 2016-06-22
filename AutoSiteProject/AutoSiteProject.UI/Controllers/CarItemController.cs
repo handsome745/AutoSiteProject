@@ -1,44 +1,35 @@
-﻿using AutoMapper;
-using AutoSiteProject.Models.Bl.Interfaces;
+﻿using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     public class CarItemController : Controller
     {
-        private ICountryManager _countryManager;
-        private IManufacturerManager _manufacturerManager;
-        private ICarModelManager _carModelManager;
         private ICarItemManager _carItemManager;
-        private ICarOptionManager _carOptionManager;
-        private ICarBodyTypeManager _carBodyTypeManager;
+        private ICarItemFieldCopier _carItemFieldCopier;
 
         public CarItemController(
-            ICountryManager countryManager,
-            IManufacturerManager manufacturerManager,
-            ICarModelManager carModelManager,
             ICarItemManager carItemManager,
-            ICarOptionManager carOptionManager,
-            ICarBodyTypeManager carBodyTypeManager
+            ICarItemFieldCopier carItemFieldCopier
             )
         {
-            _countryManager = countryManager;
-            _manufacturerManager = manufacturerManager;
-            _carModelManager = carModelManager;
             _carItemManager = carItemManager;
-            _carOptionManager = carOptionManager;
-            _carBodyTypeManager = carBodyTypeManager;
+            _carItemFieldCopier = carItemFieldCopier;
         }
         // GET
         public ActionResult List()
         {
-            var result = Mapper.Map<List<CarItemViewModel>>(_carItemManager.GetAll().ToList());
+            var dbItems = _carItemManager.GetAll().ToList();
+            var result = new List<CarItemViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carItemFieldCopier.CopyFields(item, new CarItemViewModel()));
+            }
             return View(result);
         }
 
@@ -53,7 +44,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carItemManager.Add(Mapper.Map<CarItem>(model));
+                _carItemManager.Add(_carItemFieldCopier.CopyFields(model, new CarItem()));
                 return RedirectToAction("List");
             }
             return View(model);
@@ -62,12 +53,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            var result = Mapper.Map<CarItemViewModel>(_carItemManager.GetById(id)) ;
-            result.ManufacturerId = result.CarModel.ManufacturerId;
-            result.Manufacturer = result.CarModel.Manufacturer;
-            result.CountryId = result.Manufacturer.CountryId;
-            result.Country = result.Manufacturer.Country;
-            return View(result);
+            var dbItem = _carItemManager.GetById(id);
+            return View(_carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel()));
         }
         //Post
         [HttpPost]
@@ -75,7 +62,9 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carItemManager.Edit(Mapper.Map<CarItem>(model));
+                var dbItem = _carItemManager.GetById(model.Id);
+                dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
+                _carItemManager.Edit(dbItem);
                 return RedirectToAction("List");
             }
             return View(model);
@@ -84,7 +73,7 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _carOptionManager.Delete(id);
+            _carItemManager.Delete(_carItemManager.GetById(id));
             return RedirectToAction("List");
         }
     }

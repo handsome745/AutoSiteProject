@@ -7,7 +7,7 @@ using AutoSiteProject.Models.DB;
 namespace AutoSiteProject.Bl.Managers
 {
     public abstract class RepositoryManager<T> : IRepositoryManager<T>
-        where T : WithId
+        where T : class 
     {
         private IGenericRepository<T> _tRepository ;
 
@@ -30,9 +30,9 @@ namespace AutoSiteProject.Bl.Managers
             _tRepository.Save();
         }
 
-        public virtual void Delete(int id)
+        public virtual void Delete(T entity)
         {
-            _tRepository.Delete(e=>e.Id == id);
+            _tRepository.Delete(entity);
             _tRepository.Save();
         }
 
@@ -44,7 +44,7 @@ namespace AutoSiteProject.Bl.Managers
 
         public virtual T GetById(int id)
         {
-            return _tRepository.FindBy(e => e.Id == id).FirstOrDefault();
+            return _tRepository.GetById(id);
         }
     }
 }

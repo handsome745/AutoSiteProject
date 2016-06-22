@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.ViewModels;
-using AutoMapper;
 using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.UI.Controllers
@@ -13,16 +11,24 @@ namespace AutoSiteProject.UI.Controllers
     public class CarBodyTypeController : Controller
     {
         private ICarBodyTypeManager _carBodyTypeManager;
+        private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
 
-        public CarBodyTypeController(ICarBodyTypeManager carBodyTypeManager)
+        public CarBodyTypeController(ICarBodyTypeManager carBodyTypeManager, ICarBodyTypeFieldCopier carBodyTypeFieldCopier)
         {
             _carBodyTypeManager = carBodyTypeManager;
+            _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
         }
 
         // GET: CarModel
         public ActionResult List()
         {
-            return View(Mapper.Map<List<CarBodyTypeViewModel>>(_carBodyTypeManager.GetAll().ToList()));
+            var dbItems = _carBodyTypeManager.GetAll().ToList();
+            var result = new List<CarBodyTypeViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel()));
+            }
+            return View(result);
         }
 
 
@@ -37,7 +43,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Add(Mapper.Map<CarBodyType>(model));
+                _carBodyTypeManager.Add(_carBodyTypeFieldCopier.CopyFields(model, new CarBodyType()));
                 return RedirectToAction("List");
             }
             return View(model);
@@ -46,7 +52,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<CarBodyTypeViewModel>(_carBodyTypeManager.GetById(id)));
+            var dbItem = _carBodyTypeManager.GetById(id);
+            return View(_carBodyTypeFieldCopier.CopyFields(dbItem,new CarBodyTypeViewModel()));
         }
         //Post
         [HttpPost]
@@ -54,7 +61,9 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _carBodyTypeManager.Edit(Mapper.Map<CarBodyType>(model));
+                var dbItem = _carBodyTypeManager.GetById(model.Id);
+                dbItem = _carBodyTypeFieldCopier.CopyFields(model, dbItem);
+                _carBodyTypeManager.Edit(dbItem);
                 return RedirectToAction("List");
             }
             return View(model);
@@ -63,7 +72,8 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _carBodyTypeManager.Delete(id);
+            var dbItem = _carBodyTypeManager.GetById(id);
+            _carBodyTypeManager.Delete(dbItem);
             return RedirectToAction("List");
         }
     }

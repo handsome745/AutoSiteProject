@@ -1,11 +1,9 @@
-﻿using AutoMapper;
-using AutoSiteProject.Models.Bl.Interfaces;
-using AutoSiteProject.Models.ViewModels;
-using System;
-using System.Collections.Generic;
+﻿using AutoSiteProject.Models.Bl.Interfaces;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoSiteProject.Models.ViewModels;
+using System.Collections.Generic;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -17,53 +15,104 @@ namespace AutoSiteProject.UI.Controllers
         private ICarBodyTypeManager _carBodyTypeManager;
         private ICarOptionManager _carOptionManager;
 
+        private ICarModelFieldCopier _carModelFieldCopier;
+        private IManufacturerFieldCopier _manufacturerFieldCopier;
+        private ICountryFieldCopier _countryFieldCopier;
+        private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
+        private ICarOptionFieldCopier _carOptionFieldCopier;
+
+
         public DataLoaderController(
             ICarModelManager carModelManager,
             IManufacturerManager manufacturerManager,
             ICountryManager countryManager,
             ICarBodyTypeManager carBodyTypeManager,
-            ICarOptionManager carOptionManager)
+            ICarOptionManager carOptionManager,
+            ICarModelFieldCopier carModelFieldCopier,
+            IManufacturerFieldCopier manufacturerFieldCopier,
+            ICountryFieldCopier countryFieldCopier,
+            ICarBodyTypeFieldCopier carBodyTypeFieldCopier,
+            ICarOptionFieldCopier carOptionFieldCopier
+            )
         {
             _carModelManager = carModelManager;
             _manufacturerManager = manufacturerManager;
             _countryManager = countryManager;
             _carBodyTypeManager = carBodyTypeManager;
             _carOptionManager = carOptionManager;
+
+            _carModelFieldCopier = carModelFieldCopier;
+            _manufacturerFieldCopier = manufacturerFieldCopier;
+            _countryFieldCopier = countryFieldCopier;
+            _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
+            _carOptionFieldCopier = carOptionFieldCopier;
         }
 
         public JsonResult GetCountries()
         {
-            var result = Mapper.Map<List<CountryViewModel>>(_countryManager.GetAll().ToList());
+
+            var dbItems = _countryManager.GetAll().ToList();
+            var result = new List<CountryViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_countryFieldCopier.CopyFields(item, new CountryViewModel()));
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetManufacturersOfCountry(int id)
         {
-            var result = Mapper.Map<List<ManufacturerViewModel>>(_manufacturerManager.GetAll().Where(m => m.CountryId == id).ToList());
+            var dbItems = _manufacturerManager.GetAll().Where(m => m.CountryId == id).ToList();
+            var result = new List<ManufacturerViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel()));
+            }
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCarModelsOfManufacturer(int id)
         {
-            var result = Mapper.Map<List<CarModelViewModel>>(_carModelManager.GetAll().Where(m => m.ManufacturerId == id).ToList());
+            var dbItems = _carModelManager.GetAll().Where(m => m.ManufacturerId == id).ToList();
+            var result = new List<CarModelViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carModelFieldCopier.CopyFields(item, new CarModelViewModel()));
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetBodyTypes()
         {
-            var result = _carBodyTypeManager.GetAll().ToList();
-            return Json(Mapper.Map<List<CarBodyTypeViewModel>>(result), JsonRequestBehavior.AllowGet);
+            var dbItems = _carBodyTypeManager.GetAll().ToList();
+            var result = new List<CarBodyTypeViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel()));
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetOptionsOfCarItem(int id)
         {
-            var result = _carOptionManager.GetAll().Where(co => co.CarItem.Any(ci => ci.Id == id)).ToList();
-            return Json(Mapper.Map<List<CarOptionViewModel>>(result.ToList()), JsonRequestBehavior.AllowGet);
+            var dbItems = _carOptionManager.GetAll().Where(co => co.CarItem.Any(ci => ci.Id == id)).ToList();
+            var result = new List<CarOptionViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCarOptions()
         {
-            var result = _carOptionManager.GetAll().ToList();
-            return Json(Mapper.Map<List<CarOptionViewModel>>(result), JsonRequestBehavior.AllowGet);
+            var dbItems = _carOptionManager.GetAll().ToList();
+            var result = new List<CarOptionViewModel>();
+            foreach (var item in dbItems)
+            {
+                result.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

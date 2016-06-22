@@ -7,7 +7,7 @@ namespace AutoSiteProject.Models.Bl.Interfaces
         IQueryable<T> GetAll();
         T GetById(int id);
         void Add(T entity);
-        void Delete(int id);
+        void Delete(T entity);
         void Edit(T entity);
     }
 }

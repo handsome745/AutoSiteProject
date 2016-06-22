@@ -50,13 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bl\Interfaces\ICarBodyTypeManager.cs" />
-    <Compile Include="Bl\Interfaces\ICarItemManager.cs" />
-    <Compile Include="Bl\Interfaces\ICarModelManager.cs" />
-    <Compile Include="Bl\Interfaces\ICarOptionManager.cs" />
-    <Compile Include="Bl\Interfaces\ICountryManager.cs" />
-    <Compile Include="Bl\Interfaces\IManufacturerManager.cs" />
-    <Compile Include="Bl\Interfaces\IRepositoryManager.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICarBodyTypeFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICarItemFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICarModelFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICarOptionFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\IManufacturerFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICarBodyTypeManager.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICarItemManager.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICarModelManager.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICarOptionManager.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICountryFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICountryManager.cs" />
+    <Compile Include="Bl\Interfaces\Managers\IManufacturerManager.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\IFieldCoopier.cs" />
+    <Compile Include="Bl\Interfaces\Managers\IRepositoryManager.cs" />
     <Compile Include="Dal\Interfaces\IGenericRepository.cs" />
     <Compile Include="DB\AutoSiteDBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -91,7 +98,6 @@
     <Compile Include="DB\Manufacturer.cs">
       <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\WithId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CarBodyTypeViewModel.cs" />
     <Compile Include="ViewModels\CarItemViewModel.cs" />
