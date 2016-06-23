@@ -12,6 +12,7 @@
 <hr />
 <div class="filter-section" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
     @Html.HiddenFor(model => model.Id)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

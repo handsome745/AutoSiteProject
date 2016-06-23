@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AutoSiteProject.Models.ViewModels
 {
@@ -10,6 +10,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
+        [Remote("ChecManufacturerNameForExist", "Validation", ErrorMessage = "Manufacturer with same name already exist.")]
         public string Name { get; set; }
         [DisplayName("Country")]
         public Nullable<int> CountryId { get; set; }

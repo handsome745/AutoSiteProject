@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace AutoSiteProject.Models.ViewModels
 {
@@ -13,6 +9,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
+        [Remote("ChecCarOptionNameForExist", "Validation", ErrorMessage = "Car option with same name already exist.")]
         public string Name { get; set; }
             
     }

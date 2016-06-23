@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AutoSiteProject.Models.ViewModels
 {
@@ -9,6 +10,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
+        [Remote("CheckBodyTypeNameForExist", "Validation", ErrorMessage = "Car body type with same name already exist.")]
         public string Name { get; set; }
                
     }
