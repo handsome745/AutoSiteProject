@@ -12,14 +12,19 @@ namespace AutoSiteProject.UI.Controllers
     {
         private ICarItemManager _carItemManager;
         private ICarItemFieldCopier _carItemFieldCopier;
-
+        private ICarOptionManager _carOptionsManager;
+        private ICarOptionFieldCopier _carOptionFieldCopier;
         public CarItemController(
             ICarItemManager carItemManager,
-            ICarItemFieldCopier carItemFieldCopier
+            ICarItemFieldCopier carItemFieldCopier,
+            ICarOptionManager carOptionsManager,
+            ICarOptionFieldCopier carOptionFieldCopier
             )
         {
             _carItemManager = carItemManager;
             _carItemFieldCopier = carItemFieldCopier;
+            _carOptionsManager = carOptionsManager;
+            _carOptionFieldCopier = carOptionFieldCopier;
         }
         // GET
         public ActionResult List()
@@ -36,6 +41,11 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Create(CarItemViewModel model)
         {
+            var dbOptions = _carOptionsManager.GetAll().ToList();
+            foreach (var item in dbOptions)
+            {
+                model.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(item, new  CarOptionViewModel()));
+            }
             return View(model);
         }
         //Post
@@ -54,7 +64,13 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(int id)
         {
             var dbItem = _carItemManager.GetById(id);
-            return View(_carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel()));
+            var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
+            var dbOptions = _carOptionsManager.GetAll().ToList();
+            foreach (var item in dbOptions)
+            {
+                result.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
+            }
+            return View(result);
         }
         //Post
         [HttpPost]

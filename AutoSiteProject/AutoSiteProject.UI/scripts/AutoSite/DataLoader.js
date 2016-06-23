@@ -13,22 +13,21 @@
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
 
-    //countryPicker.chosen();
-    //manufacturerPicker.chosen();
-    //carmodelPicker.chosen();
-    //carbodytypePicker.chosen();
+    countryPicker.chosen();
+    manufacturerPicker.chosen();
+    carmodelPicker.chosen();
+    carbodytypePicker.chosen();
+    carOptionsPicker.chosen({ allow_single_deselect: true });
 
     //initial ids
     var countryId = countryPicker.data("initid");
     var manufacturerId = manufacturerPicker.data("initid");
     var carmodelId = carmodelPicker.data("initid");
     var carbodytypeId = carbodytypePicker.data("initid");
-    //var carOptions = modelData.CarOptions;//List of checked car options
 
     DataLoader.loadCountries(countryUrl, countryPicker, countryId);
     DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
 
-    //DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker, carOptions);
 
 
     countryPicker.change(function () {
@@ -38,7 +37,7 @@
         }
         else {
             manufacturerPicker.prop('disabled', false);
-            DataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker,manufacturerId);
+            DataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker, manufacturerId);
             DataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
     });
@@ -52,7 +51,6 @@
             DataLoader.loadCarModels(carModelsfUrl + "/" + id, carmodelPicker, carmodelId);
         }
     });
-
     countryPicker.change();
 });
 
@@ -63,7 +61,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCountriesList(output,picker,id);
+                DataRender.renderList(output,picker,id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
@@ -76,7 +74,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderManufacturersList(output,picker,id);
+                DataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
@@ -89,7 +87,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCarModelsList(output,picker,id);
+                DataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading car models");
@@ -102,7 +100,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderCarBodyTypesList(output, picker, id);
+                DataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading car model types");
@@ -128,51 +126,18 @@ DataRender = {
     clearSelectorsAndDisable: function(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
-            selectorsArray[i].prop('disabled', 'disabled');
+            selectorsArray[i].attr('disabled', true).trigger("liszt:updated");
         }
     },
-    renderCountriesList: function (output,picker,id) {
-        var result = "<option value>Select country</option>";
+    renderList: function (output,picker,id) {
+        picker.empty(); //remove all child nodes
         for (var i = 0; i < output.length; i++) {
-            result += "<option value='" + output[i].Id + "'>";
-            result += output[i].Name;
-            result += "</option>";
+            var newOption = $('<option value="' + output[i].Id + '">' + output[i].Name + '</option>');
+            picker.append(newOption);
         }
-       picker.html(result);
-       picker.val(id);
-       if (id > 0) picker.change();
-    },
-    renderManufacturersList: function (output, picker, id) {
-        var result = "<option value>Select manufacturer</option>";
-        for (var i = 0; i < output.length; i++) {
-            result += "<option value='" + output[i].Id + "'>";
-            result += output[i].Name;
-            result += "</option>";
-        }
-        picker.html(result);
         picker.val(id);
         if (id > 0) picker.change();
-    },
-    renderCarModelsList: function (output,picker,id) {
-        var result = "<option value>Select car model</option>";
-        for (var i = 0; i < output.length; i++) {
-            result += "<option value='" + output[i].Id + "'>";
-            result += output[i].Name;
-            result += "</option>";
-        }
-        picker.html(result);
-        picker.val(id);
-        if (id > 0) picker.change();
-    },
-    renderCarBodyTypesList: function (output,picker,id) {
-        var result = "<option value>Select car model type</option>";
-        for (var i = 0; i < output.length; i++) {
-            result += "<option value='" + output[i].Id + "'>";
-            result += output[i].Name;
-            result += "</option>";
-        }
-        picker.html(result);
-        picker.val(id);
+        picker.trigger("chosen:updated");
     },
     renderCarOptionsList: function (output, picker, checkedOptions) {
         var result = "";

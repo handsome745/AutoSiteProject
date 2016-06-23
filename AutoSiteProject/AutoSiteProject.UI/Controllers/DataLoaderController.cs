@@ -96,6 +96,7 @@ namespace AutoSiteProject.UI.Controllers
 
         public JsonResult GetOptionsOfCarItem(int id)
         {
+
             var dbItems = _carOptionManager.GetAll().Where(co => co.CarItem.Any(ci => ci.Id == id)).ToList();
             var result = new List<CarOptionViewModel>();
             foreach (var item in dbItems)

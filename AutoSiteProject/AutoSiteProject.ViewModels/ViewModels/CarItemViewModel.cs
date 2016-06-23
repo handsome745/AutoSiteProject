@@ -12,7 +12,7 @@ namespace AutoSiteProject.Models.ViewModels
     {
         public CarItemViewModel()
         {
-            CarOption = new List<CarOptionViewModel>();
+            AvalibleCarOptions = new List<CarOptionViewModel>();
         }
         public int Id { get; set; }
         [Required]
@@ -38,8 +38,12 @@ namespace AutoSiteProject.Models.ViewModels
 
         public virtual CarBodyTypeViewModel CarBodyType { get; set; }
 
-        [DisplayName("Сar options")]
-        public List<CarOptionViewModel> CarOption { get; set; }
+
+
+        public List<CarOptionViewModel> AvalibleCarOptions { get; set; }
+        [DisplayName("Car options")]
+        public string[] SelectedCarOptions { get; set; }
+
         [DisplayName("Description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }

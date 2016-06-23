@@ -2,22 +2,27 @@
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
+using AutoSiteProject.Models.Bl.Interfaces;
 
 namespace AutoSiteProject.Bl.FieldCopiers
 {
     public class CarItemFieldCopier : ICarItemFieldCopier
     {
+        private ICarOptionManager _carOptionManager;
         private ICarModelFieldCopier _carModelFieldCopier;
         private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
         private IManufacturerFieldCopier _manufacturerFieldCopier;
 
-        public CarItemFieldCopier(ICarModelFieldCopier carModelFieldCopier,
+        public CarItemFieldCopier(
+            ICarModelFieldCopier carModelFieldCopier,
             ICarBodyTypeFieldCopier carBodyTypeFieldCopier,
-            IManufacturerFieldCopier manufacturerFieldCopier)
+            IManufacturerFieldCopier manufacturerFieldCopier,
+            ICarOptionManager carOptionManager)
         {
             _carModelFieldCopier = carModelFieldCopier;
             _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
             _manufacturerFieldCopier = manufacturerFieldCopier;
+            _carOptionManager = carOptionManager;
         }
 
         public CarItemViewModel CopyFields(CarItem from, CarItemViewModel to)
@@ -32,7 +37,15 @@ namespace AutoSiteProject.Bl.FieldCopiers
             //to.Manufacturer = _manufacturerFieldCopier.CopyFields(from.CarModel.Manufacturer, to.Manufacturer);
             to.ManufacturerId = from.CarModel.ManufacturerId;
             to.CountryId = from.CarModel.Manufacturer.CountryId;
-            //to.CarOption
+
+            to.SelectedCarOptions = new string[from.CarOption.Count];
+            CarOption[] arrayCO = new CarOption[from.CarOption.Count];
+            from.CarOption.CopyTo(arrayCO, 0);
+
+            for (int i =0; i < from.CarOption.Count;i++)
+            {
+                to.SelectedCarOptions[i] = arrayCO[i].Id.ToString();
+            }
             return to;
         }
 
@@ -41,7 +54,16 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.BodyTypeId = from.BodyTypeId;
             to.ModelId = from.ModelId;
             to.Description = from.Description;
-            //to.CarOption
+
+            to.CarOption.Clear();
+            foreach(string s in from.SelectedCarOptions)
+            {
+                int id;
+                if (Int32.TryParse(s, out id))
+                {
+                    to.CarOption.Add(_carOptionManager.GetById(id));
+                }
+            }
             return to;
         }
     }
