@@ -12,16 +12,22 @@
     var carmodelPicker = $(".carmodel-picker", filterSection);
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
+
+    //countryPicker.chosen();
+    //manufacturerPicker.chosen();
+    //carmodelPicker.chosen();
+    //carbodytypePicker.chosen();
+
     //initial ids
     var countryId = countryPicker.data("initid");
     var manufacturerId = manufacturerPicker.data("initid");
     var carmodelId = carmodelPicker.data("initid");
     var carbodytypeId = carbodytypePicker.data("initid");
-
     //var carOptions = modelData.CarOptions;//List of checked car options
 
     DataLoader.loadCountries(countryUrl, countryPicker, countryId);
     DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
+
     //DataLoader.loadCarOptions(carOptionsUrl, carOptionsPicker, carOptions);
 
 
@@ -43,9 +49,10 @@
         }
         else {
             carmodelPicker.prop('disabled', false);
-            DataLoader.loadCarModels(carModelsfUrl + "/" + id,carmodelPicker,carmodelId);
+            DataLoader.loadCarModels(carModelsfUrl + "/" + id, carmodelPicker, carmodelId);
         }
     });
+
     countryPicker.change();
 });
 
