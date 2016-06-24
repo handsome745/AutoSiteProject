@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoSiteProject.Models.Dal.Interfaces;
 using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Dal.Entities
 {
-    public class ManufacturerRepository : GenericRepository<AutoSiteProjectDBEntities, Manufacturer>
+    public class ManufacturerRepository : GenericRepository<Manufacturer>, IGenericRepository<Manufacturer>
     {
+        public ManufacturerRepository(IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+            
+        }
     }
 }

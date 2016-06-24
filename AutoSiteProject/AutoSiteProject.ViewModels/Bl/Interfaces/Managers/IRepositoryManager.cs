@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace AutoSiteProject.Models.Bl.Interfaces
 {
     public interface IRepositoryManager<T> where T: class 
     {
-        IQueryable<T> GetAll();
+        IEnumerable<T> GetAll();
         T GetById(int id);
         void Add(T entity);
         void Delete(T entity);

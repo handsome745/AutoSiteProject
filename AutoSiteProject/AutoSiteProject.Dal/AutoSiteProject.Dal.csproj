@@ -55,6 +55,7 @@
     <Compile Include="Entities\CountryRepository.cs" />
     <Compile Include="Entities\GenericRepository.cs" />
     <Compile Include="Entities\ManufacturerRepository.cs" />
+    <Compile Include="Entities\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

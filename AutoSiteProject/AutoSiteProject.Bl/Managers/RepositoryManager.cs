@@ -9,15 +9,16 @@ namespace AutoSiteProject.Bl.Managers
     public abstract class RepositoryManager<T> : IRepositoryManager<T>
         where T : class 
     {
-        private IGenericRepository<T> _tRepository ;
+        private IGenericRepository<T> _tRepository;
+        private IUnitOfWork _unitOfWork;
 
-        public IGenericRepository<T> Repository
+        public RepositoryManager(IGenericRepository<T> repository, IUnitOfWork unitOfWork)
         {
-            get { return _tRepository; }
-            set { _tRepository = value; }
+            _tRepository = repository;
+            _unitOfWork = unitOfWork;
         }
 
-        public IQueryable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
             var list = _tRepository.GetAll();
             return list;
@@ -27,19 +28,19 @@ namespace AutoSiteProject.Bl.Managers
         public void Add(T entity)
         {
             _tRepository.Add(entity);
-            _tRepository.Save();
+            _unitOfWork.Commit();
         }
 
         public virtual void Delete(T entity)
         {
             _tRepository.Delete(entity);
-            _tRepository.Save();
+            _unitOfWork.Commit();
         }
 
         public void Edit(T entity)
         {
             _tRepository.Edit(entity);
-            _tRepository.Save();
+            _unitOfWork.Commit();
         }
 
         public virtual T GetById(int id)

@@ -22,22 +22,29 @@ namespace AutoSiteProject.Dependency
 
         private void RegisterDalTypes(ContainerBuilder builder)
         {
-            builder.RegisterType<CountryRepository>().As<IGenericRepository<Country>>().InstancePerRequest();
-            builder.RegisterType<CarOptionRepository>().As<IGenericRepository<CarOption>>().InstancePerRequest();
-            builder.RegisterType<CarItemRepository>().As<IGenericRepository<CarItem>>().InstancePerRequest();
-            builder.RegisterType<CarModelRepository>().As<IGenericRepository<CarModel>>().InstancePerRequest();
-            builder.RegisterType<ManufacturerRepository>().As<IGenericRepository<Manufacturer>>().InstancePerRequest();
-            builder.RegisterType<CarBodyTypeRepository>().As<IGenericRepository<CarBodyType>>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>()
+               .As<IUnitOfWork>()
+               .InstancePerLifetimeScope();
+
+            builder.RegisterType<AutoSiteProjectDBEntities>().AsSelf();
+
+            builder.RegisterType<CountryRepository>().As<IGenericRepository<Country>>();
+            builder.RegisterType<CarOptionRepository>().As<IGenericRepository<CarOption>>();
+            builder.RegisterType<CarItemRepository>().As<IGenericRepository<CarItem>>();
+            builder.RegisterType<CarModelRepository>().As<IGenericRepository<CarModel>>();
+            builder.RegisterType<ManufacturerRepository>().As<IGenericRepository<Manufacturer>>();
+            builder.RegisterType<CarBodyTypeRepository>().As<IGenericRepository<CarBodyType>>();
         }
 
         private void RegisterBlManagers(ContainerBuilder builder)
         {
-            builder.RegisterType<CountryManager>().As<ICountryManager>().WithProperty("Repository", new CountryRepository()).InstancePerRequest();
-            builder.RegisterType<CarModelManager>().As<ICarModelManager>().WithProperty("Repository", new CarModelRepository()).InstancePerRequest();
-            builder.RegisterType<ManufacturerManager>().As<IManufacturerManager>().WithProperty("Repository", new ManufacturerRepository()).InstancePerRequest();
-            builder.RegisterType<CarBodyTypeManager>().As<ICarBodyTypeManager>().WithProperty("Repository", new CarBodyTypeRepository()).InstancePerRequest();
-            builder.RegisterType<CarOptionManager>().As<ICarOptionManager>().WithProperty("Repository", new CarOptionRepository()).InstancePerRequest();
-            builder.RegisterType<CarItemManager>().As<ICarItemManager>().WithProperty("Repository", new CarItemRepository()).InstancePerRequest();
+            builder.RegisterType<CountryManager>().As<ICountryManager>();
+            builder.RegisterType<CarModelManager>().As<ICarModelManager>();
+            builder.RegisterType<ManufacturerManager>().As<IManufacturerManager>();
+            builder.RegisterType<CarBodyTypeManager>().As<ICarBodyTypeManager>();
+            builder.RegisterType<CarOptionManager>().As<ICarOptionManager>();
+            builder.RegisterType<CarItemManager>().As<ICarItemManager>();
+                //.WithProperty("Repository", new CarItemRepository()).InstancePerRequest();
         }
         private void RegisterBlFieldCopiers(ContainerBuilder builder)
         {

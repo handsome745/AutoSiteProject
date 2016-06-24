@@ -1,13 +1,14 @@
 ﻿using AutoSiteProject.Models.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoSiteProject.Models.Dal.Interfaces;
 
 namespace AutoSiteProject.Dal.Entities
 {
-    public class CarModelRepository: GenericRepository<AutoSiteProjectDBEntities, CarModel>
+    public class CarModelRepository: GenericRepository<CarModel>
     {
+        public CarModelRepository(IUnitOfWork unitOfWork)
+            :base(unitOfWork)
+        {
+            
+        }
     }
 }
