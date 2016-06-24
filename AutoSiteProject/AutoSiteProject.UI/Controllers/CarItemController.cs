@@ -41,11 +41,13 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Create(CarItemViewModel model)
         {
+            
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)
             {
                 model.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(item, new  CarOptionViewModel()));
             }
+            ModelState.Clear();
             return View(model);
         }
         //Post

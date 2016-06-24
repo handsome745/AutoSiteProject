@@ -12,11 +12,7 @@
     var carmodelPicker = $(".carmodel-picker", filterSection);
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
-
-    countryPicker.chosen();
-    manufacturerPicker.chosen();
-    carmodelPicker.chosen();
-    carbodytypePicker.chosen();
+    
     carOptionsPicker.chosen({ allow_single_deselect: true });
 
     //initial ids
@@ -27,8 +23,6 @@
 
     DataLoader.loadCountries(countryUrl, countryPicker, countryId);
     DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
-
-
 
     countryPicker.change(function () {
         var id = countryPicker.val();
@@ -126,11 +120,12 @@ DataRender = {
     clearSelectorsAndDisable: function(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
-            selectorsArray[i].attr('disabled', true).trigger("liszt:updated");
+            selectorsArray[i].prop('disabled', 'disabled');//.trigger("liszt:updated");
         }
     },
     renderList: function (output,picker,id) {
         picker.empty(); //remove all child nodes
+
         for (var i = 0; i < output.length; i++) {
             var newOption = $('<option value="' + output[i].Id + '">' + output[i].Name + '</option>');
             picker.append(newOption);

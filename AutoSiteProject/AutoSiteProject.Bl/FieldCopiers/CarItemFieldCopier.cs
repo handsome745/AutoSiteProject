@@ -56,6 +56,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.Description = from.Description;
 
             to.CarOption.Clear();
+            if (from.SelectedCarOptions != null)
             foreach(string s in from.SelectedCarOptions)
             {
                 int id;

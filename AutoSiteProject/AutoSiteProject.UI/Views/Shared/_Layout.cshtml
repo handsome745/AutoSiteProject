@@ -17,10 +17,18 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
+                    
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

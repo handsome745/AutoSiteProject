@@ -16,3 +16,4 @@ textarea {
     max-width: 280px;
 }
 
+.validation-summary-valid { display:none; }
