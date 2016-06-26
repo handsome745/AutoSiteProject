@@ -1,4 +1,5 @@
 ﻿using AutoSiteProject.Models.Bl.Interfaces;
+using AutoSiteProject.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,37 +34,46 @@ namespace AutoSiteProject.UI.Controllers
         }
 
         // GET: Validation
-        public JsonResult CheckCountryNameForExist(string Name)
+        public JsonResult CheckCountryNameForExist(CountryViewModel model)
         {
-            Name = Name.TrimStart(new char[] {' '});
-            Name = Name.TrimEnd(new char[] { ' ' });
-            if (_countryManager.GetAll().Where(c=>c.Name == Name).ToList().Count > 0)
+            model.Name = model.Name.TrimStart(new char[] { ' ' });
+            model.Name = model.Name.TrimEnd(new char[] { ' ' });
+            if (_countryManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id).ToList().Count > 0)
             return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult ChecManufacturerNameForExist(string Name)
+        public JsonResult ChecManufacturerNameForExist(ManufacturerViewModel model)
         {
-            Name = Name.TrimStart(new char[] { ' ' });
-            Name = Name.TrimEnd(new char[] { ' ' });
-            if (_manufacturerManager.GetAll().Where(c => c.Name == Name).ToList().Count > 0)
+            model.Name = model.Name.TrimStart(new char[] { ' ' });
+            model.Name = model.Name.TrimEnd(new char[] { ' ' });
+            if (_manufacturerManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id && c.CountryId == model.CountryId).ToList().Count > 0)
                 return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult CheckBodyTypeNameForExist(string Name)
+        public JsonResult CheckBodyTypeNameForExist(CarBodyTypeViewModel model)
         {
-            Name = Name.TrimStart(new char[] { ' ' });
-            Name = Name.TrimEnd(new char[] { ' ' });
-            if (_carBodyTypeManager.GetAll().Where(c => c.Name == Name).ToList().Count > 0)
+            model.Name = model.Name.TrimStart(new char[] { ' ' });
+            model.Name = model.Name.TrimEnd(new char[] { ' ' });
+            if (_carBodyTypeManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id).ToList().Count > 0)
                 return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult ChecCarOptionNameForExist(string Name)
+        public JsonResult ChecCarOptionNameForExist(CarOptionViewModel model)
         {
-            Name = Name.TrimStart(new char[] { ' ' });
-            Name = Name.TrimEnd(new char[] { ' ' });
-            if (_carOptionManager.GetAll().Where(c => c.Name == Name).ToList().Count > 0)
+            model.Name = model.Name.TrimStart(new char[] { ' ' });
+            model.Name = model.Name.TrimEnd(new char[] { ' ' });
+            if (_carOptionManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id).ToList().Count > 0)
                 return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult CheckCarModelNameForExist(CarModelViewModel model)
+        {
+            model.Name = model.Name.TrimStart(new char[] { ' ' });
+            model.Name = model.Name.TrimEnd(new char[] { ' ' });
+            if (_carModelManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id && c.ManufacturerId == model.ManufacturerId).ToList().Count > 0)
+                return Json(false, JsonRequestBehavior.AllowGet);
+            else return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        
     }
 }

@@ -9,7 +9,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
-        [Remote("CheckCountryNameForExist", "Validation", ErrorMessage = "Country with same name already exist.")]
+        [Remote("CheckCountryNameForExist", "Validation", AdditionalFields = "Id", ErrorMessage = "Country with same name already exist.")]
         public string Name { get; set; }
                
     }

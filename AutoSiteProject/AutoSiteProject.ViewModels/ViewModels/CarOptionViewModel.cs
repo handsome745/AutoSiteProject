@@ -9,7 +9,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
-        [Remote("ChecCarOptionNameForExist", "Validation", ErrorMessage = "Car option with same name already exist.")]
+        [Remote("ChecCarOptionNameForExist", "Validation", AdditionalFields = "Id", ErrorMessage = "Car option with same name already exist.")]
         public string Name { get; set; }
             
     }

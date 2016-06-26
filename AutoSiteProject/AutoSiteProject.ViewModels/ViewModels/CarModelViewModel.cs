@@ -10,6 +10,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
+        [Remote("CheckCarModelNameForExist", "Validation", AdditionalFields = "Id, ManufacturerId", ErrorMessage = "Car body type with same name already exist.")]
         public string Name { get; set; }
         [DisplayName("Manufacturer")]
         public Nullable<int> ManufacturerId { get; set; }

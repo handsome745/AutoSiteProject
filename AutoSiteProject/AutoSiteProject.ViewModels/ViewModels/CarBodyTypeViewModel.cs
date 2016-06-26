@@ -10,7 +10,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int Id { get; set; }
         [Required]
         [DisplayName("Name")]
-        [Remote("CheckBodyTypeNameForExist", "Validation", ErrorMessage = "Car body type with same name already exist.")]
+        [Remote("CheckBodyTypeNameForExist", "Validation", AdditionalFields = "Id", ErrorMessage = "Car body type with same name already exist.")]
         public string Name { get; set; }
                
     }
