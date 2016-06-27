@@ -13,9 +13,6 @@ namespace AutoSiteProject.UI.Code.Attributes
             {
                 _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
             }
-
-            var appLogger = NLog.LogManager.GetCurrentClassLogger();
-            appLogger.Log(LogLevel.Error, filterContext.Exception);
             _appLogger.WriteError(filterContext.Exception);
         }
     }
