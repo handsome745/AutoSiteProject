@@ -1,12 +1,15 @@
-﻿using System.Web.Routing;
+﻿using System;
+using System.Web.Routing;
 using AutoSiteProject.UI.Utils;
 using System.Web.Mvc;
-using AutoSiteProject.UI.Code.Attributes;
+using AutoSiteProject.Models.Bl.Interfaces;
 
 namespace AutoSiteProject.UI
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        private IAppLogger _appLogger;
+
         protected void Application_Start()
         {
             AutofacConfig.ConfigureContainer();
@@ -14,13 +17,15 @@ namespace AutoSiteProject.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
-    }
 
-    public class FilterConfig
-    {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filterCollection)
+        protected void Application_Error(object sender, EventArgs e)
         {
-            filterCollection.Add(new ErrorHandlerAttribute());
+            if (_appLogger == null)
+            {
+                _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
+            }
+            var error = Server.GetLastError();
+            _appLogger.WriteFatal(error);
         }
     }
 }

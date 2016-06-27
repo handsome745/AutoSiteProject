@@ -30,9 +30,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET
         public ActionResult List()
         {
-            throw new NotImplementedException();
             //TODO:
-
             var dbItems = _carItemManager.GetAll().ToList();
             var result = new List<CarItemViewModel>();
             foreach (var item in dbItems)

@@ -1,4 +1,5 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces;
+﻿using System.ComponentModel;
+using AutoSiteProject.Models.Bl.Interfaces;
 using NLog;
 using System.Web.Mvc;
 
@@ -13,7 +14,16 @@ namespace AutoSiteProject.UI.Code.Attributes
             {
                 _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
             }
-            _appLogger.WriteError(filterContext.Exception);
+            switch (filterContext.Exception.GetType().ToString())
+            {
+                case "System.ComponentModel.WarningException":
+                    _appLogger.WriteWarn(filterContext.Exception);
+                    break;
+                default:
+                    _appLogger.WriteError(filterContext.Exception);break;
+            }
+            filterContext.ExceptionHandled = true;
         }
+
     }
 }
