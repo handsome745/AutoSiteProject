@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -29,6 +30,9 @@ namespace AutoSiteProject.UI.Controllers
         // GET
         public ActionResult List()
         {
+            throw new NotImplementedException();
+            //TODO:
+
             var dbItems = _carItemManager.GetAll().ToList();
             var result = new List<CarItemViewModel>();
             foreach (var item in dbItems)
@@ -41,11 +45,11 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Create(CarItemViewModel model)
         {
-            
+
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)
             {
-                model.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(item, new  CarOptionViewModel()));
+                model.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
             }
             ModelState.Clear();
             return View(model);
@@ -66,6 +70,9 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(int id)
         {
             var dbItem = _carItemManager.GetById(id);
+            if (dbItem == null)
+                throw new System.Data.Entity.Core.ObjectNotFoundException($"Can't find Car with id = {id}");
+
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)

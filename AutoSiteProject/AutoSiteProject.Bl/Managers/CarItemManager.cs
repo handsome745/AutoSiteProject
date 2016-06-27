@@ -7,9 +7,9 @@ namespace AutoSiteProject.Bl.Managers
     public class CarItemManager : RepositoryManager<CarItem>, ICarItemManager
     {
         public CarItemManager(IGenericRepository<CarItem> repository, IUnitOfWork unitOfWork)
-            :base(repository,unitOfWork)
+            : base(repository, unitOfWork)
         {
-            
+
         }
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarModelFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarOptionFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\IManufacturerFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\IAppLogger.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICarBodyTypeManager.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICarItemManager.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICarModelManager.cs" />

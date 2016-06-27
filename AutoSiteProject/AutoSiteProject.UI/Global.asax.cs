@@ -1,6 +1,7 @@
-﻿using System.Web.Mvc;
-using System.Web.Routing;
+﻿using System.Web.Routing;
 using AutoSiteProject.UI.Utils;
+using System.Web.Mvc;
+using AutoSiteProject.UI.Code.Attributes;
 
 namespace AutoSiteProject.UI
 {
@@ -11,6 +12,15 @@ namespace AutoSiteProject.UI
             AutofacConfig.ConfigureContainer();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+        }
+    }
+
+    public class FilterConfig
+    {
+        public static void RegisterGlobalFilters(GlobalFilterCollection filterCollection)
+        {
+            filterCollection.Add(new ErrorHandlerAttribute());
         }
     }
 }

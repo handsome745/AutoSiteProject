@@ -44,7 +44,8 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<CarBodyTypeManager>().As<ICarBodyTypeManager>();
             builder.RegisterType<CarOptionManager>().As<ICarOptionManager>();
             builder.RegisterType<CarItemManager>().As<ICarItemManager>();
-                //.WithProperty("Repository", new CarItemRepository()).InstancePerRequest();
+            builder.RegisterType<AppLogger>().As<IAppLogger>().SingleInstance();
+            //.WithProperty("Repository", new CarItemRepository()).InstancePerRequest();
         }
         private void RegisterBlFieldCopiers(ContainerBuilder builder)
         {
