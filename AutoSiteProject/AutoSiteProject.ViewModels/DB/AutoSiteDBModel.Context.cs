@@ -31,5 +31,10 @@ namespace AutoSiteProject.Models.DB
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<CarItem> CarItem { get; set; }
         public virtual DbSet<CarOption> CarOption { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
     }
 }

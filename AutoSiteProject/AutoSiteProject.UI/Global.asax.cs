@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Routing;
-using AutoSiteProject.UI.Utils;
+﻿using System.Web.Routing;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 
@@ -8,8 +6,6 @@ namespace AutoSiteProject.UI
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        private IAppLogger _appLogger;
-
         protected void Application_Start()
         {
             AutofacConfig.ConfigureContainer();

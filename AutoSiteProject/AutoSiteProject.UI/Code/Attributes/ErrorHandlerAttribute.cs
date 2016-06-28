@@ -15,14 +15,6 @@ namespace AutoSiteProject.UI.Code.Attributes
             {
                 _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
             }
-            //switch (filterContext.Exception.GetType().ToString())
-            //{
-            //    case "System.ComponentModel.WarningException":
-            //        _appLogger.WriteWarn(filterContext.Exception);
-            //        break;
-            //    default:
-            //        _appLogger.WriteError(filterContext.Exception); break;
-            //}
             if (filterContext.Exception is WarningException)
             {
                 _appLogger.WriteWarn(filterContext.Exception);

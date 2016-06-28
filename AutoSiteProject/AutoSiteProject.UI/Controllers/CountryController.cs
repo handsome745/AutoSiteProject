@@ -9,6 +9,7 @@ using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
+    [Authorize]
     public class CountryController : BaseController
     {
         private ICountryManager _countryManager;

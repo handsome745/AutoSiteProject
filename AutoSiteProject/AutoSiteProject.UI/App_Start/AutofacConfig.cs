@@ -3,7 +3,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using AutoSiteProject.Dependency;
 
-namespace AutoSiteProject.UI.Utils
+namespace AutoSiteProject.UI
 {
     public class AutofacConfig
     {

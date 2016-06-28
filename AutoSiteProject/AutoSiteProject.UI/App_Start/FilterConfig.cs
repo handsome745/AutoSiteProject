@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using AutoSiteProject.UI.Code.Attributes;
 
-namespace AutoSiteProject.UI.Utils
+namespace AutoSiteProject.UI
 {
     public class FilterConfig
     {
