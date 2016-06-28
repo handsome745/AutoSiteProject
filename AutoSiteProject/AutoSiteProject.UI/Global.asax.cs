@@ -17,15 +17,5 @@ namespace AutoSiteProject.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            if (_appLogger == null)
-            {
-                _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
-            }
-            var error = Server.GetLastError();
-            _appLogger.WriteFatal(error);
-        }
     }
 }

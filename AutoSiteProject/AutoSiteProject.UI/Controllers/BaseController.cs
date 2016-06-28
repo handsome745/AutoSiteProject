@@ -12,10 +12,5 @@ namespace AutoSiteProject.UI.Controllers
         {
             AppLogger = DependencyResolver.Current.GetService<IAppLogger>();
         }
-        protected override void OnException(ExceptionContext filterContext)
-        {
-            AppLogger.WriteDebug(new Exception($"Controller = {filterContext.Controller}, Message = {filterContext.Exception.Message}"));
-            filterContext.ExceptionHandled = true;
-        }
     }
 }

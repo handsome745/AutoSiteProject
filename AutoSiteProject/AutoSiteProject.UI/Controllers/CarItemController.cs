@@ -68,9 +68,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(int id)
         {
             var dbItem = _carItemManager.GetById(id);
-            if (dbItem == null)
-                throw new System.Data.Entity.Core.ObjectNotFoundException($"Can't find Car with id = {id}");
-
+            if (dbItem == null) throw new NullReferenceException();
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)
@@ -86,6 +84,7 @@ namespace AutoSiteProject.UI.Controllers
             if (ModelState.IsValid)
             {
                 var dbItem = _carItemManager.GetById(model.Id);
+                if (dbItem == null) throw new NullReferenceException();
                 dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
                 _carItemManager.Edit(dbItem);
                 return RedirectToAction("List");
@@ -96,7 +95,9 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
-            _carItemManager.Delete(_carItemManager.GetById(id));
+            var dbItem = _carItemManager.GetById(id);
+            if (dbItem == null) throw new NullReferenceException();
+            _carItemManager.Delete(dbItem);
             return RedirectToAction("List");
         }
     }

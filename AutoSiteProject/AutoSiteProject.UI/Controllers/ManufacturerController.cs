@@ -5,6 +5,7 @@ using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.DB;
 using System.Linq;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -59,6 +60,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             ViewBag.Countries = new SelectList(_countryManager.GetAll().ToList(), "Id", "Name");
             var dbItem = _manufacturerManager.GetById(id);
+            if (dbItem == null) throw new NullReferenceException();
             return View(_manufacturerFieldCopier.CopyFields(dbItem, new ManufacturerViewModel()));
         }
         //Post
@@ -68,6 +70,7 @@ namespace AutoSiteProject.UI.Controllers
             if (ModelState.IsValid)
             {
                 var dbItem = _manufacturerManager.GetById(model.Id);
+                if (dbItem == null) throw new NullReferenceException();
                 dbItem = _manufacturerFieldCopier.CopyFields(model, dbItem);
                 _manufacturerManager.Edit(dbItem);
                 return RedirectToAction("List");
@@ -79,6 +82,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Delete(int id)
         {
             var dbItem = _manufacturerManager.GetById(id);
+            if (dbItem == null) throw new NullReferenceException();
             _manufacturerManager.Delete(dbItem);
             return RedirectToAction("List");
         }
