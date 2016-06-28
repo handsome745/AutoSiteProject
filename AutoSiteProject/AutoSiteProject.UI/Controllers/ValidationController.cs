@@ -10,7 +10,7 @@ using System.Web.UI;
 namespace AutoSiteProject.UI.Controllers
 {
     [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
-    public class ValidationController : Controller
+    public class ValidationController : BaseController
     {
         private ICarModelManager _carModelManager;
         private IManufacturerManager _manufacturerManager;
@@ -39,7 +39,7 @@ namespace AutoSiteProject.UI.Controllers
             model.Name = model.Name.TrimStart(new char[] { ' ' });
             model.Name = model.Name.TrimEnd(new char[] { ' ' });
             if (_countryManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id).ToList().Count > 0)
-            return Json(false, JsonRequestBehavior.AllowGet);
+                return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
         public JsonResult ChecManufacturerNameForExist(ManufacturerViewModel model)
@@ -74,6 +74,6 @@ namespace AutoSiteProject.UI.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
-        
+
     }
 }

@@ -8,7 +8,7 @@ using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class CarOptionController : Controller
+    public class CarOptionController : BaseController
     {
         private ICarOptionManager _carOptionManager;
         private ICarOptionFieldCopier _carOptionFieldCopier;

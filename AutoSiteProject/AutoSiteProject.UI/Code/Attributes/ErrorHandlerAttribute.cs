@@ -20,7 +20,7 @@ namespace AutoSiteProject.UI.Code.Attributes
                     _appLogger.WriteWarn(filterContext.Exception);
                     break;
                 default:
-                    _appLogger.WriteError(filterContext.Exception);break;
+                    _appLogger.WriteError(filterContext.Exception); break;
             }
             filterContext.ExceptionHandled = true;
         }

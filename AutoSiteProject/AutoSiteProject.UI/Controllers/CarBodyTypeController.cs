@@ -8,7 +8,7 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class CarBodyTypeController : Controller
+    public class CarBodyTypeController : BaseController
     {
         private ICarBodyTypeManager _carBodyTypeManager;
         private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;

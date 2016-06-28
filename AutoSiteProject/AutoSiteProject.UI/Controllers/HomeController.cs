@@ -1,12 +1,9 @@
-﻿
-using System.ComponentModel;
-using System.Web.Mvc;
-using AutoSiteProject.Models.Bl.Interfaces;
+﻿using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
         // GET: Home

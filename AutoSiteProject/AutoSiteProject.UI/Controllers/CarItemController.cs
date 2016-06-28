@@ -9,7 +9,7 @@ using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class CarItemController : Controller
+    public class CarItemController : BaseController
     {
         private ICarItemManager _carItemManager;
         private ICarItemFieldCopier _carItemFieldCopier;

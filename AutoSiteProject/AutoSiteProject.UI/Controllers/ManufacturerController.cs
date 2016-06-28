@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.ViewModels;
@@ -9,14 +8,14 @@ using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class ManufacturerController : Controller
+    public class ManufacturerController : BaseController
     {
         private IManufacturerManager _manufacturerManager;
         private IManufacturerFieldCopier _manufacturerFieldCopier;
         private ICountryManager _countryManager;
 
         public ManufacturerController(
-            IManufacturerManager manufacturerManager, 
+            IManufacturerManager manufacturerManager,
             ICountryManager countryManager,
             IManufacturerFieldCopier manufacturerFieldCopier)
         {

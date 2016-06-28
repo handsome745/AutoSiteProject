@@ -8,7 +8,7 @@ using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    public class CountryController : Controller
+    public class CountryController : BaseController
     {
         private ICountryManager _countryManager;
         private ICountryFieldCopier _countryFieldCopier;
