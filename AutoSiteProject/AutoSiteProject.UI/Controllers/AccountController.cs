@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 namespace AutoSiteProject.UI.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

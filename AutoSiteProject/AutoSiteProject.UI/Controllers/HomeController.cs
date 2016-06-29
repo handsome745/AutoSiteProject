@@ -3,6 +3,7 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.UI.Controllers
 {
+    [RequireHttps]
     public class HomeController : BaseController
     {
 
