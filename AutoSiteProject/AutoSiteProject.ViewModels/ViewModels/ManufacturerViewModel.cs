@@ -16,5 +16,9 @@ namespace AutoSiteProject.Models.ViewModels
         public Nullable<int> CountryId { get; set; }
         
         public virtual CountryViewModel Country { get; set; }
+        public ManufacturerViewModel()
+        {
+            Country = new CountryViewModel();
+        }
     }
 }

@@ -13,11 +13,6 @@ namespace AutoSiteProject.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-            //routes.MapRoute(
-            //    name: "signin-google",
-            //    url: "signin-google",
-            //    defaults: new { controller = "Account", action = "ExternalLoginCallback" }
-            //);
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

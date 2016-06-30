@@ -6,6 +6,7 @@ using AutoSiteProject.Models.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using AutoSiteProject.Bl.IdentityClasses;
 
 namespace AutoSiteProject.UI.Controllers
 {

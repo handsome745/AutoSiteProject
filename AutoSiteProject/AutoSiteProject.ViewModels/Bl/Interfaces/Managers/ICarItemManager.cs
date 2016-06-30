@@ -6,6 +6,6 @@ namespace AutoSiteProject.Models.Bl.Interfaces
 {
     public interface ICarItemManager : IRepositoryManager<CarItem>
     {
-        List<CarAggregateViewModel> GetCarAggregateViewModel(Expression<Func<FitleXXr, bool>> filter);
+        //List<CarAggregateViewModel> GetCarAggregateViewModel(Expression<Func<FitleXXr, bool>> filter);
     }
 }

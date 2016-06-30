@@ -1,4 +1,5 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+﻿using System;
+using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
 
@@ -15,7 +16,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
 
         public ManufacturerViewModel CopyFields(Manufacturer from, ManufacturerViewModel to)
         {
-            if (to == null) to = new ManufacturerViewModel();
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Id = from.Id;
             to.Name = from.Name;
             to.CountryId = from.CountryId;
@@ -25,6 +27,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
 
         public Manufacturer CopyFields(ManufacturerViewModel from, Manufacturer to)
         {
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Name = from.Name;
             to.CountryId = from.CountryId;
             return to;

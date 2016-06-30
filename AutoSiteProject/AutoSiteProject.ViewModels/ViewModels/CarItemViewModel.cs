@@ -10,10 +10,6 @@ namespace AutoSiteProject.Models.ViewModels
 {
     public class CarItemViewModel
     {
-        public CarItemViewModel()
-        {
-            AvalibleCarOptions = new List<CarOptionViewModel>();
-        }
         public int Id { get; set; }
         [Required]
         [DisplayName("Сar manufacturer country")]
@@ -47,5 +43,14 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        public CarItemViewModel()
+        {
+            Country = new CountryViewModel();
+            Manufacturer = new ManufacturerViewModel();
+            CarModel = new CarModelViewModel();
+            CarBodyType = new CarBodyTypeViewModel();
+            AvalibleCarOptions = new List<CarOptionViewModel>();
+        }
     }
 }

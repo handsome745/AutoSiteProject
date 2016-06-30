@@ -9,7 +9,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
     {
         public CountryViewModel CopyFields(Country from, CountryViewModel to)
         {
-            if (to == null) to = new CountryViewModel();
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Id = from.Id;
             to.Name = from.Name;
             return to;
@@ -17,6 +18,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
 
         public Country CopyFields(CountryViewModel from, Country to)
         {
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Name = from.Name;
             return to;
         }
