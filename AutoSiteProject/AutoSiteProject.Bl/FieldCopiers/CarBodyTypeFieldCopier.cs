@@ -9,7 +9,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
     {
         public CarBodyTypeViewModel CopyFields(CarBodyType from, CarBodyTypeViewModel to)
         {
-            if (to == null) to = new CarBodyTypeViewModel();
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Id = from.Id;
             to.Name = from.Name;
             return to;
@@ -17,6 +18,8 @@ namespace AutoSiteProject.Bl.FieldCopiers
 
         public CarBodyType CopyFields(CarBodyTypeViewModel from, CarBodyType to)
         {
+            if (to == null) throw new NullReferenceException();
+            if (from == null) throw new NullReferenceException();
             to.Name = from.Name;
             return to;
         }

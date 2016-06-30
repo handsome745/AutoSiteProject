@@ -28,7 +28,7 @@ namespace AutoSiteProject.UI.Controllers
             _carOptionFieldCopier = carOptionFieldCopier;
         }
         // GET
-        public ActionResult List(CarAggregateFilterModel filter)
+        public ActionResult List()//CarAggregateFilterModel filter)
         {
             //TODO:
             var dbItems = _carItemManager.GetAll().ToList();

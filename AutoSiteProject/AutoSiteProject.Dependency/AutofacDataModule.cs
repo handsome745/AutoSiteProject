@@ -55,6 +55,7 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<CarBodyTypeFieldCopier>().As<ICarBodyTypeFieldCopier>().InstancePerRequest();
             builder.RegisterType<CarItemFieldCopier>().As<ICarItemFieldCopier>().InstancePerRequest();
             builder.RegisterType<CarOptionFieldCopier>().As<ICarOptionFieldCopier>().InstancePerRequest();
+            builder.RegisterType<RoleFieldCopier>().As<IRoleFieldCopier>().InstancePerRequest();
         }
     }
 }

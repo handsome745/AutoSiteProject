@@ -119,6 +119,7 @@
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarModelFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarOptionFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\IManufacturerFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\IRoleFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\IAppLogger.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICarBodyTypeManager.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICarItemManager.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="ViewModels\CountryViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\ManufacturerViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DB\AutoSiteDBModel.edmx">
