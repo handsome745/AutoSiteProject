@@ -12,7 +12,8 @@ using AutoSiteProject.Bl.IdentityClasses;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    [Authorize]
+    [RequireHttps]
+    [Authorize(Roles = "Admin")]
     public class RoleController : BaseController
     {
         private ApplicationRoleManager _roleManager;

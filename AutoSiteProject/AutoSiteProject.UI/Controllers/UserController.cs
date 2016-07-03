@@ -8,16 +8,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [RequireHttps]
+    [Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-        private IUserFieldCopier _userFieldCopier;
-        private IRoleFieldCopier _roleFieldCopier;
+        private readonly IUserFieldCopier _userFieldCopier;
+        private readonly IRoleFieldCopier _roleFieldCopier;
         public UserController(IUserFieldCopier userFieldCopier, IRoleFieldCopier roleFieldCopier)
         {
             _userFieldCopier = userFieldCopier;
@@ -45,13 +47,18 @@ namespace AutoSiteProject.UI.Controllers
                 _userManager = value;
             }
         }
-        public ActionResult List()
+        public async Task<ActionResult> List()
         {
             var usersViewModels = new List<UserViewModel>();
             var dbUsers = UserManager.Users.ToList();
             foreach (var u in dbUsers)
             {
-                usersViewModels.Add(_userFieldCopier.CopyFields(u, new UserViewModel()));
+                var q = _userFieldCopier.CopyFields(u, new UserViewModel());
+                for (int i = 0; i < q.SelectedRoles.Count(); i++)
+                {
+                    q.SelectedRoles[i] = (await RoleManager.FindByIdAsync(q.SelectedRoles[i])).Name;
+                }
+                usersViewModels.Add(q);
             }
             return View(usersViewModels);
         }
@@ -75,10 +82,31 @@ namespace AutoSiteProject.UI.Controllers
                 var dbUser = UserManager.Users.Where(u => u.Id == userViewModel.Id).FirstOrDefault();
                 if (dbUser == null) throw new ObjectNotFoundException();
                 dbUser = _userFieldCopier.CopyFields(userViewModel, dbUser);
-                await _userManager.UpdateAsync(dbUser);
+                await UserManager.UpdateAsync(dbUser);
+
+                var userRolesToDelete = UserManager.GetRoles(dbUser.Id);
+
+                foreach (var roleId in userViewModel.SelectedRoles)
+                {
+                    var role = RoleManager.FindById(roleId);
+                    if (userRolesToDelete.Contains(role.Name))
+                        userRolesToDelete.RemoveAt(userRolesToDelete.IndexOf(role.Name));
+                    UserManager.AddToRole(dbUser.Id, role.Name);
+                }
+                foreach (var roleName in userRolesToDelete)
+                {
+                    UserManager.RemoveFromRole(dbUser.Id, roleName);
+                }
+
                 return RedirectToAction("List");
             }
             return View();
+        }
+
+        public ActionResult Delete(string id)
+        {
+            UserManager.Delete(UserManager.FindById(id));
+            return RedirectToAction("List");
         }
     }
 }

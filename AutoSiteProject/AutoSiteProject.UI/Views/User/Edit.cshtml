@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Edit";
 }
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
+<script src="~/scripts/chosen.jquery.min.js"></script>
+<script src="~/scripts/AutoSite/UserEditScript.js"></script>
 
 <h2>Edit</h2>
 
@@ -34,7 +37,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.SelectedRoles, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(m => m.SelectedRoles, new SelectList(Model.AvalibleRoles, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker" })
+                @Html.ListBoxFor(m => m.SelectedRoles, new SelectList(Model.AvalibleRoles, "Id", "Name"), htmlAttributes: new { @class = "form-control role-picker" })
             </div>
         </div>
         <div class="form-group">
@@ -46,5 +49,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "List")
 </div>

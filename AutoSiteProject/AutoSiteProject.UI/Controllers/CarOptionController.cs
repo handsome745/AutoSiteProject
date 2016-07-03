@@ -9,6 +9,7 @@ using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CarOptionController : BaseController
     {
         private ICarOptionManager _carOptionManager;

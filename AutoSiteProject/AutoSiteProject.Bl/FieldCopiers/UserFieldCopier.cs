@@ -44,11 +44,6 @@ namespace AutoSiteProject.Bl.FieldCopiers
         }
         public UserViewModel CopyFields(ApplicationUser from, UserViewModel to)
         {
-            CopyFieldsAsync(from, to).Wait();
-            return to;
-        }
-        private async Task<UserViewModel> CopyFieldsAsync(ApplicationUser from, UserViewModel to)
-        {
             if (to == null) throw new NullReferenceException();
             if (from == null) throw new NullReferenceException();
             to.Id = from.Id;
@@ -66,22 +61,12 @@ namespace AutoSiteProject.Bl.FieldCopiers
             }
             return to;
         }
-
         public ApplicationUser CopyFields(UserViewModel from, ApplicationUser to)
-        {
-            CopyFieldsAsync(from, to).Wait();
-            return to;
-        }
-
-        public async Task<ApplicationUser> CopyFieldsAsync(UserViewModel from, ApplicationUser to)
         {
             if (to == null) throw new NullReferenceException();
             if (from == null) throw new NullReferenceException();
             to.UserName = from.Name;
             to.Email = from.Email;
-            to.Roles.Clear();
-            if (from.SelectedRoles != null)
-                    await UserManager.AddToRolesAsync(to.Id, from.SelectedRoles);
             return to;
         }
     }

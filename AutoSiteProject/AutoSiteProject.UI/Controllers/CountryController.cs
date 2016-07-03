@@ -9,7 +9,7 @@ using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class CountryController : BaseController
     {
         private ICountryManager _countryManager;

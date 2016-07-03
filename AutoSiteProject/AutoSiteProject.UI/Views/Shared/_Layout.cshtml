@@ -6,8 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/modernizr-2.7.2.js"></script>
+    <script src="~/scripts/jquery-3.0.0.min.js"></script>
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
 </head>
@@ -26,11 +26,16 @@
                 <ul class="nav navbar-nav">
                     @Html.ActionLink("Home", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
                     @Html.ActionLink("Cars", "List", "CarItem", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Car models", "List", "CarModel", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Car body types", "List", "CarBodyType", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Car options", "List", "CarOption", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Manufacturers", "List", "Manufacturer", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Countries", "List", "Country", new {area = ""}, new {@class = "navbar-brand"})
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Car models", "List", "CarModel", new {area = ""}, new {@class = "navbar-brand"})
+    @Html.ActionLink("Car body types", "List", "CarBodyType", new {area = ""}, new {@class = "navbar-brand"})
+    @Html.ActionLink("Car options", "List", "CarOption", new {area = ""}, new {@class = "navbar-brand"})
+    @Html.ActionLink("Manufacturers", "List", "Manufacturer", new {area = ""}, new {@class = "navbar-brand"})
+    @Html.ActionLink("Countries", "List", "Country", new {area = ""}, new {@class = "navbar-brand"})
+    @Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "navbar-brand" })
+}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

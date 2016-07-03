@@ -9,6 +9,7 @@ using System;
 
 namespace AutoSiteProject.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManufacturerController : BaseController
     {
         private IManufacturerManager _manufacturerManager;
