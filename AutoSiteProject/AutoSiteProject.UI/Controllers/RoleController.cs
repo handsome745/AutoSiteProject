@@ -17,7 +17,7 @@ namespace AutoSiteProject.UI.Controllers
     public class RoleController : BaseController
     {
         private ApplicationRoleManager _roleManager;
-        private IRoleFieldCopier _roleFieldCopier;
+        private readonly IRoleFieldCopier _roleFieldCopier;
         public RoleController(IRoleFieldCopier roleFieldCopier)
         {
             _roleFieldCopier = roleFieldCopier;

@@ -125,9 +125,10 @@ DataRender = {
     },
     renderList: function (output,picker,id) {
         picker.empty(); //remove all child nodes
-
+        var newOption = $('<option selected value>Select value</option>');
+        picker.append(newOption);
         for (var i = 0; i < output.length; i++) {
-            var newOption = $('<option value="' + output[i].Id + '">' + output[i].Name + '</option>');
+            newOption = $('<option value="' + output[i].Id + '">' + output[i].Name + '</option>');
             picker.append(newOption);
         }
         picker.val(id);
