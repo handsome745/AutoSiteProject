@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity;
 namespace AutoSiteProject.UI.Controllers
 {
     [RequireHttps]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
         private ApplicationUserManager _userManager;

@@ -12,14 +12,26 @@ namespace AutoSiteProject.Models.ViewModels
         public string BodyType { get; set; }
         public List<string> Options { get; set; }
         public string Description { get; set; }
+
+        public CarAggregateViewModel()
+        {
+            Options = new List<string>();
+        }
     }
 
     public class CarAggregateFilterViewModel
     {
-        public int CountryId { get; set; }
-        public int ManufacturerId { get; set; }
-        public int ModelId { get; set; }
-        public int BodyTypeId { get; set; }
+        public int? CountryId { get; set; }
+        public int? ManufacturerId { get; set; }
+        public int? ModelId { get; set; }
+        public int? BodyTypeId { get; set; }
         public List<string> OptionsIds { get; set; }
+        public List<CarOptionViewModel> AvalibleCarOptions { get; set; }
+
+        public CarAggregateFilterViewModel()
+        {
+            OptionsIds = new List<string>();
+            AvalibleCarOptions = new List<CarOptionViewModel>();
+        }
     }
 }
