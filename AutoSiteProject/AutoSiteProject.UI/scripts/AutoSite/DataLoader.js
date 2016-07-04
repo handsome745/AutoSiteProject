@@ -5,7 +5,6 @@
     var manufUrl = filterSection.data("manufacturers-url");
     var carModelsfUrl = filterSection.data("carmodels-url");
     var carBodyTypesfUrl = filterSection.data("carbodytype-url");
-    var carOptionsUrl = filterSection.data("caroptions-url");
     //Pickers
     var countryPicker = $(".country-picker", filterSection);
     var manufacturerPicker = $(".manufacturer-picker", filterSection);
@@ -100,27 +99,13 @@ DataLoader = {
                 alert("Error loading car model types");
             }
         });
-    },
-    loadCarOptions: function (url, picker, checkedOptions) {
-        $.ajax({
-            type: "GET",
-            asynch: true,
-            url: url,
-            success: function (output) {
-                DataRender.renderCarOptionsList(output, picker, checkedOptions);
-            },
-            error: function (err, a, c) {
-                alert("Error loading car model types");
-            }
-        });
     }
-
 }
 DataRender = {
     clearSelectorsAndDisable: function(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
-            selectorsArray[i].prop('disabled', 'disabled');//.trigger("liszt:updated");
+            selectorsArray[i].prop('disabled', 'disabled');
         }
     },
     renderList: function (output,picker,id) {
@@ -134,15 +119,5 @@ DataRender = {
         picker.val(id);
         if (id > 0) picker.change();
         picker.trigger("chosen:updated");
-    },
-    renderCarOptionsList: function (output, picker, checkedOptions) {
-        var result = "";
-        for (var i = 0; i < output.length; i++) {
-            result += "<input type='checkbox' name='CarOptions' class='carOption' value=";
-            result += output[i].Id;
-            if ($.inArray(output[i].id, checkedOptions) != -1) result += "checked";
-            result += ">" + output[i].Name + "<br>";
-        }
-        picker.html(result);
     }
 }

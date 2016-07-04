@@ -31,27 +31,12 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Index(CarAggregateFilterViewModel filter)
         {
             if (filter == null) filter = new CarAggregateFilterViewModel();
-            List<CarAggregateViewModel> carsList = _carItemManager.GetCarsAggregateViewModel(filter);
             foreach (var co in _carOptionManager.GetAll())
             {
                 filter.AvalibleCarOptions.Add(_carOptionFieldCopier.CopyFields(co, new CarOptionViewModel()));
             }
             ViewBag.CarFilter = filter;
-            return View(carsList);
-        }
-        [HttpPost]
-        public ActionResult GetCars(CarAggregateFilterViewModel filter)
-        {
-            if (filter == null) throw new NullReferenceException();
-            return RedirectToAction("Index",
-                new
-                {
-                    CountryId = filter.CountryId,
-                    ManufacturerId = filter.ManufacturerId,
-                    ModelId = filter.ModelId,
-                    BodyTypeId = filter.BodyTypeId,
-                    OptionsIds = filter.OptionsIds.Select(o => true)
-                });
+            return View(new List<CarAggregateViewModel>());
         }
     }
 }

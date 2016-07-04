@@ -7,9 +7,10 @@
 <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/scripts/chosen.jquery.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
+<script src="~/scripts/AutoSite/CarFilter.js"></script>
 
 <hr />
-<div class="filter-section" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
+<div class="filter-section" data-cars-url="@Url.Action("GetCars", "DataLoader")" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
     <div class="form-group">
         @Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -35,9 +36,15 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.OptionsIds, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(m => m.OptionsIds, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            @Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker" })
+            @Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new {@class = "form-control caroptions-picker"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "form-control description-picker" })
         </div>
     </div>
 </div>

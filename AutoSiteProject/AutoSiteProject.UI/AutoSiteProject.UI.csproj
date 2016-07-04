@@ -200,6 +200,7 @@
     <None Include="Properties\PublishProfiles\AutoSite.pubxml" />
     <None Include="Properties\PublishProfiles\localhostAutoSite.pubxml" />
     <None Include="Properties\PublishProfiles\webDeployAS.pubxml" />
+    <Content Include="scripts\AutoSite\CarFilter.js" />
     <Content Include="scripts\AutoSite\DataLoader.js" />
     <Content Include="scripts\AutoSite\UserEditScript.js" />
     <Content Include="scripts\bootstrap.js" />

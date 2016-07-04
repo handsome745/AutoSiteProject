@@ -7,21 +7,9 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm("GetCars", "Home"))
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Car filter</h4>
         @Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Filter" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-<table class="table">
+<table class="table cars-result">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CarId)
