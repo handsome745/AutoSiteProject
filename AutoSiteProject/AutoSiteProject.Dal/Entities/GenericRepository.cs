@@ -1,7 +1,9 @@
 ﻿using AutoSiteProject.Models.Dal.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Dal.Entities
 {
@@ -21,9 +23,9 @@ namespace AutoSiteProject.Dal.Entities
             return query;
         }
 
-        public IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
-            IQueryable<T> query = _unitOfWork.Set<T>().Where(predicate);
+            IEnumerable<T> query = _unitOfWork.Set<T>().Where(predicate);
             return query;
         }
         public T GetById(int id)

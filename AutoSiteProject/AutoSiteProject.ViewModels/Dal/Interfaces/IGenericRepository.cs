@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace AutoSiteProject.Models.Dal.Interfaces
@@ -9,7 +8,7 @@ namespace AutoSiteProject.Models.Dal.Interfaces
     {
 
         IEnumerable<T> GetAll();
-        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
         T GetById(int id);
         void Add(T entity);
         void Delete(T entity);

@@ -1,5 +1,4 @@
-﻿@using AutoSiteProject.Models.ViewModels
-@model IEnumerable<CarAggregateViewModel>
+﻿@model IEnumerable<AutoSiteProject.Models.ViewModels.CarAggregateViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,20 +6,6 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm("GetCars", "Home"))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Car filter</h4>
-        @Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Filter" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
 <table class="table">
     <tr>
         <th>
@@ -44,39 +29,37 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-
+        
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyType)
-            </td>
-            <td>
-                @foreach (var opt in item.Options)
-                {
-                    @Html.Label(opt)
-                    if (item.Options.IndexOf(opt) != item.Options.Count - 1)
-                    { @Html.Label(", ")}
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyType)
+        </td>
+        <td>
+            @foreach (var opt in item.Options)
+            {
+                @Html.Label(opt)
+                if (item.Options.IndexOf(opt) != item.Options.Count -1 ) { @Html.Label(", ")}
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
 
 </table>
