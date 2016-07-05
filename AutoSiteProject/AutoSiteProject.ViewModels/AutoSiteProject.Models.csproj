@@ -131,6 +131,7 @@
     <Compile Include="Bl\Interfaces\Managers\IManufacturerManager.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\IFieldCoopier.cs" />
     <Compile Include="Bl\Interfaces\Managers\IRepositoryManager.cs" />
+    <Compile Include="Dal\Interfaces\ICarItemRpository.cs" />
     <Compile Include="Dal\Interfaces\IGenericRepository.cs" />
     <Compile Include="Dal\Interfaces\IUnitOfWork.cs" />
     <Compile Include="DB\AspNetRoles.cs">

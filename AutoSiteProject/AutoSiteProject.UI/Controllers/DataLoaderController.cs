@@ -9,18 +9,18 @@ namespace AutoSiteProject.UI.Controllers
 {
     public class DataLoaderController : BaseController
     {
-        private ICarModelManager _carModelManager;
-        private IManufacturerManager _manufacturerManager;
-        private ICountryManager _countryManager;
-        private ICarBodyTypeManager _carBodyTypeManager;
-        private ICarOptionManager _carOptionManager;
+        private readonly ICarModelManager _carModelManager;
+        private readonly IManufacturerManager _manufacturerManager;
+        private readonly ICountryManager _countryManager;
+        private readonly ICarBodyTypeManager _carBodyTypeManager;
+        private readonly ICarOptionManager _carOptionManager;
 
-        private ICarModelFieldCopier _carModelFieldCopier;
-        private IManufacturerFieldCopier _manufacturerFieldCopier;
-        private ICountryFieldCopier _countryFieldCopier;
-        private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
-        private ICarOptionFieldCopier _carOptionFieldCopier;
-
+        private readonly ICarModelFieldCopier _carModelFieldCopier;
+        private readonly IManufacturerFieldCopier _manufacturerFieldCopier;
+        private readonly ICountryFieldCopier _countryFieldCopier;
+        private readonly ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
+        private readonly ICarOptionFieldCopier _carOptionFieldCopier;
+        private readonly ICarItemManager _carItemManager;
 
         public DataLoaderController(
             ICarModelManager carModelManager,
@@ -32,7 +32,8 @@ namespace AutoSiteProject.UI.Controllers
             IManufacturerFieldCopier manufacturerFieldCopier,
             ICountryFieldCopier countryFieldCopier,
             ICarBodyTypeFieldCopier carBodyTypeFieldCopier,
-            ICarOptionFieldCopier carOptionFieldCopier
+            ICarOptionFieldCopier carOptionFieldCopier,
+            ICarItemManager carItemManager
             )
         {
             _carModelManager = carModelManager;
@@ -46,6 +47,14 @@ namespace AutoSiteProject.UI.Controllers
             _countryFieldCopier = countryFieldCopier;
             _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
             _carOptionFieldCopier = carOptionFieldCopier;
+            _carItemManager = carItemManager;
+        }
+        [HttpPost]
+        public JsonResult GetCars(CarAggregateFilterViewModel filter)
+        {
+            if (filter == null) filter = new CarAggregateFilterViewModel();
+            List<CarAggregateViewModel> carsList = _carItemManager.GetCarsAggregateViewModel(filter);
+            return Json(carsList, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCountries()

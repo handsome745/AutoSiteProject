@@ -30,7 +30,7 @@ namespace AutoSiteProject.Dependency
 
             builder.RegisterType<CountryRepository>().As<IGenericRepository<Country>>();
             builder.RegisterType<CarOptionRepository>().As<IGenericRepository<CarOption>>();
-            builder.RegisterType<CarItemRepository>().As<IGenericRepository<CarItem>>();
+            builder.RegisterType<CarItemRepository>().As<ICarItemRpository>();
             builder.RegisterType<CarModelRepository>().As<IGenericRepository<CarModel>>();
             builder.RegisterType<ManufacturerRepository>().As<IGenericRepository<Manufacturer>>();
             builder.RegisterType<CarBodyTypeRepository>().As<IGenericRepository<CarBodyType>>();

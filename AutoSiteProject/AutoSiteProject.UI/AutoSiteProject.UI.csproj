@@ -200,6 +200,7 @@
     <None Include="Properties\PublishProfiles\AutoSite.pubxml" />
     <None Include="Properties\PublishProfiles\localhostAutoSite.pubxml" />
     <None Include="Properties\PublishProfiles\webDeployAS.pubxml" />
+    <Content Include="scripts\AutoSite\CarFilter.js" />
     <Content Include="scripts\AutoSite\DataLoader.js" />
     <Content Include="scripts\AutoSite\UserEditScript.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -224,7 +225,9 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.7.2.js" />
     <Content Include="scripts\prototype.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -277,7 +280,7 @@
     <Content Include="Views\CarItem\List.cshtml" />
     <Content Include="Views\CarItem\Create.cshtml" />
     <Content Include="Views\CarItem\Edit.cshtml" />
-    <Content Include="Views\Shared\_CarFilter.cshtml" />
+    <Content Include="Views\Shared\_CarItem.cshtml" />
     <Content Include="Views\Error\InternalServer.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
@@ -310,6 +313,7 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Shared\_CarFilter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
