@@ -6,9 +6,7 @@
 }
 
 <h2>Index</h2>
-
-
-        @Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
+@Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
 <table class="table cars-result">
     <tr>
         <th>
@@ -37,34 +35,35 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyType)
-            </td>
-            <td>
-                @foreach (var opt in item.OptionsNames)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyType)
+        </td>
+        <td>
+            @foreach (var opt in item.OptionsNames)
                 {
-                    @Html.Label(opt)
+                @Html.Label(opt)
                     if (item.OptionsNames.IndexOf(opt) != item.OptionsNames.Count - 1)
                     { @Html.Label(", ")}
                 }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
     }
 
 </table>
+@Html.Action("GetCarsParial","DataLoader", new { ViewBag.CarFilter})

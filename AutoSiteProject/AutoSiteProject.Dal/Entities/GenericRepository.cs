@@ -17,7 +17,6 @@ namespace AutoSiteProject.Dal.Entities
         }
         public virtual IEnumerable<T> GetAll()
         {
-
             IEnumerable<T> query = _unitOfWork.Set<T>().ToList();
             return query;
         }

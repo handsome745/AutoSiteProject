@@ -100,5 +100,11 @@ namespace AutoSiteProject.UI.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetCarsParial(CarAggregateFilterViewModel filter)
+        {
+            if (filter == null) filter = new CarAggregateFilterViewModel();
+            var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
+            return PartialView("_CarsGridViewPartial",carsList);
+        }
     }
 }

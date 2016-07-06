@@ -1,0 +1,27 @@
+﻿@using System.Web.UI.WebControls
+@using AutoSiteProject.Models.ViewModels
+@model IEnumerable<CarAggregateViewModel>
+
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "carsGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsParial" };
+    //settings.CustomActionRouteValues = new { Cotroller = "GroupingSorting", Action = "CustomGroupingPartial" };
+    settings.Width = Unit.Percentage(100);
+
+    //settings.Columns.Add("CarId");
+    settings.Columns.Add("Country");//.GroupIndex = 0;
+    settings.Columns.Add("Manufacturer");
+    settings.Columns.Add("Model");
+    settings.Columns.Add("BodyType");
+    settings.Columns.Add("Description");
+
+    settings.Settings.ShowGroupPanel = true;
+    settings.KeyFieldName = "CarId";
+    //settings.BeforeGetCallbackResult = (sender, e) =>
+    //{
+    //    var grid = (MVCxGridView)sender;
+    //    grid.GroupBy(grid.Columns["Country"]);
+    //    grid.ExpandAll();
+    //};
+}).Bind(Model).GetHtml()

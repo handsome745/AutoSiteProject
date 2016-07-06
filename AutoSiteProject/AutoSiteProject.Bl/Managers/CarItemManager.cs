@@ -27,8 +27,8 @@ namespace AutoSiteProject.Bl.Managers
                 predicateBuilder = predicateBuilder.And(c => c.ManufacturerId == filter.ManufacturerId);
             if (filter.CountryId != null)
                 predicateBuilder = predicateBuilder.And(c => c.CountryId == filter.CountryId);
-            if (filter.OptionsIds.Count > 0)
-                predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Any());
+            if (filter.OptionsIds!= null && filter.OptionsIds.Count > 0)
+                predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Count() >= filter.OptionsIds.Count);
             if (!string.IsNullOrEmpty(filter.Description))
                 predicateBuilder = predicateBuilder.And(c => c.Description.Contains(filter.Description));
             var result = _carRepository.GetCarsAggregateViewModel(predicateBuilder).ToList();

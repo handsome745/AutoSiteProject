@@ -11,16 +11,12 @@
     var carsResult = $("table.cars-result");
     var carsUrl = filterSection.data("cars-url");
 
-    var func = function() {
+    var func = function () {
+        var carFilter = $("form").serialize();
         CarFilter.loadCarsList(
             carsUrl,
             carsResult,
-            countryPicker.val(),
-            manufacturerPicker.val(),
-            carmodelPicker.val(),
-            carbodytypePicker.val(),
-            carOptionsPicker.chosen().val(),
-            descriptionPicker.val()
+            carFilter
         );
     }
 
@@ -29,26 +25,21 @@
     carmodelPicker.change(func);
     carbodytypePicker.change(func);
     carOptionsPicker.change(func);
-    descriptionPicker.keyup(func);
+    descriptionPicker.keyup(function () {
+        setTimeout(func, 300);
+    });
     func();
 });
 
 CarFilter = {
-    loadCarsList: function (url, carsResult, countryId, manufacturerId, carModelId, carBodyTypeId, carOptionsIds, description) {
-        var data = {
-            CountryId: countryId,
-            ManufacturerId: manufacturerId,
-            ModelId: carModelId,
-            BodyTypeId: carBodyTypeId,
-            OptionsIds: carOptionsIds.map(Number),
-            Description: description
-        };
+    loadCarsList: function (url, carsResult, carFilter) {
+
         $.ajax({
             type: "POST",
             asynch: true,
             url: url,
             dataType: "json",
-            data: data,
+            data: carFilter,
             success: function (output) {
                 CarFilter.renderCarList(output, carsResult);
             },
@@ -62,12 +53,12 @@ CarFilter = {
         var result = "";
         for (var i = 0; i < output.length; i++) {
             result += "<tr>";
-            result += "<td>"+output[i].CarId +"</td>";
-            result += "<td>"+output[i].Country +"</td>";
-            result += "<td>"+output[i].Manufacturer +"</td>";
-            result += "<td>"+output[i].Model +"</td>";
-            result += "<td>"+output[i].BodyType +"</td>";
-            result += "<td>"+output[i].OptionsNames +"</td>";
+            result += "<td>" + output[i].CarId + "</td>";
+            result += "<td>" + output[i].Country + "</td>";
+            result += "<td>" + output[i].Manufacturer + "</td>";
+            result += "<td>" + output[i].Model + "</td>";
+            result += "<td>" + output[i].BodyType + "</td>";
+            result += "<td>" + output[i].OptionsNames + "</td>";
             result += "<td>" + output[i].Description + "</td>";
             result += "</tr>";
         }
