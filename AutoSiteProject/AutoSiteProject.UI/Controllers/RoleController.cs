@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,11 +15,12 @@ namespace AutoSiteProject.UI.Controllers
     [Authorize(Roles = "Admin")]
     public class RoleController : BaseController
     {
-        private ApplicationRoleManager _roleManager;
+        private readonly ApplicationRoleManager _roleManager;
         private readonly IRoleFieldCopier _roleFieldCopier;
         public RoleController(IRoleFieldCopier roleFieldCopier)
         {
             _roleFieldCopier = roleFieldCopier;
+            _roleManager = RoleManager;
         }
 
         public ApplicationRoleManager RoleManager
@@ -29,10 +29,6 @@ namespace AutoSiteProject.UI.Controllers
             {
                 return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
             }
-            private set
-            {
-                _roleManager = value;
-            }
         }
 
 
@@ -40,12 +36,8 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Role
         public ActionResult List()
         {
-            var rolesViewModels = new List<RoleViewModel>();
             var dbRoles = RoleManager.Roles.ToList();
-            foreach (var r in dbRoles)
-            {
-                rolesViewModels.Add(_roleFieldCopier.CopyFields(r, new RoleViewModel()));
-            }
+            var rolesViewModels = dbRoles.Select(r => _roleFieldCopier.CopyFields(r, new RoleViewModel())).ToList();
             return View(rolesViewModels);
         }
 

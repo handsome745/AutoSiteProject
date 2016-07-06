@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -12,6 +11,5 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Name")]
         [Remote("CheckBodyTypeNameForExist", "Validation", AdditionalFields = "Id", ErrorMessage = "Car body type with same name already exist.")]
         public string Name { get; set; }
-               
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
-namespace AutoSiteProject.Models.Bl.Interfaces
+namespace AutoSiteProject.Models.Bl.Interfaces.Managers
 {
     public interface ICarItemManager : IRepositoryManager<CarItem>
     {

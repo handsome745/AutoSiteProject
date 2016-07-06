@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace AutoSiteProject.Models.ViewModels
 {
-    public class ManufacturerViewModel
+    public sealed class ManufacturerViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -13,9 +12,9 @@ namespace AutoSiteProject.Models.ViewModels
         [Remote("ChecManufacturerNameForExist", "Validation", AdditionalFields = "Id, CountryId", ErrorMessage = "Manufacturer with same name already exist.")]
         public string Name { get; set; }
         [DisplayName("Country")]
-        public Nullable<int> CountryId { get; set; }
-        
-        public virtual CountryViewModel Country { get; set; }
+        public int? CountryId { get; set; }
+
+        public CountryViewModel Country { get; set; }
         public ManufacturerViewModel()
         {
             Country = new CountryViewModel();

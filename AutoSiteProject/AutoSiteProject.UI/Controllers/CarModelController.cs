@@ -1,20 +1,19 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces;
-using AutoSiteProject.Models.DB;
+﻿using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CarModelController : BaseController
     {
-        private ICarModelManager _carModelManager;
-        private IManufacturerManager _manufacturerManager;
-        private ICarModelFieldCopier _carModelFieldCopier;
+        private readonly ICarModelManager _carModelManager;
+        private readonly IManufacturerManager _manufacturerManager;
+        private readonly ICarModelFieldCopier _carModelFieldCopier;
 
         public CarModelController(ICarModelManager carModelManager,
             IManufacturerManager manufacturerManager,
@@ -29,11 +28,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult List()
         {
             var dbItems = _carModelManager.GetAll().ToList();
-            var result = new List<CarModelViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carModelFieldCopier.CopyFields(item, new CarModelViewModel()));
-            }
+            var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
             return View(result);
         }
 

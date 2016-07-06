@@ -6,69 +6,30 @@ namespace AutoSiteProject.Bl.Managers
 {
     public class AppLogger : IAppLogger
     {
-        public AppLogger()
-        {
-
-        }
         public void WriteError(Exception ex)
         {
-            try
-            {
-                var appLogger = NLog.LogManager.GetCurrentClassLogger();
-                appLogger.Log(LogLevel.Error, ex.Message);
-            }
-            catch 
-            {
-                throw;
-            }
+            var appLogger = LogManager.GetCurrentClassLogger();
+            appLogger.Log(LogLevel.Error, ex.Message);
         }
         public void WriteWarn(Exception ex)
         {
-            try
-            {
-                var appLogger = NLog.LogManager.GetCurrentClassLogger();
-                appLogger.Log(LogLevel.Warn, ex.Message);
-            }
-            catch 
-            {
-                throw;
-            }
+            var appLogger = LogManager.GetCurrentClassLogger();
+            appLogger.Log(LogLevel.Warn, ex.Message);
         }
         public void WriteDebug(Exception ex)
         {
-            try
-            {
-                var appLogger = NLog.LogManager.GetCurrentClassLogger();
-                appLogger.Log(LogLevel.Debug, ex.Message);
-            }
-            catch
-            {
-                throw;
-            }
+            var appLogger = LogManager.GetCurrentClassLogger();
+            appLogger.Log(LogLevel.Debug, ex.Message);
         }
         public void WriteFatal(Exception ex)
         {
-            try
-            {
-                var appLogger = NLog.LogManager.GetCurrentClassLogger();
-                appLogger.Log(LogLevel.Fatal, ex.Message);
-            }
-            catch
-            {
-                throw;
-            }
+            var appLogger = LogManager.GetCurrentClassLogger();
+            appLogger.Log(LogLevel.Fatal, ex.Message);
         }
         public void WriteInfo(Exception ex)
         {
-            try
-            {
-                var appLogger = NLog.LogManager.GetCurrentClassLogger();
-                appLogger.Log(LogLevel.Info, ex.Message);
-            }
-            catch
-            {
-                throw;
-            }
+            var appLogger = LogManager.GetCurrentClassLogger();
+            appLogger.Log(LogLevel.Info, ex.Message);
         }
 
     }

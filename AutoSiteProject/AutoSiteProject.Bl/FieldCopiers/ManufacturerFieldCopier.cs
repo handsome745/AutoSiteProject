@@ -7,7 +7,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
 {
     public class ManufacturerFieldCopier : IManufacturerFieldCopier
     {
-        private ICountryFieldCopier _countryFieldCopier;
+        private readonly ICountryFieldCopier _countryFieldCopier;
 
         public ManufacturerFieldCopier(ICountryFieldCopier countryFieldCopier)
         {

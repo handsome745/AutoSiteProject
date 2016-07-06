@@ -1,9 +1,8 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
-using System.Collections.Generic;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -53,7 +52,7 @@ namespace AutoSiteProject.UI.Controllers
         public JsonResult GetCars(CarAggregateFilterViewModel filter)
         {
             if (filter == null) filter = new CarAggregateFilterViewModel();
-            List<CarAggregateViewModel> carsList = _carItemManager.GetCarsAggregateViewModel(filter);
+            var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
             return Json(carsList, JsonRequestBehavior.AllowGet);
         }
 
@@ -61,22 +60,14 @@ namespace AutoSiteProject.UI.Controllers
         {
 
             var dbItems = _countryManager.GetAll().ToList();
-            var result = new List<CountryViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_countryFieldCopier.CopyFields(item, new CountryViewModel()));
-            }
+            var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetManufacturersOfCountry(int id)
         {
             var dbItems = _manufacturerManager.GetAll().Where(m => m.CountryId == id).ToList();
-            var result = new List<ManufacturerViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel()));
-            }
+            var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
@@ -84,22 +75,14 @@ namespace AutoSiteProject.UI.Controllers
         public JsonResult GetCarModelsOfManufacturer(int id)
         {
             var dbItems = _carModelManager.GetAll().Where(m => m.ManufacturerId == id).ToList();
-            var result = new List<CarModelViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carModelFieldCopier.CopyFields(item, new CarModelViewModel()));
-            }
+            var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetBodyTypes()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
-            var result = new List<CarBodyTypeViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel()));
-            }
+            var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -107,21 +90,13 @@ namespace AutoSiteProject.UI.Controllers
         {
 
             var dbItems = _carOptionManager.GetAll().Where(co => co.CarItem.Any(ci => ci.Id == id)).ToList();
-            var result = new List<CarOptionViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
-            }
+            var result = dbItems.Select(item => _carOptionFieldCopier.CopyFields(item, new CarOptionViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCarOptions()
         {
             var dbItems = _carOptionManager.GetAll().ToList();
-            var result = new List<CarOptionViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carOptionFieldCopier.CopyFields(item, new CarOptionViewModel()));
-            }
+            var result = dbItems.Select(item => _carOptionFieldCopier.CopyFields(item, new CarOptionViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

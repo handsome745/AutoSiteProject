@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -21,7 +19,8 @@ namespace AutoSiteProject.Models.DB
 
     public class ApplicationRole : IdentityRole
     {
-        public ApplicationRole() : base() { }
+        public ApplicationRole()
+        { }
         public ApplicationRole(string name) : base(name) { }
         public string Description { get; set; }
     }

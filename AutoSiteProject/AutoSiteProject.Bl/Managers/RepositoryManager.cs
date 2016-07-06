@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using AutoSiteProject.Models.Bl.Interfaces;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.Dal.Interfaces;
-using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
     public abstract class RepositoryManager<T> : IRepositoryManager<T>
         where T : class 
     {
-        private IGenericRepository<T> _tRepository;
-        private IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<T> _tRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RepositoryManager(IGenericRepository<T> repository, IUnitOfWork unitOfWork)
+        protected RepositoryManager(IGenericRepository<T> repository, IUnitOfWork unitOfWork)
         {
             _tRepository = repository;
             _unitOfWork = unitOfWork;

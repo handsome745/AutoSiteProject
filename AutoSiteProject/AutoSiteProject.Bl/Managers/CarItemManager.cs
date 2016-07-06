@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using AutoSiteProject.Models.Bl.Interfaces;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.Dal.Interfaces;
 using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
@@ -20,7 +18,6 @@ namespace AutoSiteProject.Bl.Managers
         }
         public List<CarAggregateViewModel> GetCarsAggregateViewModel(CarAggregateFilterViewModel filter)
         {
-            List<CarAggregateViewModel> result = new List<CarAggregateViewModel>();
             var predicateBuilder = PredicateBuilder.True<CarAggregateViewModel>();
             if (filter.BodyTypeId != null)
                 predicateBuilder = predicateBuilder.And(c => c.BodyTypeId == filter.BodyTypeId);
@@ -34,7 +31,7 @@ namespace AutoSiteProject.Bl.Managers
                 predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Any());
             if (!string.IsNullOrEmpty(filter.Description))
                 predicateBuilder = predicateBuilder.And(c => c.Description.Contains(filter.Description));
-            result = _carRepository.GetCarsAggregateViewModel(predicateBuilder).ToList();
+            var result = _carRepository.GetCarsAggregateViewModel(predicateBuilder).ToList();
             return result;
         }
     }

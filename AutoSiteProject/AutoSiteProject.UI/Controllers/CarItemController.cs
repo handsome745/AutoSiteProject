@@ -1,20 +1,19 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces;
-using AutoSiteProject.Models.DB;
+﻿using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     public class CarItemController : BaseController
     {
-        private ICarItemManager _carItemManager;
-        private ICarItemFieldCopier _carItemFieldCopier;
-        private ICarOptionManager _carOptionsManager;
-        private ICarOptionFieldCopier _carOptionFieldCopier;
+        private readonly ICarItemManager _carItemManager;
+        private readonly ICarItemFieldCopier _carItemFieldCopier;
+        private readonly ICarOptionManager _carOptionsManager;
+        private readonly ICarOptionFieldCopier _carOptionFieldCopier;
         public CarItemController(
             ICarItemManager carItemManager,
             ICarItemFieldCopier carItemFieldCopier,
@@ -30,13 +29,8 @@ namespace AutoSiteProject.UI.Controllers
         // GET
         public ActionResult List()//CarAggregateFilterModel filter)
         {
-            //TODO:
             var dbItems = _carItemManager.GetAll().ToList();
-            var result = new List<CarItemViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carItemFieldCopier.CopyFields(item, new CarItemViewModel()));
-            }
+            var result = dbItems.Select(item => _carItemFieldCopier.CopyFields(item, new CarItemViewModel())).ToList();
             return View(result);
         }
 
@@ -61,7 +55,7 @@ namespace AutoSiteProject.UI.Controllers
                 _carItemManager.Add(_carItemFieldCopier.CopyFields(model, new CarItem()));
                 return RedirectToAction("List");
             }
-            return View(model);
+            return View("Create", model);
         }
 
         //GET 

@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoSiteProject.Bl.Managers;
-using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.ViewModels;
-using LinqKit;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [RequireHttps]
     public class HomeController : BaseController
     {
-        private readonly ICarItemManager _carItemManager;
         private readonly ICarOptionManager _carOptionManager;
         private readonly ICarOptionFieldCopier _carOptionFieldCopier;
 
         public HomeController(
-            ICarItemManager carItemManager,
             ICarOptionManager carOptionManager,
             ICarOptionFieldCopier carOptionFieldCopier)
         {
-            _carItemManager = carItemManager;
             _carOptionManager = carOptionManager;
             _carOptionFieldCopier = carOptionFieldCopier;
         }

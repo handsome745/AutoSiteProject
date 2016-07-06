@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using AutoSiteProject.Models.Bl.Interfaces;
-using NLog;
 using System.Web.Mvc;
-using System;
 
 namespace AutoSiteProject.UI.Code.Attributes
 {
@@ -20,12 +18,11 @@ namespace AutoSiteProject.UI.Code.Attributes
                 _appLogger.WriteWarn(filterContext.Exception);
             }
             else
-            if (filterContext.Exception is Exception)
             {
                 _appLogger.WriteError(filterContext.Exception);
             }
             filterContext.ExceptionHandled = true;
-            filterContext.Result = new ViewResult { ViewName= "~/Views/Error/Index.cshtml"};
+            filterContext.Result = new ViewResult { ViewName = "~/Views/Error/Index.cshtml" };
 
         }
 

@@ -16,14 +16,16 @@ namespace AutoSiteProject.UI.Controllers
     //[Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+        private readonly ApplicationUserManager _userManager;
+        private readonly ApplicationRoleManager _roleManager;
         private readonly IUserFieldCopier _userFieldCopier;
         private readonly IRoleFieldCopier _roleFieldCopier;
         public UserController(IUserFieldCopier userFieldCopier, IRoleFieldCopier roleFieldCopier)
         {
             _userFieldCopier = userFieldCopier;
             _roleFieldCopier = roleFieldCopier;
+            _roleManager = RoleManager;
+            _userManager = UserManager;
         }
         public ApplicationRoleManager RoleManager
         {
@@ -31,20 +33,12 @@ namespace AutoSiteProject.UI.Controllers
             {
                 return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
             }
-            private set
-            {
-                _roleManager = value;
-            }
         }
         public ApplicationUserManager UserManager
         {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().Get<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
             }
         }
         public async Task<ActionResult> List()
@@ -54,7 +48,7 @@ namespace AutoSiteProject.UI.Controllers
             foreach (var u in dbUsers)
             {
                 var q = _userFieldCopier.CopyFields(u, new UserViewModel());
-                for (int i = 0; i < q.SelectedRoles.Count(); i++)
+                for (int i = 0; i < q.SelectedRoles.Length; i++)
                 {
                     q.SelectedRoles[i] = (await RoleManager.FindByIdAsync(q.SelectedRoles[i])).Name;
                 }
@@ -64,7 +58,7 @@ namespace AutoSiteProject.UI.Controllers
         }
         public ActionResult Edit(string id)
         {
-            var dbUser = UserManager.Users.Where(u => u.Id == id).FirstOrDefault();
+            var dbUser = UserManager.Users.FirstOrDefault(u => u.Id == id);
             if (dbUser == null) throw new ObjectNotFoundException();
             var userViewModel = _userFieldCopier.CopyFields(dbUser, new UserViewModel());
             var dbRoles = RoleManager.Roles.ToList();
@@ -79,7 +73,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dbUser = UserManager.Users.Where(u => u.Id == userViewModel.Id).FirstOrDefault();
+                var dbUser = UserManager.Users.FirstOrDefault(u => u.Id == userViewModel.Id);
                 if (dbUser == null) throw new ObjectNotFoundException();
                 dbUser = _userFieldCopier.CopyFields(userViewModel, dbUser);
                 await UserManager.UpdateAsync(dbUser);

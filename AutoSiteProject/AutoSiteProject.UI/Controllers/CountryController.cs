@@ -1,19 +1,18 @@
-﻿using AutoSiteProject.Models.Bl.Interfaces;
-using AutoSiteProject.Models.DB;
+﻿using AutoSiteProject.Models.DB;
 using AutoSiteProject.Models.ViewModels;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CountryController : BaseController
     {
-        private ICountryManager _countryManager;
-        private ICountryFieldCopier _countryFieldCopier;
+        private readonly ICountryManager _countryManager;
+        private readonly ICountryFieldCopier _countryFieldCopier;
 
         public CountryController(ICountryManager countryManager, ICountryFieldCopier countryFieldCopier)
         {
@@ -25,11 +24,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult List()
         {
             var dbItems = _countryManager.GetAll().ToList();
-            var result = new List<CountryViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_countryFieldCopier.CopyFields(item, new CountryViewModel()));
-            }
+            var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
             return View(result);
         }
 

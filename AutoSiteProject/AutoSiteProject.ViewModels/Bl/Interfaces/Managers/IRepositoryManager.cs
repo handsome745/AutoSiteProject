@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AutoSiteProject.Models.Bl.Interfaces
+namespace AutoSiteProject.Models.Bl.Interfaces.Managers
 {
     public interface IRepositoryManager<T> where T: class 
     {

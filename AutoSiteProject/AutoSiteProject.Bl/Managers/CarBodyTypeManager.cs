@@ -1,4 +1,5 @@
 ﻿using AutoSiteProject.Models.Bl.Interfaces;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.Dal.Interfaces;
 using AutoSiteProject.Models.DB;
 

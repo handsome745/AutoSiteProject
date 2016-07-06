@@ -11,7 +11,7 @@ namespace AutoSiteProject.Dal.Entities
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GenericRepository(IUnitOfWork unitOfWork)
+        protected GenericRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

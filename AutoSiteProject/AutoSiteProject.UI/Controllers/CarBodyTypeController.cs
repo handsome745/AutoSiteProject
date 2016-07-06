@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.DB;
 using System;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class CarBodyTypeController : BaseController
     {
-        private ICarBodyTypeManager _carBodyTypeManager;
-        private ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
+        private readonly ICarBodyTypeManager _carBodyTypeManager;
+        private readonly ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
 
         public CarBodyTypeController(ICarBodyTypeManager carBodyTypeManager, ICarBodyTypeFieldCopier carBodyTypeFieldCopier)
         {
@@ -25,11 +24,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult List()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
-            var result = new List<CarBodyTypeViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel()));
-            }
+            var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
             return View(result);
         }
 
@@ -56,7 +51,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             var dbItem = _carBodyTypeManager.GetById(id);
             if (dbItem == null) throw new NullReferenceException();
-            return View(_carBodyTypeFieldCopier.CopyFields(dbItem,new CarBodyTypeViewModel()));
+            return View(_carBodyTypeFieldCopier.CopyFields(dbItem, new CarBodyTypeViewModel()));
         }
         //Post
         [HttpPost]

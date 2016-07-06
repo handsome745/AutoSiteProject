@@ -10,7 +10,7 @@ namespace AutoSiteProject.Dal.Entities
 {
     public class CarItemRepository : GenericRepository<CarItem>, ICarItemRpository
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public CarItemRepository(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {

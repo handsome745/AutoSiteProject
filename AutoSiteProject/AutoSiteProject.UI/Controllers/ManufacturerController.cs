@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using AutoSiteProject.Models.Bl.Interfaces;
+﻿using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.DB;
 using System.Linq;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 
 namespace AutoSiteProject.UI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class ManufacturerController : BaseController
     {
-        private IManufacturerManager _manufacturerManager;
-        private IManufacturerFieldCopier _manufacturerFieldCopier;
-        private ICountryManager _countryManager;
+        private readonly IManufacturerManager _manufacturerManager;
+        private readonly IManufacturerFieldCopier _manufacturerFieldCopier;
+        private readonly ICountryManager _countryManager;
 
         public ManufacturerController(
             IManufacturerManager manufacturerManager,
@@ -30,11 +29,7 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult List()
         {
             var dbItems = _manufacturerManager.GetAll().ToList();
-            var result = new List<ManufacturerViewModel>();
-            foreach (var item in dbItems)
-            {
-                result.Add(_manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel()));
-            }
+            var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
             return View(result);
         }
 

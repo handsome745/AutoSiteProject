@@ -7,7 +7,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
 {
     public class CarModelFieldCopier : ICarModelFieldCopier
     {
-        private IManufacturerFieldCopier _manufacturerFieldCopier;
+        private readonly IManufacturerFieldCopier _manufacturerFieldCopier;
 
         public CarModelFieldCopier(IManufacturerFieldCopier manufacturerFieldCopier)
         {

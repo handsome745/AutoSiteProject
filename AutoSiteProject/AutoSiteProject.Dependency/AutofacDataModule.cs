@@ -4,9 +4,9 @@ using AutoSiteProject.Bl.Managers;
 using AutoSiteProject.Dal.Entities;
 using AutoSiteProject.Models.Bl.Interfaces;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
+using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.Dal.Interfaces;
 using AutoSiteProject.Models.DB;
-using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.Dependency
 {
