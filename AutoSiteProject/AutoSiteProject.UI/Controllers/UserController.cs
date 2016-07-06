@@ -13,34 +13,20 @@ using Microsoft.AspNet.Identity;
 namespace AutoSiteProject.UI.Controllers
 {
     [RequireHttps]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : BaseController
     {
-        private readonly ApplicationUserManager _userManager;
-        private readonly ApplicationRoleManager _roleManager;
+        
         private readonly IUserFieldCopier _userFieldCopier;
         private readonly IRoleFieldCopier _roleFieldCopier;
         public UserController(IUserFieldCopier userFieldCopier, IRoleFieldCopier roleFieldCopier)
         {
             _userFieldCopier = userFieldCopier;
             _roleFieldCopier = roleFieldCopier;
-            _roleManager = RoleManager;
-            _userManager = UserManager;
         }
-        public ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-        }
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().Get<ApplicationUserManager>();
-            }
-        }
+        public ApplicationRoleManager RoleManager =>  HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+        public ApplicationUserManager UserManager =>  HttpContext.GetOwinContext().Get<ApplicationUserManager>();
+
         public async Task<ActionResult> List()
         {
             var usersViewModels = new List<UserViewModel>();

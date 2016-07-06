@@ -15,22 +15,13 @@ namespace AutoSiteProject.UI.Controllers
     [Authorize(Roles = "Admin")]
     public class RoleController : BaseController
     {
-        private readonly ApplicationRoleManager _roleManager;
         private readonly IRoleFieldCopier _roleFieldCopier;
         public RoleController(IRoleFieldCopier roleFieldCopier)
         {
             _roleFieldCopier = roleFieldCopier;
-            _roleManager = RoleManager;
         }
 
-        public ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-        }
-
+        public ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
 
 
         // GET: Role
