@@ -1,0 +1,46 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<AutoSiteProject.Models.ViewModels.CarModelViewModel>
+
+<h2>List car models</h2>
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "carModelsGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarModelsPartial" };
+    settings.Width = Unit.Percentage(100);
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "#";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("Edit", "Edit", "CarModel", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                + "&nbsp;" +
+                Html.ActionLink("Delete", "Delete", "CarModel", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                );
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("New", "Create", "CarModel").ToHtmlString()
+                );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.Width = 70;
+    });
+    settings.Columns.Add("Id");
+    settings.Columns.Add("Name");
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "Manufacturer";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                DataBinder.Eval(c.DataItem, "Manufacturer.Name")
+                );
+        });
+    });
+    settings.KeyFieldName = "Id";
+}).Bind(Model).GetHtml()
+
+

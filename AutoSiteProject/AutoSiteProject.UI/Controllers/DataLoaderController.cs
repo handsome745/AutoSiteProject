@@ -108,7 +108,39 @@ namespace AutoSiteProject.UI.Controllers
             var filter = jss.Deserialize<CarAggregateFilterViewModel>(parameters) ??
                          new CarAggregateFilterViewModel();
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
-            return PartialView("_CarsGridViewPartial",carsList);
+            return PartialView("_CarsGridViewPartial", carsList);
         }
+
+        public ActionResult GetCarBodyTypesPartial()
+        {
+            var dbItems = _carBodyTypeManager.GetAll().ToList();
+            var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
+            return PartialView("_GetCarBodyTypesPartial", result);
+        }
+        public ActionResult GetCarModelsPartial()
+        {
+            var dbItems = _carModelManager.GetAll();
+            var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
+            return PartialView("_GetCarModelsPartial", result);
+        }
+        public ActionResult GetCarOptionsPartial()
+        {
+            var dbItems = _carOptionManager.GetAll();
+            var result = dbItems.Select(item => _carOptionFieldCopier.CopyFields(item, new CarOptionViewModel())).ToList();
+            return PartialView("_GetCarOptionsPartial", result);
+        }
+        public ActionResult GetCountriesPartial()
+        {
+            var dbItems = _countryManager.GetAll();
+            var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
+            return PartialView("_GetCountriesPartial", result);
+        }
+        public ActionResult GetManufacturersPartial()
+        {
+            var dbItems = _manufacturerManager.GetAll();
+            var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
+            return PartialView("_GetManufacturersPartial", result);
+        }
+        
     }
 }

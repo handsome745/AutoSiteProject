@@ -1,0 +1,38 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<AutoSiteProject.Models.ViewModels.CarOptionViewModel>
+
+<h2>List car options</h2>
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "carOptionsGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarOptionsPartial" };
+    settings.Width = Unit.Percentage(100);
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "#";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("Edit", "Edit", "CarOption", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                + "&nbsp;" +
+                Html.ActionLink("Delete", "Delete", "CarOption", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                );
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("New", "Create", "CarOption").ToHtmlString()
+                );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.Width = 70;
+    });
+    settings.Columns.Add("Id");
+    settings.Columns.Add("Name");
+    settings.KeyFieldName = "Id";
+}).Bind(Model).GetHtml()
+
+
+
+

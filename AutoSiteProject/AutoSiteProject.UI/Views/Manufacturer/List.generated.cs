@@ -50,107 +50,15 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>List</h2>\r\n\r\n<p>\r\n");
-
-WriteLiteral("    ");
+WriteLiteral("\r\n");
 
             
-            #line 10 "..\..\Views\Manufacturer\List.cshtml"
-Write(Html.ActionLink("Create New", "Create"));
+            #line 6 "..\..\Views\Manufacturer\List.cshtml"
+Write(Html.Action("GetManufacturersPartial", "DataLoader"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</p>\r\n<table");
-
-WriteLiteral(" class=\"table\"");
-
-WriteLiteral(">\r\n    <tr>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 15 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 18 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.CountryId));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th></th>\r\n    </tr>\r\n\r\n");
-
-            
-            #line 23 "..\..\Views\Manufacturer\List.cshtml"
- foreach (var item in Model) {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    <tr>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 26 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 29 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.Country.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 32 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.ActionLink("Edit", "Edit", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" |\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 33 "..\..\Views\Manufacturer\List.cshtml"
-       Write(Html.ActionLink("Delete", "Delete", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n    </tr>\r\n");
-
-            
-            #line 36 "..\..\Views\Manufacturer\List.cshtml"
-}
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n</table>\r\n");
-
         }
     }
 }

@@ -8,19 +8,8 @@
     var carOptionsPicker = $(".caroptions-picker", filterSection);
     var descriptionPicker = $(".description-picker", filterSection);
 
-    var carsResult = $("table.cars-result");
-    var carsUrl = filterSection.data("cars-url");
-
-
-
     var func = function () {
-        var carFilter = $("form").serialize();
         carsGridView.Refresh();
-        CarFilter.loadCarsList(
-            carsUrl,
-            carsResult,
-            carFilter
-        );
     }
 
     countryPicker.change(func);
@@ -56,13 +45,14 @@ CarFilter = {
             }
         });
 
-        return JSON.stringify(result);
+        return JSON.parse(JSON.stringify(result));
     }
     ,
     OnBeginCallback: function (s, e) {
         var carFilter = $("form").serialize();
-        var jsonString = CarFilter.queryStringToJSON(carFilter);
-        e.customArgs["filter"] = jsonString;
+        var jsonObj = CarFilter.queryStringToJSON(carFilter);
+        if (jsonObj.OptionsIds != null && jsonObj.OptionsIds.length <= 1) jsonObj.OptionsIds = [jsonObj.OptionsIds];
+        e.customArgs["filter"] = JSON.stringify(jsonObj);
     },
     loadCarsList: function (url, carsResult, carFilter) {
 

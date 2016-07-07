@@ -50,85 +50,15 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>List</h2>\r\n\r\n<p>\r\n");
-
-WriteLiteral("    ");
+WriteLiteral("\r\n");
 
             
-            #line 10 "..\..\Views\CarOption\List.cshtml"
-Write(Html.ActionLink("Create New", "Create"));
+            #line 6 "..\..\Views\CarOption\List.cshtml"
+Write(Html.Action("GetCarOptionsPartial", "DataLoader"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</p>\r\n<table");
-
-WriteLiteral(" class=\"table\"");
-
-WriteLiteral(">\r\n    <tr>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 15 "..\..\Views\CarOption\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th></th>\r\n    </tr>\r\n\r\n");
-
-            
-            #line 20 "..\..\Views\CarOption\List.cshtml"
- foreach (var item in Model) {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    <tr>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 23 "..\..\Views\CarOption\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 26 "..\..\Views\CarOption\List.cshtml"
-       Write(Html.ActionLink("Edit", "Edit", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" |\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 27 "..\..\Views\CarOption\List.cshtml"
-       Write(Html.ActionLink("Delete", "Delete", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n    </tr>\r\n");
-
-            
-            #line 30 "..\..\Views\CarOption\List.cshtml"
-}
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n</table>\r\n");
-
         }
     }
 }

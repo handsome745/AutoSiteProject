@@ -754,6 +754,11 @@
       <LastGenOutput>_CarFilter.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Views\DataLoader\_CarsGridViewPartial.cshtml" />
+    <Content Include="Views\DataLoader\_GetCarBodyTypesPartial.cshtml" />
+    <Content Include="Views\DataLoader\_GetCarModelsPartial.cshtml" />
+    <Content Include="Views\DataLoader\_GetCarOptionsPartial.cshtml" />
+    <Content Include="Views\DataLoader\_GetCountriesPartial.cshtml" />
+    <Content Include="Views\DataLoader\_GetManufacturersPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

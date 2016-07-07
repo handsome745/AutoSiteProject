@@ -50,129 +50,15 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>List</h2>\r\n\r\n<p>\r\n");
-
-WriteLiteral("    ");
+WriteLiteral("\r\n\r\n");
 
             
-            #line 10 "..\..\Views\CarItem\List.cshtml"
-Write(Html.ActionLink("Create New", "Create"));
+            #line 7 "..\..\Views\CarItem\List.cshtml"
+Write(Html.Action("GetCarsPartial", "DataLoader"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</p>\r\n<table");
-
-WriteLiteral(" class=\"table\"");
-
-WriteLiteral(">\r\n    <tr>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 15 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.Description));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 18 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.ModelId));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 21 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayNameFor(model => model.BodyTypeId));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </th>\r\n        <th></th>\r\n    </tr>\r\n\r\n");
-
-            
-            #line 26 "..\..\Views\CarItem\List.cshtml"
- foreach (var item in Model) {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("    <tr>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 29 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.Description));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 32 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.CarModel.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 35 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.DisplayFor(modelItem => item.CarBodyType.Name));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n        <td>\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 38 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.ActionLink("Edit", "Edit", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral(" |\r\n");
-
-WriteLiteral("            ");
-
-            
-            #line 39 "..\..\Views\CarItem\List.cshtml"
-       Write(Html.ActionLink("Delete", "Delete", new { id=item.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n        </td>\r\n    </tr>\r\n");
-
-            
-            #line 42 "..\..\Views\CarItem\List.cshtml"
-}
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n</table>\r\n");
-
         }
     }
 }
