@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
+using System.Web.Script.Serialization;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -100,9 +101,12 @@ namespace AutoSiteProject.UI.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCarsParial(CarAggregateFilterViewModel filter)
+        public ActionResult GetCarsPartial()
         {
-            if (filter == null) filter = new CarAggregateFilterViewModel();
+            var jss = new JavaScriptSerializer();
+            var parameters = Request.Params["filter"] ?? "";
+            var filter = jss.Deserialize<CarAggregateFilterViewModel>(parameters) ??
+                         new CarAggregateFilterViewModel();
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
             return PartialView("_CarsGridViewPartial",carsList);
         }

@@ -11,8 +11,11 @@
     var carsResult = $("table.cars-result");
     var carsUrl = filterSection.data("cars-url");
 
+
+
     var func = function () {
         var carFilter = $("form").serialize();
+        carsGridView.Refresh();
         CarFilter.loadCarsList(
             carsUrl,
             carsResult,
@@ -32,6 +35,35 @@
 });
 
 CarFilter = {
+    queryStringToJSON: function (qs) {
+        qs = qs || location.search.slice(1);
+
+        var pairs = qs.split('&');
+        var result = {};
+        pairs.forEach(function (pair) {
+            var pair = pair.split('=');
+            var key = pair[0];
+            var value = decodeURIComponent(pair[1] || '');
+
+            if (result[key]) {
+                if (Object.prototype.toString.call(result[key]) === '[object Array]') {
+                    result[key].push(value);
+                } else {
+                    result[key] = [result[key], value];
+                }
+            } else {
+                result[key] = value;
+            }
+        });
+
+        return JSON.stringify(result);
+    }
+    ,
+    OnBeginCallback: function (s, e) {
+        var carFilter = $("form").serialize();
+        var jsonString = CarFilter.queryStringToJSON(carFilter);
+        e.customArgs["filter"] = jsonString;
+    },
     loadCarsList: function (url, carsResult, carFilter) {
 
         $.ajax({

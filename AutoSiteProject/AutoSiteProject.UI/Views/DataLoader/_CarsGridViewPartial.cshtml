@@ -5,7 +5,8 @@
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsParial" };
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsPartial" };
+    
     //settings.CustomActionRouteValues = new { Cotroller = "GroupingSorting", Action = "CustomGroupingPartial" };
     settings.Width = Unit.Percentage(100);
 
@@ -18,10 +19,5 @@
 
     settings.Settings.ShowGroupPanel = true;
     settings.KeyFieldName = "CarId";
-    //settings.BeforeGetCallbackResult = (sender, e) =>
-    //{
-    //    var grid = (MVCxGridView)sender;
-    //    grid.GroupBy(grid.Columns["Country"]);
-    //    grid.ExpandAll();
-    //};
+    settings.ClientSideEvents.BeginCallback = "CarFilter.OnBeginCallback";
 }).Bind(Model).GetHtml()
