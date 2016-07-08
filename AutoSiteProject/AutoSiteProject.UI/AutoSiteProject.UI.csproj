@@ -753,12 +753,15 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CarFilter.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\DataLoader\_CarsGridViewPartial.cshtml" />
-    <Content Include="Views\DataLoader\_GetCarBodyTypesPartial.cshtml" />
-    <Content Include="Views\DataLoader\_GetCarModelsPartial.cshtml" />
-    <Content Include="Views\DataLoader\_GetCarOptionsPartial.cshtml" />
-    <Content Include="Views\DataLoader\_GetCountriesPartial.cshtml" />
-    <Content Include="Views\DataLoader\_GetManufacturersPartial.cshtml" />
+    <Content Include="Views\DataLoader\CarsGridViewPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetCarBodyTypesPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetCarModelsPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetCarOptionsPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetCountriesPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetManufacturersPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetRolesPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml" />
+    <Content Include="Views\DataLoader\GetUsersPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

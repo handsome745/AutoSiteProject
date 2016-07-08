@@ -35,7 +35,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/CarModel/List.cshtml")]
-    public partial class _Views_CarModel_List_cshtml : System.Web.Mvc.WebViewPage<IEnumerable<AutoSiteProject.Models.ViewModels.CarModelViewModel>>
+    public partial class _Views_CarModel_List_cshtml : System.Web.Mvc.WebViewPage<IEnumerable<AutoSiteProject.Models.ViewModels.CarAggregateViewModel>>
     {
         public _Views_CarModel_List_cshtml()
         {
@@ -43,17 +43,7 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 3 "..\..\Views\CarModel\List.cshtml"
-  
-    ViewBag.Title = "List";
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>List</h2>\r\n");
-
-            
-            #line 8 "..\..\Views\CarModel\List.cshtml"
+            #line 2 "..\..\Views\CarModel\List.cshtml"
 Write(Html.Action("GetCarModelsPartial", "DataLoader"));
 
             

@@ -5,16 +5,18 @@ namespace AutoSiteProject.Models.ViewModels
 {
     public class UserViewModel
     {
+        public UserViewModel()
+        {
+            AvalibleRoles = new List<RoleViewModel>();
+            SelectedRoles = new string[0];
+        }
+
         public string Id { get; set; }
         public string Name { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$")]
         public string Email { get; set; }
         public List<RoleViewModel> AvalibleRoles { get; set; }
         public string[] SelectedRoles { get; set; }
-        public UserViewModel()
-        {
-            AvalibleRoles = new List<RoleViewModel>();
-            SelectedRoles = new string[0];
-        }
+        public string RolesNames => string.Join(", ", SelectedRoles);
     }
 }

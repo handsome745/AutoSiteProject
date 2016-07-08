@@ -1,0 +1,38 @@
+﻿@using System.Web.UI.WebControls
+@using AutoSiteProject.Models.ViewModels
+@model IEnumerable<RoleViewModel>
+
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "rolesGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetRolesPartial" };
+    settings.Width = Unit.Percentage(100);
+    if (User.IsInRole("Admin"))
+    {
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "#";
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("Edit", "Edit", "Role", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                    + "&nbsp;" +
+                    Html.ActionLink("Delete", "Delete", "Role", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                    );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("New", "Create", "Role").ToHtmlString()
+                    );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.Width = 70;
+        });
+    }
+
+    settings.Columns.Add("Name");
+    settings.Columns.Add("Description");
+    settings.KeyFieldName = "Id";
+}).Bind(Model).GetHtml()

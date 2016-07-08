@@ -27,11 +27,9 @@ namespace AutoSiteProject.UI.Controllers
             _carOptionFieldCopier = carOptionFieldCopier;
         }
         // GET
-        public ActionResult List()//CarAggregateFilterModel filter)
+        public ActionResult List()
         {
-            var dbItems = _carItemManager.GetAll().ToList();
-            var result = dbItems.Select(item => _carItemFieldCopier.CopyFields(item, new CarItemViewModel())).ToList();
-            return View(result);
+            return View();
         }
 
         //GET 

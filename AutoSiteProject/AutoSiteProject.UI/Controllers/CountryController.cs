@@ -23,9 +23,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            var dbItems = _countryManager.GetAll().ToList();
-            var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
-            return View(result);
+            return View();
         }
 
         //GET 

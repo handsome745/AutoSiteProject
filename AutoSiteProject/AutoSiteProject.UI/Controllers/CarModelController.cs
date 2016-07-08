@@ -27,11 +27,8 @@ namespace AutoSiteProject.UI.Controllers
         // GET: CarModel
         public ActionResult List()
         {
-            var dbItems = _carModelManager.GetAll().ToList();
-            var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
-            return View(result);
+            return View();
         }
-
 
         //GET 
         public ActionResult Create()

@@ -44,16 +44,6 @@ namespace ASP
         {
             
             #line 3 "..\..\Views\Manufacturer\List.cshtml"
-  
-    ViewBag.Title = "List";
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 6 "..\..\Views\Manufacturer\List.cshtml"
 Write(Html.Action("GetManufacturersPartial", "DataLoader"));
 
             

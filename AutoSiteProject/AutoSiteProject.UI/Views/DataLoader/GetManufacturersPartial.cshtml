@@ -1,7 +1,6 @@
 ﻿@using System.Web.UI.WebControls
 @model IEnumerable<AutoSiteProject.Models.ViewModels.ManufacturerViewModel>
 
-<h2>List countries</h2>
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "manufacturersGridView";
@@ -40,6 +39,7 @@
                 );
         });
     });
+
     settings.KeyFieldName = "Id";
 }).Bind(Model).GetHtml()
 
