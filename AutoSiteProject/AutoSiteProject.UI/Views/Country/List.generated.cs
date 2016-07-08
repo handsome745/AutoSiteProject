@@ -43,17 +43,7 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 3 "..\..\Views\Country\List.cshtml"
-  
-    ViewBag.Title = "List";
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 6 "..\..\Views\Country\List.cshtml"
+            #line 2 "..\..\Views\Country\List.cshtml"
 Write(Html.Action("GetCountriesPartial", "DataLoader"));
 
             

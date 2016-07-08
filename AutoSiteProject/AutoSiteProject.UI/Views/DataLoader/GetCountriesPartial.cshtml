@@ -1,11 +1,10 @@
 ﻿@using System.Web.UI.WebControls
-@model IEnumerable<AutoSiteProject.Models.ViewModels.CarOptionViewModel>
+@model IEnumerable<AutoSiteProject.Models.ViewModels.CountryViewModel>
 
-<h2>List car options</h2>
 @Html.DevExpress().GridView(settings =>
 {
-    settings.Name = "carOptionsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarOptionsPartial" };
+    settings.Name = "countriesGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCountriesPartial" };
     settings.Width = Unit.Percentage(100);
     settings.Columns.Add(column =>
     {
@@ -13,15 +12,15 @@
         column.SetDataItemTemplateContent(c =>
         {
             ViewContext.Writer.Write(
-                Html.ActionLink("Edit", "Edit", "CarOption", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                Html.ActionLink("Edit", "Edit", "Country", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
                 + "&nbsp;" +
-                Html.ActionLink("Delete", "Delete", "CarOption", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                Html.ActionLink("Delete", "Delete", "Country", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
                 );
         });
         column.SetHeaderTemplateContent(c =>
         {
             ViewContext.Writer.Write(
-                Html.ActionLink("New", "Create", "CarOption").ToHtmlString()
+                Html.ActionLink("New", "Create", "Country").ToHtmlString()
                 );
         });
         column.Settings.AllowDragDrop = DefaultBoolean.False;

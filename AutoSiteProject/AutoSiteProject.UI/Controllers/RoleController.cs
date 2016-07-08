@@ -27,9 +27,9 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Role
         public ActionResult List()
         {
-            var dbRoles = RoleManager.Roles.ToList();
-            var rolesViewModels = dbRoles.Select(r => _roleFieldCopier.CopyFields(r, new RoleViewModel())).ToList();
-            return View(rolesViewModels);
+            //var dbRoles = RoleManager.Roles.ToList();
+            //var rolesViewModels = dbRoles.Select(r => _roleFieldCopier.CopyFields(r, new RoleViewModel())).ToList();
+            return View();//rolesViewModels);
         }
 
         public ActionResult Create()

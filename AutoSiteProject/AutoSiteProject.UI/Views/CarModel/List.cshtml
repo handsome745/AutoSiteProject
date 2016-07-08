@@ -1,8 +1,2 @@
-﻿@model IEnumerable<AutoSiteProject.Models.ViewModels.CarModelViewModel>
-
-@{
-    ViewBag.Title = "List";
-}
-
-<h2>List</h2>
+﻿@model IEnumerable<AutoSiteProject.Models.ViewModels.CarAggregateViewModel>
 @Html.Action("GetCarModelsPartial", "DataLoader")

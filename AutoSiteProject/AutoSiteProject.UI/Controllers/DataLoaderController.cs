@@ -1,9 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using System.Web.Script.Serialization;
+using AutoSiteProject.Bl.IdentityClasses;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -14,13 +19,18 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICountryManager _countryManager;
         private readonly ICarBodyTypeManager _carBodyTypeManager;
         private readonly ICarOptionManager _carOptionManager;
-
+        private readonly ICarItemFieldCopier _carItemFieldCopier;
         private readonly ICarModelFieldCopier _carModelFieldCopier;
         private readonly IManufacturerFieldCopier _manufacturerFieldCopier;
         private readonly ICountryFieldCopier _countryFieldCopier;
         private readonly ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
         private readonly ICarOptionFieldCopier _carOptionFieldCopier;
         private readonly ICarItemManager _carItemManager;
+        private readonly IRoleFieldCopier _roleFieldCopier;
+        private readonly IUserFieldCopier _userFieldCopier;
+
+        public ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+        public  ApplicationUserManager UserManager => HttpContext.GetOwinContext().Get<ApplicationUserManager>();
 
         public DataLoaderController(
             ICarModelManager carModelManager,
@@ -33,7 +43,10 @@ namespace AutoSiteProject.UI.Controllers
             ICountryFieldCopier countryFieldCopier,
             ICarBodyTypeFieldCopier carBodyTypeFieldCopier,
             ICarOptionFieldCopier carOptionFieldCopier,
-            ICarItemManager carItemManager
+            ICarItemManager carItemManager,
+            IRoleFieldCopier roleFieldCopier,
+            ICarItemFieldCopier carItemFieldCopier,
+            IUserFieldCopier userFieldCopier
             )
         {
             _carModelManager = carModelManager;
@@ -48,6 +61,9 @@ namespace AutoSiteProject.UI.Controllers
             _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
             _carOptionFieldCopier = carOptionFieldCopier;
             _carItemManager = carItemManager;
+            _roleFieldCopier = roleFieldCopier;
+            _carItemFieldCopier = carItemFieldCopier;
+            _userFieldCopier = userFieldCopier;
         }
         [HttpPost]
         public JsonResult GetCars(CarAggregateFilterViewModel filter)
@@ -101,46 +117,68 @@ namespace AutoSiteProject.UI.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCarsPartial()
+        public ActionResult GetCarsPartial(CarAggregateFilterViewModel filter)
         {
-            var jss = new JavaScriptSerializer();
-            var parameters = Request.Params["filter"] ?? "";
-            var filter = jss.Deserialize<CarAggregateFilterViewModel>(parameters) ??
-                         new CarAggregateFilterViewModel();
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
-            return PartialView("_CarsGridViewPartial", carsList);
+            return PartialView("CarsGridViewPartial", carsList);
         }
 
         public ActionResult GetCarBodyTypesPartial()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
             var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
-            return PartialView("_GetCarBodyTypesPartial", result);
+            return PartialView("GetCarBodyTypesPartial", result);
         }
         public ActionResult GetCarModelsPartial()
         {
             var dbItems = _carModelManager.GetAll();
             var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
-            return PartialView("_GetCarModelsPartial", result);
+            return PartialView("GetCarModelsPartial", result);
         }
         public ActionResult GetCarOptionsPartial()
         {
             var dbItems = _carOptionManager.GetAll();
             var result = dbItems.Select(item => _carOptionFieldCopier.CopyFields(item, new CarOptionViewModel())).ToList();
-            return PartialView("_GetCarOptionsPartial", result);
+            return PartialView("GetCarOptionsPartial", result);
         }
         public ActionResult GetCountriesPartial()
         {
             var dbItems = _countryManager.GetAll();
             var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
-            return PartialView("_GetCountriesPartial", result);
+            return PartialView("GetCountriesPartial", result);
         }
         public ActionResult GetManufacturersPartial()
         {
             var dbItems = _manufacturerManager.GetAll();
             var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
-            return PartialView("_GetManufacturersPartial", result);
+            return PartialView("GetManufacturersPartial", result);
         }
-        
+        public ActionResult GetRolesPartial()
+        {
+            var dbRoles = RoleManager.Roles.ToList();
+            var result = dbRoles.Select(r => _roleFieldCopier.CopyFields(r, new RoleViewModel())).ToList();
+            return PartialView("GetRolesPartial", result);
+        }
+        public ActionResult GetCarItemsPartial()
+        {
+            var filter = new CarAggregateFilterViewModel();
+            var result = _carItemManager.GetCarsAggregateViewModel(filter);
+            return PartialView("GetCarItemsPartial", result);
+        }
+        public ActionResult GetUsersPartial()
+        {
+            var usersViewModels = new List<UserViewModel>();
+            var dbUsers = UserManager.Users.ToList();
+            foreach (var u in dbUsers)
+            {
+                var q = _userFieldCopier.CopyFields(u, new UserViewModel());
+                for (int i = 0; i < q.SelectedRoles.Length; i++)
+                {
+                    q.SelectedRoles[i] =  RoleManager.FindById(q.SelectedRoles[i]).Name;
+                }
+                usersViewModels.Add(q);
+            }
+            return PartialView("GetUsersPartial", usersViewModels);
+        }
     }
 }

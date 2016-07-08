@@ -49,10 +49,14 @@ CarFilter = {
     }
     ,
     OnBeginCallback: function (s, e) {
-        var carFilter = $("form").serialize();
-        var jsonObj = CarFilter.queryStringToJSON(carFilter);
-        if (jsonObj.OptionsIds != null && jsonObj.OptionsIds.length <= 1) jsonObj.OptionsIds = [jsonObj.OptionsIds];
-        e.customArgs["filter"] = JSON.stringify(jsonObj);
+        var carFilter = $("form").serializeArray();
+        $.each(carFilter, function (i, v) {
+            e.customArgs[v.name] = v.value;
+        });
+
+        //var jsonObj = CarFilter.queryStringToJSON(carFilter);
+        //if (jsonObj.OptionsIds != null && jsonObj.OptionsIds.length <= 1) jsonObj.OptionsIds = [jsonObj.OptionsIds];
+        //e.customArgs["filter"] = JSON.stringify(jsonObj);
     },
     loadCarsList: function (url, carsResult, carFilter) {
 
