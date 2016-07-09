@@ -29,18 +29,9 @@
     });
     settings.Columns.Add("Id");
     settings.Columns.Add("Name");
-    settings.Columns.Add(column =>
-    {
-        column.Caption = "Country";
-        column.SetDataItemTemplateContent(c =>
-        {
-            ViewContext.Writer.Write(
-                DataBinder.Eval(c.DataItem, "Country.Name")
-                );
-        });
-    });
-
+    settings.Columns.Add("Country");
     settings.KeyFieldName = "Id";
+    settings.SettingsPager.PageSize = 25;
 }).Bind(Model).GetHtml()
 
 

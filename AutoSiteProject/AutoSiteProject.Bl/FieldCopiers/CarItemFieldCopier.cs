@@ -9,16 +9,9 @@ namespace AutoSiteProject.Bl.FieldCopiers
     public class CarItemFieldCopier : ICarItemFieldCopier
     {
         private readonly ICarOptionManager _carOptionManager;
-        private readonly ICarModelFieldCopier _carModelFieldCopier;
-        private readonly ICarBodyTypeFieldCopier _carBodyTypeFieldCopier;
 
-        public CarItemFieldCopier(
-            ICarModelFieldCopier carModelFieldCopier,
-            ICarBodyTypeFieldCopier carBodyTypeFieldCopier,
-            ICarOptionManager carOptionManager)
+        public CarItemFieldCopier(ICarOptionManager carOptionManager)
         {
-            _carModelFieldCopier = carModelFieldCopier;
-            _carBodyTypeFieldCopier = carBodyTypeFieldCopier;
             _carOptionManager = carOptionManager;
         }
 
@@ -30,16 +23,19 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.BodyTypeId = from.BodyTypeId;
             to.ModelId = from.ModelId;
             to.Description = from.Description;
-            to.CarModel = _carModelFieldCopier.CopyFields(from.CarModel, to.CarModel);
-            to.CarBodyType = _carBodyTypeFieldCopier.CopyFields(from.CarBodyType, to.CarBodyType);
-            to.ManufacturerId = from.CarModel.ManufacturerId;
-            to.CountryId = from.CarModel.Manufacturer.CountryId;
-
+            to.CarBodyType =  from.CarBodyType?.Name;
+            if (@from.CarModel != null)
+            {
+                to.CarModel = from.CarModel.Name;
+                to.ManufacturerId = @from.CarModel.ManufacturerId;
+                to.Manufacturer = @from.CarModel.Manufacturer?.Name;
+                to.CountryId = @from.CarModel.Manufacturer?.CountryId;
+                to.Country = @from.CarModel.Manufacturer?.Country?.Name;
+            }
             to.SelectedCarOptions = new string[from.CarOption.Count];
             var arrayCo = new CarOption[from.CarOption.Count];
             from.CarOption.CopyTo(arrayCo, 0);
-
-            for (var i =0; i < from.CarOption.Count;i++)
+            for (var i = 0; i < from.CarOption.Count; i++)
             {
                 to.SelectedCarOptions[i] = arrayCo[i].Id.ToString();
             }
@@ -56,7 +52,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
 
             to.CarOption.Clear();
             if (from.SelectedCarOptions == null) return to;
-            foreach(var s in @from.SelectedCarOptions)
+            foreach (var s in @from.SelectedCarOptions)
             {
                 int id;
                 if (int.TryParse(s, out id))

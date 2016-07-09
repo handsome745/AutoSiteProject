@@ -21,7 +21,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.Id = from.Id;
             to.Name = from.Name;
             to.CountryId = from.CountryId;
-            _countryFieldCopier.CopyFields(from.Country, to.Country);
+            to.Country = from.Country?.Name;
             return to;
         }
 

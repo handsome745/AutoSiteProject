@@ -13,12 +13,6 @@ namespace AutoSiteProject.Models.ViewModels
         public string Name { get; set; }
         [DisplayName("Manufacturer")]
         public int? ManufacturerId { get; set; }
-
-        public ManufacturerViewModel Manufacturer { get; set; }
-
-        public CarModelViewModel()
-        {
-            Manufacturer = new ManufacturerViewModel();
-        }
+        public string Manufacturer { get; set; }
     }
 }

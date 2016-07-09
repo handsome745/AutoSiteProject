@@ -21,7 +21,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.Id = from.Id;
             to.Name = from.Name;
             to.ManufacturerId = from.ManufacturerId;
-            to.Manufacturer = _manufacturerFieldCopier.CopyFields(from.Manufacturer, to.Manufacturer);
+            to.Manufacturer = @from.Manufacturer?.Name;
             return to;
         }
 

@@ -29,17 +29,10 @@
     });
     settings.Columns.Add("Id");
     settings.Columns.Add("Name");
-    settings.Columns.Add(column =>
-    {
-        column.Caption = "Manufacturer";
-        column.SetDataItemTemplateContent(c =>
-        {
-            ViewContext.Writer.Write(
-                DataBinder.Eval(c.DataItem, "Manufacturer.Name")
-                );
-        });
-    });
+    settings.Columns.Add("Manufacturer");
     settings.KeyFieldName = "Id";
+    settings.SettingsPager.PageSize = 25;
+
 }).Bind(Model).GetHtml()
 
 

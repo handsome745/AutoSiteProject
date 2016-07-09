@@ -14,10 +14,6 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Country")]
         public int? CountryId { get; set; }
 
-        public CountryViewModel Country { get; set; }
-        public ManufacturerViewModel()
-        {
-            Country = new CountryViewModel();
-        }
+        public string Country { get; set; }
     }
 }
