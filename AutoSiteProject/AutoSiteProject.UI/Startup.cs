@@ -9,6 +9,7 @@ namespace AutoSiteProject.UI
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
 }

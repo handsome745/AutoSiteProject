@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
+using AutoSiteProject.UI.Hubs;
+using Microsoft.AspNet.SignalR;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -51,6 +53,7 @@ namespace AutoSiteProject.UI.Controllers
             if (ModelState.IsValid)
             {
                 _carItemManager.Add(_carItemFieldCopier.CopyFields(model, new CarItem()));
+                NotificationsHub.SendInfoMessage("Added new car Model:"+model.CarModel +" Manufacturer:"+ model.Manufacturer);
                 return RedirectToAction("List");
             }
             return View("Create", model);

@@ -83,39 +83,60 @@ WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" type=\"text/css\"");
 
-WriteLiteral(" />\r\n    <script");
+WriteLiteral(" />\r\n    \r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 365), Tuple.Create("\"", 399)
-, Tuple.Create(Tuple.Create("", 371), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/modernizr-2.7.2.js")
-, 371), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 371), Tuple.Create("\"", 406)
+, Tuple.Create(Tuple.Create("", 377), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery-3.0.0.min.js")
+, 377), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 423), Tuple.Create("\"", 458)
-, Tuple.Create(Tuple.Create("", 429), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery-3.0.0.min.js")
-, 429), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 430), Tuple.Create("\"", 468)
+, Tuple.Create(Tuple.Create("", 436), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.min.js")
+, 436), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 482), Tuple.Create("\"", 520)
-, Tuple.Create(Tuple.Create("", 488), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.min.js")
-, 488), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 492), Tuple.Create("\"", 542)
+, Tuple.Create(Tuple.Create("", 498), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.unobtrusive.min.js")
+, 498), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 544), Tuple.Create("\"", 594)
-, Tuple.Create(Tuple.Create("", 550), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.unobtrusive.min.js")
-, 550), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 566), Tuple.Create("\"", 612)
+, Tuple.Create(Tuple.Create("", 572), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.unobtrusive-ajax.min.js")
+, 572), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 618), Tuple.Create("\"", 664)
-, Tuple.Create(Tuple.Create("", 624), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.unobtrusive-ajax.min.js")
-, 624), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 636), Tuple.Create("\"", 670)
+, Tuple.Create(Tuple.Create("", 642), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/modernizr-2.7.2.js")
+, 642), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 694), Tuple.Create("\"", 737)
+, Tuple.Create(Tuple.Create("", 700), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
+, 700), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 761), Tuple.Create("\"", 781)
+, Tuple.Create(Tuple.Create("", 767), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
+, 767), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 805), Tuple.Create("\"", 846)
+, Tuple.Create(Tuple.Create("", 811), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
+, 811), false)
 );
 
 WriteLiteral("></script>\r\n\r\n");
@@ -123,7 +144,7 @@ WriteLiteral("></script>\r\n\r\n");
 WriteLiteral("    ");
 
             
-            #line 15 "..\..\Views\Shared\_Layout.cshtml"
+            #line 19 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
@@ -147,7 +168,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 33 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
@@ -213,7 +234,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                    ");
 
             
-            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+            #line 61 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }));
 
             
@@ -224,7 +245,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                    ");
 
             
-            #line 58 "..\..\Views\Shared\_Layout.cshtml"
+            #line 62 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "navbar-brand" }));
 
             
@@ -233,13 +254,13 @@ WriteLiteral("                    ");
 WriteLiteral("\r\n");
 
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+            #line 63 "..\..\Views\Shared\_Layout.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+            #line 63 "..\..\Views\Shared\_Layout.cshtml"
                      if (User.IsInRole("Admin"))
                     {
                         
@@ -247,98 +268,98 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 61 "..\..\Views\Shared\_Layout.cshtml"
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 61 "..\..\Views\Shared\_Layout.cshtml"
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                               
                         
             
             #line default
             #line hidden
             
-            #line 62 "..\..\Views\Shared\_Layout.cshtml"
+            #line 66 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 62 "..\..\Views\Shared\_Layout.cshtml"
+            #line 66 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                      
                         
             
             #line default
             #line hidden
             
-            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                 
                         
             
             #line default
             #line hidden
             
-            #line 64 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 64 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                      
                         
             
             #line default
             #line hidden
             
-            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                             
                         
             
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 70 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 70 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                      
                         
             
             #line default
             #line hidden
             
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "navbar-brand" }));
 
             
             #line default
             #line hidden
             
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                      
                     }
 
@@ -350,13 +371,13 @@ WriteLiteral("                </ul>\r\n");
 WriteLiteral("                ");
 
             
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
+            #line 74 "..\..\Views\Shared\_Layout.cshtml"
            Write(Html.Partial("_LoginPartial"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div");
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div");
 
 WriteLiteral(" class=\"container body-content\"");
 
@@ -365,16 +386,20 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 76 "..\..\Views\Shared\_Layout.cshtml"
+            #line 81 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        <hr />\r\n        <footer>\r\n            <p>&copy; ");
+WriteLiteral("\r\n        <hr />\r\n        <div");
+
+WriteLiteral(" class=\"notifications\"");
+
+WriteLiteral(">\r\n        </div>\r\n        <footer>\r\n            <p>&copy; ");
 
             
-            #line 79 "..\..\Views\Shared\_Layout.cshtml"
+            #line 86 "..\..\Views\Shared\_Layout.cshtml"
                  Write(DateTime.Now.Year);
 
             
