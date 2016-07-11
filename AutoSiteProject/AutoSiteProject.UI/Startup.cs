@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(AutoSiteProject.UI.Startup))]
+[assembly: OwinStartup(typeof(AutoSiteProject.UI.Startup))]
 namespace AutoSiteProject.UI
 {
     public partial class Startup

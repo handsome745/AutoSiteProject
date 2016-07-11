@@ -12,7 +12,7 @@ using AutoSiteProject.Bl.IdentityClasses;
 namespace AutoSiteProject.UI.Controllers
 {
     [RequireHttps]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RoleController : BaseController
     {
         private readonly IRoleFieldCopier _roleFieldCopier;
