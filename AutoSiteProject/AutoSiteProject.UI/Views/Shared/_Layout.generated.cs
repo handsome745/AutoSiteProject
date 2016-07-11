@@ -83,39 +83,39 @@ WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" type=\"text/css\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\r\n    \r\n   \r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 367), Tuple.Create("\"", 403)
-, Tuple.Create(Tuple.Create("", 373), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery-1.10.2.min.js")
-, 373), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 376), Tuple.Create("\"", 412)
+, Tuple.Create(Tuple.Create("", 382), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery-1.10.2.min.js")
+, 382), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 427), Tuple.Create("\"", 465)
-, Tuple.Create(Tuple.Create("", 433), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.min.js")
-, 433), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 436), Tuple.Create("\"", 474)
+, Tuple.Create(Tuple.Create("", 442), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.min.js")
+, 442), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 489), Tuple.Create("\"", 539)
-, Tuple.Create(Tuple.Create("", 495), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.unobtrusive.min.js")
-, 495), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 498), Tuple.Create("\"", 548)
+, Tuple.Create(Tuple.Create("", 504), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.validate.unobtrusive.min.js")
+, 504), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 563), Tuple.Create("\"", 609)
-, Tuple.Create(Tuple.Create("", 569), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.unobtrusive-ajax.min.js")
-, 569), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 572), Tuple.Create("\"", 618)
+, Tuple.Create(Tuple.Create("", 578), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.unobtrusive-ajax.min.js")
+, 578), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 633), Tuple.Create("\"", 667)
-, Tuple.Create(Tuple.Create("", 639), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/modernizr-2.7.2.js")
-, 639), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 642), Tuple.Create("\"", 676)
+, Tuple.Create(Tuple.Create("", 648), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/modernizr-2.7.2.js")
+, 648), false)
 );
 
 WriteLiteral("></script>\r\n\r\n");
@@ -123,7 +123,7 @@ WriteLiteral("></script>\r\n\r\n");
 WriteLiteral("    ");
 
             
-            #line 16 "..\..\Views\Shared\_Layout.cshtml"
+            #line 17 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
@@ -147,7 +147,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 30 "..\..\Views\Shared\_Layout.cshtml"
+            #line 31 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
@@ -168,216 +168,194 @@ Write(Html.DevExpress().GetStyleSheets(
             #line hidden
 WriteLiteral("\r\n\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2447), Tuple.Create("\"", 2490)
-, Tuple.Create(Tuple.Create("", 2453), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
-, 2453), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2456), Tuple.Create("\"", 2499)
+, Tuple.Create(Tuple.Create("", 2462), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
+, 2462), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2514), Tuple.Create("\"", 2534)
-, Tuple.Create(Tuple.Create("", 2520), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
-, 2520), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2523), Tuple.Create("\"", 2543)
+, Tuple.Create(Tuple.Create("", 2529), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
+, 2529), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2558), Tuple.Create("\"", 2599)
-, Tuple.Create(Tuple.Create("", 2564), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
-, 2564), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2567), Tuple.Create("\"", 2608)
+, Tuple.Create(Tuple.Create("", 2573), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
+, 2573), false)
 );
 
-WriteLiteral("></script>\r\n</head>\r\n<body>\r\n    <div");
+WriteLiteral("></script>\r\n     <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2633), Tuple.Create("\"", 2665)
+, Tuple.Create(Tuple.Create("", 2639), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/bootstrap.min.js")
+, 2639), false)
+);
+
+WriteLiteral("></script>\r\n</head>\r\n<body>\r\n    <nav");
 
 WriteLiteral(" class=\"navbar navbar-inverse navbar-fixed-top\"");
 
 WriteLiteral(">\r\n        <div");
 
-WriteLiteral(" class=\"container\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"navbar-header\"");
-
-WriteLiteral(">\r\n                <button");
-
-WriteLiteral(" type=\"button\"");
-
-WriteLiteral(" class=\"navbar-toggle\"");
-
-WriteLiteral(" data-toggle=\"collapse\"");
-
-WriteLiteral(" data-target=\".navbar-collapse\"");
-
-WriteLiteral(">\r\n                    <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n\r\n                    <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n                    <span");
-
-WriteLiteral(" class=\"icon-bar\"");
-
-WriteLiteral("></span>\r\n                </button>\r\n            </div>\r\n            <div");
-
 WriteLiteral(" class=\"navbar-collapse collapse\"");
 
-WriteLiteral(">\r\n                <ul");
+WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"nav navbar-nav\"");
 
-WriteLiteral(">\r\n");
+WriteLiteral(">\r\n                <li>");
 
-WriteLiteral("                    ");
+            
+            #line 55 "..\..\Views\Shared\_Layout.cshtml"
+               Write(Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</li>\r\n                <li>");
+
+            
+            #line 56 "..\..\Views\Shared\_Layout.cshtml"
+               Write(Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</li>\r\n");
+
+            
+            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+                 if (User.IsInRole("Admin"))
+                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    <li");
+
+WriteLiteral(" class=\"dropdown\"");
+
+WriteLiteral(">\r\n                        <a");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral(" class=\"dropdown-toggle\"");
+
+WriteLiteral(" data-toggle=\"dropdown\"");
+
+WriteLiteral(" role=\"button\"");
+
+WriteLiteral(" aria-haspopup=\"true\"");
+
+WriteLiteral(" aria-expanded=\"false\"");
+
+WriteLiteral(">Managment<span");
+
+WriteLiteral(" class=\"caret\"");
+
+WriteLiteral("></span></a>\r\n                        <ul");
+
+WriteLiteral(" class=\"dropdown-menu\"");
+
+WriteLiteral(">\r\n                            <li>");
 
             
             #line 62 "..\..\Views\Shared\_Layout.cshtml"
-               Write(Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }));
+                           Write(Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                    ");
+WriteLiteral("</li>\r\n                            <li>");
 
             
             #line 63 "..\..\Views\Shared\_Layout.cshtml"
-               Write(Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "navbar-brand" }));
+                           Write(Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n");
+WriteLiteral("</li>\r\n                            <li>");
 
             
             #line 64 "..\..\Views\Shared\_Layout.cshtml"
-                    
+                           Write(Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "" }));
+
             
             #line default
             #line hidden
+WriteLiteral("</li>\r\n                            <li>");
+
             
-            #line 64 "..\..\Views\Shared\_Layout.cshtml"
-                     if (User.IsInRole("Admin"))
-                    {
-                        
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+                           Write(Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "" }));
+
             
             #line default
             #line hidden
+WriteLiteral("</li>\r\n                            <li>");
+
             
             #line 66 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "navbar-brand" }));
+                           Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "" }));
 
             
             #line default
             #line hidden
-            
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                              
-                        
-            
-            #line default
-            #line hidden
-            
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "navbar-brand" }));
+WriteLiteral("</li>\r\n                            <li");
 
-            
-            #line default
-            #line hidden
-            
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                                     
-                        
-            
-            #line default
-            #line hidden
+WriteLiteral(" role=\"separator\"");
+
+WriteLiteral(" class=\"divider\"");
+
+WriteLiteral("></li>\r\n                            <li>");
+
             
             #line 68 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "navbar-brand" }));
+                           Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "" }));
 
             
             #line default
             #line hidden
-            
-            #line 68 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                                
-                        
-            
-            #line default
-            #line hidden
+WriteLiteral("</li>\r\n                            <li>");
+
             
             #line 69 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "navbar-brand" }));
+                           Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "" }));
 
             
             #line default
             #line hidden
-            
-            #line 69 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                                     
-                        
-            
-            #line default
-            #line hidden
-            
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "navbar-brand" }));
+WriteLiteral("</li>\r\n                        </ul>\r\n                    </li>\r\n");
 
-            
-            #line default
-            #line hidden
-            
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                            
-                        
-            
-            #line default
-            #line hidden
-            
-            #line 71 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "navbar-brand" }));
-
-            
-            #line default
-            #line hidden
-            
-            #line 71 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                     
-                        
-            
-            #line default
-            #line hidden
             
             #line 72 "..\..\Views\Shared\_Layout.cshtml"
-                   Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "navbar-brand" }));
+                }
 
             
             #line default
             #line hidden
+WriteLiteral("            </ul>\r\n");
+
+WriteLiteral("            ");
+
             
-            #line 72 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                     
-                    }
+            #line 74 "..\..\Views\Shared\_Layout.cshtml"
+       Write(Html.Partial("_LoginPartial"));
 
             
             #line default
             #line hidden
-WriteLiteral("                </ul>\r\n");
-
-WriteLiteral("                ");
-
-            
-            #line 75 "..\..\Views\Shared\_Layout.cshtml"
-           Write(Html.Partial("_LoginPartial"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div");
+WriteLiteral("\r\n        </div>\r\n    </nav>\r\n\r\n\r\n    <div");
 
 WriteLiteral(" class=\"container body-content\"");
 
@@ -386,7 +364,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 82 "..\..\Views\Shared\_Layout.cshtml"
+            #line 80 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -399,7 +377,7 @@ WriteLiteral(" class=\"notifications\"");
 WriteLiteral(">\r\n        </div>\r\n        <footer>\r\n            <p>&copy; ");
 
             
-            #line 87 "..\..\Views\Shared\_Layout.cshtml"
+            #line 85 "..\..\Views\Shared\_Layout.cshtml"
                  Write(DateTime.Now.Year);
 
             

@@ -50,16 +50,6 @@ namespace ASP
         {
             
             #line 4 "..\..\Views\Home\Index.cshtml"
-  
-    ViewBag.Title = "Index";
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Index</h2>\r\n");
-
-            
-            #line 9 "..\..\Views\Home\Index.cshtml"
 Write(Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter));
 
             
@@ -68,7 +58,7 @@ Write(Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
 WriteLiteral("\r\n");
 
             
-            #line 10 "..\..\Views\Home\Index.cshtml"
+            #line 5 "..\..\Views\Home\Index.cshtml"
 Write(Html.Action("GetCarsPartial","DataLoader"));
 
             
