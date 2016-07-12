@@ -1,5 +1,5 @@
 ﻿@using AutoSiteProject.Models.ViewModels
 @model IEnumerable<CarAggregateViewModel>
 
-@Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter)
-@Html.Action("GetCarsPartial","DataLoader")
+@{ Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel) ViewBag.CarFilter);}
+@{ Html.RenderAction("GetCarsPartial","DataLoader");}

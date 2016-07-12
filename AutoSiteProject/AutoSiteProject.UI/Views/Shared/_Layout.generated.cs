@@ -126,17 +126,17 @@ WriteLiteral("    ");
             #line 17 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
-        new Script { ExtensionSuite = ExtensionSuite.GridView },
-        new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
-        new Script { ExtensionSuite = ExtensionSuite.Editors },
-        new Script { ExtensionSuite = ExtensionSuite.Chart },
-        new Script { ExtensionSuite = ExtensionSuite.Report },
-        new Script { ExtensionSuite = ExtensionSuite.Scheduler },
-        new Script { ExtensionSuite = ExtensionSuite.TreeList },
-        new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
-        new Script { ExtensionSuite = ExtensionSuite.RichEdit },
-        new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
+        //new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+        //new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        //new Script { ExtensionSuite = ExtensionSuite.Editors },
+        //new Script { ExtensionSuite = ExtensionSuite.Chart },
+        //new Script { ExtensionSuite = ExtensionSuite.Report },
+        //new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+        //new Script { ExtensionSuite = ExtensionSuite.TreeList },
+        //new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        //new Script { ExtensionSuite = ExtensionSuite.RichEdit },
+        //new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
     ));
 
             
@@ -150,17 +150,17 @@ WriteLiteral("    ");
             #line 31 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+        //new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
     ));
 
             
@@ -168,30 +168,30 @@ Write(Html.DevExpress().GetStyleSheets(
             #line hidden
 WriteLiteral("\r\n\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2456), Tuple.Create("\"", 2499)
-, Tuple.Create(Tuple.Create("", 2462), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
-, 2462), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2494), Tuple.Create("\"", 2537)
+, Tuple.Create(Tuple.Create("", 2500), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
+, 2500), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2523), Tuple.Create("\"", 2543)
-, Tuple.Create(Tuple.Create("", 2529), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
-, 2529), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2561), Tuple.Create("\"", 2581)
+, Tuple.Create(Tuple.Create("", 2567), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
+, 2567), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2567), Tuple.Create("\"", 2608)
-, Tuple.Create(Tuple.Create("", 2573), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
-, 2573), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2605), Tuple.Create("\"", 2646)
+, Tuple.Create(Tuple.Create("", 2611), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
+, 2611), false)
 );
 
 WriteLiteral("></script>\r\n     <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2633), Tuple.Create("\"", 2665)
-, Tuple.Create(Tuple.Create("", 2639), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/bootstrap.min.js")
-, 2639), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2671), Tuple.Create("\"", 2703)
+, Tuple.Create(Tuple.Create("", 2677), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/bootstrap.min.js")
+, 2677), false)
 );
 
 WriteLiteral("></script>\r\n</head>\r\n<body>\r\n    <nav");

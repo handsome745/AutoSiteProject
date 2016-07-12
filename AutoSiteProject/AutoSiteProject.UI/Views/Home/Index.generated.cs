@@ -50,8 +50,7 @@ namespace ASP
         {
             
             #line 4 "..\..\Views\Home\Index.cshtml"
-Write(Html.Partial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter));
-
+   Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel) ViewBag.CarFilter);
             
             #line default
             #line hidden
@@ -59,8 +58,7 @@ WriteLiteral("\r\n");
 
             
             #line 5 "..\..\Views\Home\Index.cshtml"
-Write(Html.Action("GetCarsPartial","DataLoader"));
-
+   Html.RenderAction("GetCarsPartial","DataLoader");
             
             #line default
             #line hidden
