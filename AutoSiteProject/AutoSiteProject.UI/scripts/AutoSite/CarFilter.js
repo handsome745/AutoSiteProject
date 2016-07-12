@@ -24,39 +24,11 @@
 });
 
 CarFilter = {
-    queryStringToJSON: function (qs) {
-        qs = qs || location.search.slice(1);
-
-        var pairs = qs.split('&');
-        var result = {};
-        pairs.forEach(function (pair) {
-            var pair = pair.split('=');
-            var key = pair[0];
-            var value = decodeURIComponent(pair[1] || '');
-
-            if (result[key]) {
-                if (Object.prototype.toString.call(result[key]) === '[object Array]') {
-                    result[key].push(value);
-                } else {
-                    result[key] = [result[key], value];
-                }
-            } else {
-                result[key] = value;
-            }
-        });
-
-        return JSON.parse(JSON.stringify(result));
-    }
-    ,
     OnBeginCallback: function (s, e) {
         var carFilter = $("form").serializeArray();
         $.each(carFilter, function (i, v) {
             e.customArgs[v.name] = v.value;
         });
-
-        //var jsonObj = CarFilter.queryStringToJSON(carFilter);
-        //if (jsonObj.OptionsIds != null && jsonObj.OptionsIds.length <= 1) jsonObj.OptionsIds = [jsonObj.OptionsIds];
-        //e.customArgs["filter"] = JSON.stringify(jsonObj);
     },
     loadCarsList: function (url, carsResult, carFilter) {
 
