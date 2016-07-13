@@ -30,6 +30,7 @@ namespace AutoSiteProject.Dependency
 
             builder.RegisterType<CountryRepository>().As<IGenericRepository<Country>>();
             builder.RegisterType<CarOptionRepository>().As<IGenericRepository<CarOption>>();
+            builder.RegisterType<CarImageRepository>().As<IGenericRepository<CarImages>>();
             builder.RegisterType<CarItemRepository>().As<ICarItemRpository>();
             builder.RegisterType<CarModelRepository>().As<IGenericRepository<CarModel>>();
             builder.RegisterType<ManufacturerRepository>().As<IGenericRepository<Manufacturer>>();
@@ -44,19 +45,21 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<CarBodyTypeManager>().As<ICarBodyTypeManager>();
             builder.RegisterType<CarOptionManager>().As<ICarOptionManager>();
             builder.RegisterType<CarItemManager>().As<ICarItemManager>();
+            builder.RegisterType<CarImageManager>().As<ICarImageManager>();
             builder.RegisterType<AppLogger>().As<IAppLogger>().SingleInstance();
-            //.WithProperty("Repository", new CarItemRepository()).InstancePerRequest();
+            
         }
         private void RegisterBlFieldCopiers(ContainerBuilder builder)
         {
-            builder.RegisterType<CountryFieldCopier>().As<ICountryFieldCopier>().InstancePerRequest();
-            builder.RegisterType<CarModelFieldCopier>().As<ICarModelFieldCopier>().InstancePerRequest();
-            builder.RegisterType<ManufacturerFieldCopier>().As<IManufacturerFieldCopier>().InstancePerRequest();
-            builder.RegisterType<CarBodyTypeFieldCopier>().As<ICarBodyTypeFieldCopier>().InstancePerRequest();
-            builder.RegisterType<CarItemFieldCopier>().As<ICarItemFieldCopier>().InstancePerRequest();
-            builder.RegisterType<CarOptionFieldCopier>().As<ICarOptionFieldCopier>().InstancePerRequest();
-            builder.RegisterType<RoleFieldCopier>().As<IRoleFieldCopier>().InstancePerRequest();
-            builder.RegisterType<UserFieldCopier>().As<IUserFieldCopier>().InstancePerRequest();
+            builder.RegisterType<CountryFieldCopier>().As<ICountryFieldCopier>();
+            builder.RegisterType<CarModelFieldCopier>().As<ICarModelFieldCopier>();
+            builder.RegisterType<ManufacturerFieldCopier>().As<IManufacturerFieldCopier>();
+            builder.RegisterType<CarBodyTypeFieldCopier>().As<ICarBodyTypeFieldCopier>();
+            builder.RegisterType<CarItemFieldCopier>().As<ICarItemFieldCopier>();
+            builder.RegisterType<CarOptionFieldCopier>().As<ICarOptionFieldCopier>();
+            builder.RegisterType<RoleFieldCopier>().As<IRoleFieldCopier>();
+            builder.RegisterType<UserFieldCopier>().As<IUserFieldCopier>();
+            builder.RegisterType<CarImageFieldCopier>().As<ICarImageFieldCopier>();
         }
     }
 }

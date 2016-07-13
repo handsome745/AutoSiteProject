@@ -36,5 +36,6 @@ namespace AutoSiteProject.Models.DB
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<CarImages> CarImages { get; set; }
     }
 }

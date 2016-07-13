@@ -6,6 +6,8 @@ using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using System;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.UI.Hubs;
+using System.Web;
+using System.Collections.Generic;
 
 namespace AutoSiteProject.UI.Controllers
 {
@@ -15,17 +17,20 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICarItemFieldCopier _carItemFieldCopier;
         private readonly ICarOptionManager _carOptionsManager;
         private readonly ICarOptionFieldCopier _carOptionFieldCopier;
+        private readonly ICarImageManager _carImageManager;
         public CarItemController(
             ICarItemManager carItemManager,
             ICarItemFieldCopier carItemFieldCopier,
             ICarOptionManager carOptionsManager,
-            ICarOptionFieldCopier carOptionFieldCopier
+            ICarOptionFieldCopier carOptionFieldCopier,
+            ICarImageManager carImageManager
             )
         {
             _carItemManager = carItemManager;
             _carItemFieldCopier = carItemFieldCopier;
             _carOptionsManager = carOptionsManager;
             _carOptionFieldCopier = carOptionFieldCopier;
+            _carImageManager = carImageManager;
         }
         // GET
         public ActionResult List()
@@ -36,7 +41,6 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Create(CarItemViewModel model)
         {
-
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)
             {
@@ -47,12 +51,32 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult CreateCar(CarItemViewModel model)
+        public ActionResult CreateCar(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
             if (ModelState.IsValid)
             {
+                //save images into db
+                foreach (var file in files)
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        CarImageViewModel image = new CarImageViewModel
+                        {
+                            Name = file.FileName,
+                            ContentLength = file.ContentLength,
+                            ContentType = file.ContentType,
+                        };
+                        
+                        file.InputStream.Read(image.Data, 0, (int)image.ContentLength);//Warning!!!
+                        _carImageManager.Add(image);//save to db
+                        model.Images.Add(image); //link caritem and image
+                    }
+                    //else files.Remove(file);
+                }
+                //save car into db
                 var dbItem = _carItemFieldCopier.CopyFields(model, new CarItem());
                 _carItemManager.Add(dbItem);
+                //notify all users
                 NotificationsHub.SendInfoMessage("Added new car!!!");//:"+ dbItem.CarModel +" Manufacturer:"+ dbItem.CarModel.Manufacturer);
                 return RedirectToAction("List");
             }

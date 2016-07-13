@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\CarBodyTypeRepository.cs" />
+    <Compile Include="Entities\CarImageRepository.cs" />
     <Compile Include="Entities\CarItemRepository.cs" />
     <Compile Include="Entities\CarModelRepository.cs" />
     <Compile Include="Entities\CarOptionRepository.cs" />

@@ -12,7 +12,7 @@
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_ModelManuf" ManuallyRouted="false" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_ManufCountry" ManuallyRouted="false" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarItem" Width="1.5" PointX="7.5" PointY="2.25" />
-        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarOption" Width="1.5" PointX="9.75" PointY="2.625" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarOption" Width="1.5" PointX="9.875" PointY="3.625" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_CarItemBodyType" />
         <AssociationConnector Association="AutoSiteProjectDBModel.fk_CarItemModel" />
         <AssociationConnector Association="AutoSiteProjectDBModel.CarItemOptions" />
@@ -24,6 +24,8 @@
         <AssociationConnector Association="AutoSiteProjectDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="AutoSiteProjectDBModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarImages" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="AutoSiteProjectDBModel.CarItemImages" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

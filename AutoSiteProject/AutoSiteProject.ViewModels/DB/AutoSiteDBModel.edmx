@@ -21,6 +21,8 @@
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -73,6 +75,16 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="CarImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Data" Type="varbinary(max)" />
+          <Property Name="ContentLength" Type="bigint" Nullable="false" />
+          <Property Name="ContentType" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="CarItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -81,6 +93,14 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ModelId" Type="int" />
           <Property Name="BodyTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="CarItemImages">
+          <Key>
+            <PropertyRef Name="CarId" />
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="ImageId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CarItemOptions">
           <Key>
@@ -120,6 +140,20 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="CountryId" Type="int" />
         </EntityType>
+        <Association Name="fk_CarIdFK">
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CarItemImages" Type="Self.CarItemImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItemImages">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_CarItemBodyType">
           <End Role="CarBodyType" Type="Self.CarBodyType" Multiplicity="0..1" />
           <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
@@ -228,6 +262,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_ImageIdFK">
+          <End Role="CarImages" Type="Self.CarImages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CarItemImages" Type="Self.CarItemImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItemImages">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ManufCountry">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
@@ -260,12 +308,18 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarBodyType" EntityType="Self.CarBodyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarImages" EntityType="Self.CarImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarItem" EntityType="Self.CarItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarItemImages" EntityType="Self.CarItemImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarItemOptions" EntityType="Self.CarItemOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarModel" EntityType="Self.CarModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarOption" EntityType="Self.CarOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_CarIdFK" Association="Self.fk_CarIdFK">
+            <End Role="CarItem" EntitySet="CarItem" />
+            <End Role="CarItemImages" EntitySet="CarItemImages" />
+          </AssociationSet>
           <AssociationSet Name="fk_CarItemBodyType" Association="Self.fk_CarItemBodyType">
             <End Role="CarBodyType" EntitySet="CarBodyType" />
             <End Role="CarItem" EntitySet="CarItem" />
@@ -297,6 +351,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ImageIdFK" Association="Self.fk_ImageIdFK">
+            <End Role="CarImages" EntitySet="CarImages" />
+            <End Role="CarItemImages" EntitySet="CarItemImages" />
           </AssociationSet>
           <AssociationSet Name="fk_ManufCountry" Association="Self.fk_ManufCountry">
             <End Role="Country" EntitySet="Country" />
@@ -415,6 +473,11 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="C__MigrationHistory" EntityType="AutoSiteProjectDBModel.C__MigrationHistory" />
+          <EntitySet Name="CarImages" EntityType="AutoSiteProjectDBModel.CarImages" />
+          <AssociationSet Name="CarItemImages" Association="AutoSiteProjectDBModel.CarItemImages">
+            <End Role="CarItem" EntitySet="CarItem" />
+            <End Role="CarImages" EntitySet="CarImages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CarItem">
           <Key>
@@ -427,6 +490,7 @@
           <NavigationProperty Name="CarBodyType" Relationship="AutoSiteProjectDBModel.fk_CarItemBodyType" FromRole="CarItem" ToRole="CarBodyType" />
           <NavigationProperty Name="CarModel" Relationship="AutoSiteProjectDBModel.fk_CarItemModel" FromRole="CarItem" ToRole="CarModel" />
           <NavigationProperty Name="CarOption" Relationship="AutoSiteProjectDBModel.CarItemOptions" FromRole="CarItem" ToRole="CarOption" />
+          <NavigationProperty Name="CarImages" Relationship="AutoSiteProjectDBModel.CarItemImages" FromRole="CarItem" ToRole="CarImages" />
         </EntityType>
         <EntityType Name="CarOption">
           <Key>
@@ -471,6 +535,8 @@
           <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUsers" Relationship="AutoSiteProjectDBModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -555,6 +621,21 @@
           <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CarImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.CarItemImages" FromRole="CarImages" ToRole="CarItem" />
+          <Property Name="ContentLength" Type="Int64" Nullable="false" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="CarItemImages">
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <End Type="AutoSiteProjectDBModel.CarImages" Role="CarImages" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -624,6 +705,8 @@
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="AutoSiteProjectDBModel.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -684,6 +767,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CarImages">
+            <EntityTypeMapping TypeName="AutoSiteProjectDBModel.CarImages">
+              <MappingFragment StoreEntitySet="CarImages">
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CarItemImages" TypeName="AutoSiteProjectDBModel.CarItemImages" StoreEntitySet="CarItemImages">
+            <EndProperty Name="CarImages">
+              <ScalarProperty Name="Id" ColumnName="ImageId" />
+            </EndProperty>
+            <EndProperty Name="CarItem">
+              <ScalarProperty Name="Id" ColumnName="CarId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

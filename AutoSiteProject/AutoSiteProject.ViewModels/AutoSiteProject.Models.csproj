@@ -83,6 +83,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarBodyTypeFieldCopier.cs" />
+    <Compile Include="Bl\Interfaces\FieldCopiers\ICarImageFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarItemFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarModelFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICarOptionFieldCopier.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Bl\Interfaces\Managers\ICarOptionManager.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\ICountryFieldCopier.cs" />
     <Compile Include="Bl\Interfaces\Managers\ICountryManager.cs" />
+    <Compile Include="Bl\Interfaces\Managers\ICarImageManager.cs" />
     <Compile Include="Bl\Interfaces\Managers\IManufacturerManager.cs" />
     <Compile Include="Bl\Interfaces\FieldCopiers\IFieldCoopier.cs" />
     <Compile Include="Bl\Interfaces\Managers\IRepositoryManager.cs" />
@@ -164,6 +167,9 @@
     <Compile Include="DB\CarBodyType.cs">
       <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\CarImages.cs">
+      <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\CarItem.cs">
       <DependentUpon>AutoSiteDBModel.tt</DependentUpon>
     </Compile>
@@ -187,6 +193,7 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\CarAggregateViewModel.cs" />
     <Compile Include="ViewModels\CarBodyTypeViewModel.cs" />
+    <Compile Include="ViewModels\CarImageViewModel.cs" />
     <Compile Include="ViewModels\CarItemViewModel.cs" />
     <Compile Include="ViewModels\CarModelViewModel.cs" />
     <Compile Include="ViewModels\CarOptionViewModel.cs" />
@@ -201,6 +208,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AutoSiteDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="DB\AutoSiteDBModel.edmx.diagram">
       <DependentUpon>AutoSiteDBModel.edmx</DependentUpon>
     </None>

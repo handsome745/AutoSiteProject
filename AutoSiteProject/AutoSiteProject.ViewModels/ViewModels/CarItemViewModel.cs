@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace AutoSiteProject.Models.ViewModels
 {
     public sealed class CarItemViewModel
     {
+        public CarItemViewModel()
+        {
+            AvalibleCarOptions = new List<CarOptionViewModel>();
+            Images = new List<CarImageViewModel>();
+        }
+
         public int Id { get; set; }
         [Required]
         [DisplayName("Сar manufacturer country")]
@@ -36,9 +43,6 @@ namespace AutoSiteProject.Models.ViewModels
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        public CarItemViewModel()
-        {
-            AvalibleCarOptions = new List<CarOptionViewModel>();
-        }
+        public List<CarImageViewModel> Images { get; set; }
     }
 }

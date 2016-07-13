@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FieldCopiers\CarBodyTypeFieldCopier.cs" />
+    <Compile Include="FieldCopiers\CarImageFieldCopier.cs" />
     <Compile Include="FieldCopiers\CarItemFieldCopier.cs" />
     <Compile Include="FieldCopiers\CarOptionFieldCopier.cs" />
     <Compile Include="FieldCopiers\RoleFieldCopier.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="IdentityClasses\IdentityConfig.cs" />
     <Compile Include="Managers\AppLogger.cs" />
     <Compile Include="Managers\CarBodyTypeManager.cs" />
+    <Compile Include="Managers\CarImageManager.cs" />
     <Compile Include="Managers\CarItemManager.cs" />
     <Compile Include="Managers\CarModelManager.cs" />
     <Compile Include="Managers\CarOptionManager.cs" />
