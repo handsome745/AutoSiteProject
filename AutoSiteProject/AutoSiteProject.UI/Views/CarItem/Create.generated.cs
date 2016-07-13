@@ -50,10 +50,10 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n\r\n");
+WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n");
 
             
-            #line 10 "..\..\Views\CarItem\Create.cshtml"
+            #line 9 "..\..\Views\CarItem\Create.cshtml"
  using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post)) 
 {
     
@@ -61,14 +61,14 @@ WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Create.cshtml"
+            #line 11 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Create.cshtml"
+            #line 11 "..\..\Views\CarItem\Create.cshtml"
                             
     
 
@@ -81,16 +81,19 @@ WriteLiteral(" class=\"form-horizontal\"");
 
 WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
 
-WriteLiteral("        ");
-
             
-            #line 16 "..\..\Views\CarItem\Create.cshtml"
-   Write(Html.Partial("_CarItem", Model));
-
+            #line 15 "..\..\Views\CarItem\Create.cshtml"
+        
             
             #line default
             #line hidden
-WriteLiteral(";\r\n        <div");
+            
+            #line 15 "..\..\Views\CarItem\Create.cshtml"
+           Html.RenderPartial("_CarItem", Model); 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -109,7 +112,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 23 "..\..\Views\CarItem\Create.cshtml"
+            #line 22 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -120,7 +123,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 26 "..\..\Views\CarItem\Create.cshtml"
+            #line 25 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

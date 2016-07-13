@@ -12,7 +12,7 @@
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
     
-    carOptionsPicker.chosen({ allow_single_deselect: true , width:"100%"});
+    carOptionsPicker.chosen({ allow_single_deselect: true , width:"280px"});
 
     //initial ids
     var countryId = countryPicker.data("initid");

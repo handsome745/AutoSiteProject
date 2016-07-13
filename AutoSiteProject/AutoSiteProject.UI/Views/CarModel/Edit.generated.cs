@@ -214,7 +214,7 @@ WriteLiteral("    ");
 
             
             #line 45 "..\..\Views\CarModel\Edit.cshtml"
-Write(Html.ActionLink("Back to List", "Index"));
+Write(Html.ActionLink("Back to List", "List"));
 
             
             #line default
