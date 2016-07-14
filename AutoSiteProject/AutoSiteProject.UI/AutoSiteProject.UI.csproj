@@ -246,6 +246,7 @@
     <None Include="Properties\PublishProfiles\webDeployAS.pubxml" />
     <Content Include="scripts\AutoSite\CarFilter.js" />
     <Content Include="scripts\AutoSite\DataLoader.js" />
+    <Content Include="scripts\AutoSite\ImageLoader.js" />
     <Content Include="scripts\AutoSite\Notifications.js" />
     <Content Include="scripts\AutoSite\UserEditScript.js" />
     <Content Include="scripts\bootstrap.js" />

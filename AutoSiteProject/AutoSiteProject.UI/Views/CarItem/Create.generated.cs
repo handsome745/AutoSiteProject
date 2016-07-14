@@ -54,7 +54,7 @@ WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n");
 
             
             #line 9 "..\..\Views\CarItem\Create.cshtml"
- using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post)) 
+ using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     
             
@@ -93,7 +93,23 @@ WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n        <div");
+WriteLiteral("\r\n\r\n        <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
+
+WriteLiteral(">\r\n                <input");
+
+WriteLiteral(" type=\"file\"");
+
+WriteLiteral(" name=\"files\"");
+
+WriteLiteral(" multiple=\"multiple\"");
+
+WriteLiteral("/>\r\n            </div>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -112,7 +128,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 22 "..\..\Views\CarItem\Create.cshtml"
+            #line 28 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -123,7 +139,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 25 "..\..\Views\CarItem\Create.cshtml"
+            #line 31 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

@@ -10,7 +10,15 @@ USE AutoSiteProjectDB
 	END
 END
 GO
-
+IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
+BEGIN 
+USE AutoSiteProjectDB
+	IF OBJECT_ID (N'dbo.CarImages', N'U') IS NOT NULL  
+	BEGIN
+		DROP TABLE dbo.CarImages;
+	END
+END
+GO
 IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
 BEGIN 
 USE AutoSiteProjectDB
@@ -45,19 +53,19 @@ BEGIN
 	ADD ContentLength bigint NOT NULL DEFAULT 0
 END
 
-USE AutoSiteProjectDB
-IF  EXISTS(
-    SELECT *
-    FROM sys.columns 
-    WHERE Name      = N'ContentLength'
-      AND Object_ID = Object_ID(N'CarImages'))
-BEGIN
-	ALTER TABLE dbo.CarImages 
-	ADD CONSTRAINT DF_ContentLength DEFAULT 0 FOR ContentLength;
+--USE AutoSiteProjectDB
+--IF  EXISTS(
+--    SELECT *
+--    FROM sys.columns 
+--    WHERE Name      = N'ContentLength'
+--      AND Object_ID = Object_ID(N'CarImages'))
+--BEGIN
+--	ALTER TABLE dbo.CarImages 
+--	ADD CONSTRAINT DF_ContentLength DEFAULT 0 FOR ContentLength;
 	
-	ALTER TABLE dbo.CarImages
-	ALTER COLUMN ContentLength bigint NOT NULL 
-END
+--	ALTER TABLE dbo.CarImages
+--	ALTER COLUMN ContentLength bigint NOT NULL 
+--END
 
 USE AutoSiteProjectDB
 IF NOT EXISTS(

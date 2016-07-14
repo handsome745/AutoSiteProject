@@ -81,16 +81,115 @@ WriteLiteral(" class=\"form-horizontal\"");
 
 WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
 
-WriteLiteral("        ");
-
             
             #line 16 "..\..\Views\CarItem\Edit.cshtml"
-   Write(Html.Partial("_CarItem", Model));
+        
+            
+            #line default
+            #line hidden
+            
+            #line 16 "..\..\Views\CarItem\Edit.cshtml"
+           Html.RenderPartial("_CarItem", Model);
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n\r\n");
+
+            
+            #line 18 "..\..\Views\CarItem\Edit.cshtml"
+        
+            
+            #line default
+            #line hidden
+            
+            #line 18 "..\..\Views\CarItem\Edit.cshtml"
+         foreach (var image in Model.Images)
+        {
+            
+            
+            #line default
+            #line hidden
+            
+            #line 20 "..\..\Views\CarItem\Edit.cshtml"
+       Write(Html.Label(image.Name));
 
             
             #line default
             #line hidden
-WriteLiteral(";\r\n        <div");
+            
+            #line 20 "..\..\Views\CarItem\Edit.cshtml"
+                                   
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 414), Tuple.Create("\"", 487)
+, Tuple.Create(Tuple.Create("", 420), Tuple.Create("data:", 420), true)
+            
+            #line 21 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 425), Tuple.Create<System.Object, System.Int32>(image.ContentType
+            
+            #line default
+            #line hidden
+, 425), false)
+, Tuple.Create(Tuple.Create("", 443), Tuple.Create(";base64,", 443), true)
+            
+            #line 21 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create(" ", 451), Tuple.Create<System.Object, System.Int32>(Convert.ToBase64String(image.Data)
+            
+            #line default
+            #line hidden
+, 452), false)
+);
+
+WriteLiteral("/>\r\n");
+
+WriteLiteral("            <input");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" name=\"Delete\"");
+
+WriteLiteral(" value=\"Delete\"");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 553), Tuple.Create("\"", 567)
+            
+            #line 22 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 558), Tuple.Create<System.Object, System.Int32>(image.Id
+            
+            #line default
+            #line hidden
+, 558), false)
+);
+
+WriteLiteral("/>\r\n");
+
+            
+            #line 23 "..\..\Views\CarItem\Edit.cshtml"
+        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
+
+WriteLiteral(">\r\n                <input");
+
+WriteLiteral(" type=\"file\"");
+
+WriteLiteral(" name=\"files\"");
+
+WriteLiteral("/>\r\n            </div>\r\n        </div>\r\n\r\n\r\n\r\n        ");
+
+WriteLiteral("\r\n\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -109,7 +208,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 23 "..\..\Views\CarItem\Edit.cshtml"
+            #line 52 "..\..\Views\CarItem\Edit.cshtml"
 }
 
             
@@ -120,7 +219,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 26 "..\..\Views\CarItem\Edit.cshtml"
+            #line 55 "..\..\Views\CarItem\Edit.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             
