@@ -50,7 +50,14 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n");
+WriteLiteral("\r\n<script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 106), Tuple.Create("\"", 145)
+, Tuple.Create(Tuple.Create("", 112), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
+, 112), false)
+);
+
+WriteLiteral("></script>\r\n<h2>Create</h2>\r\n\r\n");
 
             
             #line 9 "..\..\Views\CarItem\Create.cshtml"
@@ -93,7 +100,7 @@ WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n        <div");
+WriteLiteral("\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -101,15 +108,29 @@ WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
 
-WriteLiteral(">\r\n                <input");
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"images-container\"");
+
+WriteLiteral(">\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
+
+WriteLiteral(">\r\n                <div");
+
+WriteLiteral(" class=\"add-image\"");
+
+WriteLiteral(">\r\n                    <input");
 
 WriteLiteral(" type=\"file\"");
 
 WriteLiteral(" name=\"files\"");
 
-WriteLiteral(" multiple=\"multiple\"");
-
-WriteLiteral("/>\r\n            </div>\r\n        </div>\r\n        <div");
+WriteLiteral("/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -128,7 +149,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 28 "..\..\Views\CarItem\Create.cshtml"
+            #line 35 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -139,7 +160,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 31 "..\..\Views\CarItem\Create.cshtml"
+            #line 38 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

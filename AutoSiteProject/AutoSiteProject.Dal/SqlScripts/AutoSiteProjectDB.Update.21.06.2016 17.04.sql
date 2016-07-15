@@ -10,15 +10,7 @@ USE AutoSiteProjectDB
 	END
 END
 GO
-IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
-BEGIN 
-USE AutoSiteProjectDB
-	IF OBJECT_ID (N'dbo.CarImages', N'U') IS NOT NULL  
-	BEGIN
-		DROP TABLE dbo.CarImages;
-	END
-END
-GO
+
 IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
 BEGIN 
 USE AutoSiteProjectDB
