@@ -14,7 +14,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.Id = from.Id;
             to.Name = from.Name;
             to.ContentLength = from.ContentLength;
-            to.Data = from.Data;
+            //to.Data = from.Data;
             to.ContentType = from.ContentType;
             return to;
         }

@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using AutoSiteProject.Models.ViewModels;
 using AutoSiteProject.Models.Bl.Interfaces.FieldCopiers;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
-using System.Web.Script.Serialization;
 using AutoSiteProject.Bl.IdentityClasses;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -19,7 +18,6 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICountryManager _countryManager;
         private readonly ICarBodyTypeManager _carBodyTypeManager;
         private readonly ICarOptionManager _carOptionManager;
-        private readonly ICarItemFieldCopier _carItemFieldCopier;
         private readonly ICarModelFieldCopier _carModelFieldCopier;
         private readonly IManufacturerFieldCopier _manufacturerFieldCopier;
         private readonly ICountryFieldCopier _countryFieldCopier;
@@ -28,6 +26,7 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICarItemManager _carItemManager;
         private readonly IRoleFieldCopier _roleFieldCopier;
         private readonly IUserFieldCopier _userFieldCopier;
+        private readonly ICarImageManager _carImageManager;
 
         public ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
         public  ApplicationUserManager UserManager => HttpContext.GetOwinContext().Get<ApplicationUserManager>();
@@ -45,7 +44,7 @@ namespace AutoSiteProject.UI.Controllers
             ICarOptionFieldCopier carOptionFieldCopier,
             ICarItemManager carItemManager,
             IRoleFieldCopier roleFieldCopier,
-            ICarItemFieldCopier carItemFieldCopier,
+            ICarImageManager carImageManage,
             IUserFieldCopier userFieldCopier
             )
         {
@@ -54,7 +53,7 @@ namespace AutoSiteProject.UI.Controllers
             _countryManager = countryManager;
             _carBodyTypeManager = carBodyTypeManager;
             _carOptionManager = carOptionManager;
-
+            _carImageManager = carImageManage;
             _carModelFieldCopier = carModelFieldCopier;
             _manufacturerFieldCopier = manufacturerFieldCopier;
             _countryFieldCopier = countryFieldCopier;
@@ -62,7 +61,6 @@ namespace AutoSiteProject.UI.Controllers
             _carOptionFieldCopier = carOptionFieldCopier;
             _carItemManager = carItemManager;
             _roleFieldCopier = roleFieldCopier;
-            _carItemFieldCopier = carItemFieldCopier;
             _userFieldCopier = userFieldCopier;
         }
         [HttpPost]
@@ -179,6 +177,12 @@ namespace AutoSiteProject.UI.Controllers
                 usersViewModels.Add(q);
             }
             return PartialView("GetUsersPartial", usersViewModels);
+        }
+
+        public ActionResult LoadImg(int id)
+        {
+            var image = _carImageManager.GetById(id);
+            return  File(image.Data,image.ContentType,image.Name);
         }
     }
 }

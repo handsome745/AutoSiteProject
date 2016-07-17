@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Create";
 }
+<link href="~/Content/jQuery.FileUpload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<link href="~/Content/jQuery.FileUpload/css/jquery.fileupload.css" rel="stylesheet" />
+<script src="~/scripts/jquery-ui-1.9.0.min.js"></script>
+<script src="~/scripts/jQuery.FileUpload/jquery.fileupload.js"></script>
 <script src="~/scripts/AutoSite/ImageLoader.js"></script>
+
 <h2>Create</h2>
 
 @using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post, new { enctype = "multipart/form-data" })) 

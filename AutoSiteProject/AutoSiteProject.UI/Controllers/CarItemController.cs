@@ -58,6 +58,7 @@ namespace AutoSiteProject.UI.Controllers
         private void SaveImagesAndLink(CarItem dbModel, IEnumerable<HttpPostedFileBase> files)
         {
             //save images into db
+            if (files == null) return;
             foreach (var file in files)
             {
                 if (file == null || file.ContentLength <= 0) continue;
@@ -108,15 +109,33 @@ namespace AutoSiteProject.UI.Controllers
         }
         //Post
         [HttpPost]
-        public ActionResult Edit(CarItemViewModel model)
+        public ActionResult Edit(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid) return View(model);
+            //if model is not valid view returned without files!
             var dbItem = _carItemManager.GetById(model.Id);
             if (dbItem == null) throw new NullReferenceException();
-            dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
 
+            var dbImagesIds = dbItem.CarImages.Select(x => x.Id);
+            var modelImagesIds = model.Images.Select(x => x.Id);
+            var imagesIdsForDelete = dbImagesIds.Except(modelImagesIds);
+            DeleteImages(dbItem, imagesIdsForDelete);
+            SaveImagesAndLink(dbItem, files);
+            dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
             _carItemManager.Edit(dbItem);
             return RedirectToAction("List");
+        }
+
+        private void DeleteImages(CarItem dbItem, IEnumerable<int> ids)
+        {
+            var dbArrayForDelete = dbItem.CarImages.Where(x => ids.Contains(x.Id));
+            foreach (var item in dbArrayForDelete)
+            {
+                //remove from dbitem
+                dbItem.CarImages.Remove(item);
+                //remove from database
+                _carImageManager.Delete(item);
+            }
         }
 
         //GET 
