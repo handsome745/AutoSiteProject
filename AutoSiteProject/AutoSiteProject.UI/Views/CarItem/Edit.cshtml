@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 <script src="~/scripts/AutoSite/ImageLoader.js"></script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "CarItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -20,13 +20,13 @@
                     @if (Model.Images != null)
                     {
                         for (var i = 0; i < Model.Images.Count; i++)
-                         {
-                             <div class="image-block" id="@Model.Images[i].Id">
-                                 @Html.HiddenFor(model => model.Images[i].Id)
-                                 <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) width="150"/>
-                                 <input type="button" name="Delete" class="existImageDeleteButton" value="Delete" id="@Model.Images[i].Id"/>
-                             </div>
-                         }
+                        {
+                            <div class="image-block" id="@Model.Images[i].Id">
+                                @Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id })
+                                <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) width="150" />
+                                <input type="button" name="Delete" class="existImageDeleteButton" value="Delete" id="@Model.Images[i].Id" />
+                            </div>
+                        }
                     }
                 </div>
             </div>
