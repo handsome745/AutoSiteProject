@@ -50,49 +50,17 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n<link");
+WriteLiteral("\r\n<script");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 104), Tuple.Create("\"", 167)
-, Tuple.Create(Tuple.Create("", 111), Tuple.Create<System.Object, System.Int32>(Href("~/Content/jQuery.FileUpload/css/jquery.fileupload-ui.css")
-, 111), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" />\r\n<link");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 195), Tuple.Create("\"", 255)
-, Tuple.Create(Tuple.Create("", 202), Tuple.Create<System.Object, System.Int32>(Href("~/Content/jQuery.FileUpload/css/jquery.fileupload.css")
-, 202), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" />\r\n<script");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 285), Tuple.Create("\"", 323)
-, Tuple.Create(Tuple.Create("", 291), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery-ui-1.9.0.min.js")
-, 291), false)
-);
-
-WriteLiteral("></script>\r\n<script");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 343), Tuple.Create("\"", 397)
-, Tuple.Create(Tuple.Create("", 349), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jQuery.FileUpload/jquery.fileupload.js")
-, 349), false)
-);
-
-WriteLiteral("></script>\r\n<script");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 417), Tuple.Create("\"", 456)
-, Tuple.Create(Tuple.Create("", 423), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
-, 423), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 106), Tuple.Create("\"", 145)
+, Tuple.Create(Tuple.Create("", 112), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
+, 112), false)
 );
 
 WriteLiteral("></script>\r\n\r\n<h2>Create</h2>\r\n\r\n");
 
             
-            #line 14 "..\..\Views\CarItem\Create.cshtml"
+            #line 10 "..\..\Views\CarItem\Create.cshtml"
  using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     
@@ -100,14 +68,14 @@ WriteLiteral("></script>\r\n\r\n<h2>Create</h2>\r\n\r\n");
             #line default
             #line hidden
             
-            #line 16 "..\..\Views\CarItem\Create.cshtml"
+            #line 12 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 16 "..\..\Views\CarItem\Create.cshtml"
+            #line 12 "..\..\Views\CarItem\Create.cshtml"
                             
     
 
@@ -121,13 +89,13 @@ WriteLiteral(" class=\"form-horizontal\"");
 WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
 
             
-            #line 20 "..\..\Views\CarItem\Create.cshtml"
+            #line 16 "..\..\Views\CarItem\Create.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 20 "..\..\Views\CarItem\Create.cshtml"
+            #line 16 "..\..\Views\CarItem\Create.cshtml"
            Html.RenderPartial("_CarItem", Model); 
             
             #line default
@@ -181,7 +149,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 40 "..\..\Views\CarItem\Create.cshtml"
+            #line 36 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -192,7 +160,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 43 "..\..\Views\CarItem\Create.cshtml"
+            #line 39 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             
