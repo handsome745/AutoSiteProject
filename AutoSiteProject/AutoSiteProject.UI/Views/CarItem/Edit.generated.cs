@@ -61,7 +61,7 @@ WriteLiteral("></script>\r\n\r\n");
 
             
             #line 10 "..\..\Views\CarItem\Edit.cshtml"
- using (Html.BeginForm("Edit", "CarItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+ using (Html.BeginForm())
 {
     
             
@@ -125,51 +125,51 @@ WriteLiteral(">\r\n");
                      if (Model.Images != null)
                     {
                         for (var i = 0; i < Model.Images.Count; i++)
-                        {
+                         {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <div");
+WriteLiteral("                             <div");
 
 WriteLiteral(" class=\"image-block\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 789), Tuple.Create("\"", 813)
+WriteAttribute("id", Tuple.Create(" id=\"", 716), Tuple.Create("\"", 740)
             
             #line 24 "..\..\Views\CarItem\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 794), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+, Tuple.Create(Tuple.Create("", 721), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 794), false)
+, 721), false)
 );
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                ");
+WriteLiteral("                                 ");
 
             
             #line 25 "..\..\Views\CarItem\Edit.cshtml"
-                           Write(Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id }));
+                            Write(Html.HiddenFor(model => model.Images[i].Id));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                <img");
+WriteLiteral("\r\n                                 <img");
 
-WriteAttribute("src", Tuple.Create(" src=", 1012), Tuple.Create("", 1085)
+WriteAttribute("src", Tuple.Create(" src=", 860), Tuple.Create("", 933)
             
             #line 26 "..\..\Views\CarItem\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 1017), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
+, Tuple.Create(Tuple.Create("", 865), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
             
             #line default
             #line hidden
-, 1017), false)
+, 865), false)
 );
 
 WriteLiteral(" width=\"150\"");
 
-WriteLiteral(" />\r\n                                <input");
+WriteLiteral("/>\r\n                                 <input");
 
 WriteLiteral(" type=\"button\"");
 
@@ -179,21 +179,21 @@ WriteLiteral(" class=\"existImageDeleteButton\"");
 
 WriteLiteral(" value=\"Delete\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1214), Tuple.Create("\"", 1238)
+WriteAttribute("id", Tuple.Create(" id=\"", 1062), Tuple.Create("\"", 1086)
             
             #line 27 "..\..\Views\CarItem\Edit.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 1219), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+                                      , Tuple.Create(Tuple.Create("", 1067), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 1219), false)
+, 1067), false)
 );
 
-WriteLiteral(" />\r\n                            </div>\r\n");
+WriteLiteral("/>\r\n                             </div>\r\n");
 
             
             #line 29 "..\..\Views\CarItem\Edit.cshtml"
-                        }
+                         }
                     }
 
             

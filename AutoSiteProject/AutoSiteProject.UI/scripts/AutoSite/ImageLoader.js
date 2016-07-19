@@ -4,7 +4,7 @@
         MyImageLoader.AddImagePreview(this);
     });
     $("input.existImageDeleteButton").on("click",function () {
-        MyImageLoader.DisableExistImageBlock(this);
+        MyImageLoader.DeleteImageBlock(this);
     });
 });
 
@@ -23,10 +23,6 @@ MyImageLoader = {
     },
     DeleteImageBlock: function (button) {
         $("div.image-block#" + button.id).remove();
-    },
-    DisableExistImageBlock: function(button) {
-        Array.from($("div.image-block#" + button.id).children()).forEach(function(item) { item.style.display = "none"; });
-        $("input.existImageIdField#" + button.id).empty();
     },
     OnImageLoad: function (e, input) {
         var addImageDiv = $("div.add-image");
