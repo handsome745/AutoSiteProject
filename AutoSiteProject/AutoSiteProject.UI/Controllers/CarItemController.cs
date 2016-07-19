@@ -127,7 +127,10 @@ namespace AutoSiteProject.UI.Controllers
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
             foreach (var image in dbItem.CarImages)
             {
-                result.Images.Add(_carImageFieldCopier.CopyFields(image, new CarImageViewModel()));//copy all without data
+                var img = _carImageFieldCopier.CopyFields(image, new CarImageViewModel());
+                img.Data = image.Data;
+                result.Images.Add(img);
+
             }
             return View(result);
         }

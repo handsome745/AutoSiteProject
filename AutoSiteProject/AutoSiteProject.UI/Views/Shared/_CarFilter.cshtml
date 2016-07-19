@@ -11,40 +11,46 @@
         <div class="collapse" id="filterForm">
             <form class="form-inline" style="width: 100%">
                 <div class="filter-section" data-cars-url="@Url.Action("GetCars", "DataLoader")" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
-                    <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-sm-4" })
-                        <div class="col-sm-10">
-                            @Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker", @data_initId = @Model.CountryId })
+                    <div class="form-group" style="width: 100%">
+                        @Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        <div class="col-sm-2" style="width: 100%">
+                            @Html.TextBoxFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "form-control allFields-picker", @style="width: 100%" })
                         </div>
                     </div>
                     <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        @Html.LabelFor(m => m.CountryId, htmlAttributes: new {@class = "control-label col-sm-4"})
                         <div class="col-sm-10">
-                            @Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker", @data_initId = @Model.ManufacturerId })
+                            @Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new {@class = "form-control country-picker", @data_initId = @Model.CountryId})
                         </div>
                     </div>
                     <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.ModelId, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        @Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new {@class = "control-label col-sm-4"})
                         <div class="col-sm-10">
-                            @Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker", @data_initId = @Model.ModelId })
+                            @Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new {@class = "form-control manufacturer-picker", @data_initId = @Model.ManufacturerId})
                         </div>
                     </div>
                     <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        @Html.LabelFor(m => m.ModelId, htmlAttributes: new {@class = "control-label col-sm-4"})
                         <div class="col-sm-10">
-                            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId })
+                            @Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new {@class = "form-control carmodel-picker", @data_initId = @Model.ModelId})
                         </div>
                     </div>
                     <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.OptionsIds, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        @Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new {@class = "control-label col-sm-4"})
                         <div class="col-sm-10">
-                            @Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker" } )
+                            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new {@class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId})
                         </div>
                     </div>
                     <div class="form-group" style="width: 33%">
-                        @Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        @Html.LabelFor(m => m.OptionsIds, htmlAttributes: new {@class = "control-label col-sm-4"})
                         <div class="col-sm-10">
-                            @Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "form-control description-picker" })
+                            @Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new {@class = "form-control caroptions-picker"})
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 33%">
+                        @Html.LabelFor(m => m.Description, htmlAttributes: new {@class = "control-label col-sm-4"})
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.Description, htmlAttributes: new {@class = "form-control description-picker"})
                         </div>
                     </div>
                 </div>

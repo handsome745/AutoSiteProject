@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace AutoSiteProject.Models.ViewModels
@@ -28,6 +29,7 @@ namespace AutoSiteProject.Models.ViewModels
         public List<string> Options { get; set; }
         [DisplayName("Car options")]
         public List<string> OptionsNames { get; set; }
+        [NotMapped]
         public string OptionsNamesString => string.Join(", ", OptionsNames);
         [DisplayName("Description")]
         public string Description { get; set; }
@@ -55,5 +57,7 @@ namespace AutoSiteProject.Models.ViewModels
         public List<CarOptionViewModel> AvalibleCarOptions { get; set; }
         [DisplayName("Description")]
         public string Description { get; set; }
+        [DisplayName("All fields search")]
+        public string AllFieldsSearch { get; set; }          
     }
 }

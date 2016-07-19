@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.Models.Dal.Interfaces;
 using AutoSiteProject.Models.DB;
@@ -27,10 +29,45 @@ namespace AutoSiteProject.Bl.Managers
                 predicateBuilder = predicateBuilder.And(c => c.ManufacturerId == filter.ManufacturerId);
             if (filter.CountryId != null)
                 predicateBuilder = predicateBuilder.And(c => c.CountryId == filter.CountryId);
-            if (filter.OptionsIds!= null && filter.OptionsIds.Count > 0)
+            if (filter.OptionsIds != null && filter.OptionsIds.Count > 0)
                 predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Count() >= filter.OptionsIds.Count);
             if (!string.IsNullOrEmpty(filter.Description))
                 predicateBuilder = predicateBuilder.And(c => c.Description.Contains(filter.Description));
+
+            if (!string.IsNullOrEmpty(filter.AllFieldsSearch))
+            {
+                var falsePredicateBuilder = PredicateBuilder.False<CarAggregateViewModel>();
+                var lowerCaseAllSearch = filter.AllFieldsSearch.ToLower();
+                var searchWords = lowerCaseAllSearch.Split(new char[] { ' ', '.', ',', '?', '!' });
+                searchWords = searchWords.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+                var param = Expression.Parameter(typeof(CarAggregateViewModel));
+                var entityType = typeof(CarAggregateViewModel);
+                var propertyType = typeof(string);
+                var fields = entityType.GetFields()
+                                    .Where(f => f.FieldType == propertyType)
+                                    .Select(f => f.Name);
+                var properties = entityType.GetProperties()
+                                        .Where(p => p.PropertyType == propertyType)
+                                        .Select(p => p.Name);
+                var allFieldsNames = fields.Concat(properties);
+                foreach (var fieldName in allFieldsNames)
+                {
+                    foreach (var searchWord in searchWords)
+                    {
+                        if (fieldName == "OptionsNamesString") continue;
+                        var predicateToAdd = Expression.Lambda<Func<CarAggregateViewModel, bool>>(
+                            Expression.Call(Expression.PropertyOrField(param, fieldName),
+                                            typeof(string).GetMethod("Contains", new[] { typeof(string) }),
+                                            Expression.Constant(searchWord)
+                                           )
+                            , param);
+
+                        falsePredicateBuilder = falsePredicateBuilder.Or(predicateToAdd);
+                    }
+                }
+                predicateBuilder = predicateBuilder.And(falsePredicateBuilder);
+            }
+
             var result = _carRepository.GetCarsAggregateViewModel(predicateBuilder).ToList();
             return result;
         }

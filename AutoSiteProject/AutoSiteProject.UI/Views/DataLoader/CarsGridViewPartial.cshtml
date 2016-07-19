@@ -16,7 +16,7 @@
         {
             ViewContext.Writer.Write(
                 Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                );
+                + "&nbsp;" );
             var userId = User.Identity.GetUserId();
             if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId)
                 ViewContext.Writer.Write(
