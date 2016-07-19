@@ -98,7 +98,7 @@ namespace AutoSiteProject.UI.Controllers
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
             foreach (var image in dbItem.CarImages)
             {
-                result.Images.Add(_carImageFieldCopier.CopyFields(image, new CarImageViewModel()));
+                result.Images.Add(_carImageFieldCopier.CopyFields(image, new CarImageViewModel()));//copy all without data
             }
             var dbOptions = _carOptionsManager.GetAll().ToList();
             foreach (var item in dbOptions)
@@ -112,24 +112,28 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid) return View(model);
-            //if model is not valid view returned without files!
+            
             var dbItem = _carItemManager.GetById(model.Id);
             if (dbItem == null) throw new NullReferenceException();
 
+            //delete disabled images
             var dbImagesIds = dbItem.CarImages.Select(x => x.Id);
             var modelImagesIds = model.Images.Select(x => x.Id);
             var imagesIdsForDelete = dbImagesIds.Except(modelImagesIds);
             DeleteImages(dbItem, imagesIdsForDelete);
+            //add new images
             SaveImagesAndLink(dbItem, files);
+            //copy edited fields
             dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
+            //save changes
             _carItemManager.Edit(dbItem);
             return RedirectToAction("List");
         }
 
         private void DeleteImages(CarItem dbItem, IEnumerable<int> ids)
         {
-            var dbArrayForDelete = dbItem.CarImages.Where(x => ids.Contains(x.Id));
-            foreach (var item in dbArrayForDelete)
+            var dbImagesArrayForDelete = dbItem.CarImages.Where(x => ids.Contains(x.Id)).ToList();
+            foreach (var item in dbImagesArrayForDelete)
             {
                 //remove from dbitem
                 dbItem.CarImages.Remove(item);
