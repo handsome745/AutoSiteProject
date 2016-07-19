@@ -95,3 +95,40 @@ USE AutoSiteProjectDB
 	END
 END
 GO
+
+IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
+BEGIN 
+USE AutoSiteProjectDB
+	IF NOT EXISTS(
+    SELECT *
+    FROM sys.columns 
+    WHERE Name      = N'OwnerId'
+      AND Object_ID = Object_ID(N'CarItem'))
+	BEGIN
+		ALTER TABLE dbo.CarItem
+		ADD OwnerId nvarchar(128)
+
+		ALTER TABLE dbo.CarItem
+		ADD CONSTRAINT fk_CarItemOwner FOREIGN KEY (OwnerId) REFERENCES AspNetUsers(Id) ON DELETE CASCADE
+	END
+END
+GO
+
+IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
+BEGIN 
+USE AutoSiteProjectDB
+	IF EXISTS(
+    SELECT *
+    FROM sys.columns 
+    WHERE Name      = N'OwnerId'
+      AND Object_ID = Object_ID(N'CarItem'))
+	BEGIN
+		UPDATE dbo.CarItem 
+		SET OwnerId = (SELECT TOP(1) Id FROM AspNetUsers)
+		WHERE 1=1;
+
+		ALTER TABLE dbo.CarItem
+		ALTER COLUMN OwnerId nvarchar(128) NOT NULL
+	END
+END
+GO

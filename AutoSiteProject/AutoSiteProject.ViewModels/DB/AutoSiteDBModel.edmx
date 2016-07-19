@@ -93,6 +93,7 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ModelId" Type="int" />
           <Property Name="BodyTypeId" Type="int" />
+          <Property Name="OwnerId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="CarItemImages">
           <Key>
@@ -203,6 +204,20 @@
             </Principal>
             <Dependent Role="CarItemOptions">
               <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemOwner">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="OwnerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -335,6 +350,10 @@
           <AssociationSet Name="fk_CarItemOptionIdCarItemOptions" Association="Self.fk_CarItemOptionIdCarItemOptions">
             <End Role="CarOption" EntitySet="CarOption" />
             <End Role="CarItemOptions" EntitySet="CarItemOptions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarItemOwner" Association="Self.fk_CarItemOwner">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -478,6 +497,10 @@
             <End Role="CarItem" EntitySet="CarItem" />
             <End Role="CarImages" EntitySet="CarImages" />
           </AssociationSet>
+          <AssociationSet Name="fk_CarItemOwner" Association="AutoSiteProjectDBModel.fk_CarItemOwner">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CarItem">
           <Key>
@@ -491,6 +514,8 @@
           <NavigationProperty Name="CarModel" Relationship="AutoSiteProjectDBModel.fk_CarItemModel" FromRole="CarItem" ToRole="CarModel" />
           <NavigationProperty Name="CarOption" Relationship="AutoSiteProjectDBModel.CarItemOptions" FromRole="CarItem" ToRole="CarOption" />
           <NavigationProperty Name="CarImages" Relationship="AutoSiteProjectDBModel.CarItemImages" FromRole="CarItem" ToRole="CarImages" />
+          <Property Name="OwnerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="AutoSiteProjectDBModel.fk_CarItemOwner" FromRole="CarItem" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="CarOption">
           <Key>
@@ -578,6 +603,7 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="AutoSiteProjectDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="AutoSiteProjectDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="AutoSiteProjectDBModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemOwner" FromRole="AspNetUsers" ToRole="CarItem" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="AutoSiteProjectDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -636,6 +662,20 @@
           <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
           <End Type="AutoSiteProjectDBModel.CarImages" Role="CarImages" Multiplicity="*" />
         </Association>
+        <Association Name="fk_CarItemOwner">
+          <End Type="AutoSiteProjectDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -679,6 +719,7 @@
           <EntitySetMapping Name="CarItem">
             <EntityTypeMapping TypeName="AutoSiteProjectDBModel.CarItem">
               <MappingFragment StoreEntitySet="CarItem">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
                 <ScalarProperty Name="ModelId" ColumnName="ModelId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

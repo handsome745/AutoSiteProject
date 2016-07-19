@@ -24,6 +24,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.ModelId = from.ModelId;
             to.Description = from.Description;
             to.CarBodyType =  from.CarBodyType?.Name;
+            to.OwnerId = from.OwnerId;
             if (@from.CarModel != null)
             {
                 to.CarModel = from.CarModel.Name;
@@ -49,6 +50,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.BodyTypeId = from.BodyTypeId;
             to.ModelId = from.ModelId;
             to.Description = from.Description;
+            to.OwnerId = from.OwnerId;
 
             to.CarOption.Clear();
             if (from.SelectedCarOptions == null) return to;

@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="AutoSiteProjectDBModel.CarImages" Width="1.5" PointX="9.75" PointY="0.75" />
         <AssociationConnector Association="AutoSiteProjectDBModel.CarItemImages" />
+        <AssociationConnector Association="AutoSiteProjectDBModel.fk_CarItemOwner" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

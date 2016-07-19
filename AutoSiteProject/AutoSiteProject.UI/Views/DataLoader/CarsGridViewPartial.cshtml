@@ -1,5 +1,6 @@
 ﻿@using System.Web.UI.WebControls
 @using AutoSiteProject.Models.ViewModels
+@using Microsoft.AspNet.Identity
 @model IEnumerable<CarAggregateViewModel>
 
 @Html.DevExpress().GridView(settings =>
@@ -7,40 +8,42 @@
     settings.Name = "carsGridView";
     settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsPartial" };
     settings.Width = Unit.Percentage(100);
-    if (User.IsInRole("Admin"))
-    {
-        settings.Columns.Add(column =>
-        {
-            column.Caption = "#";
-            column.SetDataItemTemplateContent(c =>
-            {
-                ViewContext.Writer.Write(
-                    Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                    + "&nbsp;" +
-                    Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                    );
-            });
-            column.SetHeaderTemplateContent(c =>
-            {
-                ViewContext.Writer.Write(
-                    Html.ActionLink("New", "Create", "CarItem").ToHtmlString()
-                    );
-            });
-            column.Settings.AllowDragDrop = DefaultBoolean.False;
-            column.Settings.AllowSort = DefaultBoolean.False;
-            column.Width = 70;
-        });
-        settings.Columns.Add("CarId");
-    }
 
-    
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "#";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                );
+            var userId = User.Identity.GetUserId();
+            if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId)
+                ViewContext.Writer.Write(
+                        Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        + "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        );
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("New", "Create", "CarItem").ToHtmlString()
+                );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.Width = 70;
+    });
+    //settings.Columns.Add("CarId");
+
     settings.Columns.Add("Country");
     settings.Columns.Add("Manufacturer");
     settings.Columns.Add("Model");
     settings.Columns.Add("BodyType");
     settings.Columns.Add("Description");
-    settings.Columns.Add("OptionsNamesString");
+    settings.Columns.Add("OptionsNamesString", "Options");
     settings.Settings.ShowGroupPanel = true;
     settings.KeyFieldName = "CarId";
-    settings.ClientSideEvents.BeginCallback = "CarFilter.OnBeginCallback";
+    settings.ClientSideEvents.BeginCallback = "carFilter.onBeginCallback";
 }).Bind(Model).GetHtml()

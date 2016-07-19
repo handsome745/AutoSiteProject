@@ -8,10 +8,11 @@ using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.UI.Hubs;
 using System.Web;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 
 namespace AutoSiteProject.UI.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class CarItemController : BaseController
     {
         private readonly ICarItemManager _carItemManager;
@@ -37,13 +38,15 @@ namespace AutoSiteProject.UI.Controllers
             _carImageManager = carImageManager;
             _carImageFieldCopier = carImageFieldCopier;
         }
+
         // GET
+        [AllowAnonymous]
         public ActionResult List()
         {
             return View();
         }
 
-        //GET 
+        
         public ActionResult Create(CarItemViewModel model)
         {
             var dbOptions = _carOptionsManager.GetAll().ToList();
@@ -81,6 +84,7 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (!ModelState.IsValid) return View("Create", model);
             var dbItem = _carItemFieldCopier.CopyFields(model, new CarItem());
+            dbItem.OwnerId = User.Identity.GetUserId();
             SaveImagesAndLink(dbItem, files);
             //add new car into db
             _carItemManager.Add(dbItem);
@@ -95,6 +99,12 @@ namespace AutoSiteProject.UI.Controllers
             var dbItem = _carItemManager.GetById(id);
             if (dbItem == null) throw new NullReferenceException();
 
+            if (!User.IsInRole("Admin"))
+            {
+                var userId = User.Identity.GetUserId();
+                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+            }
+
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
             foreach (var image in dbItem.CarImages)
             {
@@ -107,15 +117,34 @@ namespace AutoSiteProject.UI.Controllers
             }
             return View(result);
         }
+
+        [AllowAnonymous]
+        public ActionResult Details(int id)
+        {
+            var dbItem = _carItemManager.GetById(id);
+            if (dbItem == null) throw new NullReferenceException();
+
+            var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
+            foreach (var image in dbItem.CarImages)
+            {
+                result.Images.Add(_carImageFieldCopier.CopyFields(image, new CarImageViewModel()));//copy all without data
+            }
+            return View(result);
+        }
+
         //Post
         [HttpPost]
         public ActionResult Edit(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid) return View(model);
-            
+
             var dbItem = _carItemManager.GetById(model.Id);
             if (dbItem == null) throw new NullReferenceException();
-
+            if (!User.IsInRole("Admin"))
+            {
+                var userId = User.Identity.GetUserId();
+                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+            }
             //delete disabled images
             var dbImagesIds = dbItem.CarImages.Select(x => x.Id);
             var modelImagesIds = model.Images.Select(x => x.Id);
@@ -147,6 +176,11 @@ namespace AutoSiteProject.UI.Controllers
         {
             var dbItem = _carItemManager.GetById(id);
             if (dbItem == null) throw new NullReferenceException();
+            if (!User.IsInRole("Admin"))
+            {
+                var userId = User.Identity.GetUserId();
+                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+            }
             _carItemManager.Delete(dbItem);
             return RedirectToAction("List");
         }

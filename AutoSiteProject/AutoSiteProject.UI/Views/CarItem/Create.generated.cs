@@ -161,7 +161,7 @@ WriteLiteral("    ");
 
             
             #line 39 "..\..\Views\CarItem\Create.cshtml"
-Write(Html.ActionLink("Back to List", "List"));
+Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             
             #line default

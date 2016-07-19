@@ -797,6 +797,7 @@
     <Content Include="Views\DataLoader\GetRolesPartial.cshtml" />
     <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml" />
     <Content Include="Views\DataLoader\GetUsersPartial.cshtml" />
+    <Content Include="Views\CarItem\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

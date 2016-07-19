@@ -43,6 +43,8 @@ namespace AutoSiteProject.Models.ViewModels
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        public string OwnerId { get; set; }
+
         public List<CarImageViewModel> Images { get; set; }
     }
 }

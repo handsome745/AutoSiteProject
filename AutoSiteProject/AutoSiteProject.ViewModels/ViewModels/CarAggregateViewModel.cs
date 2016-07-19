@@ -31,6 +31,8 @@ namespace AutoSiteProject.Models.ViewModels
         public string OptionsNamesString => string.Join(", ", OptionsNames);
         [DisplayName("Description")]
         public string Description { get; set; }
+
+        public string OwnerId { get; set; }
     }
 
     public class CarAggregateFilterViewModel

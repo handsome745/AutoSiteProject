@@ -1,38 +1,38 @@
 ﻿$(document).ready(function () {
     var addImageDiv = $("div.add-image");
     $("input", addImageDiv).change(function () {
-        MyImageLoader.AddImagePreview(this);
+        myImageLoader.addImagePreview(this);
     });
     $("input.existImageDeleteButton").on("click",function () {
-        MyImageLoader.DisableExistImageBlock(this);
+        myImageLoader.disableExistImageBlock(this);
     });
 });
 
-MyImageLoader = {
-    AddImagePreview: function (input) {
+myImageLoader = {
+    addImagePreview: function (input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             Array.from(input.files).forEach(function (file) {
                 reader.onload = function (e) {
-                    MyImageLoader.OnImageLoad(e, input);
+                    myImageLoader.onImageLoad(e, input);
                 }
                 reader.readAsDataURL(file);
             });
         }
     },
-    DeleteImageBlock: function (button) {
+    deleteImageBlock: function (button) {
         $("div.image-block#" + button.id).remove();
     },
-    DisableExistImageBlock: function(button) {
+    disableExistImageBlock: function(button) {
         Array.from($("div.image-block#" + button.id).children()).forEach(function(item) { item.style.display = "none"; });
         $("input.existImageIdField#" + button.id, $("div.image-block#" + button.id)).val(0);
     },
-    OnImageLoad: function (e, input) {
+    onImageLoad: function (e, input) {
         var addImageDiv = $("div.add-image");
         var imageContainer = $("div.images-container");
 
-        var uniqueId = MyImageLoader.Guid();
+        var uniqueId = myImageLoader.guid();
         
         var img = $("<img>").attr({
             src: e.target.result,
@@ -56,16 +56,16 @@ MyImageLoader = {
 
         imageContainer.append(imageBlock);
         $("input.deleteImageBlockButton").on("click", function () {
-            MyImageLoader.DeleteImageBlock(this);
+            myImageLoader.deleteImageBlock(this);
         });
 
         var newAddInput = $($("<input>").attr({ type: "file", name: "files" }));
         newAddInput.change(function () {
-            MyImageLoader.AddImagePreview(this);
+            myImageLoader.addImagePreview(this);
         });
         addImageDiv.append(newAddInput);
     },
-    Guid: function () {
+    guid: function () {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
               .toString(16)

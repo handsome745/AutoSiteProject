@@ -86,16 +86,16 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
+WriteLiteral(">\r\n");
 
             
-            #line 16 "..\..\Views\CarItem\Edit.cshtml"
+            #line 15 "..\..\Views\CarItem\Edit.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 16 "..\..\Views\CarItem\Edit.cshtml"
+            #line 15 "..\..\Views\CarItem\Edit.cshtml"
            Html.RenderPartial("_CarItem", Model);
             
             #line default
@@ -115,13 +115,13 @@ WriteLiteral(" class=\"images-container\"");
 WriteLiteral(">\r\n");
 
             
-            #line 20 "..\..\Views\CarItem\Edit.cshtml"
+            #line 19 "..\..\Views\CarItem\Edit.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 20 "..\..\Views\CarItem\Edit.cshtml"
+            #line 19 "..\..\Views\CarItem\Edit.cshtml"
                      if (Model.Images != null)
                     {
                         for (var i = 0; i < Model.Images.Count; i++)
@@ -134,14 +134,14 @@ WriteLiteral("                            <div");
 
 WriteLiteral(" class=\"image-block\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 789), Tuple.Create("\"", 813)
+WriteAttribute("id", Tuple.Create(" id=\"", 754), Tuple.Create("\"", 778)
             
-            #line 24 "..\..\Views\CarItem\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 794), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+            #line 23 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 759), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 794), false)
+, 759), false)
 );
 
 WriteLiteral(">\r\n");
@@ -149,7 +149,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                                ");
 
             
-            #line 25 "..\..\Views\CarItem\Edit.cshtml"
+            #line 24 "..\..\Views\CarItem\Edit.cshtml"
                            Write(Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id }));
 
             
@@ -157,14 +157,14 @@ WriteLiteral("                                ");
             #line hidden
 WriteLiteral("\r\n                                <img");
 
-WriteAttribute("src", Tuple.Create(" src=", 1012), Tuple.Create("", 1085)
+WriteAttribute("src", Tuple.Create(" src=", 977), Tuple.Create("", 1050)
             
-            #line 26 "..\..\Views\CarItem\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 1017), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
+            #line 25 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 982), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
             
             #line default
             #line hidden
-, 1017), false)
+, 982), false)
 );
 
 WriteLiteral(" width=\"150\"");
@@ -179,20 +179,20 @@ WriteLiteral(" class=\"existImageDeleteButton\"");
 
 WriteLiteral(" value=\"Delete\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1214), Tuple.Create("\"", 1238)
+WriteAttribute("id", Tuple.Create(" id=\"", 1179), Tuple.Create("\"", 1203)
             
-            #line 27 "..\..\Views\CarItem\Edit.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 1219), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+            #line 26 "..\..\Views\CarItem\Edit.cshtml"
+                                     , Tuple.Create(Tuple.Create("", 1184), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 1219), false)
+, 1184), false)
 );
 
 WriteLiteral(" />\r\n                            </div>\r\n");
 
             
-            #line 29 "..\..\Views\CarItem\Edit.cshtml"
+            #line 28 "..\..\Views\CarItem\Edit.cshtml"
                         }
                     }
 
@@ -217,9 +217,7 @@ WriteLiteral(" type=\"file\"");
 
 WriteLiteral(" name=\"files\"");
 
-WriteLiteral(" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n        ");
-
-WriteLiteral("\r\n\r\n        <div");
+WriteLiteral(" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -238,8 +236,8 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 61 "..\..\Views\CarItem\Edit.cshtml"
-            }
+            #line 48 "..\..\Views\CarItem\Edit.cshtml"
+}
 
             
             #line default
@@ -249,8 +247,8 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 64 "..\..\Views\CarItem\Edit.cshtml"
-Write(Html.ActionLink("Back to List", "List"));
+            #line 51 "..\..\Views\CarItem\Edit.cshtml"
+Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             
             #line default

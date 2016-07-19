@@ -38,7 +38,8 @@ namespace AutoSiteProject.Dal.Entities
                     Model = cm.Name,
                     Description = ci.Description,
                     Options = ci.CarOption.Select(co => co.Id.ToString()).ToList(),
-                    OptionsNames = ci.CarOption.Select(co => co.Name).ToList()
+                    OptionsNames = ci.CarOption.Select(co => co.Name).ToList(),
+                    OwnerId = ci.OwnerId
                 };
             return result.AsExpandable().Where(predicate);
         }

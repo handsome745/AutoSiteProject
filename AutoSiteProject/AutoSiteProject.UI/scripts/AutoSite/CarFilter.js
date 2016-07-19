@@ -23,23 +23,23 @@
     func();
 });
 
-CarFilter = {
-    OnBeginCallback: function (s, e) {
-        var carFilter = $("form").serializeArray();
-        $.each(carFilter, function (i, v) {
+carFilter = {
+    onBeginCallback: function (s, e) {
+        var carFilterForm = $("form").serializeArray();
+        $.each(carFilterForm, function (i, v) {
             e.customArgs[v.name] = v.value;
         });
     },
-    loadCarsList: function (url, carsResult, carFilter) {
+    loadCarsList: function (url, carsResult, carFilterData) {
 
         $.ajax({
             type: "POST",
             asynch: true,
             url: url,
             dataType: "json",
-            data: carFilter,
+            data: carFilterData,
             success: function (output) {
-                CarFilter.renderCarList(output, carsResult);
+                carFilter.renderCarList(output, carsResult);
             },
             error: function (err, a, c) {
                 alert(err + a + c);

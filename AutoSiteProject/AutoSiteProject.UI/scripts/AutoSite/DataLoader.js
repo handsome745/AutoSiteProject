@@ -20,41 +20,41 @@
     var carmodelId = carmodelPicker.data("initid");
     var carbodytypeId = carbodytypePicker.data("initid");
 
-    DataLoader.loadCountries(countryUrl, countryPicker, countryId);
-    DataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
+    dataLoader.loadCountries(countryUrl, countryPicker, countryId);
+    dataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
 
     countryPicker.change(function () {
         var id = countryPicker.val();
         if (id == "" || id == null) {
-            DataRender.clearSelectorsAndDisable([manufacturerPicker, carmodelPicker]);
+            dataRender.clearSelectorsAndDisable([manufacturerPicker, carmodelPicker]);
         }
         else {
             manufacturerPicker.prop('disabled', false);
-            DataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker, manufacturerId);
-            DataRender.clearSelectorsAndDisable([carmodelPicker]);
+            dataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker, manufacturerId);
+            dataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
     });
     manufacturerPicker.change(function () {
         var id = manufacturerPicker.val();
         if (id == "" || id == null) {
-            DataRender.clearSelectorsAndDisable([carmodelPicker]);
+            dataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
         else {
             carmodelPicker.prop('disabled', false);
-            DataLoader.loadCarModels(carModelsfUrl + "/" + id, carmodelPicker, carmodelId);
+            dataLoader.loadCarModels(carModelsfUrl + "/" + id, carmodelPicker, carmodelId);
         }
     });
     countryPicker.change();
 });
 
-DataLoader = {
+dataLoader = {
     loadCountries: function (url,picker,id) {
         $.ajax({
             type: "GET",
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderList(output,picker,id);
+                dataRender.renderList(output,picker,id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
@@ -67,7 +67,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderList(output, picker, id);
+                dataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading manufacturers");
@@ -80,7 +80,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderList(output, picker, id);
+                dataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading car models");
@@ -93,7 +93,7 @@ DataLoader = {
             asynch: true,
             url: url,
             success: function (output) {
-                DataRender.renderList(output, picker, id);
+                dataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
                 alert("Error loading car model types");
@@ -101,7 +101,7 @@ DataLoader = {
         });
     }
 }
-DataRender = {
+dataRender = {
     clearSelectorsAndDisable: function(selectorsArray) {
         for (var i = 0; i < selectorsArray.length; i++) {
             selectorsArray[i].empty();
