@@ -233,6 +233,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
     <Content Include="Content\chosen.min.css" />
+    <Content Include="Content\MyCss\WidthClasses.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -798,6 +799,7 @@
     <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml" />
     <Content Include="Views\DataLoader\GetUsersPartial.cshtml" />
     <Content Include="Views\CarItem\Details.cshtml" />
+    <Content Include="Views\Error\Security.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

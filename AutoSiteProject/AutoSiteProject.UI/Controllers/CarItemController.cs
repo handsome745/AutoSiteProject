@@ -8,6 +8,7 @@ using AutoSiteProject.Models.Bl.Interfaces.Managers;
 using AutoSiteProject.UI.Hubs;
 using System.Web;
 using System.Collections.Generic;
+using System.Security;
 using Microsoft.AspNet.Identity;
 
 namespace AutoSiteProject.UI.Controllers
@@ -102,7 +103,7 @@ namespace AutoSiteProject.UI.Controllers
             if (!User.IsInRole("Admin"))
             {
                 var userId = User.Identity.GetUserId();
-                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+                if (dbItem.OwnerId != userId) throw new SecurityException();
             }
 
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
@@ -146,7 +147,7 @@ namespace AutoSiteProject.UI.Controllers
             if (!User.IsInRole("Admin"))
             {
                 var userId = User.Identity.GetUserId();
-                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+                if (dbItem.OwnerId != userId) throw new SecurityException();
             }
             //delete disabled images
             var dbImagesIds = dbItem.CarImages.Select(x => x.Id);
@@ -182,7 +183,7 @@ namespace AutoSiteProject.UI.Controllers
             if (!User.IsInRole("Admin"))
             {
                 var userId = User.Identity.GetUserId();
-                if (dbItem.OwnerId != userId) return Redirect(Request.UrlReferrer?.ToString());
+                if (dbItem.OwnerId != userId) throw new SecurityException();
             }
             _carItemManager.Delete(dbItem);
             return RedirectToAction("List");

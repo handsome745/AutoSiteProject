@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 <script src="~/scripts/AutoSite/ImageLoader.js"></script>
-
+<link href="~/Content/MyCss/WidthClasses.css" rel="stylesheet" />
 @using (Html.BeginForm("Edit", "CarItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -22,7 +22,7 @@
                         {
                             <div class="image-block" id="@Model.Images[i].Id">
                                 @Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id })
-                                <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) width="150" />
+                                <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) class="width33" />
                                 <input type="button" name="Delete" class="existImageDeleteButton" value="Delete" id="@Model.Images[i].Id" />
                             </div>
                         }

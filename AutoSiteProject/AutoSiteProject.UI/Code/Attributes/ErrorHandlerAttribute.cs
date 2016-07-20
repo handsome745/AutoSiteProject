@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security;
 using AutoSiteProject.Models.Bl.Interfaces;
 using System.Web.Mvc;
 
@@ -13,17 +14,25 @@ namespace AutoSiteProject.UI.Code.Attributes
             {
                 _appLogger = DependencyResolver.Current.GetService<IAppLogger>();
             }
-            if (filterContext.Exception is WarningException)
+            var exc = filterContext.Exception;
+            //log exception
+            if (exc is WarningException)
             {
-                _appLogger.WriteWarn(filterContext.Exception);
+                _appLogger.WriteWarn(exc);
             }
             else
             {
-                _appLogger.WriteError(filterContext.Exception);
+                _appLogger.WriteError(exc);
             }
-            filterContext.ExceptionHandled = true;
-            filterContext.Result = new ViewResult { ViewName = "~/Views/Error/Index.cshtml" };
 
+
+            if (exc is SecurityException)
+            {
+                filterContext.Result = new ViewResult { ViewName = "~/Views/Error/Security.cshtml" };
+            }
+            else filterContext.Result = new ViewResult { ViewName = "~/Views/Error/Index.cshtml" };
+
+            filterContext.ExceptionHandled = true;
         }
 
     }
