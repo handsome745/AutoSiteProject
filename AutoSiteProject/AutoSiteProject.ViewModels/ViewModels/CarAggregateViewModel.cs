@@ -58,6 +58,6 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Description")]
         public string Description { get; set; }
         [DisplayName("All fields search")]
-        public string AllFieldsSearch { get; set; }          
+        public string AllFieldsSearch { get; set; }
     }
 }
