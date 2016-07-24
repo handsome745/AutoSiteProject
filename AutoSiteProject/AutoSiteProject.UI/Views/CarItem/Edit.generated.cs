@@ -176,9 +176,31 @@ WriteAttribute("src", Tuple.Create(" src=", 1042), Tuple.Create("", 1115)
 , 1047), false)
 );
 
-WriteLiteral(" class=\"width33\"");
+WriteLiteral(" class=\"image-viewer\"");
 
-WriteLiteral(" />\r\n                                <input");
+WriteLiteral(" data-content-length=\"");
+
+            
+            #line 25 "..\..\Views\CarItem\Edit.cshtml"
+                                                                                                                                                   Write(Model.Images[i].ContentLength);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral(" data-content-type=\"");
+
+            
+            #line 25 "..\..\Views\CarItem\Edit.cshtml"
+                                                                                                                                                                                                      Write(Model.Images[i].ContentType);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral("/>\r\n                                <input");
 
 WriteLiteral(" type=\"button\"");
 
@@ -188,14 +210,14 @@ WriteLiteral(" class=\"existImageDeleteButton\"");
 
 WriteLiteral(" value=\"Delete\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1248), Tuple.Create("\"", 1272)
+WriteAttribute("id", Tuple.Create(" id=\"", 1354), Tuple.Create("\"", 1378)
             
             #line 26 "..\..\Views\CarItem\Edit.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 1253), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+                                     , Tuple.Create(Tuple.Create("", 1359), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 1253), false)
+, 1359), false)
 );
 
 WriteLiteral(" />\r\n                            </div>\r\n");

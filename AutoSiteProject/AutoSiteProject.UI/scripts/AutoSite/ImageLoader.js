@@ -3,7 +3,7 @@
     $("input", addImageDiv).change(function () {
         myImageLoader.addImagePreview(this);
     });
-    $("input.existImageDeleteButton").on("click",function () {
+    $("input.existImageDeleteButton").on("click", function () {
         myImageLoader.disableExistImageBlock(this);
     });
 });
@@ -11,21 +11,26 @@
 myImageLoader = {
     addImagePreview: function (input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            if (!myImageLoader.checkFileForExistInList(input.files[0])) {
+                var reader = new FileReader();
 
-            Array.from(input.files).forEach(function (file) {
-                reader.onload = function (e) {
-                    myImageLoader.onImageLoad(e, input);
-                }
-                reader.readAsDataURL(file);
-            });
+                Array.from(input.files).forEach(function(file) {
+                    reader.onload = function(e) {
+                        myImageLoader.onImageLoad(e, input);
+                    }
+                    reader.readAsDataURL(file);
+                });
+            } else {
+                alert("This image already added in list!");
+                $(input).val("");
+            }
         }
     },
     deleteImageBlock: function (button) {
         $("div.image-block#" + button.id).remove();
     },
-    disableExistImageBlock: function(button) {
-        Array.from($("div.image-block#" + button.id).children()).forEach(function(item) { item.style.display = "none"; });
+    disableExistImageBlock: function (button) {
+        Array.from($("div.image-block#" + button.id).children()).forEach(function (item) { item.style.display = "none"; });
         $("input.existImageIdField#" + button.id, $("div.image-block#" + button.id)).val(0);
     },
     onImageLoad: function (e, input) {
@@ -33,11 +38,12 @@ myImageLoader = {
         var imageContainer = $("div.images-container");
 
         var uniqueId = myImageLoader.guid();
-        
         var img = $("<img>").attr({
             src: e.target.result,
-            width: "150"
+            'class': "image-viewer"
         });
+        img[0].dataset.contentLength =  input.files[0].size.toString();
+        img[0].dataset.contentType  = input.files[0].type.toString();
         input.style.display = "none";
         var deleteButton = $("<input>").attr({
             type: "button",
@@ -59,7 +65,7 @@ myImageLoader = {
             myImageLoader.deleteImageBlock(this);
         });
 
-        var newAddInput = $($("<input>").attr({ type: "file", name: "files" }));
+        var newAddInput = $("<input>").attr({ type: "file", name: "files" });
         newAddInput.change(function () {
             myImageLoader.addImagePreview(this);
         });
@@ -73,5 +79,17 @@ myImageLoader = {
         }
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
           s4() + '-' + s4() + s4() + s4();
+    },
+    checkFileForExistInList: function(file) {
+        var imageContainer = $("div.images-container");
+        var images = Array.from($("img.image-viewer", imageContainer));
+        if (file != null) {
+            var result = false;
+            images.forEach(function (item) {
+                if (item.dataset.contentLength === file.size.toString() && item.dataset.contentType === file.type.toString()) result = true;
+            });
+            return result;
+        }
+        return false;
     }
 }
