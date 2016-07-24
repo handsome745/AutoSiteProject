@@ -33,6 +33,12 @@ namespace ASP
     #line default
     #line hidden
     using AutoSiteProject.UI;
+    
+    #line 2 "..\..\Views\Shared\_CarFilter.cshtml"
+    using AutoSiteProject.UI.Helpers;
+    
+    #line default
+    #line hidden
     using DevExpress.Utils;
     using DevExpress.Web;
     using DevExpress.Web.ASPxThemes;
@@ -50,64 +56,64 @@ namespace ASP
         {
 WriteLiteral("<link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 85), Tuple.Create("\"", 116)
-, Tuple.Create(Tuple.Create("", 92), Tuple.Create<System.Object, System.Int32>(Href("~/Content/chosen.min.css")
-, 92), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 120), Tuple.Create("\"", 151)
+, Tuple.Create(Tuple.Create("", 127), Tuple.Create<System.Object, System.Int32>(Href("~/Content/chosen.min.css")
+, 127), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n<link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 144), Tuple.Create("\"", 183)
-, Tuple.Create(Tuple.Create("", 151), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/WidthClasses.css")
-, 151), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 179), Tuple.Create("\"", 218)
+, Tuple.Create(Tuple.Create("", 186), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/WidthClasses.css")
+, 186), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n<link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 211), Tuple.Create("\"", 247)
-, Tuple.Create(Tuple.Create("", 218), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/select2.min.css")
-, 218), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 246), Tuple.Create("\"", 282)
+, Tuple.Create(Tuple.Create("", 253), Tuple.Create<System.Object, System.Int32>(Href("~/Content/css/select2.min.css")
+, 253), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 277), Tuple.Create("\"", 313)
-, Tuple.Create(Tuple.Create("", 283), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/chosen.jquery.min.js")
-, 283), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 312), Tuple.Create("\"", 348)
+, Tuple.Create(Tuple.Create("", 318), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/chosen.jquery.min.js")
+, 318), false)
 );
 
 WriteLiteral("></script>\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 333), Tuple.Create("\"", 363)
-, Tuple.Create(Tuple.Create("", 339), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/select2.min.js")
-, 339), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 368), Tuple.Create("\"", 398)
+, Tuple.Create(Tuple.Create("", 374), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/select2.min.js")
+, 374), false)
 );
 
 WriteLiteral("></script>\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 383), Tuple.Create("\"", 421)
-, Tuple.Create(Tuple.Create("", 389), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/DataLoader.js")
-, 389), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 418), Tuple.Create("\"", 456)
+, Tuple.Create(Tuple.Create("", 424), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/DataLoader.js")
+, 424), false)
 );
 
 WriteLiteral("></script>\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 441), Tuple.Create("\"", 478)
-, Tuple.Create(Tuple.Create("", 447), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/CarFilter.js")
-, 447), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 476), Tuple.Create("\"", 513)
+, Tuple.Create(Tuple.Create("", 482), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/CarFilter.js")
+, 482), false)
 );
 
 WriteLiteral("></script>\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 498), Tuple.Create("\"", 541)
-, Tuple.Create(Tuple.Create("", 504), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/MySelect2Search.js")
-, 504), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 533), Tuple.Create("\"", 576)
+, Tuple.Create(Tuple.Create("", 539), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/MySelect2Search.js")
+, 539), false)
 );
 
 WriteLiteral("></script>\r\n<div");
@@ -149,7 +155,7 @@ WriteLiteral(" class=\"filter-section width100\"");
 WriteLiteral(" data-cars-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                Write(Url.Action("GetCars", "DataLoader"));
 
             
@@ -160,7 +166,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-countries-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                                                                          Write(Url.Action("GetCountries", "DataLoader"));
 
             
@@ -171,7 +177,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-manufacturers-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                                                                                                                                             Write(Url.Action("GetManufacturersOfCountry", "DataLoader"));
 
             
@@ -182,7 +188,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-carmodels-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                                                                                                                                                                                                                         Write(Url.Action("GetCarModelsOfManufacturer", "DataLoader"));
 
             
@@ -193,7 +199,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-carbodytype-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                                                                                                                                                                                                                                                                                                        Write(Url.Action("GetBodyTypes", "DataLoader"));
 
             
@@ -204,7 +210,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-caroptions-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 18 "..\..\Views\Shared\_CarFilter.cshtml"
                                                                                                                                                                                                                                                                                                                                                                                                                        Write(Url.Action("GetCarOptions", "DataLoader"));
 
             
@@ -216,51 +222,18 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"form-group width100\"");
 
-WriteLiteral(">\r\n                        <select");
+WriteLiteral(">\r\n");
 
-WriteLiteral(" class=\"select2Search\"");
-
-WriteLiteral(" data-search-url=\"");
+WriteLiteral("                        ");
 
             
-            #line 19 "..\..\Views\Shared\_CarFilter.cshtml"
-                                                                  Write(Url.Action("GetCars", "DataLoader", null, Request.Url.Scheme));
+            #line 20 "..\..\Views\Shared\_CarFilter.cshtml"
+                   Write(Html.Select2Search(Url.Action("GetCars", "DataLoader", null, Request.Url.Scheme), Url.Action("LoadImg", "DataLoader"), Url.Action("Details", "CarItem", null, Request.Url.Scheme), htmlAttributes: new  { @class= "select2Search" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\"");
-
-WriteLiteral(" data-img-url=\"");
-
-            
-            #line 19 "..\..\Views\Shared\_CarFilter.cshtml"
-                                                                                                                                                Write(Url.Action("LoadImg","DataLoader"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteLiteral(" data-caritem-url=\"");
-
-            
-            #line 19 "..\..\Views\Shared\_CarFilter.cshtml"
-                                                                                                                                                                                                       Write(Url.Action("Details","CarItem",null,Request.Url.Scheme));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteLiteral(">\r\n                            <option");
-
-WriteLiteral(" value=\"3620194\"");
-
-WriteLiteral(" selected=\"selected\"");
-
-WriteLiteral(">Search</option>\r\n                        </select>\r\n                    </div>\r\n" +
-"                    <div");
+WriteLiteral("\r\n                    </div>\r\n                    <div");
 
 WriteLiteral(" class=\"form-group width100\"");
 
@@ -269,7 +242,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 24 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 23 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -284,7 +257,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 26 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 25 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.TextBoxFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "form-control allFields-picker width100" }));
 
             
@@ -300,7 +273,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 30 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 29 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -315,7 +288,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 32 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 31 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker width100", @data_initId = @Model.CountryId }));
 
             
@@ -331,7 +304,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 36 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 35 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -346,7 +319,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 38 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 37 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker width100", @data_initId = @Model.ManufacturerId }));
 
             
@@ -362,7 +335,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 42 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 41 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.ModelId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -377,7 +350,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 44 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 43 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker width100", @data_initId = @Model.ModelId }));
 
             
@@ -393,7 +366,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 48 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 47 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -408,7 +381,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 50 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 49 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker width100", @data_initId = @Model.BodyTypeId }));
 
             
@@ -424,7 +397,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 54 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 53 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.OptionsIds, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -439,7 +412,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 56 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 55 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker width100" }));
 
             
@@ -455,7 +428,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 60 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 59 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -470,7 +443,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 62 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 61 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "form-control description-picker width100" }));
 
             
