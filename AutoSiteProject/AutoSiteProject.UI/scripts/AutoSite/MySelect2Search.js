@@ -1,13 +1,13 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
     $("select.select2Search").select2({
         ajax: {
-            url: "https://api.github.com/search/repositories",
+            url: $("select.select2Search").data("search-url"),
+            type: 'POST',
             dataType: 'json',
             delay: 250,
             data: function (params) {
                 return {
-                    q: params.term, // search term
-                    page: params.page
+                    AllFieldsSearch: params.term // search term
                 };
             },
             processResults: function (data, params) {
@@ -18,7 +18,7 @@
                 params.page = params.page || 1;
 
                 return {
-                    results: data.items,
+                    results: data,
                     pagination: {
                         more: (params.page * 30) < data.total_count
                     }
@@ -28,7 +28,15 @@
         },
         escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
         minimumInputLength: 1,
-        templateResult: formatRepo, // omitted for brevity, see the source of this page
-        templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+        templateResult: function (carItem) {
+            if (carItem.CarId == null) return null;
+            var $carItem = $(
+              '<span><img src="' + $("select.select2Search").data("img-url") + '/' + carItem.MainImageId + '" class="img-search" /> ' + carItem.Manufacturer + ' ' + carItem.Model + '</span>'
+            );
+            $carItem.on("click", function () {
+                window.location.href = ''+ $("select.select2Search").data("caritem-url") + '/' + carItem.CarId;
+            });
+            return $carItem;
+        }
     });
 });

@@ -179,10 +179,11 @@ namespace AutoSiteProject.UI.Controllers
             return PartialView("GetUsersPartial", usersViewModels);
         }
 
-        public ActionResult LoadImg(int id)
+        public ActionResult LoadImg(int? id)
         {
-            var image = _carImageManager.GetById(id);
-            return  File(image.Data,image.ContentType,image.Name);
+            if (id == null) return null;
+            var image = _carImageManager.GetById((int)id);
+            return File(image.Data, image.ContentType, image.Name);
         }
     }
 }

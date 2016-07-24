@@ -114,21 +114,50 @@ USE AutoSiteProjectDB
 END
 GO
 
-IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
-BEGIN 
+--IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
+--BEGIN 
+--USE AutoSiteProjectDB
+--	IF EXISTS(
+--    SELECT *
+--    FROM sys.columns 
+--    WHERE Name      = N'OwnerId'
+--      AND Object_ID = Object_ID(N'CarItem'))
+--	BEGIN
+--		UPDATE dbo.CarItem 
+--		SET OwnerId = (SELECT TOP(1) Id FROM AspNetUsers)
+--		WHERE 1=1;
+
+--		ALTER TABLE dbo.CarItem
+--		ALTER COLUMN OwnerId nvarchar(128) NOT NULL
+--	END
+--END
+--GO
+
 USE AutoSiteProjectDB
-	IF EXISTS(
+IF NOT EXISTS(
     SELECT *
     FROM sys.columns 
-    WHERE Name      = N'OwnerId'
+    WHERE Name      = N'MainImageId'
       AND Object_ID = Object_ID(N'CarItem'))
-	BEGIN
-		UPDATE dbo.CarItem 
-		SET OwnerId = (SELECT TOP(1) Id FROM AspNetUsers)
-		WHERE 1=1;
+BEGIN
+    ALTER TABLE dbo.CarItem
+	ADD MainImageId int NULL
 
-		ALTER TABLE dbo.CarItem
-		ALTER COLUMN OwnerId nvarchar(128) NOT NULL
-	END
+	ALTER TABLE dbo.CarItem
+	ADD CONSTRAINT fk_CarItemMainImage FOREIGN KEY (MainImageId) REFERENCES CarImages(Id) ON DELETE SET NULL
 END
 GO
+
+USE AutoSiteProjectDB
+IF  EXISTS(
+    SELECT *
+    FROM sys.columns 
+    WHERE Name      = N'MainImageId'
+      AND Object_ID = Object_ID(N'CarItem'))
+BEGIN
+    UPDATE [dbo].CarItem
+	SET MainImageId =
+	(SELECT TOP(1) [dbo].CarImages.Id
+	FROM [dbo].CarImages,  [dbo].CarItemImages 
+	WHERE [dbo].CarItem.Id = [dbo].CarItemImages.CarId and [dbo].CarImages.Id = [dbo].CarItemImages.ImageId)
+END

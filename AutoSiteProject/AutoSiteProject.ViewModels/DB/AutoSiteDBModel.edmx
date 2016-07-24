@@ -81,9 +81,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
-          <Property Name="Data" Type="varbinary(max)" />
           <Property Name="ContentLength" Type="bigint" Nullable="false" />
           <Property Name="ContentType" Type="varchar(max)" />
+          <Property Name="Data" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="CarItem">
           <Key>
@@ -94,6 +94,7 @@
           <Property Name="ModelId" Type="int" />
           <Property Name="BodyTypeId" Type="int" />
           <Property Name="OwnerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MainImageId" Type="int" />
         </EntityType>
         <EntityType Name="CarItemImages">
           <Key>
@@ -178,6 +179,18 @@
             </Principal>
             <Dependent Role="CarItemOptions">
               <PropertyRef Name="CarItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemMainImage">
+          <End Role="CarImages" Type="Self.CarImages" Multiplicity="0..1" />
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="MainImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,6 +356,10 @@
             <End Role="CarItem" EntitySet="CarItem" />
             <End Role="CarItemOptions" EntitySet="CarItemOptions" />
           </AssociationSet>
+          <AssociationSet Name="fk_CarItemMainImage" Association="Self.fk_CarItemMainImage">
+            <End Role="CarImages" EntitySet="CarImages" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
           <AssociationSet Name="fk_CarItemModel" Association="Self.fk_CarItemModel">
             <End Role="CarModel" EntitySet="CarModel" />
             <End Role="CarItem" EntitySet="CarItem" />
@@ -501,6 +518,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
+          <AssociationSet Name="fk_CarItemMainImage" Association="AutoSiteProjectDBModel.fk_CarItemMainImage">
+            <End Role="CarImages" EntitySet="CarImages" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CarItem">
           <Key>
@@ -516,6 +537,8 @@
           <NavigationProperty Name="CarImages" Relationship="AutoSiteProjectDBModel.CarItemImages" FromRole="CarItem" ToRole="CarImages" />
           <Property Name="OwnerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUsers" Relationship="AutoSiteProjectDBModel.fk_CarItemOwner" FromRole="CarItem" ToRole="AspNetUsers" />
+          <Property Name="MainImageId" Type="Int32" />
+          <NavigationProperty Name="CarImages1" Relationship="AutoSiteProjectDBModel.fk_CarItemMainImage" FromRole="CarItem" ToRole="CarImages" />
         </EntityType>
         <EntityType Name="CarOption">
           <Key>
@@ -657,6 +680,7 @@
           <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.CarItemImages" FromRole="CarImages" ToRole="CarItem" />
           <Property Name="ContentLength" Type="Int64" Nullable="false" />
           <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarItem1" Relationship="AutoSiteProjectDBModel.fk_CarItemMainImage" FromRole="CarImages" ToRole="CarItem" />
         </EntityType>
         <Association Name="CarItemImages">
           <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
@@ -673,6 +697,18 @@
             </Principal>
             <Dependent Role="CarItem">
               <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemMainImage">
+          <End Type="AutoSiteProjectDBModel.CarImages" Role="CarImages" Multiplicity="0..1" />
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="MainImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -719,6 +755,7 @@
           <EntitySetMapping Name="CarItem">
             <EntityTypeMapping TypeName="AutoSiteProjectDBModel.CarItem">
               <MappingFragment StoreEntitySet="CarItem">
+                <ScalarProperty Name="MainImageId" ColumnName="MainImageId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
                 <ScalarProperty Name="ModelId" ColumnName="ModelId" />

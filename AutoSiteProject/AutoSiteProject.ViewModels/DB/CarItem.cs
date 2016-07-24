@@ -26,6 +26,7 @@ namespace AutoSiteProject.Models.DB
         public Nullable<int> ModelId { get; set; }
         public Nullable<int> BodyTypeId { get; set; }
         public string OwnerId { get; set; }
+        public Nullable<int> MainImageId { get; set; }
     
         public virtual CarBodyType CarBodyType { get; set; }
         public virtual CarModel CarModel { get; set; }
@@ -34,5 +35,6 @@ namespace AutoSiteProject.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarImages> CarImages { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual CarImages CarImages1 { get; set; }
     }
 }
