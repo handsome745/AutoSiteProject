@@ -40,7 +40,7 @@ namespace AutoSiteProject.Dal.Entities
                     Options = ci.CarOption.Select(co => co.Id.ToString()).ToList(),
                     OptionsNames = ci.CarOption.Select(co => co.Name).ToList(),
                     OwnerId = ci.OwnerId,
-                    MainImageId = ci.MainImageId.ToString()
+                    MainImageId = ci.CarImages.FirstOrDefault(x => true) != null ? ci.CarImages.FirstOrDefault(x => true).Id.ToString(): ""
                 };
             return result.AsExpandable().Where(predicate);
         }

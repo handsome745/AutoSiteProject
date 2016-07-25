@@ -9,7 +9,7 @@
 <script src="~/scripts/select2.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
 <script src="~/scripts/AutoSite/CarFilter.js"></script>
-<script src="~/scripts/AutoSite/MySelect2Search.js"></script>
+
 <div id="filterPanel">
     <div class="list-group panel">
         <a href="#filterForm" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#filterPanel">Click to filter...<i class="fa fa-caret-down"></i></a>
@@ -17,12 +17,14 @@
             <form class="form-inline width100">
                 <div class="filter-section width100" data-cars-url="@Url.Action("GetCars", "DataLoader")" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
                     <div class="form-group width100">
-                        @Html.Select2Search(Url.Action("GetCars", "DataLoader", null, Request.Url.Scheme), Url.Action("LoadImg", "DataLoader"), Url.Action("Details", "CarItem", null, Request.Url.Scheme), htmlAttributes: new  { @class= "select2Search" })
+                        <div class="col-sm-2 width100 search-control">
+                            @Html.Select2Search( new { @class = "select2Search" })
+                        </div>
                     </div>
                     <div class="form-group width100">
                         @Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" })
                         <div class="col-sm-2 width100">
-                            @Html.TextBoxFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "form-control allFields-picker width100" })
+                            @Html.TextBoxFor(m => m.AllFieldsSearch, htmlAttributes: new {@class = "form-control allFields-picker width100"})
                         </div>
                     </div>
                     <div class="form-group width33">

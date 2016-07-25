@@ -196,6 +196,13 @@ WriteAttribute("src", Tuple.Create(" src=\"", 2676), Tuple.Create("\"", 2708)
 , 2682), false)
 );
 
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2732), Tuple.Create("\"", 2775)
+, Tuple.Create(Tuple.Create("", 2738), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/MySelect2Search.js")
+, 2738), false)
+);
+
 WriteLiteral("></script>\r\n</head>\r\n<body>\r\n    <nav");
 
 WriteLiteral(" class=\"navbar navbar-inverse navbar-fixed-top\"");
@@ -211,7 +218,7 @@ WriteLiteral(" class=\"nav navbar-nav\"");
 WriteLiteral(">\r\n                <li>");
 
             
-            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+            #line 58 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" }));
 
             
@@ -220,7 +227,7 @@ WriteLiteral(">\r\n                <li>");
 WriteLiteral("</li>\r\n                <li>");
 
             
-            #line 58 "..\..\Views\Shared\_Layout.cshtml"
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "" }));
 
             
@@ -229,13 +236,13 @@ WriteLiteral("</li>\r\n                <li>");
 WriteLiteral("</li>\r\n");
 
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+            #line 60 "..\..\Views\Shared\_Layout.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+            #line 60 "..\..\Views\Shared\_Layout.cshtml"
                  if (User.IsInRole("Admin"))
                 {
 
@@ -271,7 +278,7 @@ WriteLiteral(" class=\"dropdown-menu\"");
 WriteLiteral(">\r\n                            <li>");
 
             
-            #line 64 "..\..\Views\Shared\_Layout.cshtml"
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "" }));
 
             
@@ -280,7 +287,7 @@ WriteLiteral(">\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+            #line 66 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "" }));
 
             
@@ -289,7 +296,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "" }));
 
             
@@ -298,7 +305,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "" }));
 
             
@@ -307,7 +314,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 68 "..\..\Views\Shared\_Layout.cshtml"
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "" }));
 
             
@@ -322,7 +329,7 @@ WriteLiteral(" class=\"divider\"");
 WriteLiteral("></li>\r\n                            <li>");
 
             
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "" }));
 
             
@@ -331,7 +338,7 @@ WriteLiteral("></li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 71 "..\..\Views\Shared\_Layout.cshtml"
+            #line 72 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "" }));
 
             
@@ -340,7 +347,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                        </ul>\r\n                    </li>\r\n");
 
             
-            #line 74 "..\..\Views\Shared\_Layout.cshtml"
+            #line 75 "..\..\Views\Shared\_Layout.cshtml"
                 }
 
             
@@ -351,7 +358,7 @@ WriteLiteral("            </ul>\r\n");
 WriteLiteral("            ");
 
             
-            #line 76 "..\..\Views\Shared\_Layout.cshtml"
+            #line 77 "..\..\Views\Shared\_Layout.cshtml"
        Write(Html.Partial("_LoginPartial"));
 
             
@@ -366,7 +373,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 82 "..\..\Views\Shared\_Layout.cshtml"
+            #line 83 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -379,7 +386,7 @@ WriteLiteral(" class=\"notifications\"");
 WriteLiteral(">\r\n        </div>\r\n        <footer>\r\n            <p>&copy; ");
 
             
-            #line 87 "..\..\Views\Shared\_Layout.cshtml"
+            #line 88 "..\..\Views\Shared\_Layout.cshtml"
                  Write(DateTime.Now.Year);
 
             
