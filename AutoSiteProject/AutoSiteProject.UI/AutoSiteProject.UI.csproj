@@ -355,6 +355,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AllFieldSearchHelper.cs" />
     <Compile Include="Helpers\SearchHelper.cs" />
     <Compile Include="Hubs\NotificationsHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -440,6 +441,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Create.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CarItem\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\CarItem\Edit.generated.cs">
       <AutoGen>True</AutoGen>
@@ -851,7 +857,10 @@
     <Content Include="Views\DataLoader\GetRolesPartial.cshtml" />
     <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml" />
     <Content Include="Views\DataLoader\GetUsersPartial.cshtml" />
-    <Content Include="Views\CarItem\Details.cshtml" />
+    <Content Include="Views\CarItem\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Error\Security.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

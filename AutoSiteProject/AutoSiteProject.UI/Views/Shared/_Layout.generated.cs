@@ -168,38 +168,38 @@ Write(Html.DevExpress().GetStyleSheets(
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n    <script");
+WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2500), Tuple.Create("\"", 2543)
-, Tuple.Create(Tuple.Create("", 2506), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
-, 2506), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2498), Tuple.Create("\"", 2530)
+, Tuple.Create(Tuple.Create("", 2504), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/bootstrap.min.js")
+, 2504), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2567), Tuple.Create("\"", 2587)
-, Tuple.Create(Tuple.Create("", 2573), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
-, 2573), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2554), Tuple.Create("\"", 2597)
+, Tuple.Create(Tuple.Create("", 2560), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/MySelect2Search.js")
+, 2560), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2611), Tuple.Create("\"", 2652)
-, Tuple.Create(Tuple.Create("", 2617), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
-, 2617), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2621), Tuple.Create("\"", 2664)
+, Tuple.Create(Tuple.Create("", 2627), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/jquery.signalR-2.2.0.min.js")
+, 2627), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2676), Tuple.Create("\"", 2708)
-, Tuple.Create(Tuple.Create("", 2682), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/bootstrap.min.js")
-, 2682), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 2688), Tuple.Create("\"", 2708)
+, Tuple.Create(Tuple.Create("", 2694), Tuple.Create<System.Object, System.Int32>(Href("~/signalr/hubs")
+, 2694), false)
 );
 
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2732), Tuple.Create("\"", 2775)
-, Tuple.Create(Tuple.Create("", 2738), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/MySelect2Search.js")
+WriteAttribute("src", Tuple.Create(" src=\"", 2732), Tuple.Create("\"", 2773)
+, Tuple.Create(Tuple.Create("", 2738), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/Notifications.js")
 , 2738), false)
 );
 
@@ -218,7 +218,7 @@ WriteLiteral(" class=\"nav navbar-nav\"");
 WriteLiteral(">\r\n                <li>");
 
             
-            #line 58 "..\..\Views\Shared\_Layout.cshtml"
+            #line 57 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" }));
 
             
@@ -227,7 +227,7 @@ WriteLiteral(">\r\n                <li>");
 WriteLiteral("</li>\r\n                <li>");
 
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+            #line 58 "..\..\Views\Shared\_Layout.cshtml"
                Write(Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "" }));
 
             
@@ -236,13 +236,13 @@ WriteLiteral("</li>\r\n                <li>");
 WriteLiteral("</li>\r\n");
 
             
-            #line 60 "..\..\Views\Shared\_Layout.cshtml"
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 60 "..\..\Views\Shared\_Layout.cshtml"
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
                  if (User.IsInRole("Admin"))
                 {
 
@@ -278,7 +278,7 @@ WriteLiteral(" class=\"dropdown-menu\"");
 WriteLiteral(">\r\n                            <li>");
 
             
-            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+            #line 64 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car models", "List", "CarModel", new { area = "" }, new { @class = "" }));
 
             
@@ -287,7 +287,7 @@ WriteLiteral(">\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "" }));
 
             
@@ -296,7 +296,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+            #line 66 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "" }));
 
             
@@ -305,7 +305,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 68 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "" }));
 
             
@@ -314,7 +314,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 69 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "" }));
 
             
@@ -329,7 +329,7 @@ WriteLiteral(" class=\"divider\"");
 WriteLiteral("></li>\r\n                            <li>");
 
             
-            #line 71 "..\..\Views\Shared\_Layout.cshtml"
+            #line 70 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "" }));
 
             
@@ -338,7 +338,7 @@ WriteLiteral("></li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 72 "..\..\Views\Shared\_Layout.cshtml"
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "" }));
 
             
@@ -347,7 +347,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                        </ul>\r\n                    </li>\r\n");
 
             
-            #line 75 "..\..\Views\Shared\_Layout.cshtml"
+            #line 74 "..\..\Views\Shared\_Layout.cshtml"
                 }
 
             
@@ -358,7 +358,7 @@ WriteLiteral("            </ul>\r\n");
 WriteLiteral("            ");
 
             
-            #line 77 "..\..\Views\Shared\_Layout.cshtml"
+            #line 76 "..\..\Views\Shared\_Layout.cshtml"
        Write(Html.Partial("_LoginPartial"));
 
             
@@ -373,7 +373,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 83 "..\..\Views\Shared\_Layout.cshtml"
+            #line 82 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -386,7 +386,7 @@ WriteLiteral(" class=\"notifications\"");
 WriteLiteral(">\r\n        </div>\r\n        <footer>\r\n            <p>&copy; ");
 
             
-            #line 88 "..\..\Views\Shared\_Layout.cshtml"
+            #line 87 "..\..\Views\Shared\_Layout.cshtml"
                  Write(DateTime.Now.Year);
 
             
