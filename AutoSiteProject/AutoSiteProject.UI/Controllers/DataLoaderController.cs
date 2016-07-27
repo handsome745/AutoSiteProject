@@ -29,6 +29,9 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICarImageManager _carImageManager;
         private readonly IFuelTypeManager _fuelTypeManager;
         private readonly IFuelTypeFieldCopier _fuelTypeFieldCopier;
+        private readonly ITransmitionTypeManager _transmitionTypeManager;
+        private readonly ITransmitionTypeFieldCopier _transmitionTypeFieldCopier;
+
         public ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
         public  ApplicationUserManager UserManager => HttpContext.GetOwinContext().Get<ApplicationUserManager>();
 
@@ -48,7 +51,9 @@ namespace AutoSiteProject.UI.Controllers
             ICarImageManager carImageManage,
             IUserFieldCopier userFieldCopier, 
             IFuelTypeManager fuelTypeManager,
-            IFuelTypeFieldCopier fuelTypeFieldCopier
+            IFuelTypeFieldCopier fuelTypeFieldCopier,
+            ITransmitionTypeManager transmitionTypeManager,
+            ITransmitionTypeFieldCopier transmitionTypeFieldCopier
             )
         {
             _carModelManager = carModelManager;
@@ -67,6 +72,8 @@ namespace AutoSiteProject.UI.Controllers
             _userFieldCopier = userFieldCopier;
             _fuelTypeManager = fuelTypeManager;
             _fuelTypeFieldCopier = fuelTypeFieldCopier;
+            _transmitionTypeManager = transmitionTypeManager;
+            _transmitionTypeFieldCopier = transmitionTypeFieldCopier;
         }
         [HttpPost]
         public JsonResult GetCars(CarAggregateFilterViewModel filter)
@@ -83,7 +90,6 @@ namespace AutoSiteProject.UI.Controllers
             var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetManufacturersOfCountry(int id)
         {
             var dbItems = _manufacturerManager.GetAll().Where(m => m.CountryId == id).ToList();
@@ -91,21 +97,30 @@ namespace AutoSiteProject.UI.Controllers
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetCarModelsOfManufacturer(int id)
         {
             var dbItems = _carModelManager.GetAll().Where(m => m.ManufacturerId == id).ToList();
             var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetBodyTypes()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
             var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult GetFuelTypes()
+        {
+            var dbItems = _fuelTypeManager.GetAll().ToList();
+            var result = dbItems.Select(item => _fuelTypeFieldCopier.CopyFields(item, new FuelTypeViewModel())).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetTransmitionTypes()
+        {
+            var dbItems = _transmitionTypeManager.GetAll().ToList();
+            var result = dbItems.Select(item => _transmitionTypeFieldCopier.CopyFields(item, new TransmitionTypeViewModel())).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetOptionsOfCarItem(int id)
         {
 
@@ -125,7 +140,6 @@ namespace AutoSiteProject.UI.Controllers
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
             return PartialView("CarsGridViewPartial", carsList);
         }
-
         public ActionResult GetCarBodyTypesPartial()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
@@ -183,14 +197,12 @@ namespace AutoSiteProject.UI.Controllers
             }
             return PartialView("GetUsersPartial", usersViewModels);
         }
-
         public ActionResult LoadImg(int? id)
         {
             if (id == null) return null;
             var image = _carImageManager.GetById((int)id);
             return File(image.Data, image.ContentType, image.Name);
         }
-
         public ActionResult GetFuelTypePartial()
         {
              var dbItems = _fuelTypeManager.GetAll().ToList();

@@ -8,7 +8,15 @@
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
 
 <hr />
-<div class="filter-section" data-countries-url="@Url.Action("GetCountries", "DataLoader")" data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")" data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")" data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")" data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
+<div class="filter-section" 
+     data-countries-url="@Url.Action("GetCountries", "DataLoader")"
+     data-manufacturers-url="@Url.Action("GetManufacturersOfCountry", "DataLoader")"
+     data-carmodels-url="@Url.Action("GetCarModelsOfManufacturer", "DataLoader")"
+     data-carbodytype-url="@Url.Action("GetBodyTypes", "DataLoader")"
+     data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")"
+     data-carfueltype-url="@Url.Action("GetFuelTypes", "DataLoader")"
+     data-cartransmitiontype-url="@Url.Action("GetTransmitionTypes","DataLoader")"
+     >
     @Html.HiddenFor(model => model.Id)
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group ">
@@ -33,16 +41,52 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId })
-            @Html.ValidationMessageFor(model => model.BodyTypeId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new {@class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId})
+            @Html.ValidationMessageFor(model => model.BodyTypeId, "", new {@class = "text-danger"})
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.SelectedCarOptions, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(m => m.FuelTypeId, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            @Html.ListBoxFor(m => m.SelectedCarOptions, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker" })
+            @Html.DropDownListFor(m => m.FuelTypeId, new SelectList(new List<FuelTypeViewModel>(), "Id", "Name", Model.FuelTypeId), "Select car fuel type", htmlAttributes: new {@class = "form-control carfueltype-picker", @data_initId = @Model.FuelTypeId})
+            @Html.ValidationMessageFor(model => model.FuelTypeId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TransmitionTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.TransmitionTypeId, new SelectList(new List<TransmitionTypeViewModel>(), "Id", "Name", Model.TransmitionTypeId), "Select car transmition type", htmlAttributes: new { @class = "form-control cartransmitiontype-picker", @data_initId = @Model.TransmitionTypeId })
+            @Html.ValidationMessageFor(model => model.TransmitionTypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SelectedCarOptions, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.ListBoxFor(m => m.SelectedCarOptions, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new {@class = "form-control caroptions-picker"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ReleaseYear, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.ReleaseYear, new {htmlAttributes = new {@class = "form-control"}})
+            @Html.ValidationMessageFor(model => model.ReleaseYear, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Volume, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Volume, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Volume, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Price, new {htmlAttributes = new {@class = "form-control"}})
+            @Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"})
         </div>
     </div>
     <div class="form-group">
@@ -50,6 +94,31 @@
         <div class="col-md-10">
             @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="images-container">
+                @if (Model.Images != null)
+                {
+                    for (var i = 0; i < Model.Images.Count; i++)
+                    {
+                        <div class="image-block" id="@Model.Images[i].Id">
+                            @Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id })
+                            <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) class="image-viewer" data-content-length="@Model.Images[i].ContentLength" data-content-type="@Model.Images[i].ContentType" />
+                            <input type="button" name="Delete" class="existImageDeleteButton" value="Delete" id="@Model.Images[i].Id" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="add-image">
+                <input type="file" name="files" />
+            </div>
         </div>
     </div>
 </div>

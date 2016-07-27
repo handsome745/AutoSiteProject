@@ -100,37 +100,7 @@ WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
             
             #line default
             #line hidden
-WriteLiteral("\r\n        <div");
-
-WriteLiteral(" class=\"form-group\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"images-container\"");
-
-WriteLiteral(">\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
-
-WriteLiteral(" class=\"form-group\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
-
-WriteLiteral(">\r\n                <div");
-
-WriteLiteral(" class=\"add-image\"");
-
-WriteLiteral(">\r\n                    <input");
-
-WriteLiteral(" type=\"file\"");
-
-WriteLiteral(" name=\"files\"");
-
-WriteLiteral("/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div");
+WriteLiteral("\r\n       \r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -149,7 +119,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 36 "..\..\Views\CarItem\Create.cshtml"
+            #line 24 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -160,7 +130,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 39 "..\..\Views\CarItem\Create.cshtml"
+            #line 27 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             

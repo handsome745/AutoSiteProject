@@ -91,67 +91,89 @@ WriteLiteral("></script>\r\n\r\n<hr />\r\n<div");
 
 WriteLiteral(" class=\"filter-section\"");
 
-WriteLiteral(" data-countries-url=\"");
+WriteLiteral(" \r\n     data-countries-url=\"");
 
             
-            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
-                                           Write(Url.Action("GetCountries", "DataLoader"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteLiteral(" data-manufacturers-url=\"");
-
-            
-            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
-                                                                                                              Write(Url.Action("GetManufacturersOfCountry", "DataLoader"));
+            #line 12 "..\..\Views\Shared\_CarItem.cshtml"
+                    Write(Url.Action("GetCountries", "DataLoader"));
 
             
             #line default
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(" data-carmodels-url=\"");
+WriteLiteral("\r\n     data-manufacturers-url=\"");
 
             
-            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
-                                                                                                                                                                                          Write(Url.Action("GetCarModelsOfManufacturer", "DataLoader"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\"");
-
-WriteLiteral(" data-carbodytype-url=\"");
-
-            
-            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
-                                                                                                                                                                                                                                                                         Write(Url.Action("GetBodyTypes", "DataLoader"));
+            #line 13 "..\..\Views\Shared\_CarItem.cshtml"
+                        Write(Url.Action("GetManufacturersOfCountry", "DataLoader"));
 
             
             #line default
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(" data-caroptions-url=\"");
+WriteLiteral("\r\n     data-carmodels-url=\"");
 
             
-            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
-                                                                                                                                                                                                                                                                                                                                         Write(Url.Action("GetCarOptions", "DataLoader"));
+            #line 14 "..\..\Views\Shared\_CarItem.cshtml"
+                    Write(Url.Action("GetCarModelsOfManufacturer", "DataLoader"));
 
             
             #line default
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(">\r\n");
+WriteLiteral("\r\n     data-carbodytype-url=\"");
+
+            
+            #line 15 "..\..\Views\Shared\_CarItem.cshtml"
+                      Write(Url.Action("GetBodyTypes", "DataLoader"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral("\r\n     data-caroptions-url=\"");
+
+            
+            #line 16 "..\..\Views\Shared\_CarItem.cshtml"
+                     Write(Url.Action("GetCarOptions", "DataLoader"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral("\r\n     data-carfueltype-url=\"");
+
+            
+            #line 17 "..\..\Views\Shared\_CarItem.cshtml"
+                      Write(Url.Action("GetFuelTypes", "DataLoader"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral("\r\n     data-cartransmitiontype-url=\"");
+
+            
+            #line 18 "..\..\Views\Shared\_CarItem.cshtml"
+                             Write(Url.Action("GetTransmitionTypes","DataLoader"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral("\r\n     >\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 12 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 20 "..\..\Views\Shared\_CarItem.cshtml"
 Write(Html.HiddenFor(model => model.Id));
 
             
@@ -162,7 +184,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 13 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 21 "..\..\Views\Shared\_CarItem.cshtml"
 Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -177,7 +199,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 15 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 23 "..\..\Views\Shared\_CarItem.cshtml"
    Write(Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -192,7 +214,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 17 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 25 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker", @data_initId = @Model.CountryId }));
 
             
@@ -203,7 +225,7 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 18 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 26 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" }));
 
             
@@ -218,7 +240,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 22 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 30 "..\..\Views\Shared\_CarItem.cshtml"
    Write(Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -233,7 +255,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 24 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 32 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker", @data_initId = @Model.ManufacturerId }));
 
             
@@ -244,7 +266,7 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 25 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 33 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.ValidationMessageFor(model => model.ManufacturerId, "", new { @class = "text-danger" }));
 
             
@@ -259,7 +281,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 29 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 37 "..\..\Views\Shared\_CarItem.cshtml"
    Write(Html.LabelFor(m => m.ModelId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -274,7 +296,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 31 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 39 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker", @data_initId = @Model.ModelId }));
 
             
@@ -285,7 +307,7 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 32 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 40 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.ValidationMessageFor(model => model.ModelId, "", new { @class = "text-danger" }));
 
             
@@ -300,8 +322,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 36 "..\..\Views\Shared\_CarItem.cshtml"
-   Write(Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-md-2" }));
+            #line 44 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new {@class = "control-label col-md-2"}));
 
             
             #line default
@@ -315,8 +337,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 38 "..\..\Views\Shared\_CarItem.cshtml"
-       Write(Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId }));
+            #line 46 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new {@class = "form-control carbodytype-picker", @data_initId = @Model.BodyTypeId}));
 
             
             #line default
@@ -326,8 +348,8 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 39 "..\..\Views\Shared\_CarItem.cshtml"
-       Write(Html.ValidationMessageFor(model => model.BodyTypeId, "", new { @class = "text-danger" }));
+            #line 47 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.BodyTypeId, "", new {@class = "text-danger"}));
 
             
             #line default
@@ -341,8 +363,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 43 "..\..\Views\Shared\_CarItem.cshtml"
-   Write(Html.LabelFor(m => m.SelectedCarOptions, htmlAttributes: new { @class = "control-label col-md-2" }));
+            #line 51 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.FuelTypeId, htmlAttributes: new {@class = "control-label col-md-2"}));
 
             
             #line default
@@ -356,8 +378,19 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 45 "..\..\Views\Shared\_CarItem.cshtml"
-       Write(Html.ListBoxFor(m => m.SelectedCarOptions, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker" }));
+            #line 53 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.DropDownListFor(m => m.FuelTypeId, new SelectList(new List<FuelTypeViewModel>(), "Id", "Name", Model.FuelTypeId), "Select car fuel type", htmlAttributes: new {@class = "form-control carfueltype-picker", @data_initId = @Model.FuelTypeId}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 54 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.FuelTypeId, "", new {@class = "text-danger"}));
 
             
             #line default
@@ -371,7 +404,201 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 49 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 58 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.TransmitionTypeId, htmlAttributes: new { @class = "control-label col-md-2" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"col-md-10\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 60 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.DropDownListFor(m => m.TransmitionTypeId, new SelectList(new List<TransmitionTypeViewModel>(), "Id", "Name", Model.TransmitionTypeId), "Select car transmition type", htmlAttributes: new { @class = "form-control cartransmitiontype-picker", @data_initId = @Model.TransmitionTypeId }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 61 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.TransmitionTypeId, "", new { @class = "text-danger" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 65 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.SelectedCarOptions, htmlAttributes: new {@class = "control-label col-md-2"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"col-md-10\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 67 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ListBoxFor(m => m.SelectedCarOptions, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new {@class = "form-control caroptions-picker"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 71 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.ReleaseYear, htmlAttributes: new {@class = "control-label col-md-2"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"col-md-10\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 73 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.EditorFor(m => m.ReleaseYear, new {htmlAttributes = new {@class = "form-control"}}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 74 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.ReleaseYear, "", new {@class = "text-danger"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 78 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.Volume, htmlAttributes: new { @class = "control-label col-md-2" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"col-md-10\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 80 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.EditorFor(m => m.Volume, new { htmlAttributes = new { @class = "form-control" } }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 81 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.Volume, "", new { @class = "text-danger" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 86 "..\..\Views\Shared\_CarItem.cshtml"
+   Write(Html.LabelFor(m => m.Price, htmlAttributes: new {@class = "control-label col-md-2"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        <div");
+
+WriteLiteral(" class=\"col-md-10\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 88 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.EditorFor(m => m.Price, new {htmlAttributes = new {@class = "form-control"}}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 89 "..\..\Views\Shared\_CarItem.cshtml"
+       Write(Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 93 "..\..\Views\Shared\_CarItem.cshtml"
    Write(Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -386,7 +613,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 51 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 95 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -397,13 +624,152 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 52 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 96 "..\..\Views\Shared\_CarItem.cshtml"
        Write(Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n</div>\r\n");
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"images-container\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 102 "..\..\Views\Shared\_CarItem.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 102 "..\..\Views\Shared\_CarItem.cshtml"
+                 if (Model.Images != null)
+                {
+                    for (var i = 0; i < Model.Images.Count; i++)
+                    {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <div");
+
+WriteLiteral(" class=\"image-block\"");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 6701), Tuple.Create("\"", 6725)
+            
+            #line 106 "..\..\Views\Shared\_CarItem.cshtml"
+, Tuple.Create(Tuple.Create("", 6706), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+            
+            #line default
+            #line hidden
+, 6706), false)
+);
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 107 "..\..\Views\Shared\_CarItem.cshtml"
+                       Write(Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                            <img");
+
+WriteAttribute("src", Tuple.Create(" src=", 6916), Tuple.Create("", 6989)
+            
+            #line 108 "..\..\Views\Shared\_CarItem.cshtml"
+, Tuple.Create(Tuple.Create("", 6921), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
+            
+            #line default
+            #line hidden
+, 6921), false)
+);
+
+WriteLiteral(" class=\"image-viewer\"");
+
+WriteLiteral(" data-content-length=\"");
+
+            
+            #line 108 "..\..\Views\Shared\_CarItem.cshtml"
+                                                                                                                                               Write(Model.Images[i].ContentLength);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral(" data-content-type=\"");
+
+            
+            #line 108 "..\..\Views\Shared\_CarItem.cshtml"
+                                                                                                                                                                                                  Write(Model.Images[i].ContentType);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral(" />\r\n                            <input");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" name=\"Delete\"");
+
+WriteLiteral(" class=\"existImageDeleteButton\"");
+
+WriteLiteral(" value=\"Delete\"");
+
+WriteAttribute("id", Tuple.Create(" id=\"", 7225), Tuple.Create("\"", 7249)
+            
+            #line 109 "..\..\Views\Shared\_CarItem.cshtml"
+                                 , Tuple.Create(Tuple.Create("", 7230), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+            
+            #line default
+            #line hidden
+, 7230), false)
+);
+
+WriteLiteral(" />\r\n                        </div>\r\n");
+
+            
+            #line 111 "..\..\Views\Shared\_CarItem.cshtml"
+                    }
+                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div");
+
+WriteLiteral(" class=\"form-group\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"col-md-offset-2 col-md-10\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"add-image\"");
+
+WriteLiteral(">\r\n                <input");
+
+WriteLiteral(" type=\"file\"");
+
+WriteLiteral(" name=\"files\"");
+
+WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
         }
     }

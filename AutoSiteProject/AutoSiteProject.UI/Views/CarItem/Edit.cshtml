@@ -13,31 +13,6 @@
 
     <div class="form-horizontal">
         @{ Html.RenderPartial("_CarItem", Model);}
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="images-container">
-                    @if (Model.Images != null)
-                    {
-                        for (var i = 0; i < Model.Images.Count; i++)
-                        {
-                            <div class="image-block" id="@Model.Images[i].Id">
-                                @Html.HiddenFor(model => model.Images[i].Id, htmlAttributes: new { @class = "existImageIdField", @id = @Model.Images[i].Id })
-                                <img src=@Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id}) class="image-viewer" data-content-length="@Model.Images[i].ContentLength" data-content-type="@Model.Images[i].ContentType"/>
-                                <input type="button" name="Delete" class="existImageDeleteButton" value="Delete" id="@Model.Images[i].Id" />
-                            </div>
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="add-image">
-                    <input type="file" name="files" />
-                </div>
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

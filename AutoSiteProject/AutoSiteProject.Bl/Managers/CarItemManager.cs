@@ -29,6 +29,15 @@ namespace AutoSiteProject.Bl.Managers
                 predicateBuilder = predicateBuilder.And(c => c.ManufacturerId == filter.ManufacturerId);
             if (filter.CountryId != null)
                 predicateBuilder = predicateBuilder.And(c => c.CountryId == filter.CountryId);
+            if (filter.FuelTypeId != null)
+                predicateBuilder = predicateBuilder.And(c => c.FuelTypeId == filter.FuelTypeId);
+            if (filter.TransmitionTypeId != null)
+                predicateBuilder = predicateBuilder.And(c => c.TransmitionTypeId == filter.TransmitionTypeId);
+
+            predicateBuilder = predicateBuilder.And(c => (c.Price >= filter.PriceMin && c.Price <= filter.PriceMax));
+            predicateBuilder = predicateBuilder.And(c => (c.Volume >= filter.VolumeMin && c.Price <= filter.VolumeMax));
+            predicateBuilder = predicateBuilder.And(c => (c.ReleaseYear >= filter.ReleaseYearMin && c.Price <= filter.ReleaseYearMax));
+
             if (filter.OptionsIds != null && filter.OptionsIds.Count > 0)
                 predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Count() >= filter.OptionsIds.Count);
             if (!string.IsNullOrEmpty(filter.Description))

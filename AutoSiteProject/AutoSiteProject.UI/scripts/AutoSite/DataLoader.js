@@ -5,12 +5,16 @@
     var manufUrl = filterSection.data("manufacturers-url");
     var carModelsfUrl = filterSection.data("carmodels-url");
     var carBodyTypesfUrl = filterSection.data("carbodytype-url");
+    var fuelTypesUrl = filterSection.data("carfueltype-url");
+    var transmitionTypesUrl = filterSection.data("cartransmitiontype-url");
     //Pickers
     var countryPicker = $(".country-picker", filterSection);
     var manufacturerPicker = $(".manufacturer-picker", filterSection);
     var carmodelPicker = $(".carmodel-picker", filterSection);
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
+    var fuelTypePicher = $(".carfueltype-picker", filterSection);
+    var transmitionTypePicker = $(".cartransmitiontype-picker", filterSection);
     
     carOptionsPicker.chosen({ allow_single_deselect: true , width:"100%"});
 
@@ -19,9 +23,13 @@
     var manufacturerId = manufacturerPicker.data("initid");
     var carmodelId = carmodelPicker.data("initid");
     var carbodytypeId = carbodytypePicker.data("initid");
+    var fuelTypeId = fuelTypePicher.data("initid");
+    var transmitionTypeId = transmitionTypePicker.data("initid");
 
-    dataLoader.loadCountries(countryUrl, countryPicker, countryId);
-    dataLoader.loadCarBodyTypes(carBodyTypesfUrl, carbodytypePicker, carbodytypeId);
+    dataLoader.loadItems(countryUrl, countryPicker, countryId, "Can't load countries");
+    dataLoader.loadItems(carBodyTypesfUrl, carbodytypePicker, carbodytypeId,"Can't load body types");
+    dataLoader.loadItems(fuelTypesUrl, fuelTypePicher, fuelTypeId, "Can't load fuel types");
+    dataLoader.loadItems(transmitionTypesUrl, transmitionTypePicker, transmitionTypeId, "Can't load transmition types");
 
     countryPicker.change(function () {
         var id = countryPicker.val();
@@ -30,7 +38,7 @@
         }
         else {
             manufacturerPicker.prop('disabled', false);
-            dataLoader.loadManufacturers(manufUrl + "/" + id, manufacturerPicker, manufacturerId);
+            dataLoader.loadItems(manufUrl + "/" + id, manufacturerPicker, manufacturerId,"Can't load manufacturers");
             dataRender.clearSelectorsAndDisable([carmodelPicker]);
         }
     });
@@ -41,27 +49,14 @@
         }
         else {
             carmodelPicker.prop('disabled', false);
-            dataLoader.loadCarModels(carModelsfUrl + "/" + id, carmodelPicker, carmodelId);
+            dataLoader.loadItems(carModelsfUrl + "/" + id, carmodelPicker, carmodelId, "Can't load car models");
         }
     });
     countryPicker.change();
 });
 
 dataLoader = {
-    loadCountries: function (url,picker,id) {
-        $.ajax({
-            type: "GET",
-            asynch: true,
-            url: url,
-            success: function (output) {
-                dataRender.renderList(output,picker,id);
-            },
-            error: function (err, a, c) {
-                alert("Error loading manufacturers");
-            }
-        });
-    },
-    loadManufacturers: function (url, picker, id) {
+    loadItems: function (url, picker, id, errorMessage) {
         $.ajax({
             type: "GET",
             asynch: true,
@@ -70,33 +65,7 @@ dataLoader = {
                 dataRender.renderList(output, picker, id);
             },
             error: function (err, a, c) {
-                alert("Error loading manufacturers");
-            }
-        });
-    },
-    loadCarModels: function (url,picker,id) {
-        $.ajax({
-            type: "GET",
-            asynch: true,
-            url: url,
-            success: function (output) {
-                dataRender.renderList(output, picker, id);
-            },
-            error: function (err, a, c) {
-                alert("Error loading car models");
-            }
-        });
-    },
-    loadCarBodyTypes: function (url,picker,id) {
-        $.ajax({
-            type: "GET",
-            asynch: true,
-            url: url,
-            success: function (output) {
-                dataRender.renderList(output, picker, id);
-            },
-            error: function (err, a, c) {
-                alert("Error loading car model types");
+                alert(errorMessage);
             }
         });
     }
