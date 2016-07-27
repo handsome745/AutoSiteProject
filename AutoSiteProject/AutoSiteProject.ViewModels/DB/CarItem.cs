@@ -27,6 +27,14 @@ namespace AutoSiteProject.Models.DB
         public Nullable<int> BodyTypeId { get; set; }
         public string OwnerId { get; set; }
         public Nullable<int> MainImageId { get; set; }
+        public System.DateTime EditDate { get; set; }
+        public int Price { get; set; }
+        public int Status { get; set; }
+        public int ReleaseYear { get; set; }
+        public int Volume { get; set; }
+        public Nullable<int> TransmitionTypeId { get; set; }
+        public Nullable<int> FuelTypeId { get; set; }
+        public string LastEditorId { get; set; }
     
         public virtual CarBodyType CarBodyType { get; set; }
         public virtual CarModel CarModel { get; set; }
@@ -36,5 +44,8 @@ namespace AutoSiteProject.Models.DB
         public virtual ICollection<CarImages> CarImages { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual CarImages CarImages1 { get; set; }
+        public virtual TransmitionType TransmitionType { get; set; }
+        public virtual FuelType FuelType { get; set; }
+        public virtual AspNetUsers AspNetUsers1 { get; set; }
     }
 }

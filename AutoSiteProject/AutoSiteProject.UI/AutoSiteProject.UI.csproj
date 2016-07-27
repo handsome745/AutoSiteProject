@@ -345,6 +345,7 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DataLoaderController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FuelTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
@@ -502,6 +503,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>List.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DataLoader\CarsGridViewPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsGridViewPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetCarBodyTypesPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCarBodyTypesPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetCarItemsPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCarItemsPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetCarModelsPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCarModelsPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetCarOptionsPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCarOptionsPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetCountriesPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetCountriesPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetFuelTypePartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetFuelTypePartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetManufacturersPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetManufacturersPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetRolesPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetRolesPartial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataLoader\GetUsersPartial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetUsersPartial.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Error\BadRequest.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -521,6 +572,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Error\Security.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Security.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FuelType\Create.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FuelType\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FuelType\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Index.generated.cs">
       <AutoGen>True</AutoGen>
@@ -848,20 +919,66 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_CarFilter.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\DataLoader\CarsGridViewPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetCarBodyTypesPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetCarModelsPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetCarOptionsPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetCountriesPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetManufacturersPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetRolesPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml" />
-    <Content Include="Views\DataLoader\GetUsersPartial.cshtml" />
+    <Content Include="Views\DataLoader\CarsGridViewPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CarsGridViewPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetCarBodyTypesPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetCarBodyTypesPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetCarModelsPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetCarModelsPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetCarOptionsPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetCarOptionsPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetCountriesPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetCountriesPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetManufacturersPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetManufacturersPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetRolesPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetRolesPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetCarItemsPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetCarItemsPartial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetUsersPartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetUsersPartial.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\CarItem\Details.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Details.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Error\Security.cshtml" />
+    <Content Include="Views\Error\Security.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Security.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\FuelType\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\FuelType\Create.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Create.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\FuelType\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\DataLoader\GetFuelTypePartial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetFuelTypePartial.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

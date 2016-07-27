@@ -315,7 +315,16 @@ WriteLiteral("</li>\r\n                            <li>");
 
             
             #line 68 "..\..\Views\Shared\_Layout.cshtml"
-                           Write(Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "" }));
+                           Write(Html.ActionLink("Countries", "List", "Country", new {area = ""}, new {@class = ""}));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</li>\r\n                            <li>");
+
+            
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
+                           Write(Html.ActionLink("Car fuel types", "List", "FuelType", new { area = "" }, new { @class = "" }));
 
             
             #line default
@@ -329,7 +338,7 @@ WriteLiteral(" class=\"divider\"");
 WriteLiteral("></li>\r\n                            <li>");
 
             
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "" }));
 
             
@@ -338,7 +347,7 @@ WriteLiteral("></li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                            <li>");
 
             
-            #line 71 "..\..\Views\Shared\_Layout.cshtml"
+            #line 72 "..\..\Views\Shared\_Layout.cshtml"
                            Write(Html.ActionLink("Roles", "List", "Role", new { area = "" }, new { @class = "" }));
 
             
@@ -347,7 +356,7 @@ WriteLiteral("</li>\r\n                            <li>");
 WriteLiteral("</li>\r\n                        </ul>\r\n                    </li>\r\n");
 
             
-            #line 74 "..\..\Views\Shared\_Layout.cshtml"
+            #line 75 "..\..\Views\Shared\_Layout.cshtml"
                 }
 
             
@@ -358,7 +367,7 @@ WriteLiteral("            </ul>\r\n");
 WriteLiteral("            ");
 
             
-            #line 76 "..\..\Views\Shared\_Layout.cshtml"
+            #line 77 "..\..\Views\Shared\_Layout.cshtml"
        Write(Html.Partial("_LoginPartial"));
 
             
@@ -373,7 +382,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 82 "..\..\Views\Shared\_Layout.cshtml"
+            #line 83 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -386,7 +395,7 @@ WriteLiteral(" class=\"notifications\"");
 WriteLiteral(">\r\n        </div>\r\n        <footer>\r\n            <p>&copy; ");
 
             
-            #line 87 "..\..\Views\Shared\_Layout.cshtml"
+            #line 88 "..\..\Views\Shared\_Layout.cshtml"
                  Write(DateTime.Now.Year);
 
             

@@ -40,6 +40,17 @@ namespace AutoSiteProject.Bl.FieldCopiers
             {
                 to.SelectedCarOptions[i] = arrayCo[i].Id.ToString();
             }
+            to.EditDate = from.EditDate;
+            to.LastEditorId = from.LastEditorId;
+            to.LastEditorName = from.AspNetUsers1.UserName;
+            to.FuelTypeId = from.FuelTypeId;
+            to.FuelType = from.FuelType?.Name;
+            to.TransmitionTypeId = from.TransmitionTypeId;
+            to.TransmitionType = from.TransmitionType?.Name;
+            to.Price = from.Price;
+            to.Volume = from.Volume;
+            to.Status = (CarItemStatus) from.Status;
+            to.ReleaseYear = from.ReleaseYear;
             return to;
         }
 
