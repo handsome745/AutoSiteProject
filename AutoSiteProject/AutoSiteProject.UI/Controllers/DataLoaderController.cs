@@ -27,7 +27,8 @@ namespace AutoSiteProject.UI.Controllers
         private readonly IRoleFieldCopier _roleFieldCopier;
         private readonly IUserFieldCopier _userFieldCopier;
         private readonly ICarImageManager _carImageManager;
-
+        private readonly IFuelTypeManager _fuelTypeManager;
+        private readonly IFuelTypeFieldCopier _fuelTypeFieldCopier;
         public ApplicationRoleManager RoleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
         public  ApplicationUserManager UserManager => HttpContext.GetOwinContext().Get<ApplicationUserManager>();
 
@@ -45,7 +46,9 @@ namespace AutoSiteProject.UI.Controllers
             ICarItemManager carItemManager,
             IRoleFieldCopier roleFieldCopier,
             ICarImageManager carImageManage,
-            IUserFieldCopier userFieldCopier
+            IUserFieldCopier userFieldCopier, 
+            IFuelTypeManager fuelTypeManager,
+            IFuelTypeFieldCopier fuelTypeFieldCopier
             )
         {
             _carModelManager = carModelManager;
@@ -62,6 +65,8 @@ namespace AutoSiteProject.UI.Controllers
             _carItemManager = carItemManager;
             _roleFieldCopier = roleFieldCopier;
             _userFieldCopier = userFieldCopier;
+            _fuelTypeManager = fuelTypeManager;
+            _fuelTypeFieldCopier = fuelTypeFieldCopier;
         }
         [HttpPost]
         public JsonResult GetCars(CarAggregateFilterViewModel filter)
@@ -184,6 +189,13 @@ namespace AutoSiteProject.UI.Controllers
             if (id == null) return null;
             var image = _carImageManager.GetById((int)id);
             return File(image.Data, image.ContentType, image.Name);
+        }
+
+        public ActionResult GetFuelTypePartial()
+        {
+             var dbItems = _fuelTypeManager.GetAll().ToList();
+            var result = dbItems.Select(item => _fuelTypeFieldCopier.CopyFields(item, new FuelTypeViewModel())).ToList();
+            return PartialView("GetFuelTypePartial", result);
         }
     }
 }

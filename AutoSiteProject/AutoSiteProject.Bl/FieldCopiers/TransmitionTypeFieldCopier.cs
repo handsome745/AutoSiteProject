@@ -5,9 +5,9 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.Bl.FieldCopiers
 {
-    public class CarBodyTypeFieldCopier : ICarBodyTypeFieldCopier
+    public class TransmitionTypeFieldCopier : ITransmitionTypeFieldCopier
     {
-        public CarBodyTypeViewModel CopyFields(CarBodyType from, CarBodyTypeViewModel to)
+        public TransmitionTypeViewModel CopyFields(TransmitionType from, TransmitionTypeViewModel to)
         {
             if (to == null) throw new NullReferenceException();
             if (from == null) throw new NullReferenceException();
@@ -16,7 +16,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             return to;
         }
 
-        public CarBodyType CopyFields(CarBodyTypeViewModel from, CarBodyType to)
+        public TransmitionType CopyFields(TransmitionTypeViewModel from, TransmitionType to)
         {
             if (to == null) throw new NullReferenceException();
             if (from == null) throw new NullReferenceException();

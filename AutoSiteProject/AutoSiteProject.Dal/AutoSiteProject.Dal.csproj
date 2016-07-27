@@ -62,8 +62,10 @@
     <Compile Include="Entities\CarModelRepository.cs" />
     <Compile Include="Entities\CarOptionRepository.cs" />
     <Compile Include="Entities\CountryRepository.cs" />
+    <Compile Include="Entities\FuelTypeRepository.cs" />
     <Compile Include="Entities\GenericRepository.cs" />
     <Compile Include="Entities\ManufacturerRepository.cs" />
+    <Compile Include="Entities\TransmitionTypeRepository.cs" />
     <Compile Include="Entities\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

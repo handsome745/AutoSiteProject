@@ -100,7 +100,9 @@
     <Compile Include="FieldCopiers\CarImageFieldCopier.cs" />
     <Compile Include="FieldCopiers\CarItemFieldCopier.cs" />
     <Compile Include="FieldCopiers\CarOptionFieldCopier.cs" />
+    <Compile Include="FieldCopiers\FuelTypeFieldCopier.cs" />
     <Compile Include="FieldCopiers\RoleFieldCopier.cs" />
+    <Compile Include="FieldCopiers\TransmitionTypeFieldCopier.cs" />
     <Compile Include="FieldCopiers\UserFieldCopier.cs" />
     <Compile Include="IdentityClasses\IdentityConfig.cs" />
     <Compile Include="Managers\AppLogger.cs" />
@@ -110,11 +112,13 @@
     <Compile Include="Managers\CarModelManager.cs" />
     <Compile Include="Managers\CarOptionManager.cs" />
     <Compile Include="Managers\CountryManager.cs" />
+    <Compile Include="Managers\FuelTypeManager.cs" />
     <Compile Include="Managers\ManufacturerManager.cs" />
     <Compile Include="Managers\RepositoryManager.cs" />
     <Compile Include="FieldCopiers\CarModelFieldCopier.cs" />
     <Compile Include="FieldCopiers\CountryFieldCopier.cs" />
     <Compile Include="FieldCopiers\ManufacturerFieldCopier.cs" />
+    <Compile Include="Managers\TransmitionTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

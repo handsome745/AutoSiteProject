@@ -2,6 +2,7 @@
 using LinqKit;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace AutoSiteProject.Dal.Entities
@@ -43,7 +44,7 @@ namespace AutoSiteProject.Dal.Entities
 
         public virtual void Edit(T entity)
         {
-            _unitOfWork.Set<T>().Attach(entity);
+            _unitOfWork.Set<T>().AddOrUpdate(entity);
         }
 
     }

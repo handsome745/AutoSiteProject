@@ -188,5 +188,22 @@ namespace AutoSiteProject.UI.Controllers
             _carItemManager.Delete(dbItem);
             return RedirectToAction("List");
         }
+        //GET 
+        public ActionResult SetStatusToClose(int id)
+        {
+            var authUserId = User.Identity.GetUserId();
+            var dbItem = _carItemManager.GetById(id);
+            if (dbItem == null) throw new NullReferenceException();
+            if (!User.IsInRole("Admin"))
+            {
+                var userId = authUserId;
+                if (dbItem.OwnerId != userId) throw new SecurityException();
+            }
+            dbItem.LastEditorId = authUserId;
+            dbItem.EditDate = DateTime.Now;
+            dbItem.Status = (int)CarItemStatus.Close;
+            _carItemManager.Edit(dbItem);
+            return RedirectToAction("List");
+        }
     }
 }

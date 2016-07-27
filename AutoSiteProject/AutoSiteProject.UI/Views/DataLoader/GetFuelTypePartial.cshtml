@@ -1,0 +1,41 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<AutoSiteProject.Models.ViewModels.FuelTypeViewModel>
+
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "fuelTypeGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetFuelTypePartial" };
+    settings.Width = Unit.Percentage(100);
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "#";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("Edit", "Edit", "FuelType", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                + "&nbsp;" +
+                Html.ActionLink("Delete", "Delete", "FuelType", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                );
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("New", "Create", "FuelType").ToHtmlString()
+                );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.Width = 70;
+    });
+    settings.Columns.Add("Id");
+    settings.Columns.Add("Name");
+    settings.KeyFieldName = "Id";
+    settings.SettingsPager.PageSize = 25;
+}).Bind(Model).GetHtml()
+
+
+
+
+
+
+

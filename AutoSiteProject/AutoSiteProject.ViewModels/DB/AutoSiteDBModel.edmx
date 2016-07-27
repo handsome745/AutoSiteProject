@@ -95,6 +95,14 @@
           <Property Name="BodyTypeId" Type="int" />
           <Property Name="OwnerId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="MainImageId" Type="int" />
+          <Property Name="EditDate" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ReleaseYear" Type="int" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="TransmitionTypeId" Type="int" />
+          <Property Name="FuelTypeId" Type="int" />
+          <Property Name="LastEditorId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="CarItemImages">
           <Key>
@@ -134,6 +142,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
             <PropertyRef Name="Id" />
@@ -141,6 +156,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="TransmitionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="fk_CarIdFK">
           <End Role="CarItem" Type="Self.CarItem" Multiplicity="1">
@@ -168,6 +190,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_CarItemFuelType">
+          <End Role="FuelType" Type="Self.FuelType" Multiplicity="0..1" />
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_CarItemIdCarItemOptions">
           <End Role="CarItem" Type="Self.CarItem" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -179,6 +213,18 @@
             </Principal>
             <Dependent Role="CarItemOptions">
               <PropertyRef Name="CarItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemLastEditorId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="LastEditorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -231,6 +277,18 @@
             </Principal>
             <Dependent Role="CarItem">
               <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemTransmitionType">
+          <End Role="TransmitionType" Type="Self.TransmitionType" Multiplicity="0..1" />
+          <End Role="CarItem" Type="Self.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransmitionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="TransmitionTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,7 +401,9 @@
           <EntitySet Name="CarModel" EntityType="Self.CarModel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarOption" EntityType="Self.CarOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransmitionType" EntityType="Self.TransmitionType" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_CarIdFK" Association="Self.fk_CarIdFK">
             <End Role="CarItem" EntitySet="CarItem" />
             <End Role="CarItemImages" EntitySet="CarItemImages" />
@@ -352,9 +412,17 @@
             <End Role="CarBodyType" EntitySet="CarBodyType" />
             <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
+          <AssociationSet Name="fk_CarItemFuelType" Association="Self.fk_CarItemFuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
           <AssociationSet Name="fk_CarItemIdCarItemOptions" Association="Self.fk_CarItemIdCarItemOptions">
             <End Role="CarItem" EntitySet="CarItem" />
             <End Role="CarItemOptions" EntitySet="CarItemOptions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarItemLastEditorId" Association="Self.fk_CarItemLastEditorId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
           <AssociationSet Name="fk_CarItemMainImage" Association="Self.fk_CarItemMainImage">
             <End Role="CarImages" EntitySet="CarImages" />
@@ -370,6 +438,10 @@
           </AssociationSet>
           <AssociationSet Name="fk_CarItemOwner" Association="Self.fk_CarItemOwner">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarItemTransmitionType" Association="Self.fk_CarItemTransmitionType">
+            <End Role="TransmitionType" EntitySet="TransmitionType" />
             <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -522,6 +594,20 @@
             <End Role="CarImages" EntitySet="CarImages" />
             <End Role="CarItem" EntitySet="CarItem" />
           </AssociationSet>
+          <EntitySet Name="FuelType" EntityType="AutoSiteProjectDBModel.FuelType" />
+          <EntitySet Name="TransmitionType" EntityType="AutoSiteProjectDBModel.TransmitionType" />
+          <AssociationSet Name="fk_CarItemTransmitionType" Association="AutoSiteProjectDBModel.fk_CarItemTransmitionType">
+            <End Role="TransmitionType" EntitySet="TransmitionType" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarItemFuelType" Association="AutoSiteProjectDBModel.fk_CarItemFuelType">
+            <End Role="FuelType" EntitySet="FuelType" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarItemLastEditorId" Association="AutoSiteProjectDBModel.fk_CarItemLastEditorId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CarItem">
           <Key>
@@ -539,6 +625,17 @@
           <NavigationProperty Name="AspNetUsers" Relationship="AutoSiteProjectDBModel.fk_CarItemOwner" FromRole="CarItem" ToRole="AspNetUsers" />
           <Property Name="MainImageId" Type="Int32" />
           <NavigationProperty Name="CarImages1" Relationship="AutoSiteProjectDBModel.fk_CarItemMainImage" FromRole="CarItem" ToRole="CarImages" />
+          <Property Name="EditDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ReleaseYear" Type="Int32" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="TransmitionTypeId" Type="Int32" />
+          <NavigationProperty Name="TransmitionType" Relationship="AutoSiteProjectDBModel.fk_CarItemTransmitionType" FromRole="CarItem" ToRole="TransmitionType" />
+          <Property Name="FuelTypeId" Type="Int32" />
+          <NavigationProperty Name="FuelType" Relationship="AutoSiteProjectDBModel.fk_CarItemFuelType" FromRole="CarItem" ToRole="FuelType" />
+          <Property Name="LastEditorId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="AutoSiteProjectDBModel.fk_CarItemLastEditorId" FromRole="CarItem" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="CarOption">
           <Key>
@@ -627,6 +724,7 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="AutoSiteProjectDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="AutoSiteProjectDBModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemOwner" FromRole="AspNetUsers" ToRole="CarItem" />
+          <NavigationProperty Name="CarItem1" Relationship="AutoSiteProjectDBModel.fk_CarItemLastEditorId" FromRole="AspNetUsers" ToRole="CarItem" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="AutoSiteProjectDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -712,6 +810,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemFuelType" FromRole="FuelType" ToRole="CarItem" />
+        </EntityType>
+        <EntityType Name="TransmitionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarItem" Relationship="AutoSiteProjectDBModel.fk_CarItemTransmitionType" FromRole="TransmitionType" ToRole="CarItem" />
+        </EntityType>
+        <Association Name="fk_CarItemTransmitionType">
+          <End Type="AutoSiteProjectDBModel.TransmitionType" Role="TransmitionType" Multiplicity="0..1" />
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransmitionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="TransmitionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemFuelType">
+          <End Type="AutoSiteProjectDBModel.FuelType" Role="FuelType" Multiplicity="0..1" />
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarItemLastEditorId">
+          <End Type="AutoSiteProjectDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="AutoSiteProjectDBModel.CarItem" Role="CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="LastEditorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -755,6 +905,14 @@
           <EntitySetMapping Name="CarItem">
             <EntityTypeMapping TypeName="AutoSiteProjectDBModel.CarItem">
               <MappingFragment StoreEntitySet="CarItem">
+                <ScalarProperty Name="LastEditorId" ColumnName="LastEditorId" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="TransmitionTypeId" ColumnName="TransmitionTypeId" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
                 <ScalarProperty Name="MainImageId" ColumnName="MainImageId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="BodyTypeId" ColumnName="BodyTypeId" />
@@ -864,6 +1022,22 @@
               <ScalarProperty Name="Id" ColumnName="CarId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="FuelType">
+            <EntityTypeMapping TypeName="AutoSiteProjectDBModel.FuelType">
+              <MappingFragment StoreEntitySet="FuelType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransmitionType">
+            <EntityTypeMapping TypeName="AutoSiteProjectDBModel.TransmitionType">
+              <MappingFragment StoreEntitySet="TransmitionType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

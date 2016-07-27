@@ -21,6 +21,7 @@ namespace AutoSiteProject.Models.DB
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
             this.CarItem = new HashSet<CarItem>();
+            this.CarItem1 = new HashSet<CarItem>();
         }
     
         public string Id { get; set; }
@@ -44,5 +45,7 @@ namespace AutoSiteProject.Models.DB
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarItem> CarItem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CarItem> CarItem1 { get; set; }
     }
 }
