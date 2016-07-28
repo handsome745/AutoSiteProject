@@ -25,10 +25,12 @@
         slide: function (event, ui) {
             $("input#ReleaseYearMin", filterSection).val(ui.values[0]);
             $("input#ReleaseYearMax", filterSection).val(ui.values[1]);
-            setTimeout(func, 300);
+            $("label.releaseyear-label", filterSection).text("Release year:" + ui.values[0] + "-" + ui.values[1]);
+        },
+        stop: function() {
+            func();
         }
     });
-
     volumeRangeSlider.slider({
         range: true,
         min: 0,
@@ -37,7 +39,10 @@
         slide: function (event, ui) {
             $("input#VolumeMin").val(ui.values[0]);
             $("input#VolumeMax").val(ui.values[1]);
-            setTimeout(func, 300);
+            $("label.volume-label", filterSection).text("Engine volume:" + ui.values[0] + "-" + ui.values[1]);
+        },
+        stop: function () {
+            func();
         }
     });
     priceRangeSlider.slider({
@@ -48,7 +53,10 @@
         slide: function (event, ui) {
             $("input#PriceMin").val(ui.values[0]);
             $("input#PriceMax").val(ui.values[1]);
-            setTimeout(func, 300);
+            $("label.price-label", filterSection).text("Price:" + ui.values[0] + "-" + ui.values[1]);
+        },
+        stop: function () {
+            func();
         }
     });
 

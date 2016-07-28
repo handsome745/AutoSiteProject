@@ -347,7 +347,7 @@ BEGIN
 	BEGIN
 		ALTER TABLE dbo.CarItem
 		ADD TransmitionTypeId int 
-		CONSTRAINT fk_CarItemTransmitionType FOREIGN KEY (TransmitionTypeId) REFERENCES TransmitionType(Id) ON DELETE SET NULL
+		CONSTRAINT fk_CarItemTransmitionType FOREIGN KEY (TransmitionTypeId) REFERENCES TransmitionType(Id)
 	END
 END
 GO
@@ -376,8 +376,54 @@ BEGIN
 	BEGIN
 		ALTER TABLE dbo.CarItem
 		ADD FuelTypeId int 
-		CONSTRAINT fk_CarItemFuelType FOREIGN KEY (FuelTypeId) REFERENCES FuelType(Id) ON DELETE SET NULL
+		CONSTRAINT fk_CarItemFuelType FOREIGN KEY (FuelTypeId) REFERENCES FuelType(Id)
 	END
 END
 GO
 
+IF EXISTS(select * from sys.databases where name='AutoSiteProjectDB')
+BEGIN 
+	USE AutoSiteProjectDB
+	IF  EXISTS(
+		SELECT *
+		FROM sys.columns 
+		WHERE Name      = N'FuelTypeId'
+		  AND Object_ID = Object_ID(N'CarItem'))
+	BEGIN
+
+		ALTER TABLE dbo.CarItem
+		DROP CONSTRAINT fk_CarItemFuelType 
+
+		ALTER TABLE dbo.CarItem
+		DROP COLUMN FuelTypeId
+
+		ALTER TABLE dbo.CarItem
+		ADD FuelTypeId int 
+		CONSTRAINT fk_CarItemFuelType FOREIGN KEY (FuelTypeId) REFERENCES FuelType(Id)
+
+		UPDATE dbo.CarItem
+		SET FuelTypeId = (SELECT TOP(1) Id FROM dbo.FuelType)
+
+		ALTER TABLE dbo.CarItem
+		ALTER COLUMN FuelTypeId int NOT NULL
+
+		
+		ALTER TABLE dbo.CarItem
+		DROP CONSTRAINT fk_CarItemTransmitionType 
+
+		ALTER TABLE dbo.CarItem
+		DROP COLUMN TransmitionTypeId
+
+		ALTER TABLE dbo.CarItem
+		ADD TransmitionTypeId int 
+		CONSTRAINT fk_CarItemTransmitionType FOREIGN KEY (TransmitionTypeId) REFERENCES TransmitionType(Id)
+
+		UPDATE dbo.CarItem
+		SET TransmitionTypeId = (SELECT TOP(1) Id FROM dbo.TransmitionType)
+
+		ALTER TABLE dbo.CarItem
+		ALTER COLUMN TransmitionTypeId int NOT NULL
+		
+	END
+END
+GO

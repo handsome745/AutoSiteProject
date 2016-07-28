@@ -533,7 +533,7 @@ WriteLiteral("                        ");
 
             
             #line 84 "..\..\Views\Shared\_CarFilter.cshtml"
-                   Write(Html.LabelFor(m => m.ReleaseYearMin, htmlAttributes: new { @class = "control-label col-md-2" }));
+                   Write(Html.LabelFor(m => m.ReleaseYearMin, "Release year:"+Model.ReleaseYearMin+"-"+Model.ReleaseYearMax,htmlAttributes: new { @class = "control-label col-md-2 releaseyear-label width100" }));
 
             
             #line default
@@ -548,18 +548,29 @@ WriteLiteral("                            ");
 
             
             #line 86 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.ReleaseYearMin, new { @class = "width33" }));
+                       Write(Html.HiddenFor(m => m.ReleaseYearMin));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            -\r\n");
+WriteLiteral("\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 87 "..\..\Views\Shared\_CarFilter.cshtml"
+                       Write(Html.HiddenFor(m => m.ReleaseYearMax));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
 
 WriteLiteral("                            ");
 
             
             #line 88 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.ReleaseYearMax, new { @class = "width33" }));
+                       Write(Html.ValidationMessageFor(model => model.ReleaseYearMin, "", new {@class = "text-danger"}));
 
             
             #line default
@@ -570,25 +581,14 @@ WriteLiteral("                            ");
 
             
             #line 89 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.ValidationMessageFor(model => model.ReleaseYearMin, "", new { @class = "text-danger" }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 90 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.ValidationMessageFor(model => model.ReleaseYearMax, "", new { @class = "text-danger" }));
+                       Write(Html.ValidationMessageFor(model => model.ReleaseYearMax, "", new {@class = "text-danger"}));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n                            <div");
 
-WriteLiteral(" class=\"releaseyear-range-slider\"");
+WriteLiteral(" class=\"releaseyear-range-slider width100\"");
 
 WriteLiteral(">\r\n                            </div>\r\n                        </div>\r\n          " +
 "          </div>\r\n\r\n                    <div");
@@ -600,8 +600,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 97 "..\..\Views\Shared\_CarFilter.cshtml"
-                   Write(Html.LabelFor(m => m.VolumeMin, htmlAttributes: new { @class = "control-label col-md-2" }));
+            #line 96 "..\..\Views\Shared\_CarFilter.cshtml"
+                   Write(Html.LabelFor(m => m.VolumeMin,"Engine volume:"+Model.VolumeMin+"-"+Model.VolumeMax, htmlAttributes: new { @class = "control-label col-md-2 volume-label width100" }));
 
             
             #line default
@@ -615,19 +615,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 99 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.VolumeMin, new { @class = "width33" }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                            -\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 101 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.VolumeMax, new { @class = "width33" }));
+            #line 98 "..\..\Views\Shared\_CarFilter.cshtml"
+                       Write(Html.HiddenFor(m => m.VolumeMin));
 
             
             #line default
@@ -637,7 +626,18 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 102 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 99 "..\..\Views\Shared\_CarFilter.cshtml"
+                       Write(Html.HiddenFor(m => m.VolumeMax));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 100 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.VolumeMin, "", new { @class = "text-danger" }));
 
             
@@ -648,7 +648,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 103 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 101 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.VolumeMax, "", new { @class = "text-danger" }));
 
             
@@ -668,8 +668,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 110 "..\..\Views\Shared\_CarFilter.cshtml"
-                   Write(Html.LabelFor(m => m.PriceMin, htmlAttributes: new { @class = "control-label col-md-2" }));
+            #line 108 "..\..\Views\Shared\_CarFilter.cshtml"
+                   Write(Html.LabelFor(m => m.PriceMin,"Price:"+Model.PriceMin+"-"+Model.PriceMax, htmlAttributes: new { @class = "control-label col-md-2 price-label width100" }));
 
             
             #line default
@@ -683,19 +683,8 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 112 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.PriceMin, new { @class = "width33" }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                            -\r\n");
-
-WriteLiteral("                            ");
-
-            
-            #line 114 "..\..\Views\Shared\_CarFilter.cshtml"
-                       Write(Html.TextBoxFor(m => m.PriceMax, new { @class = "width33" }));
+            #line 110 "..\..\Views\Shared\_CarFilter.cshtml"
+                       Write(Html.HiddenFor(m => m.PriceMin));
 
             
             #line default
@@ -705,7 +694,18 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 115 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 111 "..\..\Views\Shared\_CarFilter.cshtml"
+                       Write(Html.HiddenFor(m => m.PriceMax));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 112 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.PriceMin, "", new { @class = "text-danger" }));
 
             
@@ -716,7 +716,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 116 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 113 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.PriceMax, "", new { @class = "text-danger" }));
 
             
@@ -736,7 +736,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 124 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 121 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -751,7 +751,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 126 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 123 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.TextBoxFor(m => m.Description, htmlAttributes: new { @class = "form-control description-picker width100" }));
 
             

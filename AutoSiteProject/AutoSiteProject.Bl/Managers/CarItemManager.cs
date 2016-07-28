@@ -34,9 +34,12 @@ namespace AutoSiteProject.Bl.Managers
             if (filter.TransmitionTypeId != null)
                 predicateBuilder = predicateBuilder.And(c => c.TransmitionTypeId == filter.TransmitionTypeId);
 
-            predicateBuilder = predicateBuilder.And(c => (c.Price >= filter.PriceMin && c.Price <= filter.PriceMax));
-            predicateBuilder = predicateBuilder.And(c => (c.Volume >= filter.VolumeMin && c.Price <= filter.VolumeMax));
-            predicateBuilder = predicateBuilder.And(c => (c.ReleaseYear >= filter.ReleaseYearMin && c.Price <= filter.ReleaseYearMax));
+            predicateBuilder = predicateBuilder.And(c => c.Price >= filter.PriceMin);
+            predicateBuilder = predicateBuilder.And(c => c.Price <= filter.PriceMax);
+            predicateBuilder = predicateBuilder.And(c => c.Volume >= filter.VolumeMin);
+            predicateBuilder = predicateBuilder.And(c => c.Volume <= filter.VolumeMax);
+            predicateBuilder = predicateBuilder.And(c => c.ReleaseYear >= filter.ReleaseYearMin);
+            predicateBuilder = predicateBuilder.And(c => c.ReleaseYear <= filter.ReleaseYearMax);
 
             if (filter.OptionsIds != null && filter.OptionsIds.Count > 0)
                 predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Count() >= filter.OptionsIds.Count);

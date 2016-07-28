@@ -800,8 +800,7 @@ GO
 --UNION
 --SELECT 'Gas'
 
---UPDATE dbo.CarItem
---SET FuelTypeId = 1;
+
 
 ----Transmition type
 --INSERT INTO dbo.TransmitionType(Name)
@@ -811,5 +810,4 @@ GO
 --UNION
 --SELECT 'Semi-Automatic'
 
---UPDATE dbo.CarItem
---SET TransmitionTypeId = 2;
+
