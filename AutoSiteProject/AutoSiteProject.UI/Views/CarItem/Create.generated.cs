@@ -42,25 +42,17 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\CarItem\Create.cshtml"
-  
-    ViewBag.Title = "Create";
+WriteLiteral("<script");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n<script");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 106), Tuple.Create("\"", 145)
-, Tuple.Create(Tuple.Create("", 112), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
-, 112), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 68), Tuple.Create("\"", 107)
+, Tuple.Create(Tuple.Create("", 74), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
+, 74), false)
 );
 
-WriteLiteral("></script>\r\n\r\n<h2>Create</h2>\r\n\r\n");
+WriteLiteral("></script>\r\n\r\n<h3>Create car</h3>\r\n<hr/>\r\n");
 
             
-            #line 10 "..\..\Views\CarItem\Create.cshtml"
+            #line 7 "..\..\Views\CarItem\Create.cshtml"
  using (Html.BeginForm("CreateCar","CarItem",FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     
@@ -68,14 +60,14 @@ WriteLiteral("></script>\r\n\r\n<h2>Create</h2>\r\n\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Create.cshtml"
+            #line 9 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Create.cshtml"
+            #line 9 "..\..\Views\CarItem\Create.cshtml"
                             
     
 
@@ -86,21 +78,21 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>CarItemViewModel</h4>\r\n");
+WriteLiteral(">\r\n");
 
             
-            #line 16 "..\..\Views\CarItem\Create.cshtml"
+            #line 12 "..\..\Views\CarItem\Create.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 16 "..\..\Views\CarItem\Create.cshtml"
+            #line 12 "..\..\Views\CarItem\Create.cshtml"
            Html.RenderPartial("_CarItem", Model); 
             
             #line default
             #line hidden
-WriteLiteral("\r\n       \r\n        <div");
+WriteLiteral("\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -119,7 +111,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 24 "..\..\Views\CarItem\Create.cshtml"
+            #line 19 "..\..\Views\CarItem\Create.cshtml"
 }
 
             
@@ -130,7 +122,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 27 "..\..\Views\CarItem\Create.cshtml"
+            #line 22 "..\..\Views\CarItem\Create.cshtml"
 Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             

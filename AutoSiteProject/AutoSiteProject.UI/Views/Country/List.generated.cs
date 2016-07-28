@@ -42,10 +42,11 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 2 "..\..\Views\Country\List.cshtml"
-Write(Html.Action("GetCountriesPartial", "DataLoader"));
+WriteLiteral("    <hr/>\r\n");
 
+            
+            #line 3 "..\..\Views\Country\List.cshtml"
+   Html.RenderAction("GetCountriesPartial", "DataLoader"); 
             
             #line default
             #line hidden

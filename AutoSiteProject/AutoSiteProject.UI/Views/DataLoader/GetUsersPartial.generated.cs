@@ -58,12 +58,14 @@ namespace ASP
             #line 5 "..\..\Views\DataLoader\GetUsersPartial.cshtml"
 Write(Html.DevExpress().GridView(settings =>
 {
-    settings.Name = "rolesGridView";
+    settings.Name = "usersGridView";
     settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetUsersPartial" };
     settings.Width = Unit.Percentage(100);
-    if (User.IsInRole("Admin"))
-    {
-        settings.Columns.Add(column =>
+        
+    settings.Columns.Add("Name");
+    settings.Columns.Add("Email");
+    settings.Columns.Add("RolesNames");
+    settings.Columns.Add(column =>
         {
             column.Caption = "#";
             column.SetDataItemTemplateContent(c =>
@@ -78,11 +80,6 @@ Write(Html.DevExpress().GridView(settings =>
             column.Settings.AllowSort = DefaultBoolean.False;
             column.Width = 70;
         });
-    }
-
-    settings.Columns.Add("Name");
-    settings.Columns.Add("Email");
-    settings.Columns.Add("RolesNames");
     settings.KeyFieldName = "Id";
 }).Bind(Model).GetHtml());
 

@@ -28,9 +28,7 @@ namespace AutoSiteProject.UI.Controllers
         // GET: Country
         public ActionResult List()
         {
-            //var dbItems = _manufacturerManager.GetAll().ToList();
-            //var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
-            return View();//result);
+            return View();
         }
 
         //GET 

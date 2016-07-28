@@ -83,13 +83,12 @@
                     <div class="form-group width33">
                         @Html.LabelFor(m => m.ReleaseYearMin, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10 widht100">
+                            @Html.TextBoxFor(m => m.ReleaseYearMin, new { @class = "width33" })
+                            -
+                            @Html.TextBoxFor(m => m.ReleaseYearMax, new { @class = "width33" })
+                            @Html.ValidationMessageFor(model => model.ReleaseYearMin, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.ReleaseYearMax, "", new { @class = "text-danger" })
                             <div class="releaseyear-range-slider">
-                                @Html.Label("Release year:")
-                                @Html.TextBoxFor(m => m.ReleaseYearMin, new { @readonly = "readonly", @class = "..." })
-                                -
-                                @Html.TextBoxFor(m => m.ReleaseYearMax, new { @readonly = "readonly", @class = "..." })
-                                @Html.ValidationMessageFor(model => model.ReleaseYearMin, "", new { @class = "text-danger" })
-                                @Html.ValidationMessageFor(model => model.ReleaseYearMax, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -97,26 +96,26 @@
                     <div class="form-group width33">
                         @Html.LabelFor(m => m.VolumeMin, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10 width100">
+                            @Html.TextBoxFor(m => m.VolumeMin, new { @class = "width33" })
+                            -
+                            @Html.TextBoxFor(m => m.VolumeMax, new { @class = "width33" })
+                            @Html.ValidationMessageFor(model => model.VolumeMin, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.VolumeMax, "", new { @class = "text-danger" })
                             <div class="volume-range-slider">
-                                @Html.Label("Engine volume:")
-                                @Html.TextBoxFor(m => m.VolumeMin, new { @readonly = "readonly", @class = "..." })
-                                -
-                                @Html.TextBoxFor(m => m.VolumeMax, new { @readonly = "readonly", @class = "..." })
-                                @Html.ValidationMessageFor(model => model.VolumeMin, "", new { @class = "text-danger" })
-                                @Html.ValidationMessageFor(model => model.VolumeMax, "", new { @class = "text-danger" })
+
                             </div>
                         </div>
                     </div>
                     <div class="form-group width33">
                         @Html.LabelFor(m => m.PriceMin, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10 width100">
+                            @Html.TextBoxFor(m => m.PriceMin, new { @class = "width33" })
+                            -
+                            @Html.TextBoxFor(m => m.PriceMax, new { @class = "width33" })
+                            @Html.ValidationMessageFor(model => model.PriceMin, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.PriceMax, "", new { @class = "text-danger" })
                             <div class="price-range-slider">
-                                @Html.Label("Car price:")
-                                @Html.TextBoxFor(m => m.PriceMin, new {@readonly = "readonly", @class = "..."})
-                                -
-                                @Html.TextBoxFor(m => m.PriceMax, new {@readonly = "readonly", @class = "..."})
-                                @Html.ValidationMessageFor(model => model.PriceMin, "", new { @class = "text-danger" })
-                                @Html.ValidationMessageFor(model => model.PriceMax, "", new {@class = "text-danger"})
+
                             </div>
 
                         </div>

@@ -6,42 +6,48 @@
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsPartial" };
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarItemsPartial" };
     settings.Width = Unit.Percentage(100);
-        settings.Columns.Add(column =>
-        {
-            column.Caption = "#";
-            column.SetDataItemTemplateContent(c =>
-            {
-                ViewContext.Writer.Write(
-                 Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                 + "&nbsp;");
-                var userId = User.Identity.GetUserId();
-                if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId)
-                    ViewContext.Writer.Write(
-                            Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                            + "&nbsp;" +
-                            Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                            );
-            });
-            column.SetHeaderTemplateContent(c =>
-            {
-                ViewContext.Writer.Write(
-                    Html.ActionLink("New", "Create", "CarItem").ToHtmlString()
-                    );
-            });
-            column.Settings.AllowDragDrop = DefaultBoolean.False;
-            column.Settings.AllowSort = DefaultBoolean.False;
-            column.Width = 70;
-        });
-        settings.Columns.Add("CarId");
+
+    if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
 
     settings.Columns.Add("Country");
     settings.Columns.Add("Manufacturer");
     settings.Columns.Add("Model");
-    settings.Columns.Add("BodyType");
+    settings.Columns.Add("BodyType", "Body type");
+    settings.Columns.Add("FuelType", "Fuel type");
+    settings.Columns.Add("TransmitionType", "Transmition type");
+    settings.Columns.Add("Price");
+    settings.Columns.Add("ReleaseYear", "Release year");
+    settings.Columns.Add("Volume", "Engine volume");
     settings.Columns.Add("Description");
-    settings.Columns.Add("OptionsNamesString");
+    settings.Columns.Add("OptionsNamesString", "Options");
+    settings.Columns.Add(column =>
+    {
+        column.Caption = "#";
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+             Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+             + "&nbsp;");
+            var userId = User.Identity.GetUserId();
+            if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId || User.IsInRole("Admin"))
+                ViewContext.Writer.Write(
+                        Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        + "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        );
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+                Html.ActionLink("New", "Create", "CarItem").ToHtmlString()
+                );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.Width = 70;
+    });
     settings.KeyFieldName = "CarId";
     settings.SettingsPager.PageSize = 25;
 }).Bind(Model).GetHtml()

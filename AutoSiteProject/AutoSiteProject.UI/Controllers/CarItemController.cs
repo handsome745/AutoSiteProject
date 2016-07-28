@@ -83,10 +83,16 @@ namespace AutoSiteProject.UI.Controllers
         [HttpPost]
         public ActionResult CreateCar(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
+            var userId = User.Identity.GetUserId();
             if (!ModelState.IsValid) return View("Create", model);
             var dbItem = _carItemFieldCopier.CopyFields(model, new CarItem());
-            dbItem.OwnerId = User.Identity.GetUserId();
             SaveImagesAndLink(dbItem, files);
+
+            dbItem.OwnerId = userId;
+            dbItem.LastEditorId = userId;
+            dbItem.EditDate = DateTime.Now;
+            dbItem.Status = (int)CarItemStatus.Open;
+
             //add new car into db
             _carItemManager.Add(dbItem);
             //notify all users
@@ -141,12 +147,11 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult Edit(CarItemViewModel model, List<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid) return View(model);
-
+            var userId = User.Identity.GetUserId();
             var dbItem = _carItemManager.GetById(model.Id);
             if (dbItem == null) throw new NullReferenceException();
             if (!User.IsInRole("Admin"))
             {
-                var userId = User.Identity.GetUserId();
                 if (dbItem.OwnerId != userId) throw new SecurityException();
             }
             //delete disabled images
@@ -159,6 +164,8 @@ namespace AutoSiteProject.UI.Controllers
             //copy edited fields
             dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
             //save changes
+            dbItem.LastEditorId = userId;
+            dbItem.EditDate = DateTime.Now;
             _carItemManager.Edit(dbItem);
             return RedirectToAction("List");
         }

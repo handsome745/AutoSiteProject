@@ -1,13 +1,7 @@
 ﻿@model AutoSiteProject.Models.ViewModels.CarItemViewModel
 
-@{
-    ViewBag.Title = "Details";
-}
-
 <div>
     <hr/>
-
-
     @Html.DevExpress().ImageSlider(
         settings =>
         {
@@ -52,13 +46,54 @@
         <dd>
             @Html.DisplayFor(model => model.CarBodyType)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelType)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.FuelType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TransmitionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransmitionType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseYear)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditDate)
         </dd>
     </dl>
 </div>

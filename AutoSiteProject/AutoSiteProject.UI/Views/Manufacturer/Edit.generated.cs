@@ -42,18 +42,10 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\Manufacturer\Edit.cshtml"
-  
-    ViewBag.Title = "Edit";
+WriteLiteral("<h3>Edit manufacturer</h3>\r\n<hr/>\r\n\r\n");
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n\r\n");
-
-            
-            #line 10 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 6 "..\..\Views\Manufacturer\Edit.cshtml"
  using (Html.BeginForm())
 {
     
@@ -61,14 +53,14 @@ WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 8 "..\..\Views\Manufacturer\Edit.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 8 "..\..\Views\Manufacturer\Edit.cshtml"
                             
     
 
@@ -79,12 +71,12 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>ManufacturerViewModel</h4>\r\n        <hr />\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("        ");
 
             
-            #line 17 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 11 "..\..\Views\Manufacturer\Edit.cshtml"
    Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -95,7 +87,7 @@ WriteLiteral("\r\n");
 WriteLiteral("        ");
 
             
-            #line 18 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 12 "..\..\Views\Manufacturer\Edit.cshtml"
    Write(Html.HiddenFor(model => model.Id));
 
             
@@ -110,7 +102,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 21 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 15 "..\..\Views\Manufacturer\Edit.cshtml"
        Write(Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -125,7 +117,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 23 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 17 "..\..\Views\Manufacturer\Edit.cshtml"
            Write(Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -136,7 +128,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 24 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 18 "..\..\Views\Manufacturer\Edit.cshtml"
            Write(Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }));
 
             
@@ -151,7 +143,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 29 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 23 "..\..\Views\Manufacturer\Edit.cshtml"
        Write(Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -166,7 +158,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 31 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 25 "..\..\Views\Manufacturer\Edit.cshtml"
            Write(Html.DropDownListFor(model => model.CountryId, (SelectList)ViewBag.Countries, htmlAttributes: new { @class = "form-control" }));
 
             
@@ -177,7 +169,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 32 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 26 "..\..\Views\Manufacturer\Edit.cshtml"
            Write(Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" }));
 
             
@@ -202,7 +194,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 42 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 36 "..\..\Views\Manufacturer\Edit.cshtml"
 }
 
             
@@ -213,7 +205,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 45 "..\..\Views\Manufacturer\Edit.cshtml"
+            #line 39 "..\..\Views\Manufacturer\Edit.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

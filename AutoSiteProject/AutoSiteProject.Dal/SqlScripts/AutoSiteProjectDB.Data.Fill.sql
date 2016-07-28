@@ -792,18 +792,24 @@ GO
 --UNION
 --SELECT @carItemFerrariF430,@carOptionBuiltinSatNav
 
---Fuel type
-INSERT INTO dbo.FuelType(Name)
-SELECT 'Diesel'
-UNION
-SELECT 'Gasoline'
-UNION
-SELECT 'Gas'
+----Fuel type
+--INSERT INTO dbo.FuelType(Name)
+--SELECT 'Diesel'
+--UNION
+--SELECT 'Gasoline'
+--UNION
+--SELECT 'Gas'
 
---Transmition type
-INSERT INTO dbo.TransmitionType(Name)
-SELECT 'Automatic'
-UNION
-SELECT 'Manual'
-UNION
-SELECT 'Semi-Automatic'
+--UPDATE dbo.CarItem
+--SET FuelTypeId = 1;
+
+----Transmition type
+--INSERT INTO dbo.TransmitionType(Name)
+--SELECT 'Automatic'
+--UNION
+--SELECT 'Manual'
+--UNION
+--SELECT 'Semi-Automatic'
+
+--UPDATE dbo.CarItem
+--SET TransmitionTypeId = 2;

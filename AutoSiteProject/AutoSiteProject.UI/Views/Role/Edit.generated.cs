@@ -42,18 +42,10 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\Role\Edit.cshtml"
-  
-    ViewBag.Title = "Edit";
+WriteLiteral("<h3>Edit role</h3>\r\n<hr/>\r\n");
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n");
-
-            
-            #line 9 "..\..\Views\Role\Edit.cshtml"
+            #line 5 "..\..\Views\Role\Edit.cshtml"
  using (Html.BeginForm())
 {
     
@@ -61,14 +53,14 @@ WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n");
             #line default
             #line hidden
             
-            #line 11 "..\..\Views\Role\Edit.cshtml"
+            #line 7 "..\..\Views\Role\Edit.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 11 "..\..\Views\Role\Edit.cshtml"
+            #line 7 "..\..\Views\Role\Edit.cshtml"
                             
     
 
@@ -79,12 +71,12 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>RoleViewModel</h4>\r\n        <hr />\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("        ");
 
             
-            #line 16 "..\..\Views\Role\Edit.cshtml"
+            #line 10 "..\..\Views\Role\Edit.cshtml"
    Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -95,7 +87,7 @@ WriteLiteral("\r\n");
 WriteLiteral("        ");
 
             
-            #line 17 "..\..\Views\Role\Edit.cshtml"
+            #line 11 "..\..\Views\Role\Edit.cshtml"
    Write(Html.HiddenFor(model => model.Id));
 
             
@@ -110,7 +102,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 20 "..\..\Views\Role\Edit.cshtml"
+            #line 14 "..\..\Views\Role\Edit.cshtml"
        Write(Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -125,7 +117,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 22 "..\..\Views\Role\Edit.cshtml"
+            #line 16 "..\..\Views\Role\Edit.cshtml"
            Write(Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -136,7 +128,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 23 "..\..\Views\Role\Edit.cshtml"
+            #line 17 "..\..\Views\Role\Edit.cshtml"
            Write(Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }));
 
             
@@ -151,7 +143,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 28 "..\..\Views\Role\Edit.cshtml"
+            #line 22 "..\..\Views\Role\Edit.cshtml"
        Write(Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -166,7 +158,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 30 "..\..\Views\Role\Edit.cshtml"
+            #line 24 "..\..\Views\Role\Edit.cshtml"
            Write(Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -177,7 +169,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 31 "..\..\Views\Role\Edit.cshtml"
+            #line 25 "..\..\Views\Role\Edit.cshtml"
            Write(Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" }));
 
             
@@ -202,7 +194,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 41 "..\..\Views\Role\Edit.cshtml"
+            #line 35 "..\..\Views\Role\Edit.cshtml"
 }
 
             
@@ -213,7 +205,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 44 "..\..\Views\Role\Edit.cshtml"
+            #line 38 "..\..\Views\Role\Edit.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

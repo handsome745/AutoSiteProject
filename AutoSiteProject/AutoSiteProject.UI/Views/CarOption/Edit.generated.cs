@@ -42,18 +42,10 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\CarOption\Edit.cshtml"
-  
-    ViewBag.Title = "Edit";
+WriteLiteral("<h3>Edit car option</h3>\r\n<hr/>\r\n");
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n\r\n");
-
-            
-            #line 10 "..\..\Views\CarOption\Edit.cshtml"
+            #line 5 "..\..\Views\CarOption\Edit.cshtml"
  using (Html.BeginForm())
 {
     
@@ -61,14 +53,14 @@ WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n\r\n\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarOption\Edit.cshtml"
+            #line 7 "..\..\Views\CarOption\Edit.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarOption\Edit.cshtml"
+            #line 7 "..\..\Views\CarOption\Edit.cshtml"
                             
     
 
@@ -79,12 +71,12 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>CarOptionViewModel</h4>\r\n        <hr />\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("        ");
 
             
-            #line 17 "..\..\Views\CarOption\Edit.cshtml"
+            #line 10 "..\..\Views\CarOption\Edit.cshtml"
    Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -95,7 +87,7 @@ WriteLiteral("\r\n");
 WriteLiteral("        ");
 
             
-            #line 18 "..\..\Views\CarOption\Edit.cshtml"
+            #line 11 "..\..\Views\CarOption\Edit.cshtml"
    Write(Html.HiddenFor(model => model.Id));
 
             
@@ -110,7 +102,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 21 "..\..\Views\CarOption\Edit.cshtml"
+            #line 14 "..\..\Views\CarOption\Edit.cshtml"
        Write(Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -125,7 +117,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 23 "..\..\Views\CarOption\Edit.cshtml"
+            #line 16 "..\..\Views\CarOption\Edit.cshtml"
            Write(Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -136,7 +128,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 24 "..\..\Views\CarOption\Edit.cshtml"
+            #line 17 "..\..\Views\CarOption\Edit.cshtml"
            Write(Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }));
 
             
@@ -161,7 +153,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 34 "..\..\Views\CarOption\Edit.cshtml"
+            #line 27 "..\..\Views\CarOption\Edit.cshtml"
 }
 
             
@@ -172,7 +164,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 37 "..\..\Views\CarOption\Edit.cshtml"
+            #line 30 "..\..\Views\CarOption\Edit.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

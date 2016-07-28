@@ -1,30 +1,29 @@
 ﻿@using System.Web.UI.WebControls
-@model IEnumerable<AutoSiteProject.Models.ViewModels.CarModelViewModel>
+@model IEnumerable<AutoSiteProject.Models.ViewModels.TransmitionTypeViewModel>
 
 @Html.DevExpress().GridView(settings =>
 {
-    settings.Name = "carModelsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarModelsPartial" };
+    settings.Name = "transmitionTypeGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetTransmitionTypePartial" };
     settings.Width = Unit.Percentage(100);
 
     settings.Columns.Add("Id");
     settings.Columns.Add("Name");
-    settings.Columns.Add("Manufacturer");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";
         column.SetDataItemTemplateContent(c =>
         {
             ViewContext.Writer.Write(
-                Html.ActionLink("Edit", "Edit", "CarModel", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                Html.ActionLink("Edit", "Edit", "TransmitionType", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
                 + "&nbsp;" +
-                Html.ActionLink("Delete", "Delete", "CarModel", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
+                Html.ActionLink("Delete", "Delete", "TransmitionType", routeValues: new { Id = DataBinder.Eval(c.DataItem, "Id") }, htmlAttributes: new { })
                 );
         });
         column.SetHeaderTemplateContent(c =>
         {
             ViewContext.Writer.Write(
-                Html.ActionLink("New", "Create", "CarModel").ToHtmlString()
+                Html.ActionLink("New", "Create", "TransmitionType").ToHtmlString()
                 );
         });
         column.Settings.AllowDragDrop = DefaultBoolean.False;
@@ -33,7 +32,11 @@
     });
     settings.KeyFieldName = "Id";
     settings.SettingsPager.PageSize = 25;
-
 }).Bind(Model).GetHtml()
+
+
+
+
+
 
 

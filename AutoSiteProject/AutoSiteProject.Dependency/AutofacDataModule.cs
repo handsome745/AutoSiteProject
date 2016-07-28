@@ -36,6 +36,7 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<ManufacturerRepository>().As<IGenericRepository<Manufacturer>>();
             builder.RegisterType<CarBodyTypeRepository>().As<IGenericRepository<CarBodyType>>();
             builder.RegisterType<FuelTypeRepository>().As<IGenericRepository<FuelType>>();
+            builder.RegisterType<TransmitionTypeRepository>().As<IGenericRepository<TransmitionType>>();
         }
 
         private void RegisterBlManagers(ContainerBuilder builder)
@@ -48,6 +49,7 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<CarItemManager>().As<ICarItemManager>();
             builder.RegisterType<CarImageManager>().As<ICarImageManager>();
             builder.RegisterType<FuelTypeManager>().As<IFuelTypeManager>();
+            builder.RegisterType<TransmitionTypeManager>().As<ITransmitionTypeManager>();
             builder.RegisterType<AppLogger>().As<IAppLogger>().SingleInstance();
             
         }
@@ -63,6 +65,7 @@ namespace AutoSiteProject.Dependency
             builder.RegisterType<UserFieldCopier>().As<IUserFieldCopier>();
             builder.RegisterType<CarImageFieldCopier>().As<ICarImageFieldCopier>();
             builder.RegisterType<FuelTypeFieldCopier>().As<IFuelTypeFieldCopier>();
+            builder.RegisterType<TransmitionTypeFieldCopier>().As<ITransmitionTypeFieldCopier>();
         }
     }
 }

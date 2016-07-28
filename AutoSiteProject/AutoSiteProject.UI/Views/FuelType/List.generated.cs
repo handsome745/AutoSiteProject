@@ -42,10 +42,11 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 2 "..\..\Views\FuelType\List.cshtml"
-Write(Html.Action("GetFuelTypePartial", "DataLoader"));
+WriteLiteral("    <hr/>\r\n");
 
+            
+            #line 3 "..\..\Views\FuelType\List.cshtml"
+   Html.RenderAction("GetFuelTypePartial", "DataLoader"); 
             
             #line default
             #line hidden

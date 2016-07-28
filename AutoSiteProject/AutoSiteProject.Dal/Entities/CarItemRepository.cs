@@ -25,6 +25,8 @@ namespace AutoSiteProject.Dal.Entities
                 join cman in _unitOfWork.Set<Manufacturer>() on cm.ManufacturerId equals cman.Id
                 join cc in _unitOfWork.Set<Country>() on cman.CountryId equals cc.Id
                 join cbt in _unitOfWork.Set<CarBodyType>() on ci.BodyTypeId equals cbt.Id
+                join ft in _unitOfWork.Set<FuelType>() on ci.FuelTypeId equals  ft.Id
+                join tt in _unitOfWork.Set<TransmitionType>() on ci.TransmitionTypeId equals  tt.Id
                 select new CarAggregateViewModel
                 {
                     CarId = ci.Id,
@@ -40,7 +42,14 @@ namespace AutoSiteProject.Dal.Entities
                     Options = ci.CarOption.Select(co => co.Id.ToString()).ToList(),
                     OptionsNames = ci.CarOption.Select(co => co.Name).ToList(),
                     OwnerId = ci.OwnerId,
-                    MainImageId = ci.CarImages.FirstOrDefault(x => true) != null ? ci.CarImages.FirstOrDefault(x => true).Id.ToString(): ""
+                    MainImageId = ci.CarImages.FirstOrDefault(x => true) != null ? ci.CarImages.FirstOrDefault(x => true).Id.ToString(): "",
+                    FuelTypeId = ft.Id,
+                    FuelType = ft.Name,
+                    TransmitionTypeId = tt.Id,
+                    TransmitionType = tt.Name,
+                    Price =  ci.Price,
+                    Volume =  ci.Volume,
+                    ReleaseYear = ci.ReleaseYear
                 };
             return result.AsExpandable().Where(predicate);
         }

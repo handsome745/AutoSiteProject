@@ -42,18 +42,10 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\Role\Create.cshtml"
-  
-    ViewBag.Title = "Create";
+WriteLiteral("<h3>Create role</h3>\r\n<hr/>\r\n");
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n");
-
-            
-            #line 9 "..\..\Views\Role\Create.cshtml"
+            #line 5 "..\..\Views\Role\Create.cshtml"
  using (Html.BeginForm()) 
 {
     
@@ -61,14 +53,14 @@ WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n");
             #line default
             #line hidden
             
-            #line 11 "..\..\Views\Role\Create.cshtml"
+            #line 7 "..\..\Views\Role\Create.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 11 "..\..\Views\Role\Create.cshtml"
+            #line 7 "..\..\Views\Role\Create.cshtml"
                             
     
 
@@ -79,12 +71,12 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>RoleViewModel</h4>\r\n        <hr />\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("        ");
 
             
-            #line 16 "..\..\Views\Role\Create.cshtml"
+            #line 10 "..\..\Views\Role\Create.cshtml"
    Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -99,7 +91,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 18 "..\..\Views\Role\Create.cshtml"
+            #line 12 "..\..\Views\Role\Create.cshtml"
        Write(Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -114,7 +106,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 20 "..\..\Views\Role\Create.cshtml"
+            #line 14 "..\..\Views\Role\Create.cshtml"
            Write(Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -125,7 +117,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 21 "..\..\Views\Role\Create.cshtml"
+            #line 15 "..\..\Views\Role\Create.cshtml"
            Write(Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }));
 
             
@@ -140,7 +132,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 26 "..\..\Views\Role\Create.cshtml"
+            #line 20 "..\..\Views\Role\Create.cshtml"
        Write(Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -155,7 +147,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 28 "..\..\Views\Role\Create.cshtml"
+            #line 22 "..\..\Views\Role\Create.cshtml"
            Write(Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -166,7 +158,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 29 "..\..\Views\Role\Create.cshtml"
+            #line 23 "..\..\Views\Role\Create.cshtml"
            Write(Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" }));
 
             
@@ -191,7 +183,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 39 "..\..\Views\Role\Create.cshtml"
+            #line 33 "..\..\Views\Role\Create.cshtml"
 }
 
             
@@ -202,7 +194,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 42 "..\..\Views\Role\Create.cshtml"
+            #line 36 "..\..\Views\Role\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

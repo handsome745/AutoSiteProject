@@ -42,20 +42,12 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\CarItem\Details.cshtml"
-  
-    ViewBag.Title = "Details";
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<div>\r\n    <hr/>\r\n\r\n\r\n");
+WriteLiteral("<div>\r\n    <hr/>\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 11 "..\..\Views\CarItem\Details.cshtml"
+            #line 5 "..\..\Views\CarItem\Details.cshtml"
 Write(Html.DevExpress().ImageSlider(
         settings =>
         {
@@ -80,7 +72,7 @@ WriteLiteral(">\r\n        <dt>\r\n");
 WriteLiteral("            ");
 
             
-            #line 25 "..\..\Views\CarItem\Details.cshtml"
+            #line 19 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayNameFor(model => model.Country));
 
             
@@ -91,7 +83,7 @@ WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
 WriteLiteral("            ");
 
             
-            #line 29 "..\..\Views\CarItem\Details.cshtml"
+            #line 23 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayFor(model => model.Country));
 
             
@@ -102,7 +94,7 @@ WriteLiteral("\r\n        </dd>\r\n\r\n        <dt>\r\n");
 WriteLiteral("            ");
 
             
-            #line 33 "..\..\Views\CarItem\Details.cshtml"
+            #line 27 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayNameFor(model => model.Manufacturer));
 
             
@@ -113,7 +105,7 @@ WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
 WriteLiteral("            ");
 
             
-            #line 37 "..\..\Views\CarItem\Details.cshtml"
+            #line 31 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayFor(model => model.Manufacturer));
 
             
@@ -124,7 +116,7 @@ WriteLiteral("\r\n        </dd>\r\n\r\n        <dt>\r\n");
 WriteLiteral("            ");
 
             
-            #line 41 "..\..\Views\CarItem\Details.cshtml"
+            #line 35 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayNameFor(model => model.CarModel));
 
             
@@ -135,7 +127,7 @@ WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
 WriteLiteral("            ");
 
             
-            #line 45 "..\..\Views\CarItem\Details.cshtml"
+            #line 39 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayFor(model => model.CarModel));
 
             
@@ -146,7 +138,7 @@ WriteLiteral("\r\n        </dd>\r\n\r\n        <dt>\r\n");
 WriteLiteral("            ");
 
             
-            #line 49 "..\..\Views\CarItem\Details.cshtml"
+            #line 43 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayNameFor(model => model.CarBodyType));
 
             
@@ -157,19 +149,41 @@ WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
 WriteLiteral("            ");
 
             
-            #line 53 "..\..\Views\CarItem\Details.cshtml"
+            #line 47 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayFor(model => model.CarBodyType));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </dd>\r\n\r\n        <dt>\r\n");
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 50 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.FuelType));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 54 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.FuelType));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
 
 WriteLiteral("            ");
 
             
             #line 57 "..\..\Views\CarItem\Details.cshtml"
-       Write(Html.DisplayNameFor(model => model.Description));
+       Write(Html.DisplayNameFor(model => model.TransmitionType));
 
             
             #line default
@@ -180,7 +194,117 @@ WriteLiteral("            ");
 
             
             #line 61 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.TransmitionType));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 64 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.Price));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 68 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.Price));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 71 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.ReleaseYear));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 75 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.ReleaseYear));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 78 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.Volume));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 82 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.Volume));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 85 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.Description));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 89 "..\..\Views\CarItem\Details.cshtml"
        Write(Html.DisplayFor(model => model.Description));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dd>\r\n        <dt>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 92 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayNameFor(model => model.EditDate));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </dt>\r\n\r\n        <dd>\r\n");
+
+WriteLiteral("            ");
+
+            
+            #line 96 "..\..\Views\CarItem\Details.cshtml"
+       Write(Html.DisplayFor(model => model.EditDate));
 
             
             #line default
@@ -190,7 +314,7 @@ WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<p>\r\n");
 WriteLiteral("    ");
 
             
-            #line 66 "..\..\Views\CarItem\Details.cshtml"
+            #line 101 "..\..\Views\CarItem\Details.cshtml"
 Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             

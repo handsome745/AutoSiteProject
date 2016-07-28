@@ -42,34 +42,53 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\CarItem\Edit.cshtml"
-  
-    ViewBag.Title = "Edit";
+WriteLiteral("<script");
 
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Edit</h2>\r\n<script");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 121), Tuple.Create("\"", 160)
-, Tuple.Create(Tuple.Create("", 127), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
-, 127), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 68), Tuple.Create("\"", 107)
+, Tuple.Create(Tuple.Create("", 74), Tuple.Create<System.Object, System.Int32>(Href("~/scripts/AutoSite/ImageLoader.js")
+, 74), false)
 );
 
 WriteLiteral("></script>\r\n<link");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 178), Tuple.Create("\"", 217)
-, Tuple.Create(Tuple.Create("", 185), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/WidthClasses.css")
-, 185), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 125), Tuple.Create("\"", 164)
+, Tuple.Create(Tuple.Create("", 132), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/WidthClasses.css")
+, 132), false)
 );
 
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteLiteral(" />\r\n");
+WriteLiteral(" />\r\n<link");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 192), Tuple.Create("\"", 230)
+, Tuple.Create(Tuple.Create("", 199), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/CloseButton.css")
+, 199), false)
+);
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral("/>\r\n<input");
+
+WriteLiteral(" type=\"button\"");
+
+WriteLiteral(" value=\"Close advertisment\"");
+
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 299), Tuple.Create("\"", 351)
+            
+            #line 6 "..\..\Views\CarItem\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 309), Tuple.Create<System.Object, System.Int32>(Url.Action("SetStatusToClose", "CarItem")
+            
+            #line default
+            #line hidden
+, 309), false)
+);
+
+WriteLiteral(" class=\"btn btn-default adv-close-btn\"");
+
+WriteLiteral(" />\r\n\r\n<h3>Edit car</h3> \r\n<hr/>\r\n    \r\n");
 
             
-            #line 10 "..\..\Views\CarItem\Edit.cshtml"
+            #line 11 "..\..\Views\CarItem\Edit.cshtml"
  using (Html.BeginForm("Edit", "CarItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     
@@ -77,14 +96,14 @@ WriteLiteral(" />\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Edit.cshtml"
+            #line 13 "..\..\Views\CarItem\Edit.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\CarItem\Edit.cshtml"
+            #line 13 "..\..\Views\CarItem\Edit.cshtml"
                             
 
 
@@ -98,18 +117,18 @@ WriteLiteral(" class=\"form-horizontal\"");
 WriteLiteral(">\r\n");
 
             
-            #line 15 "..\..\Views\CarItem\Edit.cshtml"
+            #line 16 "..\..\Views\CarItem\Edit.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 15 "..\..\Views\CarItem\Edit.cshtml"
+            #line 16 "..\..\Views\CarItem\Edit.cshtml"
            Html.RenderPartial("_CarItem", Model);
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n        <div");
+WriteLiteral("\r\n        <div");
 
 WriteLiteral(" class=\"form-group\"");
 
@@ -125,10 +144,10 @@ WriteLiteral(" value=\"Save\"");
 
 WriteLiteral(" class=\"btn btn-default\"");
 
-WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
+WriteLiteral("/>\r\n            </div>\r\n            \r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 23 "..\..\Views\CarItem\Edit.cshtml"
+            #line 24 "..\..\Views\CarItem\Edit.cshtml"
 }
 
             
@@ -139,7 +158,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 26 "..\..\Views\CarItem\Edit.cshtml"
+            #line 27 "..\..\Views\CarItem\Edit.cshtml"
 Write(Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer }));
 
             

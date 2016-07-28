@@ -1,14 +1,11 @@
 ﻿@model AutoSiteProject.Models.ViewModels.UserViewModel
 
-@{
-    ViewBag.Title = "Edit";
-}
 <link href="~/Content/chosen.min.css" rel="stylesheet" />
 <script src="~/scripts/chosen.jquery.min.js"></script>
 <script src="~/scripts/AutoSite/UserEditScript.js"></script>
 
-<h2>Edit</h2>
-
+<h3>Edit user</h3>
+<hr/>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

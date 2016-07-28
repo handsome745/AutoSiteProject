@@ -42,18 +42,10 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\Manufacturer\Create.cshtml"
-  
-    ViewBag.Title = "Create";
+WriteLiteral("<h3>Create manufacturer</h3>\r\n<hr/>\r\n");
 
             
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n\r\n");
-
-            
-            #line 10 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 5 "..\..\Views\Manufacturer\Create.cshtml"
  using (Html.BeginForm()) 
 {
     
@@ -61,14 +53,14 @@ WriteLiteral("\r\n\r\n<h2>Create</h2>\r\n\r\n\r\n");
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 7 "..\..\Views\Manufacturer\Create.cshtml"
 Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 12 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 7 "..\..\Views\Manufacturer\Create.cshtml"
                             
     
 
@@ -79,12 +71,12 @@ WriteLiteral("    <div");
 
 WriteLiteral(" class=\"form-horizontal\"");
 
-WriteLiteral(">\r\n        <h4>ManufacturerViewModel</h4>\r\n        <hr />\r\n");
+WriteLiteral(">\r\n");
 
 WriteLiteral("        ");
 
             
-            #line 17 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 10 "..\..\Views\Manufacturer\Create.cshtml"
    Write(Html.ValidationSummary(true, "", new { @class = "text-danger" }));
 
             
@@ -99,7 +91,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 19 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 12 "..\..\Views\Manufacturer\Create.cshtml"
        Write(Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -114,7 +106,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 21 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 14 "..\..\Views\Manufacturer\Create.cshtml"
            Write(Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }));
 
             
@@ -125,7 +117,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 22 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 15 "..\..\Views\Manufacturer\Create.cshtml"
            Write(Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }));
 
             
@@ -140,7 +132,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 27 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 20 "..\..\Views\Manufacturer\Create.cshtml"
        Write(Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -155,7 +147,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 29 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 22 "..\..\Views\Manufacturer\Create.cshtml"
            Write(Html.DropDownListFor(model => model.CountryId, (SelectList)ViewBag.Countries,  htmlAttributes: new { @class = "form-control" } ));
 
             
@@ -166,7 +158,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 30 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 23 "..\..\Views\Manufacturer\Create.cshtml"
            Write(Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" }));
 
             
@@ -191,7 +183,7 @@ WriteLiteral(" class=\"btn btn-default\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n    </div>\r\n");
 
             
-            #line 40 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 33 "..\..\Views\Manufacturer\Create.cshtml"
 }
 
             
@@ -202,7 +194,7 @@ WriteLiteral("\r\n<div>\r\n");
 WriteLiteral("    ");
 
             
-            #line 43 "..\..\Views\Manufacturer\Create.cshtml"
+            #line 36 "..\..\Views\Manufacturer\Create.cshtml"
 Write(Html.ActionLink("Back to List", "List"));
 
             

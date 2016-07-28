@@ -87,14 +87,14 @@ WriteAttribute("src", Tuple.Create(" src=\"", 310), Tuple.Create("\"", 348)
 , 316), false)
 );
 
-WriteLiteral("></script>\r\n\r\n<hr />\r\n<div");
+WriteLiteral("></script>\r\n\r\n<div");
 
 WriteLiteral(" class=\"filter-section\"");
 
 WriteLiteral(" \r\n     data-countries-url=\"");
 
             
-            #line 12 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 11 "..\..\Views\Shared\_CarItem.cshtml"
                     Write(Url.Action("GetCountries", "DataLoader"));
 
             
@@ -105,7 +105,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-manufacturers-url=\"");
 
             
-            #line 13 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 12 "..\..\Views\Shared\_CarItem.cshtml"
                         Write(Url.Action("GetManufacturersOfCountry", "DataLoader"));
 
             
@@ -116,7 +116,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-carmodels-url=\"");
 
             
-            #line 14 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 13 "..\..\Views\Shared\_CarItem.cshtml"
                     Write(Url.Action("GetCarModelsOfManufacturer", "DataLoader"));
 
             
@@ -127,7 +127,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-carbodytype-url=\"");
 
             
-            #line 15 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 14 "..\..\Views\Shared\_CarItem.cshtml"
                       Write(Url.Action("GetBodyTypes", "DataLoader"));
 
             
@@ -138,7 +138,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-caroptions-url=\"");
 
             
-            #line 16 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 15 "..\..\Views\Shared\_CarItem.cshtml"
                      Write(Url.Action("GetCarOptions", "DataLoader"));
 
             
@@ -149,7 +149,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-carfueltype-url=\"");
 
             
-            #line 17 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 16 "..\..\Views\Shared\_CarItem.cshtml"
                       Write(Url.Action("GetFuelTypes", "DataLoader"));
 
             
@@ -160,7 +160,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n     data-cartransmitiontype-url=\"");
 
             
-            #line 18 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 17 "..\..\Views\Shared\_CarItem.cshtml"
                              Write(Url.Action("GetTransmitionTypes","DataLoader"));
 
             
@@ -173,8 +173,19 @@ WriteLiteral("\r\n     >\r\n");
 WriteLiteral("    ");
 
             
-            #line 20 "..\..\Views\Shared\_CarItem.cshtml"
+            #line 19 "..\..\Views\Shared\_CarItem.cshtml"
 Write(Html.HiddenFor(model => model.Id));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 20 "..\..\Views\Shared\_CarItem.cshtml"
+Write(Html.HiddenFor(model => model.OwnerId));
 
             
             #line default
@@ -664,14 +675,14 @@ WriteLiteral("                        <div");
 
 WriteLiteral(" class=\"image-block\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 6701), Tuple.Create("\"", 6725)
+WriteAttribute("id", Tuple.Create(" id=\"", 6738), Tuple.Create("\"", 6762)
             
             #line 106 "..\..\Views\Shared\_CarItem.cshtml"
-, Tuple.Create(Tuple.Create("", 6706), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+, Tuple.Create(Tuple.Create("", 6743), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 6706), false)
+, 6743), false)
 );
 
 WriteLiteral(">\r\n");
@@ -687,14 +698,14 @@ WriteLiteral("                            ");
             #line hidden
 WriteLiteral("\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=", 6916), Tuple.Create("", 6989)
+WriteAttribute("src", Tuple.Create(" src=", 6953), Tuple.Create("", 7026)
             
             #line 108 "..\..\Views\Shared\_CarItem.cshtml"
-, Tuple.Create(Tuple.Create("", 6921), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
+, Tuple.Create(Tuple.Create("", 6958), Tuple.Create<System.Object, System.Int32>(Url.Action("LoadImg", "DataLoader", new {id = @Model.Images[i].Id})
             
             #line default
             #line hidden
-, 6921), false)
+, 6958), false)
 );
 
 WriteLiteral(" class=\"image-viewer\"");
@@ -731,14 +742,14 @@ WriteLiteral(" class=\"existImageDeleteButton\"");
 
 WriteLiteral(" value=\"Delete\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 7225), Tuple.Create("\"", 7249)
+WriteAttribute("id", Tuple.Create(" id=\"", 7262), Tuple.Create("\"", 7286)
             
             #line 109 "..\..\Views\Shared\_CarItem.cshtml"
-                                 , Tuple.Create(Tuple.Create("", 7230), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
+                                 , Tuple.Create(Tuple.Create("", 7267), Tuple.Create<System.Object, System.Int32>(Model.Images[i].Id
             
             #line default
             #line hidden
-, 7230), false)
+, 7267), false)
 );
 
 WriteLiteral(" />\r\n                        </div>\r\n");

@@ -1,23 +1,24 @@
 ﻿@model AutoSiteProject.Models.ViewModels.CarItemViewModel
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
 <script src="~/scripts/AutoSite/ImageLoader.js"></script>
 <link href="~/Content/MyCss/WidthClasses.css" rel="stylesheet" />
+<link href="~/Content/MyCss/CloseButton.css" rel="stylesheet"/>
+<input type="button" value="Close advertisment" onclick="@Url.Action("SetStatusToClose", "CarItem")" class="btn btn-default adv-close-btn" />
+
+<h3>Edit car</h3> 
+<hr/>
+    
 @using (Html.BeginForm("Edit", "CarItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         @{ Html.RenderPartial("_CarItem", Model);}
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default"/>
             </div>
+            
         </div>
     </div>
 }

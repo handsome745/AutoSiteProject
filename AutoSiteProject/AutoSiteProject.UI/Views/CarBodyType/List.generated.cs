@@ -42,10 +42,11 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 2 "..\..\Views\CarBodyType\List.cshtml"
-Write(Html.Action("GetCarBodyTypesPartial", "DataLoader"));
+WriteLiteral("<hr/>\r\n");
 
+            
+            #line 3 "..\..\Views\CarBodyType\List.cshtml"
+   Html.RenderAction("GetCarBodyTypesPartial", "DataLoader"); 
             
             #line default
             #line hidden

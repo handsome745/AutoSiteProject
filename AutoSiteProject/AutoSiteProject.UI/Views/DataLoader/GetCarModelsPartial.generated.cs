@@ -55,6 +55,10 @@ Write(Html.DevExpress().GridView(settings =>
     settings.Name = "carModelsGridView";
     settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarModelsPartial" };
     settings.Width = Unit.Percentage(100);
+
+    settings.Columns.Add("Id");
+    settings.Columns.Add("Name");
+    settings.Columns.Add("Manufacturer");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";
@@ -76,9 +80,6 @@ Write(Html.DevExpress().GridView(settings =>
         column.Settings.AllowSort = DefaultBoolean.False;
         column.Width = 70;
     });
-    settings.Columns.Add("Id");
-    settings.Columns.Add("Name");
-    settings.Columns.Add("Manufacturer");
     settings.KeyFieldName = "Id";
     settings.SettingsPager.PageSize = 25;
 

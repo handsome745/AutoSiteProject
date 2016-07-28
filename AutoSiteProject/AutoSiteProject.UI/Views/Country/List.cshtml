@@ -1,2 +1,3 @@
 ﻿@model IEnumerable<AutoSiteProject.Models.ViewModels.CountryViewModel>
-@Html.Action("GetCountriesPartial", "DataLoader")
+    <hr/>
+@{ Html.RenderAction("GetCountriesPartial", "DataLoader"); }

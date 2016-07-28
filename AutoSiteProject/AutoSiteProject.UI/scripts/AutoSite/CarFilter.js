@@ -13,44 +13,44 @@
     var volumeRangeSlider = $(".volume-range-slider", filterSection);
     var priceRangeSlider = $(".price-range-slider", filterSection);
 
-
+    var func = function () {
+        carsGridView.Refresh();
+    }
 
     releaseYearRangeSlider.slider({
         range: true,
         min: 1900,
         max: (new Date().getFullYear()),
-        values: [$("#releaseYearMin", releaseYearRangeSlider).val(), $("#releaseYearMax", releaseYearRangeSlider).val()],
+        values: [$("input#ReleaseYearMin", filterSection).val(), $("input#ReleaseYearMax", filterSection).val()],
         slide: function (event, ui) {
-            $("#releaseYearMin", releaseYearRangeSlider).val(ui.values[0]);
-            $("#releaseYearMax", releaseYearRangeSlider).val(ui.values[1]);
+            $("input#ReleaseYearMin", filterSection).val(ui.values[0]);
+            $("input#ReleaseYearMax", filterSection).val(ui.values[1]);
+            setTimeout(func, 300);
         }
     });
 
     volumeRangeSlider.slider({
         range: true,
-        min: 1,
-        max: 200000,
-        values: [$("#volumeMin", volumeRangeSlider).val(), $("#volumeMax", volumeRangeSlider).val()],
+        min: 0,
+        max: 10000,
+        values: [$("input#VolumeMin").val(), $("input#VolumeMax").val()],
         slide: function (event, ui) {
-            $("#volumeMin", volumeRangeSlider).val(ui.values[0]);
-            $("#volumeMax", volumeRangeSlider).val(ui.values[1]);
+            $("input#VolumeMin").val(ui.values[0]);
+            $("input#VolumeMax").val(ui.values[1]);
+            setTimeout(func, 300);
         }
     });
     priceRangeSlider.slider({
         range: true,
         min: 0,
-        max: Number.MAX_VALUE,
-        values: [$("#priceMin", priceRangeSlider).val(), $("#priceMax", priceRangeSlider).val()],
+        max: 200000,
+        values: [$("input#PriceMin").val(), $("input#PriceMax").val()],
         slide: function (event, ui) {
-            $("#priceMin", priceRangeSlider).val(ui.values[0]);
-            $("#priceMax", priceRangeSlider).val(ui.values[1]);
+            $("input#PriceMin").val(ui.values[0]);
+            $("input#PriceMax").val(ui.values[1]);
+            setTimeout(func, 300);
         }
     });
-
-
-    var func = function () {
-        carsGridView.Refresh();
-    }
 
     countryPicker.change(func);
     manufacturerPicker.change(func);

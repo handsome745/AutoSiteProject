@@ -70,23 +70,25 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Car options")]
         public List<string> OptionsIds { get; set; }
         public List<CarOptionViewModel> AvalibleCarOptions { get; set; }
+
         [DisplayName("Release year")]
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect min release year")]
         public int ReleaseYearMin { get; set; } = 1990;
+
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect max release year")]
         public int ReleaseYearMax { get; set; } = DateTime.Now.Year;
 
-        [DisplayName("Price")]
+        [DisplayName("Price in $")]
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect min price")]
         public int PriceMin { get; set; } = 0;
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect max price")]
-        public int PriceMax { get; set; } = 10000000;
+        public int PriceMax { get; set; } = 10000;
 
-        [DisplayName("Volume")]
+        [DisplayName("Engine volume(cm3)")]
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect min car engine volume")]
-        public int VolumeMin { get; set; } = 1;
+        public int VolumeMin { get; set; } = 0;
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect max car engine volume")]
-        public int VolumeMax { get; set; } = 200000;
+        public int VolumeMax { get; set; } = 3000;
         [DisplayName("Description")]
         public string Description { get; set; }
         [DisplayName("All fields search")]

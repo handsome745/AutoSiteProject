@@ -235,6 +235,7 @@
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\MyCss\CloseButton.css" />
     <Content Include="Content\MyCss\WidthClasses.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -393,6 +394,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\TransmitionTypeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -1022,6 +1024,10 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>GetFuelTypePartial.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\TransmitionType\List.cshtml" />
+    <Content Include="Views\DataLoader\GetTransmitionTypePartial.cshtml" />
+    <Content Include="Views\TransmitionType\Create.cshtml" />
+    <Content Include="Views\TransmitionType\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -61,13 +61,27 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 6 "..\..\Views\DataLoader\CarsGridViewPartial.cshtml"
+            #line 5 "..\..\Views\DataLoader\CarsGridViewPartial.cshtml"
 Write(Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
     settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsPartial" };
     settings.Width = Unit.Percentage(100);
 
+
+    //settings.Columns.Add("CarId");
+
+    settings.Columns.Add("Country");
+    settings.Columns.Add("Manufacturer");
+    settings.Columns.Add("Model");
+    settings.Columns.Add("BodyType","Body type");
+    settings.Columns.Add("FuelType","Fuel type");
+    settings.Columns.Add("TransmitionType","Transmition type");
+    settings.Columns.Add("Price");
+    settings.Columns.Add("ReleaseYear","Release year");
+    settings.Columns.Add("Volume","Engine volume");
+    settings.Columns.Add("Description");
+    settings.Columns.Add("OptionsNamesString", "Options");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";
@@ -75,9 +89,9 @@ Write(Html.DevExpress().GridView(settings =>
         {
             ViewContext.Writer.Write(
                 Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
-                + "&nbsp;" );
+                + "&nbsp;");
             var userId = User.Identity.GetUserId();
-            if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId)
+            if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId || User.IsInRole("Admin"))
                 ViewContext.Writer.Write(
                         Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         + "&nbsp;" +
@@ -94,14 +108,6 @@ Write(Html.DevExpress().GridView(settings =>
         column.Settings.AllowSort = DefaultBoolean.False;
         column.Width = 70;
     });
-    //settings.Columns.Add("CarId");
-
-    settings.Columns.Add("Country");
-    settings.Columns.Add("Manufacturer");
-    settings.Columns.Add("Model");
-    settings.Columns.Add("BodyType");
-    settings.Columns.Add("Description");
-    settings.Columns.Add("OptionsNamesString", "Options");
     settings.Settings.ShowGroupPanel = true;
     settings.KeyFieldName = "CarId";
     settings.ClientSideEvents.BeginCallback = "carFilter.onBeginCallback";

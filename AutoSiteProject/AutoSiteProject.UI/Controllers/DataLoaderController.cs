@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -140,36 +141,42 @@ namespace AutoSiteProject.UI.Controllers
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
             return PartialView("CarsGridViewPartial", carsList);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCarBodyTypesPartial()
         {
             var dbItems = _carBodyTypeManager.GetAll().ToList();
             var result = dbItems.Select(item => _carBodyTypeFieldCopier.CopyFields(item, new CarBodyTypeViewModel())).ToList();
             return PartialView("GetCarBodyTypesPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCarModelsPartial()
         {
             var dbItems = _carModelManager.GetAll();
             var result = dbItems.Select(item => _carModelFieldCopier.CopyFields(item, new CarModelViewModel())).ToList();
             return PartialView("GetCarModelsPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCarOptionsPartial()
         {
             var dbItems = _carOptionManager.GetAll();
             var result = dbItems.Select(item => _carOptionFieldCopier.CopyFields(item, new CarOptionViewModel())).ToList();
             return PartialView("GetCarOptionsPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCountriesPartial()
         {
             var dbItems = _countryManager.GetAll();
             var result = dbItems.Select(item => _countryFieldCopier.CopyFields(item, new CountryViewModel())).ToList();
             return PartialView("GetCountriesPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetManufacturersPartial()
         {
             var dbItems = _manufacturerManager.GetAll();
             var result = dbItems.Select(item => _manufacturerFieldCopier.CopyFields(item, new ManufacturerViewModel())).ToList();
             return PartialView("GetManufacturersPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetRolesPartial()
         {
             var dbRoles = RoleManager.Roles.ToList();
@@ -178,10 +185,16 @@ namespace AutoSiteProject.UI.Controllers
         }
         public ActionResult GetCarItemsPartial()
         {
-            var filter = new CarAggregateFilterViewModel();
+            var filter = new CarAggregateFilterViewModel
+            {
+                PriceMax = int.MaxValue,
+                ReleaseYearMax = int.MaxValue,
+                VolumeMax = int.MaxValue
+            };
             var result = _carItemManager.GetCarsAggregateViewModel(filter);
             return PartialView("GetCarItemsPartial", result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetUsersPartial()
         {
             var usersViewModels = new List<UserViewModel>();
@@ -203,11 +216,20 @@ namespace AutoSiteProject.UI.Controllers
             var image = _carImageManager.GetById((int)id);
             return File(image.Data, image.ContentType, image.Name);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GetFuelTypePartial()
         {
              var dbItems = _fuelTypeManager.GetAll().ToList();
             var result = dbItems.Select(item => _fuelTypeFieldCopier.CopyFields(item, new FuelTypeViewModel())).ToList();
             return PartialView("GetFuelTypePartial", result);
         }
+        [Authorize(Roles = "Admin")]
+        public ActionResult GetTransmitionTypePartial()
+        {
+            var dbItems = _transmitionTypeManager.GetAll().ToList();
+            var result = dbItems.Select(item => _transmitionTypeFieldCopier.CopyFields(item, new TransmitionTypeViewModel())).ToList();
+            return PartialView("GetTransmitionTypePartial", result);
+        }
+        
     }
 }

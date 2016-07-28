@@ -42,6 +42,8 @@ namespace ASP
         }
         public override void Execute()
         {
+WriteLiteral("<hr/>\r\n");
+
             
             #line 3 "..\..\Views\Manufacturer\List.cshtml"
 Write(Html.Action("GetManufacturersPartial", "DataLoader"));
