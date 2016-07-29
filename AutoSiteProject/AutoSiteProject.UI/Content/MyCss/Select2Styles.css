@@ -1,0 +1,25 @@
+﻿.img-search {
+    width: 40px;
+}
+.searchCursor {
+    cursor: pointer;
+}
+.image-viewer {
+    width: 150px;
+}
+
+div.search-control span.select2 {
+    width: 100% !important;
+}
+
+.select2-container span{
+    position: relative;
+    float: left;
+    top: 5px;
+    width: 400px !important;
+}
+.select2-dropdown {
+    width: 400px !important;
+}
+.select2-container--open {
+}

@@ -49,7 +49,8 @@ namespace AutoSiteProject.Dal.Entities
                     TransmitionType = tt.Name,
                     Price =  ci.Price,
                     Volume =  ci.Volume,
-                    ReleaseYear = ci.ReleaseYear
+                    ReleaseYear = ci.ReleaseYear,
+                    Status = (CarItemStatus)ci.Status
                 };
             return result.AsExpandable().Where(predicate);
         }

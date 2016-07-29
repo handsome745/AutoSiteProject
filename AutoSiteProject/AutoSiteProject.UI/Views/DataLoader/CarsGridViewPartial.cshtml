@@ -31,11 +31,11 @@
                 Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                 + "&nbsp;");
             var userId = User.Identity.GetUserId();
-            if (DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId || User.IsInRole("Admin"))
+            if ((DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId &&  ((CarItemStatus)DataBinder.Eval(c.DataItem, "Status")) == CarItemStatus.Open) || User.IsInRole("Admin"))
                 ViewContext.Writer.Write(
                         Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         + "&nbsp;" +
-                        Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        Html.ActionLink("Close", "SetStatusToClose", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         );
         });
         column.SetHeaderTemplateContent(c =>

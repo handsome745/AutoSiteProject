@@ -37,6 +37,7 @@ namespace AutoSiteProject.Models.ViewModels
         public int ReleaseYear { get; set; }
         public int Price { get; set; }
         public int Volume { get; set; }
+        public CarItemStatus Status { get; set; }
         public List<string> Options { get; set; }
         [DisplayName("Car options")]
         public List<string> OptionsNames { get; set; }

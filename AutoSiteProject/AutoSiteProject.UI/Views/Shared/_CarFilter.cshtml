@@ -3,17 +3,15 @@
 @model CarAggregateFilterViewModel
 
 <link href="~/Content/chosen.min.css" rel="stylesheet" />
-<link href="~/Content/MyCss/WidthClasses.css" rel="stylesheet" />
-<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+
 <script src="~/scripts/chosen.jquery.min.js"></script>
-<script src="~/scripts/select2.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
 <script src="~/scripts/AutoSite/CarFilter.js"></script>
 
 <div id="filterPanel">
     <div class="list-group panel">
-        <a href="#filterForm" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#filterPanel">Click to filter...<i class="fa fa-caret-down"></i></a>
-        <div class="collapse" id="filterForm">
+        <a href="#filterForm" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#filterPanel">Filter<i class="fa fa-caret-down"></i></a>
+        <div class="collapse in" id="filterForm">
             <form class="form-inline width100">
                 <div class="filter-section width100"
                      data-cars-url="@Url.Action("GetCars", "DataLoader")"
@@ -25,11 +23,11 @@
                      data-cartransmitiontype-url="@Url.Action("GetTransmitionTypes", "DataLoader")"
                      data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
 
-                    <div class="form-group width100">
+                    @*<div class="form-group width100">
                         <div class="col-sm-2 width100 search-control">
                             @Html.Select2Search(new { @class = "select2Search" })
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group width100">
                         @Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" })
                         <div class="col-sm-2 width100">

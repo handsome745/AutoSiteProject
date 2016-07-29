@@ -6,12 +6,12 @@
                 type: 'POST',
                 dataType: 'json',
                 delay: 250,
-                data: function (params) {
+                data: function(params) {
                     return {
                         AllFieldsSearch: params.term // search term
                     };
                 },
-                processResults: function (data, params) {
+                processResults: function(data, params) {
                     params.page = params.page || 1;
                     return {
                         results: data,
@@ -23,13 +23,13 @@
                 cache: true
             },
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-            minimumInputLength: 1,
+            minimumInputLength: 0,
             templateResult: function (carItem) {
                 if (carItem.CarId == null) return null;
                 var imageSrc = $("select.select2Search").data("img-url") + '/' + carItem.MainImageId;
                 if (carItem.MainImageId === "") imageSrc = "http://www.designofsignage.com/application/symbol/building/image/600x600/no-photo.jpg";
                 var $carItem = $(
-                  '<span><img src="' + imageSrc + '" class="img-search" alt="car image" /> '
+                  '<span class="searchCursor"><img src="' + imageSrc + '" class="img-search" alt="car image" /> '
                   + carItem.Country + ' ' + carItem.Manufacturer + ' ' + carItem.Model + ' '
                   + carItem.BodyType + ' ' + '</span>'
                 );

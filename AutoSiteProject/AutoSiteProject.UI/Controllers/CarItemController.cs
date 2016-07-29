@@ -109,6 +109,7 @@ namespace AutoSiteProject.UI.Controllers
             if (!User.IsInRole("Admin"))
             {
                 var userId = User.Identity.GetUserId();
+                if (dbItem.Status != (int)CarItemStatus.Open) throw new SecurityException();
                 if (dbItem.OwnerId != userId) throw new SecurityException();
             }
 
@@ -152,6 +153,7 @@ namespace AutoSiteProject.UI.Controllers
             if (dbItem == null) throw new NullReferenceException();
             if (!User.IsInRole("Admin"))
             {
+                if (dbItem.Status != (int)CarItemStatus.Open) throw new SecurityException();
                 if (dbItem.OwnerId != userId) throw new SecurityException();
             }
             //delete disabled images
@@ -163,9 +165,10 @@ namespace AutoSiteProject.UI.Controllers
             SaveImagesAndLink(dbItem, files);
             //copy edited fields
             dbItem = _carItemFieldCopier.CopyFields(model, dbItem);
-            //save changes
+            //edit options
             dbItem.LastEditorId = userId;
             dbItem.EditDate = DateTime.Now;
+            //save changes
             _carItemManager.Edit(dbItem);
             return RedirectToAction("List");
         }
@@ -185,32 +188,27 @@ namespace AutoSiteProject.UI.Controllers
         //GET 
         public ActionResult Delete(int id)
         {
+            if (!User.IsInRole("Admin")) throw new SecurityException();//only admin can delete
             var dbItem = _carItemManager.GetById(id);
             if (dbItem == null) throw new NullReferenceException();
-            if (!User.IsInRole("Admin"))
-            {
-                var userId = User.Identity.GetUserId();
-                if (dbItem.OwnerId != userId) throw new SecurityException();
-            }
             _carItemManager.Delete(dbItem);
             return RedirectToAction("List");
         }
         //GET 
         public ActionResult SetStatusToClose(int id)
         {
-            var authUserId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();
             var dbItem = _carItemManager.GetById(id);
             if (dbItem == null) throw new NullReferenceException();
             if (!User.IsInRole("Admin"))
             {
-                var userId = authUserId;
                 if (dbItem.OwnerId != userId) throw new SecurityException();
             }
-            dbItem.LastEditorId = authUserId;
+            dbItem.LastEditorId = userId;
             dbItem.EditDate = DateTime.Now;
             dbItem.Status = (int)CarItemStatus.Close;
             _carItemManager.Edit(dbItem);
-            return RedirectToAction("List");
+            return Redirect(Request.UrlReferrer?.ToString());
         }
     }
 }

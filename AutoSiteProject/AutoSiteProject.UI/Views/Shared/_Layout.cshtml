@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using AutoSiteProject.UI.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <title>AutoSiteProject</title>
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 
@@ -13,7 +14,6 @@
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/scripts/modernizr-2.7.2.js"></script>
-    
     @Html.DevExpress().GetScripts(
         //new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         //new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
@@ -45,11 +45,15 @@
 
     )
     <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/select2.min.js"></script>
     <script src="~/scripts/AutoSite/MySelect2Search.js"></script>
     <script src="~/scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script src="~/scripts/AutoSite/Notifications.js"></script>
     <script src="~/scripts/jquery-ui-1.12.0.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/MyCss/WidthClasses.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/Select2Styles.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -66,8 +70,8 @@
                             <li>@Html.ActionLink("Car body types", "List", "CarBodyType", new { area = "" }, new { @class = "" })</li>
                             <li>@Html.ActionLink("Car options", "List", "CarOption", new { area = "" }, new { @class = "" })</li>
                             <li>@Html.ActionLink("Manufacturers", "List", "Manufacturer", new { area = "" }, new { @class = "" })</li>
-                            <li>@Html.ActionLink("Countries", "List", "Country", new {area = ""}, new {@class = ""})</li>
-                            <li>@Html.ActionLink("Car fuel types", "List", "FuelType", new {area = ""}, new {@class = ""})</li>
+                            <li>@Html.ActionLink("Countries", "List", "Country", new { area = "" }, new { @class = "" })</li>
+                            <li>@Html.ActionLink("Car fuel types", "List", "FuelType", new { area = "" }, new { @class = "" })</li>
                             <li>@Html.ActionLink("Car transmition types", "List", "TransmitionType", new { area = "" }, new { @class = "" })</li>
                             <li role="separator" class="divider"></li>
                             <li>@Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "" })</li>
@@ -75,6 +79,9 @@
                         </ul>
                     </li>
                 }
+                <li>
+                    @Html.Select2Search(new { @class = "select2Search" })
+                </li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -81,6 +80,9 @@ namespace AutoSiteProject.UI.Controllers
         {
             if (filter == null) filter = new CarAggregateFilterViewModel();
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
+            //filter result by status
+            var thisIsAdmin = User.IsInRole("Admin");
+            carsList = carsList.Where(r => r.Status == CarItemStatus.Open || thisIsAdmin).ToList();
             return Json(carsList, JsonRequestBehavior.AllowGet);
         }
 
@@ -139,6 +141,9 @@ namespace AutoSiteProject.UI.Controllers
         public ActionResult GetCarsPartial(CarAggregateFilterViewModel filter)
         {
             var carsList = _carItemManager.GetCarsAggregateViewModel(filter);
+            //filter result by status
+            var thisIsAdmin = User.IsInRole("Admin");
+            carsList = carsList.Where(r => r.Status == CarItemStatus.Open || thisIsAdmin).ToList();
             return PartialView("CarsGridViewPartial", carsList);
         }
         [Authorize(Roles = "Admin")]
@@ -192,6 +197,9 @@ namespace AutoSiteProject.UI.Controllers
                 VolumeMax = int.MaxValue
             };
             var result = _carItemManager.GetCarsAggregateViewModel(filter);
+            //filter result by status
+            var thisIsAdmin = User.IsInRole("Admin");
+            result = result.Where(r => r.Status == CarItemStatus.Open || thisIsAdmin).ToList();
             return PartialView("GetCarItemsPartial", result);
         }
         [Authorize(Roles = "Admin")]

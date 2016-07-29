@@ -10,26 +10,9 @@
     width: 100%;
 }
 
-.img-search {
-    width: 40px;
-}
 
-.image-viewer {
-    width: 150px;
-}
 
-div.search-control span.select2 {
-    width: 100% !important;
-}
 
-.search-control {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    float: left;
-    margin-top: 15px;
-}
 
 .allFields-picker{}
 .country-picker{}
