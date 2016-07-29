@@ -68,6 +68,7 @@
     <Compile Include="Entities\TransmitionTypeRepository.cs" />
     <Compile Include="Entities\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="SqlScripts\DataBaseIndexes.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

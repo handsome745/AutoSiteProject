@@ -67,6 +67,7 @@ namespace AutoSiteProject.Bl.Managers
                     foreach (var searchWord in searchWords)
                     {
                         if (fieldName == "OptionsNamesString") continue;
+                        if (fieldName.Contains("Id")) continue;
                         var predicateToAdd = Expression.Lambda<Func<CarAggregateViewModel, bool>>(
                             Expression.Call(Expression.PropertyOrField(param, fieldName),
                                             typeof(string).GetMethod("Contains", new[] { typeof(string) }),
