@@ -27,7 +27,7 @@
             $("input#ReleaseYearMax", filterSection).val(ui.values[1]);
             $("label.releaseyear-label", filterSection).text("Release year:" + ui.values[0] + "-" + ui.values[1]);
         },
-        stop: function() {
+        stop: function () {
             func();
         }
     });
@@ -80,8 +80,19 @@
 carFilter = {
     onBeginCallback: function (s, e) {
         var carFilterForm = $("form").serializeArray();
+        for (var i = 0; i < carFilterForm.length; i++) {
+            if (carFilterForm[i].name.toString() === '__RequestVerificationToken' ||
+                carFilterForm[i].name.toString() === 'DXScript' ||
+                carFilterForm[i].name.toString() === 'DXCss') {
+                carFilterForm.splice(i, 1);
+                i--;
+            }
+        }
+
         $.each(carFilterForm, function (i, v) {
-            e.customArgs[v.name] = v.value;
+                e.customArgs[v.name] = v.value;
         });
+        window.history.pushState(carFilterForm, "Car search", "?" + $.param(carFilterForm));
+
     }
 }
