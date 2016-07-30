@@ -16,10 +16,16 @@ div.search-control span.select2 {
     position: relative;
     float: left;
     top: 5px;
-    width: 400px !important;
+    width: 650px !important;
 }
 .select2-dropdown {
-    width: 400px !important;
+    width: 650px !important;
 }
 .select2-container--open {
+
+}
+.select2label {
+    width: 60px;
+    align-content: flex-start;
+    font-size: xx-small;
 }

@@ -6,12 +6,12 @@
                 type: 'POST',
                 dataType: 'json',
                 delay: 250,
-                data: function(params) {
+                data: function (params) {
                     return {
                         AllFieldsSearch: params.term // search term
                     };
                 },
-                processResults: function(data, params) {
+                processResults: function (data, params) {
                     params.page = params.page || 1;
                     return {
                         results: data,
@@ -30,8 +30,15 @@
                 if (carItem.MainImageId === "") imageSrc = "http://www.designofsignage.com/application/symbol/building/image/600x600/no-photo.jpg";
                 var $carItem = $(
                   '<span class="searchCursor"><img src="' + imageSrc + '" class="img-search" alt="car image" /> '
-                  + carItem.Country + ' ' + carItem.Manufacturer + ' ' + carItem.Model + ' '
-                  + carItem.BodyType + ' ' + '</span>'
+                  + '<label class="select2label">' + carItem.Country + '</label>' 
+                  + '<label class="select2label">' + carItem.Manufacturer + '</label>' 
+                  + '<label class="select2label">' + carItem.Model + '</label>' 
+                  + '<label class="select2label">' + carItem.BodyType + '</label>' 
+                  + '<label class="select2label">' + carItem.FuelType + '</label>' 
+                  + '<label class="select2label">' + carItem.TransmitionType + '</label>' 
+                  + '<label class="select2label">' + carItem.ReleaseYear + 'r.e.</label>' 
+                  + '<label class="select2label">' + carItem.Price + '$</label>'
+                  + '<label class="select2label">' + carItem.Volume + 'cm3 ' + '</span>'
                 );
                 $carItem.on("click", function () {
                     window.location.href = '' + $("select.select2Search").data("caritem-url") + '/' + carItem.CarId;
