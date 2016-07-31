@@ -5,8 +5,11 @@ hr {
     margin-bottom: 20px;    
 }
 .deControl {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 .dxgvControl_Moderno {
+    font-style: normal;
+    font-size: 10px;
+    text-align: left;
 }

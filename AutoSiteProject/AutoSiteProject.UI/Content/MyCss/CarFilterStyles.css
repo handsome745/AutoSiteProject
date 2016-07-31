@@ -1,10 +1,30 @@
 ﻿.control-label {
     width: 100%;
     font: caption;
+    font-size: 12px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 .filterPanel {
-    margin-left: 50px;
-    margin-right: 50px;
+    width: 80%;
+    margin: auto;
+}
+.filterPanel input {
+    height: 25px;
+    font-size: 10px;
+}
+.filterPanel select {
+    font-size: 10px;
+    height: 25px;
+}
+.chosen-container input {
+    height: 20px!important;
+    font-size: 12px!important;
+}
+
+.chosen-container {
+    height: 20px;
+}
+.chosen-choices span {
+    font-size: 10px;
 }
