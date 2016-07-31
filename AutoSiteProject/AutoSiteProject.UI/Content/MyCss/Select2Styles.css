@@ -1,9 +1,12 @@
 ﻿.img-search {
     width: 40px;
 }
+
 .searchCursor {
     cursor: pointer;
+    margin-top: 2px;
 }
+
 .image-viewer {
     width: 150px;
 }
@@ -12,18 +15,26 @@ div.search-control span.select2 {
     width: 100% !important;
 }
 
-.select2-container span{
+.select2-container span {
     position: relative;
     float: left;
     top: 5px;
-    width: 650px !important;
+    width: 600px !important;
 }
-.select2-dropdown {
-    width: 650px !important;
-}
-.select2-container--open {
 
+.select2-dropdown {
+    width: 600px !important;
 }
+
+.select2-dropdown--below {
+    top: 10px!important;
+    height: 200px !important;
+}
+
+.select2-results > .select2-results__options {
+    overflow-y: initial !important;
+}
+
 .select2label {
     width: 60px;
     align-content: flex-start;

@@ -41,6 +41,8 @@ namespace AutoSiteProject.Bl.Managers
             predicateBuilder = predicateBuilder.And(c => c.ReleaseYear >= filter.ReleaseYearMin);
             predicateBuilder = predicateBuilder.And(c => c.ReleaseYear <= filter.ReleaseYearMax);
 
+            if (!string.IsNullOrEmpty(filter.OwnerId)) predicateBuilder = predicateBuilder.And(c => c.OwnerId == filter.OwnerId);
+
             if (filter.OptionsIds != null && filter.OptionsIds.Count > 0)
                 predicateBuilder = predicateBuilder.And(c => c.Options.Intersect(filter.OptionsIds).Count() >= filter.OptionsIds.Count);
             if (!string.IsNullOrEmpty(filter.Description))

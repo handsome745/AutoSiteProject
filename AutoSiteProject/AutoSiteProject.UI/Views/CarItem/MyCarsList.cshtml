@@ -1,7 +1,7 @@
 ﻿<link href="~/Content/MyCss/MainPageStyle.css" rel="stylesheet" />
-
+@using Microsoft.AspNet.Identity
 @model IEnumerable<AutoSiteProject.Models.ViewModels.CarItemViewModel>
-<hr/>
+<hr />
 <div class="deControl">
-    @{ Html.RenderAction("GetCarItemsPartial", "DataLoader"); }
+    @{ Html.RenderAction("MyCarsListPartial", "DataLoader", new { id = User.Identity.GetUserId() }); }
 </div>

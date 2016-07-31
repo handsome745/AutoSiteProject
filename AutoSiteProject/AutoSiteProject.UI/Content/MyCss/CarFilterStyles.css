@@ -1,0 +1,10 @@
+﻿.control-label {
+    width: 100%;
+    font: caption;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.filterPanel {
+    margin-left: 50px;
+    margin-right: 50px;
+}

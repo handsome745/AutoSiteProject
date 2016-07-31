@@ -1,0 +1,17 @@
+﻿.navbar {
+    background-color: #07C;
+    border-color: white;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    background-color: #015ea0;
+    border-color: white;
+}
+.dropdown-menu {
+     background-color: #d1e6f5;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+.navbar-inverse .navbar-nav>.dropdown>a .caret {
+    border-top-color: white;
+}

@@ -1,4 +1,5 @@
 ﻿@using AutoSiteProject.UI.Helpers
+@using Microsoft.AspNet.Identity
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
     <link href="~/Content/css/select2.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/LayoutStyles.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
     <script src="~/scripts/jquery-1.10.2.min.js"></script>
     <script src="~/scripts/jquery.validate.min.js"></script>
@@ -36,12 +39,12 @@
         //new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler, Theme = "Moderno" },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
         //new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView, Theme = "Moderno" }
 
     )
     <script src="~/scripts/bootstrap.min.js"></script>
@@ -51,7 +54,6 @@
     <script src="~/signalr/hubs"></script>
     <script src="~/scripts/AutoSite/Notifications.js"></script>
     <script src="~/scripts/jquery-ui-1.12.0.min.js"></script>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
     <link href="~/Content/MyCss/WidthClasses.css" rel="stylesheet" />
     <link href="~/Content/MyCss/Select2Styles.css" rel="stylesheet" />
 </head>
@@ -61,6 +63,10 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" })</li>
                 <li>@Html.ActionLink("Cars", "List", "CarItem", new { area = "" }, new { @class = "" })</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("My cars", "MyCarsList", "CarItem", new { area = "", id = User.Identity.GetUserId() }, new { @class = "" })</li>
+                }
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="dropdown">
@@ -94,7 +100,7 @@
         <div class="notifications">
         </div>
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - AutoSiteProject</p>
         </footer>
     </div>
 </body>

@@ -150,16 +150,7 @@ WriteLiteral(" ]\r\n        </dd>\r\n        ");
 
 WriteLiteral("\r\n        ");
 
-WriteLiteral("\r\n        <dt>Two-Factor Authentication:</dt>\r\n        <dd>\r\n            <p>\r\n   " +
-"             There are no two-factor authentication providers configured. See <a" +
-"");
-
-WriteLiteral(" href=\"http://go.microsoft.com/fwlink/?LinkId=403804\"");
-
-WriteLiteral(">this article</a>\r\n                for details on setting up this ASP.NET applica" +
-"tion to support two-factor authentication.\r\n            </p>\r\n            ");
-
-WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n");
+WriteLiteral("\r\n      \r\n    </dl>\r\n</div>\r\n");
 
         }
     }

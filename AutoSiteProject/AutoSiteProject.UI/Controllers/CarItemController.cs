@@ -47,7 +47,11 @@ namespace AutoSiteProject.UI.Controllers
             return View();
         }
 
-        
+        public ActionResult MyCarsList()
+        {
+            return View();
+        }
+
         public ActionResult Create(CarItemViewModel model)
         {
             var dbOptions = _carOptionsManager.GetAll().ToList();
@@ -73,7 +77,7 @@ namespace AutoSiteProject.UI.Controllers
                     ContentType = file.ContentType,
                     Data = new byte[file.ContentLength]
                 };
-                file.InputStream.Read(image.Data, 0, (int)image.ContentLength);//Warning!!!
+                file.InputStream.Read(image.Data, 0, (int)image.ContentLength);
                 _carImageManager.Add(image);//save image to db
                 dbModel.CarImages.Add(image); //add link to CarItem 
             }
@@ -133,6 +137,10 @@ namespace AutoSiteProject.UI.Controllers
             if (dbItem == null) throw new NullReferenceException();
 
             var result = _carItemFieldCopier.CopyFields(dbItem, new CarItemViewModel());
+
+            if (result.SelectedCarOptions != null)
+                for (var i = 0; i < result.SelectedCarOptions.Length; i++)
+                    result.SelectedCarOptions[i] = _carOptionsManager.GetById(int.Parse(result.SelectedCarOptions[i])).Name;
             foreach (var image in dbItem.CarImages)
             {
                 var img = _carImageFieldCopier.CopyFields(image, new CarImageViewModel());
@@ -206,7 +214,7 @@ namespace AutoSiteProject.UI.Controllers
             }
             dbItem.LastEditorId = userId;
             dbItem.EditDate = DateTime.Now;
-            dbItem.Status = (int)CarItemStatus.Close;
+            dbItem.Status = (int)CarItemStatus.Closed;
             _carItemManager.Edit(dbItem);
             return Redirect(Request.UrlReferrer?.ToString());
         }

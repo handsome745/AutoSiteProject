@@ -27,7 +27,7 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\Home\Index.cshtml"
+    #line 3 "..\..\Views\Home\Index.cshtml"
     using AutoSiteProject.Models.ViewModels;
     
     #line default
@@ -48,20 +48,45 @@ namespace ASP
         }
         public override void Execute()
         {
-            
-            #line 3 "..\..\Views\Home\Index.cshtml"
-   Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel) ViewBag.CarFilter);
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
+WriteLiteral("<link");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 5), Tuple.Create("\"", 45)
+, Tuple.Create(Tuple.Create("", 12), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/MainPageStyle.css")
+, 12), false)
+);
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" />\r\n\r\n");
+
+WriteLiteral("<hr />\r\n");
 
             
-            #line 4 "..\..\Views\Home\Index.cshtml"
-   Html.RenderAction("GetCarsPartial","DataLoader");
+            #line 6 "..\..\Views\Home\Index.cshtml"
+   Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter);
             
             #line default
             #line hidden
+WriteLiteral("\r\n<div");
+
+WriteLiteral(" class=\"deControl\"");
+
+WriteLiteral(">\r\n");
+
+            
+            #line 8 "..\..\Views\Home\Index.cshtml"
+    
+            
+            #line default
+            #line hidden
+            
+            #line 8 "..\..\Views\Home\Index.cshtml"
+       Html.RenderAction("GetCarsPartial", "DataLoader");
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</div>");
+
         }
     }
 }

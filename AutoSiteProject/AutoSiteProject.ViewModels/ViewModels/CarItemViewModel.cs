@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoSiteProject.Models.ViewModels
 {
@@ -16,29 +16,37 @@ namespace AutoSiteProject.Models.ViewModels
 
         public int Id { get; set; }
         [Required]
-        [DisplayName("Сar manufacturer country")]
+        [DisplayName("Manufacturer country")]
         public int? CountryId { get; set; }
+        [DisplayName("Manufacturer country")]
         public string Country { get; set; }
 
         [Required]
-        [DisplayName("Сar manufacturer")]
+        [DisplayName("Manufacturer")]
         public int? ManufacturerId { get; set; }
+        [DisplayName("Manufacturer")]
         public string Manufacturer { get; set; }
 
         [Required]
-        [DisplayName("Сar model")]
+        [DisplayName("Model")]
         public int? ModelId { get; set; }
+        [DisplayName("Model")]
         public string CarModel { get; set; }
 
         [Required]
-        [DisplayName("Сar body type")]
+        [DisplayName("Body type")]
         public int? BodyTypeId { get; set; }
+        [DisplayName("Body type")]
         public string CarBodyType { get; set; }
 
-
         public List<CarOptionViewModel> AvalibleCarOptions { get; set; }
-        [DisplayName("Car options")]
+
+        [DisplayName("Options")]
         public string[] SelectedCarOptions { get; set; }
+
+        [DisplayName("Options")]
+        [NotMapped]
+        public string OptionsNamesString => string.Join(", ", SelectedCarOptions);
 
         [DisplayName("Description")]
         [DataType(DataType.MultilineText)]
@@ -47,24 +55,26 @@ namespace AutoSiteProject.Models.ViewModels
         public string OwnerId { get; set; }
 
         [Required]
-        [DisplayName("Сar transmition type")]
+        [DisplayName("Transmition type")]
         public int? TransmitionTypeId { get; set; }
+        [DisplayName("Transmition type")]
         public string TransmitionType { get; set; }
 
         [Required]
-        [DisplayName("Сar fuel type")]
+        [DisplayName("Fuel type")]
         public int? FuelTypeId { get; set; }
+        [DisplayName("Fuel type")]
         public string FuelType { get; set; }
 
-        [DisplayName("Car release year")]
+        [DisplayName("Release year")]
         public int ReleaseYear { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid car engine volume in cm3")]
-        [DisplayName("Car engine volume(cm3)")]
+        [DisplayName("Engine volume(cm3)")]
         public int Volume { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid price")]
-        [DisplayName("Car price")]
+        [DisplayName("Price ($)")]
         public int Price { get; set; }
 
         public string LastEditorId { get; set; }
@@ -80,6 +90,6 @@ namespace AutoSiteProject.Models.ViewModels
     public enum CarItemStatus
     {
         Open= 0,
-        Close = 1
+        Closed = 1
     }
 }

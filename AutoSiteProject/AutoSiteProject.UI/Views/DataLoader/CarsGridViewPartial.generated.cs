@@ -61,27 +61,27 @@ namespace ASP
         public override void Execute()
         {
             
-            #line 5 "..\..\Views\DataLoader\CarsGridViewPartial.cshtml"
+            #line 6 "..\..\Views\DataLoader\CarsGridViewPartial.cshtml"
 Write(Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
     settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarsPartial" };
     settings.Width = Unit.Percentage(100);
 
-
-    //settings.Columns.Add("CarId");
+    if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
 
     settings.Columns.Add("Country");
     settings.Columns.Add("Manufacturer");
     settings.Columns.Add("Model");
-    settings.Columns.Add("BodyType","Body type");
-    settings.Columns.Add("FuelType","Fuel type");
-    settings.Columns.Add("TransmitionType","Transmition type");
+    settings.Columns.Add("BodyType", "Body type");
+    settings.Columns.Add("FuelType", "Fuel type");
+    settings.Columns.Add("TransmitionType", "Transmition type");
     settings.Columns.Add("Price");
-    settings.Columns.Add("ReleaseYear","Release year");
-    settings.Columns.Add("Volume","Engine volume");
+    settings.Columns.Add("ReleaseYear", "Release year");
+    settings.Columns.Add("Volume", "Engine volume");
     settings.Columns.Add("Description");
     settings.Columns.Add("OptionsNamesString", "Options");
+    if (User.IsInRole("Admin")) settings.Columns.Add("Status");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";
@@ -91,11 +91,16 @@ Write(Html.DevExpress().GridView(settings =>
                 Html.ActionLink("Details", "Details", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                 + "&nbsp;");
             var userId = User.Identity.GetUserId();
-            if ((DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId &&  ((CarItemStatus)DataBinder.Eval(c.DataItem, "Status")) == CarItemStatus.Open) || User.IsInRole("Admin"))
+            if ((DataBinder.Eval(c.DataItem, "OwnerId").ToString() == userId && ((CarItemStatus)DataBinder.Eval(c.DataItem, "Status")) == CarItemStatus.Open) || User.IsInRole("Admin"))
                 ViewContext.Writer.Write(
                         Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         + "&nbsp;" +
                         Html.ActionLink("Close", "SetStatusToClose", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        );
+            if (User.IsInRole("Admin"))
+                ViewContext.Writer.Write(
+                        "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         );
         });
         column.SetHeaderTemplateContent(c =>

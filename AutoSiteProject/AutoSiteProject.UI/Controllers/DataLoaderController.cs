@@ -238,6 +238,22 @@ namespace AutoSiteProject.UI.Controllers
             var result = dbItems.Select(item => _transmitionTypeFieldCopier.CopyFields(item, new TransmitionTypeViewModel())).ToList();
             return PartialView("GetTransmitionTypePartial", result);
         }
-        
+
+        [Authorize]
+        public ActionResult MyCarsListPartial(string id)
+        {
+            CarAggregateFilterViewModel filter = new CarAggregateFilterViewModel
+            {
+                PriceMax = int.MaxValue,
+                ReleaseYearMax = int.MaxValue,
+                VolumeMax = int.MaxValue,
+                OwnerId = id
+            };
+
+            var myCarList = _carItemManager.GetCarsAggregateViewModel(filter);
+            return PartialView("MyCarsListPartial", myCarList);
+        }
+
+
     }
 }

@@ -1,6 +1,9 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿.body-content {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */

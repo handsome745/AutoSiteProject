@@ -22,10 +22,9 @@ namespace AutoSiteProject.UI.Helpers
             select.Attributes["data-caritem-url"] = carItemUrl;
             select.Attributes["data-init-script"] = "select2SearchControl.init";
             select.Attributes["multiple"] = "multiple";
-
+            select.Attributes["data-placeholder"] = "Search car ...";
+            
             var option = new TagBuilder("option");
-            option.Attributes["value"] = "1111";
-            option.SetInnerText("Search");
 
             select.InnerHtml += option.ToString();
 

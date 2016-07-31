@@ -1,4 +1,9 @@
-﻿@using AutoSiteProject.Models.ViewModels
+﻿<link href="~/Content/MyCss/MainPageStyle.css" rel="stylesheet" />
+
+@using AutoSiteProject.Models.ViewModels
 @model IEnumerable<CarAggregateViewModel>
-@{ Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel) ViewBag.CarFilter);}
-@{ Html.RenderAction("GetCarsPartial","DataLoader");}
+<hr />
+@{ Html.RenderPartial("_CarFilter", (CarAggregateFilterViewModel)ViewBag.CarFilter);}
+<div class="deControl">
+    @{ Html.RenderAction("GetCarsPartial", "DataLoader");}
+</div>

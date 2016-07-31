@@ -65,7 +65,7 @@ namespace ASP
 Write(Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarItemsPartial" };
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "MyCarsListPartial" };
     settings.Width = Unit.Percentage(100);
 
     if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
@@ -81,6 +81,7 @@ Write(Html.DevExpress().GridView(settings =>
     settings.Columns.Add("Volume", "Engine volume");
     settings.Columns.Add("Description");
     settings.Columns.Add("OptionsNamesString", "Options");
+    if (User.IsInRole("Admin")) settings.Columns.Add("Status");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";
@@ -95,6 +96,11 @@ Write(Html.DevExpress().GridView(settings =>
                         Html.ActionLink("Edit", "Edit", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         + "&nbsp;" +
                         Html.ActionLink("Close", "SetStatusToClose", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
+                        );
+            if (User.IsInRole("Admin"))
+                ViewContext.Writer.Write(
+                        "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", "CarItem", routeValues: new { Id = DataBinder.Eval(c.DataItem, "CarId") }, htmlAttributes: new { })
                         );
         });
         column.SetHeaderTemplateContent(c =>

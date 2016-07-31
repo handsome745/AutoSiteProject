@@ -94,5 +94,7 @@ namespace AutoSiteProject.Models.ViewModels
         public string Description { get; set; }
         [DisplayName("All fields search")]
         public string AllFieldsSearch { get; set; }
+        [DisplayName("Owner")]
+        public string OwnerId { get; set; }
     }
 }

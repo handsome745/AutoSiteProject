@@ -5,8 +5,8 @@
 
 @Html.DevExpress().GridView(settings =>
 {
-    settings.Name = "carsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "MyCarsListPartial" };
+    settings.Name = "myCarsGridView";
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarItemsPartial" };
     settings.Width = Unit.Percentage(100);
 
     if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
@@ -22,7 +22,7 @@
     settings.Columns.Add("Volume", "Engine volume");
     settings.Columns.Add("Description");
     settings.Columns.Add("OptionsNamesString", "Options");
-    if (User.IsInRole("Admin")) settings.Columns.Add("Status");
+    settings.Columns.Add("Status", "Status");
     settings.Columns.Add(column =>
     {
         column.Caption = "#";

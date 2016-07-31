@@ -42,14 +42,37 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("    <hr/>\r\n");
+WriteLiteral("<link");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 5), Tuple.Create("\"", 45)
+, Tuple.Create(Tuple.Create("", 12), Tuple.Create<System.Object, System.Int32>(Href("~/Content/MyCss/MainPageStyle.css")
+, 12), false)
+);
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" />\r\n\r\n");
+
+WriteLiteral("<hr/>\r\n<div");
+
+WriteLiteral(" class=\"deControl\"");
+
+WriteLiteral(">\r\n");
 
             
-            #line 3 "..\..\Views\CarItem\List.cshtml"
-   Html.RenderAction("GetCarItemsPartial", "DataLoader"); 
+            #line 6 "..\..\Views\CarItem\List.cshtml"
+    
             
             #line default
             #line hidden
+            
+            #line 6 "..\..\Views\CarItem\List.cshtml"
+       Html.RenderAction("GetCarItemsPartial", "DataLoader"); 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</div>");
+
         }
     }
 }

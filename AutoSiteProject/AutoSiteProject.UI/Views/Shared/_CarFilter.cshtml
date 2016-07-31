@@ -3,12 +3,13 @@
 @model CarAggregateFilterViewModel
 
 <link href="~/Content/chosen.min.css" rel="stylesheet" />
+<link href="~/Content/MyCss/CarFilterStyles.css" rel="stylesheet" />
 
 <script src="~/scripts/chosen.jquery.min.js"></script>
 <script src="~/scripts/AutoSite/DataLoader.js"></script>
 <script src="~/scripts/AutoSite/CarFilter.js"></script>
 
-<div id="filterPanel">
+<div id="filterPanel" class="filterPanel">
     <div class="list-group panel">
         <a href="#filterForm" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#filterPanel">Filter<i class="fa fa-caret-down"></i></a>
         <div class="collapse in" id="filterForm">

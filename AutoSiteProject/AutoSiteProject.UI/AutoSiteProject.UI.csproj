@@ -235,7 +235,11 @@
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\MyCss\CarFilterStyles.css" />
+    <Content Include="Content\MyCss\CarItemDetailsStyles.css" />
     <Content Include="Content\MyCss\CloseButton.css" />
+    <Content Include="Content\MyCss\LayoutStyles.css" />
+    <Content Include="Content\MyCss\MainPageStyle.css" />
     <Content Include="Content\MyCss\Select2Styles.css" />
     <Content Include="Content\MyCss\WidthClasses.css" />
     <Content Include="Content\Site.css" />
@@ -1029,6 +1033,8 @@
     <Content Include="Views\DataLoader\GetTransmitionTypePartial.cshtml" />
     <Content Include="Views\TransmitionType\Create.cshtml" />
     <Content Include="Views\TransmitionType\Edit.cshtml" />
+    <Content Include="Views\CarItem\MyCarsList.cshtml" />
+    <Content Include="Views\DataLoader\MyCarsListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
