@@ -64,7 +64,7 @@ namespace AutoSiteProject.Bl.FieldCopiers
             to.OwnerId = from.OwnerId;
 
             to.CarOption.Clear();
-            if (from.SelectedCarOptions == null) return to;
+            if (from.SelectedCarOptions != null) 
             foreach (var s in @from.SelectedCarOptions)
             {
                 int id;

@@ -9,6 +9,7 @@ using AutoSiteProject.UI.Hubs;
 using System.Web;
 using System.Collections.Generic;
 using System.Security;
+using System.Text;
 using Microsoft.AspNet.Identity;
 
 namespace AutoSiteProject.UI.Controllers
@@ -22,14 +23,19 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICarOptionFieldCopier _carOptionFieldCopier;
         private readonly ICarImageManager _carImageManager;
         private readonly ICarImageFieldCopier _carImageFieldCopier;
-
+        private readonly ICarBodyTypeManager _carBodyTypeManager;
+        private readonly ICarModelManager _carModelManager;
+        private readonly IManufacturerManager _manufacturerManager;
         public CarItemController(
             ICarItemManager carItemManager,
             ICarItemFieldCopier carItemFieldCopier,
             ICarOptionManager carOptionsManager,
             ICarOptionFieldCopier carOptionFieldCopier,
             ICarImageManager carImageManager,
-            ICarImageFieldCopier carImageFieldCopier
+            ICarImageFieldCopier carImageFieldCopier,
+            ICarBodyTypeManager carBodyTypeManager,
+            ICarModelManager carModelManager,
+            IManufacturerManager manufacturerManager
             )
         {
             _carItemManager = carItemManager;
@@ -38,6 +44,9 @@ namespace AutoSiteProject.UI.Controllers
             _carOptionFieldCopier = carOptionFieldCopier;
             _carImageManager = carImageManager;
             _carImageFieldCopier = carImageFieldCopier;
+            _carBodyTypeManager = carBodyTypeManager;
+            _carModelManager = carModelManager;
+            _manufacturerManager = manufacturerManager;
         }
 
         // GET
@@ -100,7 +109,17 @@ namespace AutoSiteProject.UI.Controllers
             //add new car into db
             _carItemManager.Add(dbItem);
             //notify all users
-            NotificationsHub.SendInfoMessage("Added new car!!!");//:"+ dbItem.CarModel +" Manufacturer:"+ dbItem.CarModel.Manufacturer);
+            var sb = new StringBuilder();
+            if (dbItem.ModelId != null) dbItem.CarModel = _carModelManager.GetById((int)dbItem.ModelId);
+            if (dbItem.BodyTypeId != null) dbItem.CarBodyType = _carBodyTypeManager.GetById((int) dbItem.BodyTypeId);
+            if (dbItem.ModelId != null && dbItem.CarModel?.ManufacturerId != null)
+                dbItem.CarModel.Manufacturer = _manufacturerManager.GetById((int) dbItem.CarModel.ManufacturerId);
+            sb.AppendFormat($"Added : {dbItem.CarModel?.Manufacturer?.Name}");
+            sb.AppendFormat($" {dbItem.CarModel?.Name}");
+            sb.AppendFormat($" {dbItem.CarBodyType?.Name}");
+            sb.AppendFormat($" {dbItem.ReleaseYear}r.y.");
+            sb.AppendFormat($" {dbItem.Price}$");
+            NotificationsHub.SendInfoMessage(sb.ToString());
             return RedirectToAction("List");
         }
 
