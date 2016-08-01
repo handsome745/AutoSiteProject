@@ -28,3 +28,16 @@
 .chosen-choices span {
     font-size: 10px;
 }
+
+.allFields-picker{}
+.country-picker{}
+.manufacturer-picker{}
+.carmodel-picker{}
+.carbodytype-picker{}
+.caroptions-picker{}
+.description-picker{}
+.carfueltype-picker{}
+.cartransmitiontype-picker{}
+.releaseyear-label{}
+.volume-label{}
+.price-label{}

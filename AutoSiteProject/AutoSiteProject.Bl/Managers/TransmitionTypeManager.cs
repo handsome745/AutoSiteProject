@@ -4,7 +4,7 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class TransmitionTypeManager : RepositoryManager<TransmitionType>, ITransmitionTypeManager
+    public class TransmitionTypeManager : BaseManager<TransmitionType>, ITransmitionTypeManager
     {
         public TransmitionTypeManager(IGenericRepository<TransmitionType> repository, IUnitOfWork unitOfWork)
             : base(repository, unitOfWork)

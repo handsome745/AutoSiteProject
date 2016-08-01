@@ -10,7 +10,7 @@ using LinqKit;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CarItemManager : RepositoryManager<CarItem>, ICarItemManager
+    public class CarItemManager : BaseManager<CarItem>, ICarItemManager
     {
         private readonly ICarItemRpository _carRepository;
         public CarItemManager(ICarItemRpository repository, IUnitOfWork unitOfWork)

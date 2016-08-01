@@ -11,9 +11,9 @@
 
     if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
 
-    settings.Columns.Add("Country").Width = Unit.Pixel(20);
-    settings.Columns.Add("Manufacturer").Width = Unit.Pixel(15);
-    settings.Columns.Add("Model").Width = Unit.Pixel(15); 
+    settings.Columns.Add("Country");
+    settings.Columns.Add("Manufacturer");
+    settings.Columns.Add("Model"); 
     settings.Columns.Add("BodyType", "Body type");
     settings.Columns.Add("FuelType", "Fuel type");
     settings.Columns.Add("TransmitionType", "Transmition type");
@@ -57,5 +57,5 @@
     settings.Settings.ShowGroupPanel = true;
     settings.KeyFieldName = "CarId";
     settings.ClientSideEvents.BeginCallback = "carFilter.onBeginCallback";
-    settings.SettingsPager.PageSize = 25;
+    settings.SettingsPager.PageSize = 15;
 }).Bind(Model).GetHtml()

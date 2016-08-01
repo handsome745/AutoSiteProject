@@ -219,9 +219,7 @@ WriteLiteral("\r\n                     data-caroptions-url=\"");
             #line hidden
 WriteLiteral("\"");
 
-WriteLiteral(">\r\n\r\n                    ");
-
-WriteLiteral("\r\n                    <div");
+WriteLiteral(">\r\n\r\n                    <div");
 
 WriteLiteral(" class=\"form-group width100\"");
 
@@ -230,7 +228,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 33 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 28 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -245,7 +243,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 35 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 30 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.SearchFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "form-control allFields-picker width100" }));
 
             
@@ -261,7 +259,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 39 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 34 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -276,7 +274,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 41 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 36 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.CountryId, new SelectList(new List<CountryViewModel>(), "Id", "Name", Model.CountryId), "Select country", htmlAttributes: new { @class = "form-control country-picker width100", @data_initId = @Model.CountryId }));
 
             
@@ -292,7 +290,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 45 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 40 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.ManufacturerId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -307,7 +305,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 47 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 42 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.ManufacturerId, new SelectList(new List<ManufacturerViewModel>(), "Id", "Name", Model.ManufacturerId), "Select manufacturer", htmlAttributes: new { @class = "form-control manufacturer-picker width100", @data_initId = @Model.ManufacturerId }));
 
             
@@ -323,7 +321,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 51 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 46 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.ModelId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -338,7 +336,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 53 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 48 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.ModelId, new SelectList(new List<CarModelViewModel>(), "Id", "Name", Model.ModelId), "Select car model", htmlAttributes: new { @class = "form-control carmodel-picker width100", @data_initId = @Model.ModelId }));
 
             
@@ -354,7 +352,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 57 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 52 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.BodyTypeId, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -369,7 +367,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 59 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 54 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.BodyTypeId, new SelectList(new List<CarBodyTypeViewModel>(), "Id", "Name", Model.BodyTypeId), "Select car body type", htmlAttributes: new { @class = "form-control carbodytype-picker width100", @data_initId = @Model.BodyTypeId }));
 
             
@@ -385,7 +383,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 63 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 58 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.FuelTypeId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -400,7 +398,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 65 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 60 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.FuelTypeId, new SelectList(new List<FuelTypeViewModel>(), "Id", "Name", Model.FuelTypeId), "Select car fuel type", htmlAttributes: new { @class = "form-control carfueltype-picker", @data_initId = @Model.FuelTypeId }));
 
             
@@ -411,7 +409,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 66 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 61 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.FuelTypeId, "", new { @class = "text-danger" }));
 
             
@@ -427,7 +425,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 70 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 65 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.TransmitionTypeId, htmlAttributes: new { @class = "control-label col-md-2" }));
 
             
@@ -442,7 +440,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 72 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 67 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.DropDownListFor(m => m.TransmitionTypeId, new SelectList(new List<TransmitionTypeViewModel>(), "Id", "Name", Model.TransmitionTypeId), "Select car transmition type", htmlAttributes: new { @class = "form-control cartransmitiontype-picker", @data_initId = @Model.TransmitionTypeId }));
 
             
@@ -453,7 +451,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 73 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 68 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.TransmitionTypeId, "", new { @class = "text-danger" }));
 
             
@@ -469,7 +467,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 78 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 73 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.ReleaseYearMin, "Release year:"+Model.ReleaseYearMin+"-"+Model.ReleaseYearMax,htmlAttributes: new { @class = "control-label col-md-2 releaseyear-label width100" }));
 
             
@@ -484,7 +482,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 80 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 75 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.ReleaseYearMin));
 
             
@@ -495,7 +493,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 81 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 76 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.ReleaseYearMax));
 
             
@@ -506,7 +504,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 82 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 77 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.ReleaseYearMin, "", new {@class = "text-danger"}));
 
             
@@ -517,7 +515,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 83 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 78 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.ReleaseYearMax, "", new {@class = "text-danger"}));
 
             
@@ -537,7 +535,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 90 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 85 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.VolumeMin,"Engine volume:"+Model.VolumeMin+"-"+Model.VolumeMax, htmlAttributes: new { @class = "control-label col-md-2 volume-label width100" }));
 
             
@@ -552,7 +550,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 92 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 87 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.VolumeMin));
 
             
@@ -563,7 +561,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 93 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 88 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.VolumeMax));
 
             
@@ -574,7 +572,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 94 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 89 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.VolumeMin, "", new { @class = "text-danger" }));
 
             
@@ -585,7 +583,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 95 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 90 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.VolumeMax, "", new { @class = "text-danger" }));
 
             
@@ -605,7 +603,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 102 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 97 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.PriceMin,"Price:"+Model.PriceMin+"-"+Model.PriceMax, htmlAttributes: new { @class = "control-label col-md-2 price-label width100" }));
 
             
@@ -620,7 +618,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 104 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 99 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.PriceMin));
 
             
@@ -631,7 +629,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 105 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 100 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.HiddenFor(m => m.PriceMax));
 
             
@@ -642,7 +640,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 106 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 101 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.PriceMin, "", new { @class = "text-danger" }));
 
             
@@ -653,7 +651,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 107 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 102 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ValidationMessageFor(model => model.PriceMax, "", new { @class = "text-danger" }));
 
             
@@ -673,7 +671,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 115 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 110 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.Description, htmlAttributes: new {@class = "control-label col-sm-4"}));
 
             
@@ -688,7 +686,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 117 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 112 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.TextBoxFor(m => m.Description, htmlAttributes: new {@class = "form-control description-picker width100"}));
 
             
@@ -704,7 +702,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 121 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 116 "..\..\Views\Shared\_CarFilter.cshtml"
                    Write(Html.LabelFor(m => m.OptionsIds, htmlAttributes: new { @class = "control-label col-sm-4" }));
 
             
@@ -719,7 +717,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 123 "..\..\Views\Shared\_CarFilter.cshtml"
+            #line 118 "..\..\Views\Shared\_CarFilter.cshtml"
                        Write(Html.ListBoxFor(m => m.OptionsIds, new SelectList(Model.AvalibleCarOptions, "Id", "Name"), htmlAttributes: new { @class = "form-control caroptions-picker width100" }));
 
             

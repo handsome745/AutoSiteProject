@@ -4,7 +4,7 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CarModelManager : RepositoryManager<CarModel>, ICarModelManager
+    public class CarModelManager : BaseManager<CarModel>, ICarModelManager
     {
         public CarModelManager(IGenericRepository<CarModel> repository, IUnitOfWork unitOfWork)
             : base(repository, unitOfWork)

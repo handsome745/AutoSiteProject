@@ -7,6 +7,8 @@
     var carbodytypePicker = $(".carbodytype-picker", filterSection);
     var carOptionsPicker = $(".caroptions-picker", filterSection);
     var descriptionPicker = $(".description-picker", filterSection);
+    var fuelTypePicker = $(".carfueltype-picker", filterSection);
+    var transmitionTypePicker = $(".cartransmitiontype-picker", filterSection);
     var allFieldsPicker = $(".allFields-picker", filterSection);
 
     var releaseYearRangeSlider = $(".releaseyear-range-slider", filterSection);
@@ -68,6 +70,8 @@
     releaseYearRangeSlider.change(func);
     volumeRangeSlider.change(func);
     priceRangeSlider.change(func);
+    fuelTypePicker.change(func);
+    transmitionTypePicker.change(func);
     descriptionPicker.keyup(function () {
         setTimeout(func, 300);
     });
@@ -90,7 +94,7 @@ carFilter = {
         }
 
         $.each(carFilterForm, function (i, v) {
-                e.customArgs[v.name] = v.value;
+            e.customArgs[v.name] = v.value;
         });
         window.history.pushState(carFilterForm, "Car search", "?" + $.param(carFilterForm));
 

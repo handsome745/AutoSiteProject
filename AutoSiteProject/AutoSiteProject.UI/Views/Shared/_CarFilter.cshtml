@@ -24,11 +24,6 @@
                      data-cartransmitiontype-url="@Url.Action("GetTransmitionTypes", "DataLoader")"
                      data-caroptions-url="@Url.Action("GetCarOptions", "DataLoader")">
 
-                    @*<div class="form-group width100">
-                        <div class="col-sm-2 width100 search-control">
-                            @Html.Select2Search(new { @class = "select2Search" })
-                        </div>
-                    </div>*@
                     <div class="form-group width100">
                         @Html.LabelFor(m => m.AllFieldsSearch, htmlAttributes: new { @class = "control-label col-sm-4" })
                         <div class="col-sm-2 width100">

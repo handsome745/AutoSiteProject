@@ -6,7 +6,7 @@
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "myCarsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarItemsPartial" };
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "MyCarsListPartial" };
     settings.Width = Unit.Percentage(100);
 
     if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
@@ -55,5 +55,5 @@
         column.Width = 70;
     });
     settings.KeyFieldName = "CarId";
-    settings.SettingsPager.PageSize = 25;
+    settings.SettingsPager.PageSize = 15;
 }).Bind(Model).GetHtml()

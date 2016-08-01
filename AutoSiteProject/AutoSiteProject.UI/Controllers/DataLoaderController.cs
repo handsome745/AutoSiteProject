@@ -79,7 +79,7 @@ namespace AutoSiteProject.UI.Controllers
         public JsonResult GetCars(CarAggregateFilterViewModel filter)
         {
             if (filter == null) filter = new CarAggregateFilterViewModel();
-            var carsList = _carItemManager.GetCarsAggregateViewModel(filter).Take(5);
+            var carsList = _carItemManager.GetCarsAggregateViewModel(filter).Take(6);
             //filter result by status
             var thisIsAdmin = User.IsInRole("Admin");
             carsList = carsList.Where(r => r.Status == CarItemStatus.Open || thisIsAdmin).ToList();

@@ -5,7 +5,7 @@ using AutoSiteProject.Models.ViewModels;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CarImageManager : RepositoryManager<CarImages>, ICarImageManager
+    public class CarImageManager : BaseManager<CarImages>, ICarImageManager
     {
         public CarImageManager(IGenericRepository<CarImages> repository, IUnitOfWork unitOfWork)
             : base(repository, unitOfWork)

@@ -4,7 +4,7 @@ using AutoSiteProject.Models.DB;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public class CountryManager : RepositoryManager<Country>, ICountryManager
+    public class CountryManager : BaseManager<Country>, ICountryManager
     {
         public CountryManager(IGenericRepository<Country> repository, IUnitOfWork unitOfWork)
             : base(repository, unitOfWork)

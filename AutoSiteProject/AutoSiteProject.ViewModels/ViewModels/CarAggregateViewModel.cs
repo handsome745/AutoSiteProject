@@ -82,14 +82,16 @@ namespace AutoSiteProject.Models.ViewModels
         [DisplayName("Price in $")]
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect min price")]
         public int PriceMin { get; set; } = 0;
+
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect max price")]
-        public int PriceMax { get; set; } = 10000;
+        public int PriceMax { get; set; } = 200000;
 
         [DisplayName("Engine volume(cm3)")]
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect min car engine volume")]
         public int VolumeMin { get; set; } = 0;
+
         [Range(0, int.MaxValue, ErrorMessage = "Incorrect max car engine volume")]
-        public int VolumeMax { get; set; } = 3000;
+        public int VolumeMax { get; set; } = 10000;
         [DisplayName("Description")]
         public string Description { get; set; }
         [DisplayName("All fields search")]

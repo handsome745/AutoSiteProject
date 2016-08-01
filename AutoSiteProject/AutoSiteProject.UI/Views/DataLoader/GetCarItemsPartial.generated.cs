@@ -65,7 +65,7 @@ namespace ASP
 Write(Html.DevExpress().GridView(settings =>
 {
     settings.Name = "carsGridView";
-    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "MyCarsListPartial" };
+    settings.CallbackRouteValues = new { Controller = "DataLoader", Action = "GetCarItemsPartial" };
     settings.Width = Unit.Percentage(100);
 
     if (User.IsInRole("Admin")) settings.Columns.Add("CarId");
@@ -114,7 +114,7 @@ Write(Html.DevExpress().GridView(settings =>
         column.Width = 70;
     });
     settings.KeyFieldName = "CarId";
-    settings.SettingsPager.PageSize = 25;
+    settings.SettingsPager.PageSize = 15;
 }).Bind(Model).GetHtml());
 
             

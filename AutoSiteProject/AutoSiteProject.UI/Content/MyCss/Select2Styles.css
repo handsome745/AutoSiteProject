@@ -39,4 +39,5 @@ div.search-control span.select2 {
     width: 60px;
     align-content: flex-start;
     font-size: xx-small;
+    cursor: pointer;
 }

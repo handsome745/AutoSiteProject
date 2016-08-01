@@ -4,13 +4,13 @@ using AutoSiteProject.Models.Dal.Interfaces;
 
 namespace AutoSiteProject.Bl.Managers
 {
-    public abstract class RepositoryManager<T> : IRepositoryManager<T>
+    public abstract class BaseManager<T> : IRepositoryManager<T>
         where T : class 
     {
         private readonly IGenericRepository<T> _tRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        protected RepositoryManager(IGenericRepository<T> repository, IUnitOfWork unitOfWork)
+        protected BaseManager(IGenericRepository<T> repository, IUnitOfWork unitOfWork)
         {
             _tRepository = repository;
             _unitOfWork = unitOfWork;

@@ -14,13 +14,17 @@ namespace AutoSiteProject.UI.Controllers
         private readonly ICountryManager _countryManager;
         private readonly ICarBodyTypeManager _carBodyTypeManager;
         private readonly ICarOptionManager _carOptionManager;
+        private readonly IFuelTypeManager _fuelTypeManager;
+        private readonly ITransmitionTypeManager _transmitionTypeManager;
 
         public ValidationController(
             ICarModelManager carModelManager,
             IManufacturerManager manufacturerManager,
             ICountryManager countryManager,
             ICarBodyTypeManager carBodyTypeManager,
-            ICarOptionManager carOptionManager
+            ICarOptionManager carOptionManager,
+            IFuelTypeManager fuelTypeManager,
+            ITransmitionTypeManager transmitionTypeManager
             )
         {
             _carModelManager = carModelManager;
@@ -28,6 +32,8 @@ namespace AutoSiteProject.UI.Controllers
             _countryManager = countryManager;
             _carBodyTypeManager = carBodyTypeManager;
             _carOptionManager = carOptionManager;
+            _fuelTypeManager = fuelTypeManager;
+            _transmitionTypeManager = transmitionTypeManager;
         }
 
         // GET: Validation
@@ -62,5 +68,17 @@ namespace AutoSiteProject.UI.Controllers
             return Json(_carModelManager.GetAll().Where(c => c.Name == model.Name && c.Id != model.Id && c.ManufacturerId == model.ManufacturerId).ToList().Count <= 0, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult CheckFuelTypeNameForExist(FuelTypeViewModel model)
+        {
+            model.Name = model.Name.TrimStart(' ');
+            model.Name = model.Name.TrimEnd(' ');
+            return Json(_fuelTypeManager.GetAll().Where(c => c.Name == model.Name).ToList().Count <= 0, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CheckTransmitionTypeNameForExist(TransmitionTypeViewModel model)
+        {
+            model.Name = model.Name.TrimStart(' ');
+            model.Name = model.Name.TrimEnd(' ');
+            return Json(_transmitionTypeManager.GetAll().Where(c => c.Name == model.Name).ToList().Count <= 0, JsonRequestBehavior.AllowGet);
+        }
     }
 }

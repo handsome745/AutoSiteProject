@@ -114,7 +114,7 @@
     <Compile Include="Managers\CountryManager.cs" />
     <Compile Include="Managers\FuelTypeManager.cs" />
     <Compile Include="Managers\ManufacturerManager.cs" />
-    <Compile Include="Managers\RepositoryManager.cs" />
+    <Compile Include="Managers\BaseManager.cs" />
     <Compile Include="FieldCopiers\CarModelFieldCopier.cs" />
     <Compile Include="FieldCopiers\CountryFieldCopier.cs" />
     <Compile Include="FieldCopiers\ManufacturerFieldCopier.cs" />
