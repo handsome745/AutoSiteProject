@@ -46,7 +46,7 @@ namespace AutoSiteProject.Models.ViewModels
 
         [DisplayName("Options")]
         [NotMapped]
-        public string OptionsNamesString => string.Join(", ", SelectedCarOptions);
+        public string OptionsNamesString => SelectedCarOptions != null ? string.Join(", ", SelectedCarOptions) : "";
 
         [DisplayName("Description")]
         [DataType(DataType.MultilineText)]
@@ -89,7 +89,7 @@ namespace AutoSiteProject.Models.ViewModels
 
     public enum CarItemStatus
     {
-        Open= 0,
+        Open = 0,
         Closed = 1
     }
 }
